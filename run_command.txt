@@ -1,0 +1,3 @@
+./scripts/generate_landmarks.sh \ "policy_exprm/policy_domain_4.pddl" \ "policy_exprm/policy_problem_4.pddl" \ "policy_exprm/policy_landmarks_4.txt"
+./scripts/generate_landmarks.sh \ "policy_exprm/rock_sample_domain.pddl" \ "policy_exprm/rock_sample_problem.pddl" \ "policy_exprm/rock_sample_landmarks.txt"
+

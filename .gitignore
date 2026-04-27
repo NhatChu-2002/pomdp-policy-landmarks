@@ -1,0 +1,14 @@
+# Build artifacts
+builds/
+*.sas
+*.pyc
+__pycache__/
+output
+example.txt
+
+# IDE metadata
+.vs/
+.vscode/
+
+# Claude Code local settings
+**/.claude/
