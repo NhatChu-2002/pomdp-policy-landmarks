@@ -5,6 +5,7 @@ builds/
 __pycache__/
 output
 example.txt
+results/
 
 # IDE metadata
 .vs/

@@ -1,0 +1,46 @@
+# Landmark extraction batch config.
+# Paths are relative to the repository root.
+experiments:
+  - name: channel
+    domain: landmark_experiments/channel/channel_domain.pddl
+    problem: landmark_experiments/channel/channel_problem.pddl
+
+  - name: channel_spec_fsc_auto
+    domain: landmark_experiments/generated/channel_spec_fsc/channel-domain.pddl
+    problem: landmark_experiments/generated/channel_spec_fsc/channel-problem.pddl
+
+  - name: mine
+    domain: landmark_experiments/mine/mine_domain.pddl
+    problem: landmark_experiments/mine/mine_problem.pddl
+
+  - name: mine_spec_fsc_auto
+    domain: landmark_experiments/generated/mine_spec_fsc/mine-spec-fsc-domain.pddl
+    problem: landmark_experiments/generated/mine_spec_fsc/mine-spec-fsc-problem.pddl
+
+  - name: nd_policy_v8
+    domain: landmark_experiments/nd_policy/policy_domain_1_nd_v8.pddl
+    problem: landmark_experiments/nd_policy/policy_problem_1_nd_v8.pddl
+
+  - name: sensor_v1
+    domain: landmark_experiments/sensor/sensor_domain.pddl
+    problem: landmark_experiments/sensor/sensor_problem.pddl
+
+  - name: sensor_v2
+    domain: landmark_experiments/sensor/sensor_v2_domain.pddl
+    problem: landmark_experiments/sensor/sensor_v2_problem.pddl
+
+  - name: sensor_v3
+    domain: landmark_experiments/sensor/sensor_v3_domain.pddl
+    problem: landmark_experiments/sensor/sensor_v3_problem.pddl
+
+  - name: sensor_spec_fsc_auto
+    domain: landmark_experiments/generated/sensor_spec_fsc/sensor-spec-fsc-domain.pddl
+    problem: landmark_experiments/generated/sensor_spec_fsc/sensor-spec-fsc-problem.pddl
+
+  - name: tiger
+    domain: landmark_experiments/tiger/tiger_policy_domain.pddl
+    problem: landmark_experiments/tiger/tiger_policy_problem.pddl
+
+  - name: tiger_trace_fsc_auto
+    domain: landmark_experiments/generated/tiger_trace_fsc/tiger_trace_fsc_domain.pddl
+    problem: landmark_experiments/generated/tiger_trace_fsc/tiger_trace_fsc_problem.pddl

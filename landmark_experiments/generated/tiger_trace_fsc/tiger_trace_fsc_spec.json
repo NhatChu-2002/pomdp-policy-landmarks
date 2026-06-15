@@ -1,0 +1,40 @@
+{
+  "trace_summary": {
+    "csv_path": "C:\\AI_planning\\Landmark_dump\\FD_LANDMARK_DUMP\\pomdp_to_pddl\\Pomdp\\tiger_policy.csv",
+    "trace_id": null,
+    "trace_count": 7,
+    "listen_count": 29,
+    "terminal_action_count": 7,
+    "observations": [
+      "left",
+      "right"
+    ]
+  },
+  "spec": {
+    "name": "tiger-trace-fsc",
+    "hidden_variables": [
+      {
+        "name": "direction",
+        "domain": [
+          "left",
+          "right"
+        ]
+      }
+    ],
+    "fsc_nodes": [
+      "nroot",
+      "nseen-left",
+      "nseen-right",
+      "ncommit"
+    ],
+    "initial_node": "nroot",
+    "commit_nodes": [
+      "ncommit"
+    ],
+    "observations": [
+      "left",
+      "right"
+    ],
+    "transition_count": 6
+  }
+}

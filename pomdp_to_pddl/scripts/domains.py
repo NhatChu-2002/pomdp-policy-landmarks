@@ -2,8 +2,8 @@
 Domain specifications for the four validated POMDPs.
 
 Each one builds an FSCPomdpSpec that the encoder turns into PDDL.
-Start small: Tiger and Channel are here; add Sensor and Minesweeper
-by following the same pattern.
+Use this file for domains that do not have CSV traces yet. Trace-backed
+domains live in trace_adapters.py.
 """
 
 from fsc_spec import (
@@ -110,6 +110,167 @@ def channel_spec() -> FSCPomdpSpec:
         observations=[
             "signal-c1", "signal-c2", "signal-c3",
             "noise-c1",  "noise-c2",  "noise-c3",
+        ],
+        transitions=transitions,
+    )
+
+
+# ======================================================================
+#  Faulty Sensor (2 hidden variables, cardinality 2 each)
+# ======================================================================
+#
+# This is the non-trace version of the sensor pipeline. The two hidden
+# variables are independent sensor health states:
+#   sensor-a in {ok, faulty}
+#   sensor-b in {ok, faulty}
+#
+# Each sensor is read in two steps:
+#   1. write positive belief k-sensor-*(ok/faulty)
+#   2. write complementary negative belief k-not-sensor-*(faulty/ok)
+#
+# The split is deliberate: the generic encoder models one belief write per
+# transition, and this structure should expose four belief disjunctions:
+#   k(sensor-a ok/faulty), k-not(sensor-a ok/faulty),
+#   k(sensor-b ok/faulty), k-not(sensor-b ok/faulty).
+
+def sensor_spec() -> FSCPomdpSpec:
+    sensor_a = HiddenVariable(name="sensor-a", domain=("a-ok", "a-faulty"))
+    sensor_b = HiddenVariable(name="sensor-b", domain=("b-ok", "b-faulty"))
+
+    transitions = [
+        FSCTransition(
+            "nroot",
+            "a-agree",
+            "na-ok",
+            (BeliefUpdate("sensor-a", "a-ok", "pos"),),
+        ),
+        FSCTransition(
+            "nroot",
+            "a-disagree",
+            "na-faulty",
+            (BeliefUpdate("sensor-a", "a-faulty", "pos"),),
+        ),
+        FSCTransition(
+            "na-ok",
+            "a-agree",
+            "nb-start",
+            (BeliefUpdate("sensor-a", "a-faulty", "neg"),),
+        ),
+        FSCTransition(
+            "na-faulty",
+            "a-disagree",
+            "nb-start",
+            (BeliefUpdate("sensor-a", "a-ok", "neg"),),
+        ),
+        # Contradictory second reading: restart sensor A.
+        FSCTransition("na-ok", "a-disagree", "nroot"),
+        FSCTransition("na-faulty", "a-agree", "nroot"),
+
+        FSCTransition(
+            "nb-start",
+            "b-agree",
+            "nb-ok",
+            (BeliefUpdate("sensor-b", "b-ok", "pos"),),
+        ),
+        FSCTransition(
+            "nb-start",
+            "b-disagree",
+            "nb-faulty",
+            (BeliefUpdate("sensor-b", "b-faulty", "pos"),),
+        ),
+        FSCTransition(
+            "nb-ok",
+            "b-agree",
+            "ncommit",
+            (BeliefUpdate("sensor-b", "b-faulty", "neg"),),
+        ),
+        FSCTransition(
+            "nb-faulty",
+            "b-disagree",
+            "ncommit",
+            (BeliefUpdate("sensor-b", "b-ok", "neg"),),
+        ),
+        # Contradictory second reading: retry sensor B.
+        FSCTransition("nb-ok", "b-disagree", "nb-start"),
+        FSCTransition("nb-faulty", "b-agree", "nb-start"),
+    ]
+
+    return FSCPomdpSpec(
+        name="sensor-spec-fsc",
+        hidden_variables=[sensor_a, sensor_b],
+        fsc_nodes=[
+            "nroot",
+            "na-ok",
+            "na-faulty",
+            "nb-start",
+            "nb-ok",
+            "nb-faulty",
+            "ncommit",
+        ],
+        initial_node="nroot",
+        commit_nodes=["ncommit"],
+        observations=[
+            "a-agree",
+            "a-disagree",
+            "b-agree",
+            "b-disagree",
+        ],
+        transitions=transitions,
+    )
+
+
+# ======================================================================
+#  Mine (1 hidden variable, cardinality 4)
+# ======================================================================
+#
+# Compact spec version of the 2x2 mine domain. The hidden variable is the
+# mine cell. First evidence chooses one possible mine cell; a second safe-cell
+# observation supplies complementary negative belief.
+
+def mine_spec() -> FSCPomdpSpec:
+    cells = ("c00", "c01", "c10", "c11")
+    mine_cell = HiddenVariable(name="mine-cell", domain=cells)
+
+    transitions = []
+    for cell in cells:
+        transitions.append(
+            FSCTransition(
+                "nroot",
+                f"mine-{cell}",
+                f"nmaybe-{cell}",
+                (BeliefUpdate("mine-cell", cell, "pos"),),
+            )
+        )
+
+    for candidate in cells:
+        for safe_cell in cells:
+            if safe_cell == candidate:
+                continue
+            transitions.append(
+                FSCTransition(
+                    f"nmaybe-{candidate}",
+                    f"safe-{safe_cell}",
+                    "ncommit",
+                    (BeliefUpdate("mine-cell", safe_cell, "neg"),),
+                )
+            )
+
+    return FSCPomdpSpec(
+        name="mine-spec-fsc",
+        hidden_variables=[mine_cell],
+        fsc_nodes=[
+            "nroot",
+            "nmaybe-c00",
+            "nmaybe-c01",
+            "nmaybe-c10",
+            "nmaybe-c11",
+            "ncommit",
+        ],
+        initial_node="nroot",
+        commit_nodes=["ncommit"],
+        observations=[
+            *(f"mine-{cell}" for cell in cells),
+            *(f"safe-{cell}" for cell in cells),
         ],
         transitions=transitions,
     )

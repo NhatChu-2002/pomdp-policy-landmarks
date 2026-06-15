@@ -19,8 +19,8 @@ import domains
 REGISTRY = {
     "tiger":   domains.tiger_spec,
     "channel": domains.channel_spec,
-    # add: "sensor": domains.sensor_spec,
-    # add: "minesweeper": domains.minesweeper_spec,
+    "mine":    domains.mine_spec,
+    "sensor":  domains.sensor_spec,
 }
 
 

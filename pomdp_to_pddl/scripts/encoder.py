@@ -58,9 +58,10 @@ def generate_domain(spec: FSCPomdpSpec) -> str:
     lines.append("  (:predicates")
     lines.append("    (at ?n - node)")
     lines.append("    (commit-node ?n - node)")   # marks nodes from which commit may fire
+    lines.append("    (no-write ?from - node ?to - node)")
     for v in spec.hidden_variables:
-        lines.append(f"    (k ?x - {v.name})")
-        lines.append(f"    (k-not ?x - {v.name})")
+        lines.append(f"    ({_k_pred(v.name)} ?x - {v.name})")
+        lines.append(f"    ({_knot_pred(v.name)} ?x - {v.name})")
         lines.append(f"    (committed-{v.name})")
         lines.append(f"    (neg-committed-{v.name})")
         lines.append(f"    (confirmed-{v.name})")
@@ -107,12 +108,6 @@ def _sense_action(spec: FSCPomdpSpec, obs: str) -> str:
     handled by having multiple `trans-obs` facts in :init.
     """
     osan = _sanitize(obs)
-    # Parameters: the from/to node and (optionally) one domain value per variable
-    # for which this sense action might write a belief update.
-    param_parts = ["?from - node", "?to - node"]
-    for v in spec.hidden_variables:
-        param_parts.append(f"?x-{v.name} - {v.name}")
-
     # Preconditions: (at ?from) and (trans-obs ?from ?to)
     precs = [
         "(at ?from)",
@@ -140,23 +135,16 @@ def _sense_action(spec: FSCPomdpSpec, obs: str) -> str:
     #  variants are emitted separately below.)
     return _format_action(
         name=f"sense-{osan}-move",
-        parameters=param_parts,
+        parameters=["?from - node", "?to - node"],
         preconditions=precs + _no_writes_precs(spec, osan),
         effects=effects,
-    ) + _belief_write_variants(spec, osan)
+    ) + "\n" + _belief_write_variants(spec, osan)
 
 
 def _no_writes_precs(spec: FSCPomdpSpec, osan: str) -> List[str]:
     """Guard the plain-movement variant so it fires only when NO belief
     update is declared for this transition (e.g., reset / retry edges)."""
-    guards = []
-    for v in spec.hidden_variables:
-        guards.append(
-            f"(forall (?x-{v.name} - {v.name}) "
-            f"(and (not (writes-k-{v.name} ?from ?to ?x-{v.name})) "
-            f"(not (writes-knot-{v.name} ?from ?to ?x-{v.name}))))"
-        )
-    return guards
+    return ["(no-write ?from ?to)"]
 
 
 def _belief_write_variants(spec: FSCPomdpSpec, osan: str) -> str:
@@ -178,7 +166,7 @@ def _belief_write_variants(spec: FSCPomdpSpec, osan: str) -> str:
             effects=[
                 "(not (at ?from))",
                 "(at ?to)",
-                f"(k ?x)",
+                f"({_k_pred(v.name)} ?x)",
             ],
         ))
         # negative-write variant
@@ -195,7 +183,7 @@ def _belief_write_variants(spec: FSCPomdpSpec, osan: str) -> str:
             effects=[
                 "(not (at ?from))",
                 "(at ?to)",
-                f"(k-not ?x)",
+                f"({_knot_pred(v.name)} ?x)",
             ],
         ))
     return "\n".join(out)
@@ -215,7 +203,7 @@ def _commit_action(v: HiddenVariable) -> str:
         preconditions=[
             "(at ?n)",
             "(commit-node ?n)",
-            "(k ?x)",
+            f"({_k_pred(v.name)} ?x)",
             f"(not (committed-{v.name}))",
         ],
         effects=[f"(committed-{v.name})"],
@@ -230,7 +218,7 @@ def _neg_commit_action(v: HiddenVariable) -> str:
         preconditions=[
             "(at ?n)",
             "(commit-node ?n)",
-            "(k-not ?x)",
+            f"({_knot_pred(v.name)} ?x)",
             f"(not (neg-committed-{v.name}))",
         ],
         effects=[f"(neg-committed-{v.name})"],
@@ -245,7 +233,7 @@ def _confirm_action(v: HiddenVariable) -> str:
         preconditions=[
             f"(committed-{v.name})",
             f"(neg-committed-{v.name})",
-            "(k ?x)",
+            f"({_k_pred(v.name)} ?x)",
             f"(not (confirmed-{v.name}))",
         ],
         effects=[f"(confirmed-{v.name})"],
@@ -305,6 +293,8 @@ def generate_problem(spec: FSCPomdpSpec) -> str:
     # FSC transitions
     for t in spec.transitions:
         lines.append(f"    (trans-{_sanitize(t.observation)} {t.from_node} {t.to_node})")
+        if not t.belief_updates:
+            lines.append(f"    (no-write {t.from_node} {t.to_node})")
         for bu in t.belief_updates:
             if bu.polarity == "pos":
                 lines.append(
@@ -334,3 +324,11 @@ def compile_to_pddl(spec: FSCPomdpSpec) -> tuple[str, str]:
 def _sanitize(s: str) -> str:
     """PDDL identifiers must be alphanumeric + dash/underscore."""
     return s.replace(" ", "-").replace("_", "-").lower()
+
+
+def _k_pred(variable_name: str) -> str:
+    return f"k-{_sanitize(variable_name)}"
+
+
+def _knot_pred(variable_name: str) -> str:
+    return f"k-not-{_sanitize(variable_name)}"

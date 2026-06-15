@@ -1,88 +1,91 @@
-(define (domain tiger)
+(define (domain tiger-trace-fsc)
   (:requirements :strips :typing :negative-preconditions :equality)
   (:types node - object direction - object)
   (:predicates
     (at ?n - node)
     (commit-node ?n - node)
-    (k ?x - direction)
-    (k-not ?x - direction)
+    (no-write ?from - node ?to - node)
+    (k-direction ?x - direction)
+    (k-not-direction ?x - direction)
     (committed-direction)
     (neg-committed-direction)
     (confirmed-direction)
-    (trans-growl-left ?from - node ?to - node)
-    (trans-growl-right ?from - node ?to - node)
+    (trans-left ?from - node ?to - node)
+    (trans-right ?from - node ?to - node)
     (writes-k-direction ?from - node ?to - node ?x - direction)
     (writes-knot-direction ?from - node ?to - node ?x - direction)
     (done)
   )
-  (:action sense-growl-left-move
-    :parameters (?from - node ?to - node ?x-direction - direction)
+  (:action sense-left-move
+    :parameters (?from - node ?to - node)
     :precondition (and
       (at ?from)
-      (trans-growl-left ?from ?to)
-      (forall (?x-direction - direction) (and (not (writes-k-direction ?from ?to ?x-direction)) (not (writes-knot-direction ?from ?to ?x-direction)))))
+      (trans-left ?from ?to)
+      (no-write ?from ?to))
     :effect (and
       (not (at ?from))
       (at ?to))
-  )  (:action sense-growl-left-write-k-direction
+  )
+  (:action sense-left-write-k-direction
     :parameters (?from - node ?to - node ?x - direction)
     :precondition (and
       (at ?from)
-      (trans-growl-left ?from ?to)
+      (trans-left ?from ?to)
       (writes-k-direction ?from ?to ?x))
     :effect (and
       (not (at ?from))
       (at ?to)
-      (k ?x))
+      (k-direction ?x))
   )
-  (:action sense-growl-left-write-knot-direction
+  (:action sense-left-write-knot-direction
     :parameters (?from - node ?to - node ?x - direction)
     :precondition (and
       (at ?from)
-      (trans-growl-left ?from ?to)
+      (trans-left ?from ?to)
       (writes-knot-direction ?from ?to ?x))
     :effect (and
       (not (at ?from))
       (at ?to)
-      (k-not ?x))
+      (k-not-direction ?x))
   )
-  (:action sense-growl-right-move
-    :parameters (?from - node ?to - node ?x-direction - direction)
+  (:action sense-right-move
+    :parameters (?from - node ?to - node)
     :precondition (and
       (at ?from)
-      (trans-growl-right ?from ?to)
-      (forall (?x-direction - direction) (and (not (writes-k-direction ?from ?to ?x-direction)) (not (writes-knot-direction ?from ?to ?x-direction)))))
+      (trans-right ?from ?to)
+      (no-write ?from ?to))
     :effect (and
       (not (at ?from))
       (at ?to))
-  )  (:action sense-growl-right-write-k-direction
+  )
+  (:action sense-right-write-k-direction
     :parameters (?from - node ?to - node ?x - direction)
     :precondition (and
       (at ?from)
-      (trans-growl-right ?from ?to)
+      (trans-right ?from ?to)
       (writes-k-direction ?from ?to ?x))
     :effect (and
       (not (at ?from))
       (at ?to)
-      (k ?x))
+      (k-direction ?x))
   )
-  (:action sense-growl-right-write-knot-direction
+  (:action sense-right-write-knot-direction
     :parameters (?from - node ?to - node ?x - direction)
     :precondition (and
       (at ?from)
-      (trans-growl-right ?from ?to)
+      (trans-right ?from ?to)
       (writes-knot-direction ?from ?to ?x))
     :effect (and
       (not (at ?from))
       (at ?to)
-      (k-not ?x))
+      (k-not-direction ?x))
   )
   (:action commit-direction
     :parameters (?x - direction ?n - node)
     :precondition (and
       (at ?n)
       (commit-node ?n)
-      (k ?x)
+      (k-direction ?x)
       (not (committed-direction)))
     :effect (and
       (committed-direction))
@@ -92,7 +95,7 @@
     :precondition (and
       (at ?n)
       (commit-node ?n)
-      (k-not ?x)
+      (k-not-direction ?x)
       (not (neg-committed-direction)))
     :effect (and
       (neg-committed-direction))
@@ -102,7 +105,7 @@
     :precondition (and
       (committed-direction)
       (neg-committed-direction)
-      (k ?x)
+      (k-direction ?x)
       (not (confirmed-direction)))
     :effect (and
       (confirmed-direction))
