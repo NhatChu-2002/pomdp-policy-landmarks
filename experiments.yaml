@@ -44,3 +44,19 @@ experiments:
   - name: tiger_trace_fsc_auto
     domain: landmark_experiments/generated/tiger_trace_fsc/tiger_trace_fsc_domain.pddl
     problem: landmark_experiments/generated/tiger_trace_fsc/tiger_trace_fsc_problem.pddl
+
+  - name: mine_3x3_spec_fsc_auto
+    domain: landmark_experiments/generated/mine_3x3_spec_fsc/mine-3x3-spec-fsc-domain.pddl
+    problem: landmark_experiments/generated/mine_3x3_spec_fsc/mine-3x3-spec-fsc-problem.pddl
+
+  - name: sensor_3_spec_fsc_auto
+    domain: landmark_experiments/generated/sensor_3_spec_fsc/sensor-3-spec-fsc-domain.pddl
+    problem: landmark_experiments/generated/sensor_3_spec_fsc/sensor-3-spec-fsc-problem.pddl
+
+  - name: rocksample
+    domain: landmark_experiments/rocksample/rocksample_domain.pddl
+    problem: landmark_experiments/rocksample/rocksample_problem.pddl
+
+  - name: rock_trace_fsc
+    domain: landmark_experiments/generated/rock_trace_fsc/rock_trace_fsc_domain.pddl
+    problem: landmark_experiments/generated/rock_trace_fsc/rock_trace_fsc_problem.pddl

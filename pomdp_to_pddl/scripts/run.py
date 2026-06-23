@@ -17,10 +17,12 @@ import domains
 
 # Registry of available specs
 REGISTRY = {
-    "tiger":   domains.tiger_spec,
-    "channel": domains.channel_spec,
-    "mine":    domains.mine_spec,
-    "sensor":  domains.sensor_spec,
+    "tiger":    domains.tiger_spec,
+    "channel":  domains.channel_spec,
+    "mine":     domains.mine_spec,
+    "sensor":   domains.sensor_spec,
+    "mine_3x3": domains.mine_spec_3x3,
+    "sensor_3": domains.sensor_spec_3,
 }
 
 

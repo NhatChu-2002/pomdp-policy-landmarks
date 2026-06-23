@@ -167,6 +167,7 @@ def find_belief_landmarks(landmarks: Iterable[Dict[str, Any]]) -> List[Dict[str,
         "committed",
         "diagnosed",
         "confirmed",
+        "assessed",
     )
     result = []
     for lm in landmarks:

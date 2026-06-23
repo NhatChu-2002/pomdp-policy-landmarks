@@ -19,8 +19,8 @@
     (k     ?c - channel)
     (k-not ?c - channel)
 
-    (belief-committed)
-    (negbelief-committed)
+    (channel-committed)
+    (neg-channel-committed)
 
     (resetting)
 
@@ -71,16 +71,16 @@
   ;; Produce: disj{k(c1),k(c2),k(c3)} and disj{k-not(c1),k-not(c2),k-not(c3)}
   ;; ---------------------------------------------------------------
 
-  (:action commit-belief
+  (:action commit-channel
     :parameters (?c - channel)
-    :precondition (and (k ?c) (not (belief-committed)) (not (resetting)))
-    :effect (belief-committed)
+    :precondition (and (k ?c) (not (channel-committed)) (not (resetting)))
+    :effect (channel-committed)
   )
 
-  (:action commit-negbelief
+  (:action commit-neg-channel
     :parameters (?c - channel)
-    :precondition (and (k-not ?c) (not (negbelief-committed)) (not (resetting)))
-    :effect (negbelief-committed)
+    :precondition (and (k-not ?c) (not (neg-channel-committed)) (not (resetting)))
+    :effect (neg-channel-committed)
   )
 
   ;; ---------------------------------------------------------------
@@ -91,7 +91,7 @@
     :parameters (?n - node ?c - channel)
     :precondition (and
       (not (done)) (at ?n) (commit-node ?n)
-      (belief-committed) (negbelief-committed) (not (resetting))
+      (channel-committed) (neg-channel-committed) (not (resetting))
       (not (channel-confirmed ?c))
     )
     :effect (channel-confirmed ?c)
@@ -113,7 +113,7 @@
     :precondition (and
       (at ?n) (commit-node ?n) (not (resetting))
       (all-confirmed) (not (identification-done))
-      (belief-committed) (negbelief-committed)
+      (channel-committed) (neg-channel-committed)
     )
     :effect (identification-done)
   )
@@ -130,7 +130,7 @@
     :parameters (?n ?m - node)
     :precondition (and
       (at ?n) (commit-node ?n)
-      (belief-committed) (negbelief-committed)
+      (channel-committed) (neg-channel-committed)
       (reset-arc ?n ?m)
       (not (done)) (not (resetting))
     )
@@ -163,21 +163,21 @@
   (:action end-reset
     :precondition (and
       (resetting)
-      (not (belief-committed))
-      (not (negbelief-committed))
+      (not (channel-committed))
+      (not (neg-channel-committed))
     )
     :effect (not (resetting))
   )
 
   ;; Clear gates during reset
   (:action clear-belief-gate
-    :precondition (and (resetting) (belief-committed))
-    :effect (not (belief-committed))
+    :precondition (and (resetting) (channel-committed))
+    :effect (not (channel-committed))
   )
 
   (:action clear-negbelief-gate
-    :precondition (and (resetting) (negbelief-committed))
-    :effect (not (negbelief-committed))
+    :precondition (and (resetting) (neg-channel-committed))
+    :effect (not (neg-channel-committed))
   )
 
   ;; ---------------------------------------------------------------

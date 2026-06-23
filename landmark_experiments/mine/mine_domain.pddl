@@ -28,8 +28,8 @@
   ;; (fully connected 2x2 — every cell is adjacent to every other)
   ;;
   ;; Commitment gate:
-  ;;   mine-belief-committed  — requires k(?cell) for some cell
-  ;;   mine-neg-committed     — requires k-not(?cell) for some cell
+  ;;   mine-committed  — requires k(?cell) for some cell
+  ;;   neg-mine-committed     — requires k-not(?cell) for some cell
   ;; Both required before mine-located can fire.
   ;; ===================================================================
 
@@ -57,8 +57,8 @@
     (k-not ?c - cell)    ;; believe mine is NOT at cell c
 
     ;; Commitment gates
-    (mine-belief-committed)
-    (mine-neg-committed)
+    (mine-committed)
+    (neg-mine-committed)
 
     (resetting)
 
@@ -139,19 +139,19 @@
 
   ;; ---------------------------------------------------------------
   ;; COMMITMENT GATES
-  ;; mine-belief-committed  : disj{k(c00), k(c01), k(c10), k(c11)}
-  ;; mine-neg-committed     : disj{k-not(c00), k-not(c01), ...}
+  ;; mine-committed  : disj{k(c00), k(c01), k(c10), k(c11)}
+  ;; neg-mine-committed     : disj{k-not(c00), k-not(c01), ...}
   ;; ---------------------------------------------------------------
-  (:action commit-mine-belief
+  (:action commit-mine
     :parameters (?c - cell)
-    :precondition (and (k ?c) (not (mine-belief-committed)) (not (resetting)))
-    :effect (mine-belief-committed)
+    :precondition (and (k ?c) (not (mine-committed)) (not (resetting)))
+    :effect (mine-committed)
   )
 
-  (:action commit-mine-neg
+  (:action commit-neg-mine
     :parameters (?c - cell)
-    :precondition (and (k-not ?c) (not (mine-neg-committed)) (not (resetting)))
-    :effect (mine-neg-committed)
+    :precondition (and (k-not ?c) (not (neg-mine-committed)) (not (resetting)))
+    :effect (neg-mine-committed)
   )
 
   ;; ---------------------------------------------------------------
@@ -161,7 +161,7 @@
     :parameters (?n - node ?c - cell)
     :precondition (and
       (not (done)) (at ?n) (commit-node ?n)
-      (mine-belief-committed) (mine-neg-committed) (not (resetting))
+      (mine-committed) (neg-mine-committed) (not (resetting))
       (not (cell-cleared ?c))
     )
     :effect (cell-cleared ?c)
@@ -185,7 +185,7 @@
     :precondition (and
       (at ?n) (commit-node ?n) (not (resetting))
       (all-cells-cleared) (not (mine-located))
-      (mine-belief-committed) (mine-neg-committed)
+      (mine-committed) (neg-mine-committed)
     )
     :effect (mine-located)
   )
@@ -197,7 +197,7 @@
     :parameters (?n ?m - node)
     :precondition (and
       (at ?n) (commit-node ?n)
-      (mine-belief-committed) (mine-neg-committed)
+      (mine-committed) (neg-mine-committed)
       (reset-arc ?n ?m)
       (not (done)) (not (resetting))
     )
@@ -227,21 +227,21 @@
     :effect (not (k-not ?c))
   )
 
-  (:action clear-mine-belief-gate
-    :precondition (and (resetting) (mine-belief-committed))
-    :effect (not (mine-belief-committed))
+  (:action clear-mine-gate
+    :precondition (and (resetting) (mine-committed))
+    :effect (not (mine-committed))
   )
 
-  (:action clear-mine-neg-gate
-    :precondition (and (resetting) (mine-neg-committed))
-    :effect (not (mine-neg-committed))
+  (:action clear-neg-mine-gate
+    :precondition (and (resetting) (neg-mine-committed))
+    :effect (not (neg-mine-committed))
   )
 
   (:action end-reset
     :precondition (and
       (resetting)
-      (not (mine-belief-committed))
-      (not (mine-neg-committed))
+      (not (mine-committed))
+      (not (neg-mine-committed))
     )
     :effect (not (resetting))
   )

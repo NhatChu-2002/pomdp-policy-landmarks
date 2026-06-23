@@ -14,7 +14,7 @@
     (next ?t ?tp - tape)
     (consumed ?t - tape)
 
-    ;; Belief direction — k(left)/k(right) and k-not(left)/k-not(right)
+    ;; Belief direction Â— k(left)/k(right) and k-not(left)/k-not(right)
     (k ?d - direction)
     (k-not ?d - direction)
 
@@ -26,9 +26,9 @@
     (confirmed ?g - tag)
     (tiger-confirmed)
 
-    ;; Commitment flags — produce disjunctive landmarks
-    (belief-committed)
-    (negbelief-committed)
+    ;; Commitment flags Â— produce disjunctive landmarks
+    (direction-committed)
+    (neg-direction-committed)
 
     (done)
   )
@@ -195,13 +195,13 @@
   ;; =================================================================
 
   (:action commit-belief-left
-    :precondition (and (k left) (not (belief-committed)))
-    :effect (belief-committed)
+    :precondition (and (k left) (not (direction-committed)))
+    :effect (direction-committed)
   )
 
   (:action commit-belief-right
-    :precondition (and (k right) (not (belief-committed)))
-    :effect (belief-committed)
+    :precondition (and (k right) (not (direction-committed)))
+    :effect (direction-committed)
   )
 
   ;; =================================================================
@@ -210,13 +210,13 @@
   ;; =================================================================
 
   (:action commit-negbelief-left
-    :precondition (and (k-not left) (not (negbelief-committed)))
-    :effect (negbelief-committed)
+    :precondition (and (k-not left) (not (neg-direction-committed)))
+    :effect (neg-direction-committed)
   )
 
   (:action commit-negbelief-right
-    :precondition (and (k-not right) (not (negbelief-committed)))
-    :effect (negbelief-committed)
+    :precondition (and (k-not right) (not (neg-direction-committed)))
+    :effect (neg-direction-committed)
   )
 
   ;; =================================================================
@@ -229,7 +229,7 @@
     :precondition (and
       (at bl3)
       (k left) (k-not right)
-      (belief-committed) (negbelief-committed)
+      (direction-committed) (neg-direction-committed)
       (not (done))
     )
     :effect (and
@@ -244,8 +244,8 @@
 
       (not (k left)) (not (k right))
       (not (k-not left)) (not (k-not right))
-      (not (belief-committed))
-      (not (negbelief-committed))
+      (not (direction-committed))
+      (not (neg-direction-committed))
     )
   )
 
@@ -254,7 +254,7 @@
     :precondition (and
       (at br3)
       (k right) (k-not left)
-      (belief-committed) (negbelief-committed)
+      (direction-committed) (neg-direction-committed)
       (not (done))
     )
     :effect (and
@@ -269,8 +269,8 @@
 
       (not (k left)) (not (k right))
       (not (k-not left)) (not (k-not right))
-      (not (belief-committed))
-      (not (negbelief-committed))
+      (not (direction-committed))
+      (not (neg-direction-committed))
     )
   )
 
@@ -282,7 +282,7 @@
     :parameters (?g - tag)
     :precondition (and
       (not (done))
-      (belief-committed) (negbelief-committed)
+      (direction-committed) (neg-direction-committed)
       (not (confirmed ?g))
     )
     :effect (confirmed ?g)
@@ -292,7 +292,7 @@
     :precondition (and
       (confirmed tagL) (confirmed tagR)
       (not (tiger-confirmed))
-      (belief-committed) (negbelief-committed)
+      (direction-committed) (neg-direction-committed)
     )
     :effect (tiger-confirmed)
   )

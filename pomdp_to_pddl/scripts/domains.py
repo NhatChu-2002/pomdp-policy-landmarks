@@ -274,3 +274,135 @@ def mine_spec() -> FSCPomdpSpec:
         ],
         transitions=transitions,
     )
+
+
+# ======================================================================
+#  Scaled Environment Specs
+# ======================================================================
+
+def mine_spec_scaled(width: int, height: int) -> FSCPomdpSpec:
+    cells = tuple(f"c{x}{y}" for x in range(width) for y in range(height))
+    mine_cell = HiddenVariable(name="mine-cell", domain=cells)
+
+    transitions = []
+    for cell in cells:
+        transitions.append(
+            FSCTransition(
+                "nroot",
+                f"mine-{cell}",
+                f"nmaybe-{cell}",
+                (BeliefUpdate("mine-cell", cell, "pos"),),
+            )
+        )
+
+    for candidate in cells:
+        for safe_cell in cells:
+            if safe_cell == candidate:
+                continue
+            transitions.append(
+                FSCTransition(
+                    f"nmaybe-{candidate}",
+                    f"safe-{safe_cell}",
+                    "ncommit",
+                    (BeliefUpdate("mine-cell", safe_cell, "neg"),),
+                )
+            )
+
+    fsc_nodes = ["nroot"] + [f"nmaybe-{cell}" for cell in cells] + ["ncommit"]
+    observations = [f"mine-{cell}" for cell in cells] + [f"safe-{cell}" for cell in cells]
+
+    return FSCPomdpSpec(
+        name=f"mine-{width}x{height}-spec-fsc",
+        hidden_variables=[mine_cell],
+        fsc_nodes=fsc_nodes,
+        initial_node="nroot",
+        commit_nodes=["ncommit"],
+        observations=observations,
+        transitions=transitions,
+    )
+
+
+def mine_spec_3x3() -> FSCPomdpSpec:
+    return mine_spec_scaled(3, 3)
+
+
+def sensor_spec_scaled(num_sensors: int) -> FSCPomdpSpec:
+    assert num_sensors >= 1, "Must have at least 1 sensor"
+    
+    hidden_variables = []
+    fsc_nodes = ["nroot"]
+    observations = []
+    transitions = []
+    
+    for i in range(1, num_sensors + 1):
+        var_name = f"sensor-{i}"
+        ok_val = f"{i}-ok"
+        faulty_val = f"{i}-faulty"
+        hidden_variables.append(HiddenVariable(name=var_name, domain=(ok_val, faulty_val)))
+        
+        observations.extend([f"{i}-agree", f"{i}-disagree"])
+        
+        fsc_nodes.extend([f"n{i}-ok", f"n{i}-faulty"])
+        if i < num_sensors:
+            fsc_nodes.append(f"n{i+1}-start")
+            
+    fsc_nodes.append("ncommit")
+    
+    for i in range(1, num_sensors + 1):
+        var_name = f"sensor-{i}"
+        ok_val = f"{i}-ok"
+        faulty_val = f"{i}-faulty"
+        
+        start_node = "nroot" if i == 1 else f"n{i}-start"
+        next_start_node = "ncommit" if i == num_sensors else f"n{i+1}-start"
+        
+        transitions.append(
+            FSCTransition(
+                start_node,
+                f"{i}-agree",
+                f"n{i}-ok",
+                (BeliefUpdate(var_name, ok_val, "pos"),),
+            )
+        )
+        transitions.append(
+            FSCTransition(
+                start_node,
+                f"{i}-disagree",
+                f"n{i}-faulty",
+                (BeliefUpdate(var_name, faulty_val, "pos"),),
+            )
+        )
+        
+        transitions.append(
+            FSCTransition(
+                f"n{i}-ok",
+                f"{i}-agree",
+                next_start_node,
+                (BeliefUpdate(var_name, faulty_val, "neg"),),
+            )
+        )
+        transitions.append(
+            FSCTransition(
+                f"n{i}-faulty",
+                f"{i}-disagree",
+                next_start_node,
+                (BeliefUpdate(var_name, ok_val, "neg"),),
+            )
+        )
+        
+        transitions.append(FSCTransition(f"n{i}-ok", f"{i}-disagree", start_node))
+        transitions.append(FSCTransition(f"n{i}-faulty", f"{i}-agree", start_node))
+        
+    return FSCPomdpSpec(
+        name=f"sensor-{num_sensors}-spec-fsc",
+        hidden_variables=hidden_variables,
+        fsc_nodes=fsc_nodes,
+        initial_node="nroot",
+        commit_nodes=["ncommit"],
+        observations=observations,
+        transitions=transitions,
+    )
+
+
+def sensor_spec_3() -> FSCPomdpSpec:
+    return sensor_spec_scaled(3)
