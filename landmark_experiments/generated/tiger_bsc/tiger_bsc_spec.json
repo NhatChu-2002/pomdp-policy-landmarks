@@ -1,0 +1,29 @@
+{
+  "trace_summary": {
+    "csv_path": "C:\\AI_planning\\Landmark_dump\\FD_LANDMARK_DUMP\\pomdp_to_pddl\\Pomdp\\tiger_policy.csv",
+    "episode_count": 7,
+    "listen_count": 29,
+    "observations": [
+      "left",
+      "right"
+    ]
+  },
+  "spec": {
+    "name": "tiger-bsc",
+    "hidden_variables": [
+      {
+        "name": "direction",
+        "domain": [
+          "left",
+          "right"
+        ]
+      }
+    ],
+    "observations": [
+      "left",
+      "right"
+    ],
+    "transition_count": 6,
+    "commit_conditions": 2
+  }
+}

@@ -1,112 +1,99 @@
+# Tiger POMDP — solved with SARSOP (replaces QMDP)
+#
+# Standard formulation (infinite-horizon, discount 0.95):
+#   States:       {left, right}        — where the tiger is
+#   Actions:      {listen, left, right} — listen or open a door
+#   Observations: {left, right}        — which side the tiger is heard from
+#
+# Policy (SARSOP): listen until confident, then open the safe door.
+#
+# Trace format (BACKWARD-COMPATIBLE with trace_adapters.py):
+#   TRACE,<episode_id>,<action>,<obs>,<p_left>,<p_right>
+#
+# Usage:
+#   julia tiger.jl [output_csv] [n_episodes]
+#
 # import Pkg
-# Pkg.add(["POMDPTools", "QuickPOMDPs", "POMDPs", "QMDP"])
-# Pkg.instantiate()
+# Pkg.add(["POMDPs", "QuickPOMDPs", "POMDPTools", "NativeSARSOP"])
+
 using POMDPs
 using QuickPOMDPs
-using POMDPTools: Uniform, SparseCat, Deterministic, stepthrough
-using QMDP
+using POMDPTools: Uniform, SparseCat, Deterministic, DiscreteUpdater, stepthrough
+using NativeSARSOP
+using Printf
 
-locs = ["left", "right"]
-ks = 0:7
-states_list = [(l, k) for l in locs for k in ks]
+# -----------------------------------------------------------------------
+# POMDP definition
+# -----------------------------------------------------------------------
+
+p_correct = 0.85   # P(hear tiger correctly when listening)
 
 m = QuickPOMDP(
-    states=states_list,
-    actions=["left", "right", "listen"],
-    observations=["left", "right"],
-    initialstate=Uniform([(l, 0) for l in locs]),
-    discount=0.95,
-    isterminal=s -> s[2] == 7,
-    transition=function (s, a)
-        loc, k = s
-        if k == 7
-            return Deterministic(s)
-        end
+    states       = ["left", "right"],
+    actions      = ["listen", "left", "right"],
+    observations = ["left", "right"],
+    initialstate = Uniform(["left", "right"]),
+    discount     = 0.95,
+    isterminal   = s -> false,     # infinite-horizon; episodes end on open
 
+    transition = function (s, a)
         if a == "listen"
-            return Deterministic((loc, k))
+            return Deterministic(s)          # tiger stays put
         else
-            k2 = min(k + 1, 7)
-            return Uniform([(l, k2) for l in locs])
+            return Uniform(["left", "right"]) # reset after opening
         end
     end,
-    observation=function (s, a, sp)
-        locp, kp = sp
-        if kp == 7
-            return Uniform(["left", "right"])
-        end
 
+    observation = function (s, a, sp)
         if a == "listen"
-            if locp == "left"
-                return SparseCat(["left", "right"], [0.85, 0.15])
+            if sp == "left"
+                return SparseCat(["left", "right"], [p_correct, 1.0 - p_correct])
             else
-                return SparseCat(["right", "left"], [0.85, 0.15])
+                return SparseCat(["right", "left"], [p_correct, 1.0 - p_correct])
             end
         else
-            return Uniform(["left", "right"])
+            return Uniform(["left", "right"])  # uninformative after opening
         end
     end,
-    reward=function (s, a)
-        loc, k = s
-        if k == 7
-            return 0.0
-        end
 
+    reward = function (s, a)
         if a == "listen"
             return -1.0
-        elseif loc == a
+        elseif a == s           # opened the tiger's door
             return -100.0
-        else
+        else                    # opened the safe door
             return 10.0
         end
-    end
+    end,
 )
 
-solver = QMDPSolver()
+# -----------------------------------------------------------------------
+# Solve with SARSOP
+# -----------------------------------------------------------------------
+
+solver = SARSOPSolver(precision=1e-3, max_time=60.0)
 policy = solve(solver, m)
+up     = DiscreteUpdater(m)
 
-function belief_lr(m, b)
-    pleft = 0.0
-    pright = 0.0
-    for st in states(m)
-        loc, k = st
-        p = pdf(b, st)
-        if loc == "left"
-            pleft += p
-        else
-            pright += p
-        end
-    end
-    return pleft, pright
-end
-
-function run_sim(m, policy; max_steps=50, io=stdout)
-    rsum = 0.0
-    for (s, b, a, o, r) in stepthrough(m, policy, "s,b,a,o,r", max_steps=max_steps)
-        pleft, pright = belief_lr(m, b)
-
-        # Write a CSV-like trace line
-        println(io, "TRACE,$(s[2]),$a,$o,$(pleft),$(pright)")
-
-        rsum += r
-        if isterminal(m, s)
-            break
-        end
-    end
-    return rsum
-end
-
+# -----------------------------------------------------------------------
+# Simulate n_episodes; each episode ends when agent opens a door
+# -----------------------------------------------------------------------
 
 default_trace_path = joinpath(@__DIR__, "tiger_policy.csv")
-
 trace_path = length(ARGS) >= 1 ? ARGS[1] : default_trace_path
-max_steps = length(ARGS) >= 2 ? parse(Int, ARGS[2]) : 50
+n_episodes = length(ARGS) >= 2 ? parse(Int, ARGS[2]) : 10
 
-rsum = 0.0
 open(trace_path, "w") do io
-    # println(io, "TRACE,k,action,obs,pleft,pright")
-    global rsum = run_sim(m, policy, max_steps=max_steps, io=io)
+    for ep in 0 : n_episodes - 1
+        for (b, s, a, o, r) in stepthrough(m, policy, up, "b,s,a,o,r"; max_steps=50)
+            p_left  = pdf(b, "left")
+            p_right = pdf(b, "right")
+            println(io, "TRACE,$ep,$a,$o,$p_left,$p_right")
+            if a != "listen"
+                break   # episode ends
+            end
+        end
+    end
 end
 
-println("Wrote trace to: $trace_path")
-println("Undiscounted reward was $rsum.")
+println("Wrote $(n_episodes) episode(s) to: $trace_path")
