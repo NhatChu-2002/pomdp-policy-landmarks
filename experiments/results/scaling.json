@@ -1,0 +1,152 @@
+{
+  "sensor": [
+    {
+      "n": 1,
+      "actions": 9,
+      "landmarks": 6,
+      "disjunctive": 1,
+      "belief": 2,
+      "edges": 6,
+      "lm_time_s": 7.24e-05,
+      "wall_s": 0.35
+    },
+    {
+      "n": 2,
+      "actions": 17,
+      "landmarks": 10,
+      "disjunctive": 2,
+      "belief": 4,
+      "edges": 11,
+      "lm_time_s": 0.0001059,
+      "wall_s": 0.39
+    },
+    {
+      "n": 4,
+      "actions": 33,
+      "landmarks": 18,
+      "disjunctive": 4,
+      "belief": 8,
+      "edges": 21,
+      "lm_time_s": 0.0001782,
+      "wall_s": 0.4
+    },
+    {
+      "n": 8,
+      "actions": 65,
+      "landmarks": 34,
+      "disjunctive": 8,
+      "belief": 16,
+      "edges": 41,
+      "lm_time_s": 0.0003934,
+      "wall_s": 0.43
+    },
+    {
+      "n": 16,
+      "actions": 129,
+      "landmarks": 66,
+      "disjunctive": 16,
+      "belief": 32,
+      "edges": 81,
+      "lm_time_s": 0.0012737,
+      "wall_s": 0.42
+    },
+    {
+      "n": 32,
+      "actions": 257,
+      "landmarks": 130,
+      "disjunctive": 32,
+      "belief": 64,
+      "edges": 161,
+      "lm_time_s": 0.0030121,
+      "wall_s": 0.44
+    },
+    {
+      "n": 64,
+      "actions": 513,
+      "landmarks": 258,
+      "disjunctive": 64,
+      "belief": 128,
+      "edges": 321,
+      "lm_time_s": 0.0107274,
+      "wall_s": 0.57
+    },
+    {
+      "n": 128,
+      "actions": 1025,
+      "landmarks": 514,
+      "disjunctive": 128,
+      "belief": 256,
+      "edges": 641,
+      "lm_time_s": 0.0410417,
+      "wall_s": 0.97
+    }
+  ],
+  "mine": [
+    {
+      "cells": 4,
+      "actions": 21,
+      "landmarks": 6,
+      "disjunctive": 1,
+      "belief": 2,
+      "edges": 6,
+      "largest_disjunction": 4,
+      "lm_time_s": 0.0001391,
+      "wall_s": 0.4
+    },
+    {
+      "cells": 9,
+      "actions": 91,
+      "landmarks": 6,
+      "disjunctive": 1,
+      "belief": 2,
+      "edges": 6,
+      "largest_disjunction": 9,
+      "lm_time_s": 9.43e-05,
+      "wall_s": 0.43
+    },
+    {
+      "cells": 16,
+      "actions": 273,
+      "landmarks": 6,
+      "disjunctive": 1,
+      "belief": 2,
+      "edges": 6,
+      "largest_disjunction": 16,
+      "lm_time_s": 0.0001945,
+      "wall_s": 0.44
+    },
+    {
+      "cells": 25,
+      "actions": 651,
+      "landmarks": 6,
+      "disjunctive": 1,
+      "belief": 2,
+      "edges": 6,
+      "largest_disjunction": 25,
+      "lm_time_s": 0.0001556,
+      "wall_s": 0.57
+    },
+    {
+      "cells": 36,
+      "actions": 1333,
+      "landmarks": 6,
+      "disjunctive": 1,
+      "belief": 2,
+      "edges": 6,
+      "largest_disjunction": 36,
+      "lm_time_s": 0.0001926,
+      "wall_s": 0.95
+    },
+    {
+      "cells": 64,
+      "actions": 4161,
+      "landmarks": 6,
+      "disjunctive": 1,
+      "belief": 2,
+      "edges": 6,
+      "largest_disjunction": 64,
+      "lm_time_s": 0.0003285,
+      "wall_s": 4.17
+    }
+  ]
+}

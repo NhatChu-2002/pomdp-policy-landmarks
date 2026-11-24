@@ -1,166 +1,81 @@
 # POMDP Policy Landmarks
 
-Experimental pipeline for explaining probabilistic policies by compiling
-finite-state-controller-like policies into classical PDDL and extracting
-landmarks with Fast Downward.
+Explains a POMDP policy by the beliefs it cannot avoid. The policy is written
+as a belief-state controller (BSC), compiled into a classical PDDL task whose
+plans are exactly the controller's successful executions, and the task's
+planning landmarks are extracted with Fast Downward's RHW method. Each landmark
+is a belief that every successful execution reaches; each ordering is an order
+in which the policy must collect its evidence.
 
-## Reproducing the paper
+## Quick start
 
-```powershell
-python pomdp_to_pddl\scripts\paper_experiments.py
+Run everything from the repository root (Python 3, tested with 3.12; the planner binary in
+`fast-downward/builds/release64` must exist, see `fast-downward/README.md`).
+
+```bash
+python -m policy_landmarks list                   # available controllers
+python -m policy_landmarks explain tiger          # landmarks and orderings
+python -m policy_landmarks explain sensor-2 --induced --check
+python experiments/run_paper.py                   # all paper results, ~1 min
+python -m pytest tests                            # fast checks
 ```
 
-Runs all six experiments (main, exactness, ablation, induced, mutation,
-scaling) in about a minute and writes `landmark_experiments/results/paper/*.json`.
-The current pipeline compiles belief-state controllers (`domains_bsc.py`,
-`encoder_bsc.py`); commitment actions come from each policy's own commitment
-rules. `landmark_experiments/ablation_generic_gates/` freezes the earlier
-generic-gate encoding for the ablation.
+`explain` prints the landmark graph in plain text, and `--check` verifies
+every landmark and ordering by exhaustive search. `--induced` learns the
+controller from a SARSOP trace instead of using the hand-written one.
 
-The Fast Downward build used here differs from stock Fast Downward in two ways:
-
-- `src/search/landmarks/landmark_factory.cc` exits after dumping the landmark
-  graph (no search is run).
-- `src/search/landmarks/landmark_factory_rpg_sasp.cc` keeps disjunctive
-  landmarks of up to 64 facts (stock: 4), needed for Mine grids beyond 2x2.
-
-The long-term target pipeline is:
+## Layout
 
 ```text
-POMDP / solved policy
-  -> policy traces
-  -> infer or build an FSC model
-  -> compile FSC to PDDL
-  -> extract landmarks
-  -> produce explanation reports
+policy_landmarks/        the pipeline (Python package)
+  spec.py                controller data model: variables, sensing rules, commitment rules
+  domains.py             hand-written controllers (HAND_WRITTEN registry)
+  induction.py           controllers learned from SARSOP traces (TRACE_SOURCES, induce)
+  encoder.py             controller -> PDDL (one commit action per commitment rule)
+  planner.py             run Fast Downward, read the landmark graph
+  fd_output.py           parser for Fast Downward's landmark output
+  ground_truth.py        exact landmarks/orderings by exhaustive search (checks RHW)
+  __main__.py            command line: list / compile / explain
+experiments/
+  run_paper.py           every table in the paper (main, exactness, ablation,
+                         induced, mutation, scaling)
+  baselines/             frozen PDDL of earlier encodings, used by the ablation
+  results/*.json         paper results; results/work/ holds every run's files
+pomdp/                   Julia POMDP models (SARSOP) and the traces they produce
+tests/                   pytest checks
+generated/               PDDL written by `compile` / `explain` (one folder per controller)
+fast-downward/           the planner, with two small patches (see its README)
+legacy/                  earlier FSC pipeline and scripts, kept for reference
 ```
 
-## Repository Structure
+## Debugging a run
 
-```text
-pomdp_to_pddl/
-  Pomdp/                Julia POMDP models and trace CSV files
-  scripts/              Shared FSC spec, trace adapters, and PDDL compiler
-  tools/                Older domain-specific autogen scripts
-  policy_template/      PDDL domain templates
-  policy_pddl_autogen/  Auto-generated PDDL output
+Each planner run leaves its inputs and outputs in one folder:
+`generated/<name>/` for the CLI and `experiments/results/work/<experiment>/<run>/`
+for the experiments. A folder holds `domain.pddl`, `problem.pddl`, `fd.log`
+(full planner output, landmark graph near the end) and `output.sas` (the
+translated task, which `ground_truth.Task` reads).
 
-landmark_experiments/
-  channel/              Channel domain
-  mine/                 Mine domain
-  nd_policy/            Nondeterministic policy versions
-  sensor/               Sensor domain versions
-  tiger/                Hand-written Tiger policy PDDL
-  generated/            Spec-generated PDDL experiments
+Common problems:
 
-scripts/
-  run_all_landmarks.py  Batch Fast Downward runner
-  parse_landmarks.py    Landmark parser and report generator
-```
+- `translation failed`: read `fd.log`; usually a PDDL syntax error from a
+  malformed spec. `spec.validate()` catches unknown variables and values first.
+- A landmark you expected is missing: run `explain <name> --check`. If the
+  check passes, the belief is genuinely not necessary for this policy (for
+  example, a commitment rule does not require it).
+- Traces: regenerate with `julia pomdp/<model>.jl <out.csv> <episodes>`
+  (needs POMDPs.jl, QuickPOMDPs, NativeSARSOP).
 
-Fast Downward source is included at the root and used as the landmark extraction backend.
+## Results
 
-## Current Automation
+| Controller | Landmarks | Disjunctive | Orderings |
+|---|---|---|---|
+| Tiger | 7 | 2 | 9 |
+| Channel | 6 | 1 | 6 |
+| Mine-2x2 | 6 | 1 | 6 |
+| Sensor-2 | 10 | 2 | 11 |
+| Sensor-3 | 14 | 3 | 16 |
+| RockSample-4 | 18 | 4 | 21 |
 
-The project now supports the lower half of the pipeline for all configured PDDL experiments:
-
-```text
-PDDL domain/problem
-  -> extract landmarks
-  -> JSON/CSV/report explanation
-```
-
-Run all configured experiments:
-
-```powershell
-python scripts\run_all_landmarks.py
-```
-
-Run one experiment:
-
-```powershell
-python scripts\run_all_landmarks.py --only tiger
-```
-
-Outputs are written under `results/`:
-
-```text
-results/landmarks/   Raw landmark lines
-results/parsed/      JSON and CSV landmark data
-results/reports/     Markdown explanation reports
-results/summary.csv  Per-domain summary table
-```
-
-## PDDL Auto-Generation
-
-There are two auto-generation modes.
-
-Trace-backed generation is used when a policy trace exists:
-
-```text
-Tiger trace CSV
-  -> FSCPomdpSpec
-  -> generated PDDL
-  -> landmark extraction
-```
-
-Generate the trace-derived Tiger FSC PDDL:
-
-```powershell
-python pomdp_to_pddl\scripts\compile_trace_to_pddl.py tiger
-```
-
-Then run its landmark experiment:
-
-```powershell
-python scripts\run_all_landmarks.py --only tiger_trace_fsc_auto
-```
-
-Static-spec generation is used for domains that do not have CSV traces yet:
-
-```powershell
-python pomdp_to_pddl\scripts\run.py channel --outdir landmark_experiments\generated\channel_spec_fsc
-python pomdp_to_pddl\scripts\run.py mine --outdir landmark_experiments\generated\mine_spec_fsc
-python pomdp_to_pddl\scripts\run.py sensor --outdir landmark_experiments\generated\sensor_spec_fsc
-```
-
-Then run:
-
-```powershell
-python scripts\run_all_landmarks.py --only channel_spec_fsc_auto mine_spec_fsc_auto sensor_spec_fsc_auto
-```
-
-Generated files are written under:
-
-```text
-landmark_experiments/generated/
-```
-
-## Dependencies
-
-- Julia with POMDPs.jl for generating policy traces
-- Python 3
-- Fast Downward, included in this repository
-- CMake, for rebuilding Fast Downward if needed
-
-## Building Fast Downward
-
-```powershell
-python build.py
-```
-
-## Status
-
-Implemented:
-
-- Batch landmark extraction for existing PDDL domains.
-- Landmark parsing into JSON and CSV.
-- Markdown explanation reports.
-- A first trace-to-FSC adapter for Tiger.
-- Static FSCPomdpSpec generation for Channel, Mine, and Sensor.
-
-Next:
-
-- Add richer trace adapters if Sensor, Mine, Channel, or RockSample traces become available.
-- Compare hand-written PDDL encodings against trace-derived FSC encodings.
-- Improve explanation reports with domain-specific landmark labels.
+All landmarks and orderings are confirmed by exhaustive search
+(`experiments/results/exactness.json`).
