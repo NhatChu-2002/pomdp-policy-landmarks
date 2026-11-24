@@ -1,0 +1,135 @@
+{
+  "Tiger": {
+    "vars": 1,
+    "max_card": 2,
+    "landmarks": 7,
+    "disjunctive": 2,
+    "belief": 3,
+    "edges": 9,
+    "plan_length": 4,
+    "lm_time_s": 8.51e-05,
+    "landmark_list": [
+      "Atom committed-direction()",
+      "Atom done()",
+      "Atom k-direction(left) | Atom k-direction(right)",
+      "Atom k-not-direction(left) | Atom k-not-direction(right)",
+      "Atom uncertain-direction()",
+      "NegatedAtom committed-direction()",
+      "NegatedAtom done()"
+    ]
+  },
+  "Channel": {
+    "vars": 1,
+    "max_card": 3,
+    "landmarks": 6,
+    "disjunctive": 1,
+    "belief": 2,
+    "edges": 6,
+    "plan_length": 3,
+    "lm_time_s": 7.8e-05,
+    "landmark_list": [
+      "Atom committed-channel()",
+      "Atom done()",
+      "Atom k-channel(c1) | Atom k-channel(c2) | Atom k-channel(c3)",
+      "Atom uncertain-channel()",
+      "NegatedAtom committed-channel()",
+      "NegatedAtom done()"
+    ]
+  },
+  "Mine-2x2": {
+    "vars": 1,
+    "max_card": 4,
+    "landmarks": 6,
+    "disjunctive": 1,
+    "belief": 2,
+    "edges": 6,
+    "plan_length": 3,
+    "lm_time_s": 7.87e-05,
+    "landmark_list": [
+      "Atom committed-mine-cell()",
+      "Atom done()",
+      "Atom k-mine-cell(c00) | Atom k-mine-cell(c01) | Atom k-mine-cell(c10) | Atom k-mine-cell(c11)",
+      "Atom uncertain-mine-cell()",
+      "NegatedAtom committed-mine-cell()",
+      "NegatedAtom done()"
+    ]
+  },
+  "Sensor-2": {
+    "vars": 2,
+    "max_card": 2,
+    "landmarks": 10,
+    "disjunctive": 2,
+    "belief": 4,
+    "edges": 11,
+    "plan_length": 5,
+    "lm_time_s": 0.000116,
+    "landmark_list": [
+      "Atom committed-sensor-a()",
+      "Atom committed-sensor-b()",
+      "Atom done()",
+      "Atom k-sensor-a(a-faulty) | Atom k-sensor-a(a-ok)",
+      "Atom k-sensor-b(b-faulty) | Atom k-sensor-b(b-ok)",
+      "Atom uncertain-sensor-a()",
+      "Atom uncertain-sensor-b()",
+      "NegatedAtom committed-sensor-a()",
+      "NegatedAtom committed-sensor-b()",
+      "NegatedAtom done()"
+    ]
+  },
+  "Sensor-3": {
+    "vars": 3,
+    "max_card": 2,
+    "landmarks": 14,
+    "disjunctive": 3,
+    "belief": 6,
+    "edges": 16,
+    "plan_length": 7,
+    "lm_time_s": 0.0001537,
+    "landmark_list": [
+      "Atom committed-sensor-1()",
+      "Atom committed-sensor-2()",
+      "Atom committed-sensor-3()",
+      "Atom done()",
+      "Atom k-sensor-1(1-faulty) | Atom k-sensor-1(1-ok)",
+      "Atom k-sensor-2(2-faulty) | Atom k-sensor-2(2-ok)",
+      "Atom k-sensor-3(3-faulty) | Atom k-sensor-3(3-ok)",
+      "Atom uncertain-sensor-1()",
+      "Atom uncertain-sensor-2()",
+      "Atom uncertain-sensor-3()",
+      "NegatedAtom committed-sensor-1()",
+      "NegatedAtom committed-sensor-2()",
+      "NegatedAtom committed-sensor-3()",
+      "NegatedAtom done()"
+    ]
+  },
+  "RockSample-4": {
+    "vars": 4,
+    "max_card": 2,
+    "landmarks": 18,
+    "disjunctive": 4,
+    "belief": 8,
+    "edges": 21,
+    "plan_length": 9,
+    "lm_time_s": 0.000175,
+    "landmark_list": [
+      "Atom committed-rock-1()",
+      "Atom committed-rock-2()",
+      "Atom committed-rock-3()",
+      "Atom committed-rock-4()",
+      "Atom done()",
+      "Atom k-rock-1(r1-bad) | Atom k-rock-1(r1-good)",
+      "Atom k-rock-2(r2-bad) | Atom k-rock-2(r2-good)",
+      "Atom k-rock-3(r3-bad) | Atom k-rock-3(r3-good)",
+      "Atom k-rock-4(r4-bad) | Atom k-rock-4(r4-good)",
+      "Atom uncertain-rock-1()",
+      "Atom uncertain-rock-2()",
+      "Atom uncertain-rock-3()",
+      "Atom uncertain-rock-4()",
+      "NegatedAtom committed-rock-1()",
+      "NegatedAtom committed-rock-2()",
+      "NegatedAtom committed-rock-3()",
+      "NegatedAtom committed-rock-4()",
+      "NegatedAtom done()"
+    ]
+  }
+}

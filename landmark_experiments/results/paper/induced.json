@@ -1,0 +1,73 @@
+{
+  "Tiger": {
+    "hand": {
+      "landmarks": 7,
+      "disjunctive": 2,
+      "belief": 3,
+      "edges": 9
+    },
+    "induced": {
+      "landmarks": 7,
+      "disjunctive": 2,
+      "belief": 3,
+      "edges": 9
+    },
+    "theta_commit": 2,
+    "coverage": 0.897,
+    "transitions_induced": 7,
+    "graded_decrement": true,
+    "only_induced": [],
+    "only_hand": [],
+    "identical": true
+  },
+  "Sensor-2": {
+    "hand": {
+      "landmarks": 10,
+      "disjunctive": 2,
+      "belief": 4,
+      "edges": 11
+    },
+    "induced": {
+      "landmarks": 12,
+      "disjunctive": 4,
+      "belief": 6,
+      "edges": 17
+    },
+    "theta_commit": 2,
+    "coverage": 0.978,
+    "transitions_induced": 12,
+    "graded_decrement": false,
+    "only_induced": [
+      "Atom k-not-sensor-a(a-faulty) | Atom k-not-sensor-a(a-ok)",
+      "Atom k-not-sensor-b(b-faulty) | Atom k-not-sensor-b(b-ok)"
+    ],
+    "only_hand": [],
+    "identical": false
+  },
+  "RockSample-4": {
+    "hand": {
+      "landmarks": 18,
+      "disjunctive": 4,
+      "belief": 8,
+      "edges": 21
+    },
+    "induced": {
+      "landmarks": 22,
+      "disjunctive": 8,
+      "belief": 12,
+      "edges": 33
+    },
+    "theta_commit": 1,
+    "coverage": 1.0,
+    "transitions_induced": 8,
+    "graded_decrement": false,
+    "only_induced": [
+      "Atom k-not-rock-1(r1-bad) | Atom k-not-rock-1(r1-good)",
+      "Atom k-not-rock-2(r2-bad) | Atom k-not-rock-2(r2-good)",
+      "Atom k-not-rock-3(r3-bad) | Atom k-not-rock-3(r3-good)",
+      "Atom k-not-rock-4(r4-bad) | Atom k-not-rock-4(r4-good)"
+    ],
+    "only_hand": [],
+    "identical": false
+  }
+}

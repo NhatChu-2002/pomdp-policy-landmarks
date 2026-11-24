@@ -455,7 +455,9 @@ void LandmarkFactoryRpgSasp::generate_landmarks(
             vector<set<FactPair>> disjunctive_pre;
             compute_disjunctive_preconditions(task_proxy, disjunctive_pre, lvl_var, bp);
             for (const auto &preconditions : disjunctive_pre)
-                if (preconditions.size() < 5) { // We don't want disj. LMs to get too big
+                // Stock FD caps disjunctions at 4 facts (heuristic efficiency);
+                // explanation needs the full belief disjunction, e.g. 36 cells in Mine-6x6.
+                if (preconditions.size() <= 64) {
                     found_disj_lm_and_order(task_proxy, preconditions, *bp, EdgeType::greedy_necessary);
                 }
         }

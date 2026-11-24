@@ -7,6 +7,7 @@
     (self-channel-c1 c1)
     (self-channel-c2 c2)
     (self-channel-c3 c3)
+    (uncertain-channel)
   )
   (:goal (and (done)))
 )

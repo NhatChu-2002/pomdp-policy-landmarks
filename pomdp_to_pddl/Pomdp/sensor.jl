@@ -95,7 +95,7 @@ sensor_pomdp = QuickPOMDP(
         end
     end,
 
-    observation = function (s, a, sp)
+    observation = function (a, sp)
         if sp == "done" || startswith(a, "commit")
             return Deterministic("none")
         end

@@ -1,0 +1,31 @@
+{
+  "domain": "sensor-induced-bsc",
+  "source_csv": "C:\\AI_planning\\Landmark_dump\\FD_LANDMARK_DUMP\\pomdp_to_pddl\\Pomdp\\sensor_trace.csv",
+  "variables": [
+    "sensor-a",
+    "sensor-b"
+  ],
+  "unit_logodds": 2.1972,
+  "levels_observed": [
+    -2,
+    -1,
+    0,
+    1,
+    2
+  ],
+  "theta_know": 1,
+  "theta_commit": 2,
+  "n_transitions": 12,
+  "n_commit_conditions": 4,
+  "transition_kinds": {
+    "form-belief (uncertain->leaning)": 46,
+    "self-loop (no belief change)": 92,
+    "confirm (leaning->confident)": 40,
+    "reset (leaning->uncertain)": 6
+  },
+  "has_graded_decrement": false,
+  "coverage_steps_total": 184,
+  "coverage_steps_explained": 180,
+  "nondeterministic_pairs": 4,
+  "coverage_fraction": 0.9783
+}

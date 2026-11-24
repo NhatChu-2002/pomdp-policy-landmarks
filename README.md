@@ -4,6 +4,26 @@ Experimental pipeline for explaining probabilistic policies by compiling
 finite-state-controller-like policies into classical PDDL and extracting
 landmarks with Fast Downward.
 
+## Reproducing the paper
+
+```powershell
+python pomdp_to_pddl\scripts\paper_experiments.py
+```
+
+Runs all six experiments (main, exactness, ablation, induced, mutation,
+scaling) in about a minute and writes `landmark_experiments/results/paper/*.json`.
+The current pipeline compiles belief-state controllers (`domains_bsc.py`,
+`encoder_bsc.py`); commitment actions come from each policy's own commitment
+rules. `landmark_experiments/ablation_generic_gates/` freezes the earlier
+generic-gate encoding for the ablation.
+
+The Fast Downward build used here differs from stock Fast Downward in two ways:
+
+- `src/search/landmarks/landmark_factory.cc` exits after dumping the landmark
+  graph (no search is run).
+- `src/search/landmarks/landmark_factory_rpg_sasp.cc` keeps disjunctive
+  landmarks of up to 64 facts (stock: 4), needed for Mine grids beyond 2x2.
+
 The long-term target pipeline is:
 
 ```text

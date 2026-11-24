@@ -11,20 +11,14 @@
     (k-sensor-1 ?x - sensor-1)
     (k-not-sensor-1 ?x - sensor-1)
     (committed-sensor-1)
-    (neg-committed-sensor-1)
-    (confirmed-sensor-1)
     (uncertain-sensor-1)
     (k-sensor-2 ?x - sensor-2)
     (k-not-sensor-2 ?x - sensor-2)
     (committed-sensor-2)
-    (neg-committed-sensor-2)
-    (confirmed-sensor-2)
     (uncertain-sensor-2)
     (k-sensor-3 ?x - sensor-3)
     (k-not-sensor-3 ?x - sensor-3)
     (committed-sensor-3)
-    (neg-committed-sensor-3)
-    (confirmed-sensor-3)
     (uncertain-sensor-3)
     (done)
   )
@@ -208,90 +202,66 @@
       (not (k-sensor-3 ?x-sensor-3-3-faulty))
       (uncertain-sensor-3))
   )
-  (:action commit-sensor-1
-    :parameters (?x - sensor-1)
+  (:action commit-sensor-1-1-ok-0
+    :parameters (?x-sensor-1-1-ok - sensor-1)
     :precondition (and
-      (k-sensor-1 ?x)
+      (self-sensor-1-1-ok ?x-sensor-1-1-ok)
+      (k-sensor-1 ?x-sensor-1-1-ok)
       (not (committed-sensor-1)))
     :effect (and
       (committed-sensor-1))
   )
-  (:action neg-commit-sensor-1
-    :parameters (?x - sensor-1)
+  (:action commit-sensor-1-1-faulty-1
+    :parameters (?x-sensor-1-1-faulty - sensor-1)
     :precondition (and
-      (k-not-sensor-1 ?x)
-      (not (neg-committed-sensor-1)))
+      (self-sensor-1-1-faulty ?x-sensor-1-1-faulty)
+      (k-sensor-1 ?x-sensor-1-1-faulty)
+      (not (committed-sensor-1)))
     :effect (and
-      (neg-committed-sensor-1))
+      (committed-sensor-1))
   )
-  (:action confirm-sensor-1
-    :parameters (?x - sensor-1)
+  (:action commit-sensor-2-2-ok-2
+    :parameters (?x-sensor-2-2-ok - sensor-2)
     :precondition (and
-      (committed-sensor-1)
-      (neg-committed-sensor-1)
-      (k-sensor-1 ?x)
-      (not (confirmed-sensor-1)))
-    :effect (and
-      (confirmed-sensor-1))
-  )
-  (:action commit-sensor-2
-    :parameters (?x - sensor-2)
-    :precondition (and
-      (k-sensor-2 ?x)
+      (self-sensor-2-2-ok ?x-sensor-2-2-ok)
+      (k-sensor-2 ?x-sensor-2-2-ok)
       (not (committed-sensor-2)))
     :effect (and
       (committed-sensor-2))
   )
-  (:action neg-commit-sensor-2
-    :parameters (?x - sensor-2)
+  (:action commit-sensor-2-2-faulty-3
+    :parameters (?x-sensor-2-2-faulty - sensor-2)
     :precondition (and
-      (k-not-sensor-2 ?x)
-      (not (neg-committed-sensor-2)))
+      (self-sensor-2-2-faulty ?x-sensor-2-2-faulty)
+      (k-sensor-2 ?x-sensor-2-2-faulty)
+      (not (committed-sensor-2)))
     :effect (and
-      (neg-committed-sensor-2))
+      (committed-sensor-2))
   )
-  (:action confirm-sensor-2
-    :parameters (?x - sensor-2)
+  (:action commit-sensor-3-3-ok-4
+    :parameters (?x-sensor-3-3-ok - sensor-3)
     :precondition (and
-      (committed-sensor-2)
-      (neg-committed-sensor-2)
-      (k-sensor-2 ?x)
-      (not (confirmed-sensor-2)))
-    :effect (and
-      (confirmed-sensor-2))
-  )
-  (:action commit-sensor-3
-    :parameters (?x - sensor-3)
-    :precondition (and
-      (k-sensor-3 ?x)
+      (self-sensor-3-3-ok ?x-sensor-3-3-ok)
+      (k-sensor-3 ?x-sensor-3-3-ok)
       (not (committed-sensor-3)))
     :effect (and
       (committed-sensor-3))
   )
-  (:action neg-commit-sensor-3
-    :parameters (?x - sensor-3)
+  (:action commit-sensor-3-3-faulty-5
+    :parameters (?x-sensor-3-3-faulty - sensor-3)
     :precondition (and
-      (k-not-sensor-3 ?x)
-      (not (neg-committed-sensor-3)))
+      (self-sensor-3-3-faulty ?x-sensor-3-3-faulty)
+      (k-sensor-3 ?x-sensor-3-3-faulty)
+      (not (committed-sensor-3)))
     :effect (and
-      (neg-committed-sensor-3))
-  )
-  (:action confirm-sensor-3
-    :parameters (?x - sensor-3)
-    :precondition (and
-      (committed-sensor-3)
-      (neg-committed-sensor-3)
-      (k-sensor-3 ?x)
-      (not (confirmed-sensor-3)))
-    :effect (and
-      (confirmed-sensor-3))
+      (committed-sensor-3))
   )
   (:action finish
     :parameters ()
     :precondition (and
-      (confirmed-sensor-1)
-      (confirmed-sensor-2)
-      (confirmed-sensor-3))
+      (committed-sensor-1)
+      (committed-sensor-2)
+      (committed-sensor-3))
     :effect (and
       (done))
   )

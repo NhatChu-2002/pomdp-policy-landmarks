@@ -6,6 +6,7 @@
   (:init
     (self-direction-left left)
     (self-direction-right right)
+    (uncertain-direction)
   )
   (:goal (and (done)))
 )

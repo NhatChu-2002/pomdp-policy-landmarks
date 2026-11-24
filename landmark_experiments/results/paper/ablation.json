@@ -1,0 +1,140 @@
+{
+  "Tiger": {
+    "generic_gates": {
+      "landmarks": 11,
+      "disjunctive": 2,
+      "belief": 3,
+      "edges": 18,
+      "structural": 0,
+      "belief_not_required_by_policy": 0,
+      "examples": []
+    },
+    "fsc": {
+      "landmarks": 13,
+      "disjunctive": 3,
+      "belief": 2,
+      "edges": 31,
+      "structural": 3,
+      "belief_not_required_by_policy": 0,
+      "examples": []
+    }
+  },
+  "Channel": {
+    "generic_gates": {
+      "landmarks": 11,
+      "disjunctive": 2,
+      "belief": 3,
+      "edges": 18,
+      "structural": 0,
+      "belief_not_required_by_policy": 1,
+      "examples": [
+        "Atom k-not-channel(c1) | Atom k-not-channel(c2) | Atom k-not-channel(c3)"
+      ]
+    },
+    "fsc": {
+      "landmarks": 13,
+      "disjunctive": 3,
+      "belief": 2,
+      "edges": 31,
+      "structural": 3,
+      "belief_not_required_by_policy": 1,
+      "examples": [
+        "Atom k-not-channel(c1) | Atom k-not-channel(c2) | Atom k-not-channel(c3)"
+      ]
+    }
+  },
+  "Mine-2x2": {
+    "generic_gates": {
+      "landmarks": 11,
+      "disjunctive": 2,
+      "belief": 3,
+      "edges": 18,
+      "structural": 0,
+      "belief_not_required_by_policy": 1,
+      "examples": [
+        "Atom k-not-mine-cell(c00) | Atom k-not-mine-cell(c01) | Atom k-not-mine-cell(c10) | Atom k-not-mine-cell(c11)"
+      ]
+    },
+    "fsc": {
+      "landmarks": 13,
+      "disjunctive": 3,
+      "belief": 2,
+      "edges": 31,
+      "structural": 3,
+      "belief_not_required_by_policy": 1,
+      "examples": [
+        "Atom k-not-mine-cell(c00) | Atom k-not-mine-cell(c01) | Atom k-not-mine-cell(c10) | Atom k-not-mine-cell(c11)"
+      ]
+    }
+  },
+  "Sensor-2": {
+    "generic_gates": {
+      "landmarks": 20,
+      "disjunctive": 4,
+      "belief": 6,
+      "edges": 35,
+      "structural": 0,
+      "belief_not_required_by_policy": 2,
+      "examples": [
+        "Atom k-not-sensor-a(a-faulty) | Atom k-not-sensor-a(a-ok)",
+        "Atom k-not-sensor-b(b-faulty) | Atom k-not-sensor-b(b-ok)"
+      ]
+    },
+    "fsc": {
+      "landmarks": 23,
+      "disjunctive": 6,
+      "belief": 4,
+      "edges": 89,
+      "structural": 5,
+      "belief_not_required_by_policy": 2,
+      "examples": [
+        "Atom k-not-sensor-a(a-faulty) | Atom k-not-sensor-a(a-ok)",
+        "Atom k-not-sensor-b(b-faulty) | Atom k-not-sensor-b(b-ok)"
+      ]
+    }
+  },
+  "Sensor-3": {
+    "generic_gates": {
+      "landmarks": 29,
+      "disjunctive": 6,
+      "belief": 9,
+      "edges": 52,
+      "structural": 0,
+      "belief_not_required_by_policy": 3,
+      "examples": [
+        "Atom k-not-sensor-1(1-faulty) | Atom k-not-sensor-1(1-ok)",
+        "Atom k-not-sensor-2(2-faulty) | Atom k-not-sensor-2(2-ok)",
+        "Atom k-not-sensor-3(3-faulty) | Atom k-not-sensor-3(3-ok)"
+      ]
+    },
+    "fsc": {
+      "landmarks": 33,
+      "disjunctive": 9,
+      "belief": 6,
+      "edges": 175,
+      "structural": 7,
+      "belief_not_required_by_policy": 3,
+      "examples": [
+        "Atom k-not-sensor-1(1-faulty) | Atom k-not-sensor-1(1-ok)",
+        "Atom k-not-sensor-2(2-faulty) | Atom k-not-sensor-2(2-ok)",
+        "Atom k-not-sensor-3(3-faulty) | Atom k-not-sensor-3(3-ok)"
+      ]
+    }
+  },
+  "RockSample-4": {
+    "generic_gates": {
+      "landmarks": 38,
+      "disjunctive": 8,
+      "belief": 12,
+      "edges": 69,
+      "structural": 0,
+      "belief_not_required_by_policy": 4,
+      "examples": [
+        "Atom k-not-rock-1(r1-bad) | Atom k-not-rock-1(r1-good)",
+        "Atom k-not-rock-2(r2-bad) | Atom k-not-rock-2(r2-good)",
+        "Atom k-not-rock-3(r3-bad) | Atom k-not-rock-3(r3-good)",
+        "Atom k-not-rock-4(r4-bad) | Atom k-not-rock-4(r4-good)"
+      ]
+    }
+  }
+}

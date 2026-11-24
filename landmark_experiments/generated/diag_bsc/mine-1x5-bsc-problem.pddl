@@ -9,6 +9,7 @@
     (self-mine-cell-c02 c02)
     (self-mine-cell-c03 c03)
     (self-mine-cell-c04 c04)
+    (uncertain-mine-cell)
   )
   (:goal (and (done)))
 )

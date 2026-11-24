@@ -9,8 +9,6 @@
     (k-mine-cell ?x - mine-cell)
     (k-not-mine-cell ?x - mine-cell)
     (committed-mine-cell)
-    (neg-committed-mine-cell)
-    (confirmed-mine-cell)
     (uncertain-mine-cell)
     (done)
   )
@@ -158,36 +156,46 @@
     :effect (and
       (k-not-mine-cell ?x-mine-cell-c10))
   )
-  (:action commit-mine-cell
-    :parameters (?x - mine-cell)
+  (:action commit-mine-cell-c00-0
+    :parameters (?x-mine-cell-c00 - mine-cell)
     :precondition (and
-      (k-mine-cell ?x)
+      (self-mine-cell-c00 ?x-mine-cell-c00)
+      (k-mine-cell ?x-mine-cell-c00)
       (not (committed-mine-cell)))
     :effect (and
       (committed-mine-cell))
   )
-  (:action neg-commit-mine-cell
-    :parameters (?x - mine-cell)
+  (:action commit-mine-cell-c01-1
+    :parameters (?x-mine-cell-c01 - mine-cell)
     :precondition (and
-      (k-not-mine-cell ?x)
-      (not (neg-committed-mine-cell)))
+      (self-mine-cell-c01 ?x-mine-cell-c01)
+      (k-mine-cell ?x-mine-cell-c01)
+      (not (committed-mine-cell)))
     :effect (and
-      (neg-committed-mine-cell))
+      (committed-mine-cell))
   )
-  (:action confirm-mine-cell
-    :parameters (?x - mine-cell)
+  (:action commit-mine-cell-c10-2
+    :parameters (?x-mine-cell-c10 - mine-cell)
     :precondition (and
-      (committed-mine-cell)
-      (neg-committed-mine-cell)
-      (k-mine-cell ?x)
-      (not (confirmed-mine-cell)))
+      (self-mine-cell-c10 ?x-mine-cell-c10)
+      (k-mine-cell ?x-mine-cell-c10)
+      (not (committed-mine-cell)))
     :effect (and
-      (confirmed-mine-cell))
+      (committed-mine-cell))
+  )
+  (:action commit-mine-cell-c11-3
+    :parameters (?x-mine-cell-c11 - mine-cell)
+    :precondition (and
+      (self-mine-cell-c11 ?x-mine-cell-c11)
+      (k-mine-cell ?x-mine-cell-c11)
+      (not (committed-mine-cell)))
+    :effect (and
+      (committed-mine-cell))
   )
   (:action finish
     :parameters ()
     :precondition (and
-      (confirmed-mine-cell))
+      (committed-mine-cell))
     :effect (and
       (done))
   )

@@ -141,7 +141,7 @@ class BSCSpec:
       commit_conditions: CommitCondition list — one per (variable, value) pair that
                          the controller can commit to
       goal_confirm_per : for each hidden variable name, whether the goal requires
-                         confirming that variable (default True for all)
+                         a commitment on that variable (default True for all)
     """
     name: str
     hidden_variables: List[HiddenVariable]

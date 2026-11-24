@@ -1,0 +1,68 @@
+{
+  "Tiger": {
+    "rhw_landmarks_true": 7,
+    "rhw_landmarks": 7,
+    "rhw_edges_true": 9,
+    "rhw_sound_edges": 9,
+    "true_nontrivial_simple": 2,
+    "rhw_found_nontrivial_simple": 2,
+    "true_belief_disjunctions": 2,
+    "rhw_found_belief_disjunctions": 2,
+    "missed": []
+  },
+  "Channel": {
+    "rhw_landmarks_true": 6,
+    "rhw_landmarks": 6,
+    "rhw_edges_true": 6,
+    "rhw_sound_edges": 6,
+    "true_nontrivial_simple": 2,
+    "rhw_found_nontrivial_simple": 2,
+    "true_belief_disjunctions": 1,
+    "rhw_found_belief_disjunctions": 1,
+    "missed": []
+  },
+  "Mine-2x2": {
+    "rhw_landmarks_true": 6,
+    "rhw_landmarks": 6,
+    "rhw_edges_true": 6,
+    "rhw_sound_edges": 6,
+    "true_nontrivial_simple": 2,
+    "rhw_found_nontrivial_simple": 2,
+    "true_belief_disjunctions": 1,
+    "rhw_found_belief_disjunctions": 1,
+    "missed": []
+  },
+  "Sensor-2": {
+    "rhw_landmarks_true": 10,
+    "rhw_landmarks": 10,
+    "rhw_edges_true": 11,
+    "rhw_sound_edges": 11,
+    "true_nontrivial_simple": 3,
+    "rhw_found_nontrivial_simple": 3,
+    "true_belief_disjunctions": 2,
+    "rhw_found_belief_disjunctions": 2,
+    "missed": []
+  },
+  "Sensor-3": {
+    "rhw_landmarks_true": 14,
+    "rhw_landmarks": 14,
+    "rhw_edges_true": 16,
+    "rhw_sound_edges": 16,
+    "true_nontrivial_simple": 4,
+    "rhw_found_nontrivial_simple": 4,
+    "true_belief_disjunctions": 3,
+    "rhw_found_belief_disjunctions": 3,
+    "missed": []
+  },
+  "RockSample-4": {
+    "rhw_landmarks_true": 18,
+    "rhw_landmarks": 18,
+    "rhw_edges_true": 21,
+    "rhw_sound_edges": 21,
+    "true_nontrivial_simple": 5,
+    "rhw_found_nontrivial_simple": 5,
+    "true_belief_disjunctions": 4,
+    "rhw_found_belief_disjunctions": 4,
+    "missed": []
+  }
+}

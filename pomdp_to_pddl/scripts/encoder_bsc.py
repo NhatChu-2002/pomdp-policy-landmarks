@@ -11,9 +11,13 @@ Design notes
    to reference specific ground values without embedding constants in action
    bodies.  (FD rejects ground constants inside action bodies.)
 
-2. commit / neg-commit / confirm remain parameterised over ?x so FD's SAS+
-   translation sees  k-VAR(?x)  as one multi-valued variable — the prerequisite
-   for disjunctive-landmark extraction by lm_rhw.
+2. Policy-faithful commitment: one commit action is emitted per
+   CommitCondition, with exactly that condition's belief preconditions.
+   The policy's own commitment rule is therefore the only way to reach
+   committed-VAR, so plans correspond to policy executions and every
+   belief landmark is a belief the policy itself requires.  (The earlier
+   generic neg-commit / confirm gates forced k-not facts that policies
+   committing on first evidence never need.)
 
 3. One sense action is emitted per BSCTransition (indexed 0, 1, ...).
    Each uses the identity predicates to ground its parameters to the specific
@@ -37,7 +41,7 @@ Design notes
 from __future__ import annotations
 from typing import Dict, List, Set, Tuple
 
-from bsc_spec import BSCSpec, BSCTransition, BeliefUpdate, HiddenVariable
+from bsc_spec import BSCSpec
 
 
 # ======================================================================
@@ -100,8 +104,6 @@ def generate_domain(spec: BSCSpec) -> str:
         lines.append(f"    ({_k(v.name)} ?x - {v.name})")
         lines.append(f"    ({_knot(v.name)} ?x - {v.name})")
         lines.append(f"    (committed-{_san(v.name)})")
-        lines.append(f"    (neg-committed-{_san(v.name)})")
-        lines.append(f"    (confirmed-{_san(v.name)})")
         # Uncertain predicate (replaces N negative k-precs; enables large disjunctions)
         if v.name in uncertain_vars:
             lines.append(f"    (uncertain-{_san(v.name)})")
@@ -110,26 +112,32 @@ def generate_domain(spec: BSCSpec) -> str:
 
     # ---- actions ----
     for i, t in enumerate(spec.transitions):
-        lines.append(_sense_action(spec, t, i, uncertain_vars))
+        lines.append(_belief_action(
+            spec, f"sense-{_san(t.observation)}-{i}", t.belief_precs,
+            t.belief_updates, t.retractions, uncertain_vars))
 
-    for v in spec.hidden_variables:
-        lines.append(_commit_action(v))
-        lines.append(_neg_commit_action(v))
-        lines.append(_confirm_action(v))
+    for i, cc in enumerate(spec.commit_conditions):
+        committed = f"committed-{_san(cc.variable)}"
+        lines.append(_belief_action(
+            spec, f"commit-{_san(cc.variable)}-{_san(cc.commit_value)}-{i}",
+            cc.belief_precs, (), (), uncertain_vars,
+            extra_precs=[f"(not ({committed}))"], extra_effects=[f"({committed})"],
+            consumes_uncertain=False))
 
     lines.append(_finish_action(spec))
     lines.append(")")
     return "\n".join(lines)
 
 
-def _sense_action(spec: BSCSpec, t: BSCTransition, idx: int,
-                  uncertain_vars: Set[str]) -> str:
-    """Emit one sense-action variant for BSCTransition t.
+def _belief_action(spec: BSCSpec, name: str, belief_precs, belief_updates,
+                   retractions, uncertain_vars: Set[str], extra_precs=(),
+                   extra_effects=(), consumes_uncertain: bool = True) -> str:
+    """Emit one action gated on belief preconditions (sense or commit).
 
-    For each variable V that is in uncertain_vars AND this transition covers
+    For each variable V that is in uncertain_vars AND belief_precs cover
     all domain values of V with negative precs, we:
       - replace the N negative precs with  (uncertain-V)
-      - add  (not (uncertain-V))  to the effects
+      - add  (not (uncertain-V))  to the effects (sense actions only)
       - skip adding those (V, val) pairs to the parameter list
 
     For reset transitions (retractions of k-V where V ∈ uncertain_vars):
@@ -137,16 +145,16 @@ def _sense_action(spec: BSCSpec, t: BSCTransition, idx: int,
     """
     var_map = {v.name: v for v in spec.hidden_variables}
 
-    # Determine which variables have the uncertain pattern in THIS transition
+    # Determine which variables have the uncertain pattern in THIS action
     this_uncertain: Set[str] = set()
     for vname in uncertain_vars:
         var = var_map[vname]
         neg_vals = {
-            ref.value for ref in t.belief_precs
+            ref.value for ref in belief_precs
             if ref.variable == vname and ref.polarity == "pos" and not ref.holds
         }
         pos_vals = {
-            ref.value for ref in t.belief_precs
+            ref.value for ref in belief_precs
             if ref.variable == vname and ref.polarity == "pos" and ref.holds
         }
         if neg_vals == set(var.domain) and not pos_vals:
@@ -161,13 +169,13 @@ def _sense_action(spec: BSCSpec, t: BSCTransition, idx: int,
             seen[key] = f"?x-{_san(var)}-{_san(val)}"
         return seen[key]
 
-    for ref in t.belief_precs:
+    for ref in belief_precs:
         if ref.variable in this_uncertain and ref.polarity == "pos" and not ref.holds:
             continue  # replaced by (uncertain-VAR)
         _reg(ref.variable, ref.value)
-    for bu in t.belief_updates:
+    for bu in belief_updates:
         _reg(bu.variable, bu.value)
-    for bu in t.retractions:
+    for bu in retractions:
         _reg(bu.variable, bu.value)
 
     parameters = [f"{pname} - {var_map[var].name}" for (var, _val), pname in seen.items()]
@@ -180,74 +188,41 @@ def _sense_action(spec: BSCSpec, t: BSCTransition, idx: int,
     for vname in sorted(this_uncertain):
         preconditions.append(f"(uncertain-{_san(vname)})")
     # Remaining belief preconditions
-    for ref in t.belief_precs:
+    for ref in belief_precs:
         if ref.variable in this_uncertain and ref.polarity == "pos" and not ref.holds:
             continue
         pname = seen[(ref.variable, ref.value)]
         pred = _k(ref.variable) if ref.polarity == "pos" else _knot(ref.variable)
         atom = f"({pred} {pname})"
         preconditions.append(atom if ref.holds else f"(not {atom})")
+    preconditions.extend(extra_precs)
 
     effects: List[str] = []
     # Unset uncertain predicates for this transition's uncertain variables
-    for vname in sorted(this_uncertain):
-        effects.append(f"(not (uncertain-{_san(vname)}))")
+    if consumes_uncertain:
+        for vname in sorted(this_uncertain):
+            effects.append(f"(not (uncertain-{_san(vname)}))")
     # Belief update effects
-    for bu in t.belief_updates:
+    for bu in belief_updates:
         pname = seen[(bu.variable, bu.value)]
         pred = _k(bu.variable) if bu.polarity == "pos" else _knot(bu.variable)
         effects.append(f"({pred} {pname})")
     # Retraction effects; reset uncertain if retracting k-VAR for uncertain var
-    for bu in t.retractions:
+    for bu in retractions:
         pname = seen[(bu.variable, bu.value)]
         pred = _k(bu.variable) if bu.polarity == "pos" else _knot(bu.variable)
         effects.append(f"(not ({pred} {pname}))")
         if bu.variable in uncertain_vars and bu.polarity == "pos":
             effects.append(f"(uncertain-{_san(bu.variable)})")
+    effects.extend(extra_effects)
 
-    obs_san = _san(t.observation)
-    return _fmt(f"sense-{obs_san}-{idx}", parameters, preconditions, effects)
-
-
-def _commit_action(v: HiddenVariable) -> str:
-    """Commit: requires k(?x) for some value of v."""
-    return _fmt(
-        f"commit-{_san(v.name)}",
-        [f"?x - {v.name}"],
-        [f"({_k(v.name)} ?x)", f"(not (committed-{_san(v.name)}))"],
-        [f"(committed-{_san(v.name)})"],
-    )
-
-
-def _neg_commit_action(v: HiddenVariable) -> str:
-    """Neg-commit: requires k-not(?x) for some value of v."""
-    return _fmt(
-        f"neg-commit-{_san(v.name)}",
-        [f"?x - {v.name}"],
-        [f"({_knot(v.name)} ?x)", f"(not (neg-committed-{_san(v.name)}))"],
-        [f"(neg-committed-{_san(v.name)})"],
-    )
-
-
-def _confirm_action(v: HiddenVariable) -> str:
-    """Confirm: both gates (committed + neg-committed) must be open."""
-    return _fmt(
-        f"confirm-{_san(v.name)}",
-        [f"?x - {v.name}"],
-        [
-            f"(committed-{_san(v.name)})",
-            f"(neg-committed-{_san(v.name)})",
-            f"({_k(v.name)} ?x)",
-            f"(not (confirmed-{_san(v.name)}))",
-        ],
-        [f"(confirmed-{_san(v.name)})"],
-    )
+    return _fmt(name, parameters, preconditions, effects)
 
 
 def _finish_action(spec: BSCSpec) -> str:
-    """Goal-bearing action — requires all confirmations."""
+    """Goal-bearing action — requires a commitment on every goal variable."""
     precs = [
-        f"(confirmed-{_san(v.name)})"
+        f"(committed-{_san(v.name)})"
         for v in spec.hidden_variables
         if spec.goal_confirm_per.get(v.name, True)
     ]

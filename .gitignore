@@ -6,6 +6,11 @@ __pycache__/
 output
 example.txt
 results/
+# Paper results (JSON) are versioned; their scratch dir is regenerated.
+!landmark_experiments/results/
+landmark_experiments/results/*
+!landmark_experiments/results/paper/
+landmark_experiments/results/paper/work/
 
 # IDE metadata
 .vs/
