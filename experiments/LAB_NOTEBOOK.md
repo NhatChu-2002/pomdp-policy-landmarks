@@ -255,3 +255,14 @@ work or what we claim), **DROP** (tried, not worth reporting), **OPEN** (unresol
   diff names the information they skip. But 5-iteration PBVI is a weak solver;
   present it as "an under-converged second solver", not as a fair comparison.
 - Verdict: **PAPER** (short, in RQ4 next to QMDP), with coverage stated (9 of 25).
+
+### E15 (result). Tag checked by simulation of the same policy
+- Tried: `pomdp/check_graph_by_simulation.jl` solves Tag once (600 s), writes the graph,
+  and simulates that same policy with exact beliefs (2,000 runs).
+- Result: graph 237 nodes, 1 lossy merge, P(term) 0.819; simulation: 82.2% of runs
+  end, return -11.27 +- 0.15 (graph value -11.13, bound -11.15). The other runs
+  shuttle east/west between (8,1) and (9,1) forever. The 10 "opponent ruled out"
+  landmarks are identical to the first 600 s solve (archived as superseded/tag-run1).
+- Learned: the non-termination is real, not a merge artifact: a second flawed
+  time-limited SARSOP policy. Check graph-derived numbers on the same policy.
+- Verdict: **PAPER** (Tag paragraph, v5.1).
