@@ -1,0 +1,1993 @@
+{
+  "channel-3-0.85": {
+    "problem": "probe",
+    "p_correct": 0.85,
+    "k": 3,
+    "solve_s": 0.7,
+    "value_b0": 11.49,
+    "exact_value": 11.491,
+    "policy_nodes": 8,
+    "policy_edges": 10,
+    "controller_states": 8,
+    "landmarks": 11,
+    "disjunctive": 6,
+    "belief": 0,
+    "edges": 19,
+    "belief_landmarks": 6,
+    "belief_landmarks_beyond_syntactic": 3,
+    "syntactic_baseline": 3,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-v1(neg1) | ev-v1(pos1)",
+      "ev-v1(neg2) | ev-v1(pos2)",
+      "ev-v2(neg1) | ev-v2(pos1)",
+      "ev-v2(neg2) | ev-v2(neg3) | ev-v2(pos2)",
+      "ev-v3(neg1) | ev-v3(pos1)",
+      "ev-v3(neg2) | ev-v3(pos2)"
+    ],
+    "injective": true,
+    "sound_landmarks": 11,
+    "landmarks_total": 11,
+    "sound_orderings": 19,
+    "orderings_total": 19,
+    "single_fact_landmarks_exact": 1,
+    "single_fact_landmarks_missed": [],
+    "exhaustive_check_s": 0.001,
+    "cross_variable_orderings": 2,
+    "cross_variable_examples": [
+      "ev-v1(neg1) | ev-v1(pos1) < ev-v3(neg2) | ev-v3(pos2)",
+      "ev-v3(neg1) | ev-v3(pos1) < ev-v1(neg2) | ev-v1(pos2)"
+    ],
+    "p_terminate": 1.0,
+    "expected_steps": 3.738,
+    "p_end_within_100": 1.0,
+    "timeline": {
+      "ev-v1(neg1) | ev-v1(pos1)": {
+        "p_reach": 1.0,
+        "expected_steps": 1.617,
+        "first_reached": {
+          "ev-v1(neg1)": 0.7092,
+          "ev-v1(pos1)": 0.2908
+        }
+      },
+      "ev-v1(neg2) | ev-v1(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 3.738,
+        "first_reached": {
+          "ev-v1(neg2)": 0.675,
+          "ev-v1(pos2)": 0.325
+        }
+      },
+      "ev-v2(neg1) | ev-v2(pos1)": {
+        "p_reach": 1.0,
+        "expected_steps": 1.0,
+        "first_reached": {
+          "ev-v2(neg1)": 0.6167,
+          "ev-v2(pos1)": 0.3833
+        }
+      },
+      "ev-v2(neg2) | ev-v2(neg3) | ev-v2(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 3.044,
+        "first_reached": {
+          "ev-v2(neg2)": 0.6652,
+          "ev-v2(pos2)": 0.3348
+        }
+      },
+      "ev-v3(neg1) | ev-v3(pos1)": {
+        "p_reach": 1.0,
+        "expected_steps": 1.617,
+        "first_reached": {
+          "ev-v3(neg1)": 0.6742,
+          "ev-v3(pos1)": 0.3258
+        }
+      },
+      "ev-v3(neg2) | ev-v3(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 3.738,
+        "first_reached": {
+          "ev-v3(neg2)": 0.6669,
+          "ev-v3(pos2)": 0.3331
+        }
+      }
+    },
+    "lm_time_s": 0.0001352
+  },
+  "mine-4-0.85": {
+    "problem": "probe",
+    "p_correct": 0.85,
+    "k": 4,
+    "solve_s": 1.2,
+    "value_b0": 9.56,
+    "exact_value": 9.564,
+    "policy_nodes": 11,
+    "policy_edges": 14,
+    "controller_states": 11,
+    "landmarks": 8,
+    "disjunctive": 4,
+    "belief": 0,
+    "edges": 8,
+    "belief_landmarks": 4,
+    "belief_landmarks_beyond_syntactic": 0,
+    "syntactic_baseline": 4,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-v1(neg1) | ev-v1(neg2) | ev-v1(pos2)",
+      "ev-v2(neg1) | ev-v2(pos2)",
+      "ev-v3(neg1) | ev-v3(neg2) | ev-v3(pos2)",
+      "ev-v4(neg1) | ev-v4(pos2)"
+    ],
+    "injective": true,
+    "sound_landmarks": 8,
+    "landmarks_total": 8,
+    "sound_orderings": 8,
+    "orderings_total": 8,
+    "single_fact_landmarks_exact": 1,
+    "single_fact_landmarks_missed": [],
+    "exhaustive_check_s": 0.002,
+    "cross_variable_orderings": 0,
+    "cross_variable_examples": [],
+    "p_terminate": 1.0,
+    "expected_steps": 4.66,
+    "p_end_within_100": 1.0,
+    "timeline": {
+      "ev-v1(neg1) | ev-v1(neg2) | ev-v1(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 1.519,
+        "first_reached": {
+          "ev-v1(neg1)": 0.7736,
+          "ev-v1(pos2)": 0.2264
+        }
+      },
+      "ev-v2(neg1) | ev-v2(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 3.614,
+        "first_reached": {
+          "ev-v2(neg1)": 0.7867,
+          "ev-v2(pos2)": 0.2133
+        }
+      },
+      "ev-v3(neg1) | ev-v3(neg2) | ev-v3(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 2.06,
+        "first_reached": {
+          "ev-v3(neg1)": 0.8121,
+          "ev-v3(pos2)": 0.1879
+        }
+      },
+      "ev-v4(neg1) | ev-v4(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 2.868,
+        "first_reached": {
+          "ev-v4(neg1)": 0.8213,
+          "ev-v4(pos2)": 0.1787
+        }
+      }
+    },
+    "lm_time_s": 0.000143
+  },
+  "mine-9-0.85": {
+    "problem": "probe",
+    "p_correct": 0.85,
+    "k": 9,
+    "solve_s": 120.7,
+    "value_b0": 0.38,
+    "exact_value": -13.212,
+    "policy_nodes": 121,
+    "policy_edges": 238,
+    "controller_states": 92,
+    "landmarks": 21,
+    "disjunctive": 3,
+    "belief": 0,
+    "edges": 59,
+    "belief_landmarks": 10,
+    "belief_landmarks_beyond_syntactic": 1,
+    "syntactic_baseline": 9,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-v1(neg1)",
+      "ev-v2(neg1)",
+      "ev-v3(neg1)",
+      "ev-v4(neg1)",
+      "ev-v5(neg1) | ev-v5(pos2)",
+      "ev-v6(neg1)",
+      "ev-v7(neg1)",
+      "ev-v8(neg1) | ev-v8(pos1)",
+      "ev-v8(neg2) | ev-v8(pos2)",
+      "ev-v9(neg1)"
+    ],
+    "injective": false,
+    "sound_landmarks": 21,
+    "landmarks_total": 21,
+    "sound_orderings": 59,
+    "orderings_total": 59,
+    "single_fact_landmarks_exact": 8,
+    "single_fact_landmarks_missed": [],
+    "exhaustive_check_s": 0.232,
+    "cross_variable_orderings": 6,
+    "cross_variable_examples": [
+      "ev-v8(neg1) | ev-v8(pos1) < ev-v1(neg1)",
+      "ev-v8(neg1) | ev-v8(pos1) < ev-v2(neg1)",
+      "ev-v8(neg1) | ev-v8(pos1) < ev-v3(neg1)",
+      "ev-v8(neg1) | ev-v8(pos1) < ev-v4(neg1)",
+      "ev-v8(neg1) | ev-v8(pos1) < ev-v5(neg1) | ev-v5(pos2)",
+      "ev-v8(neg1) | ev-v8(pos1) < ev-v7(neg1)"
+    ],
+    "p_terminate": 1.000005,
+    "expected_steps": 76415082960.91,
+    "p_end_within_100": 0.2619,
+    "timeline": {
+      "ev-v1(neg1)": {
+        "p_reach": 1.0,
+        "expected_steps": 905493402.411,
+        "first_reached": {
+          "ev-v1(neg1)": 1.0
+        }
+      },
+      "ev-v2(neg1)": {
+        "p_reach": 1.0,
+        "expected_steps": 812232697.538,
+        "first_reached": {
+          "ev-v2(neg1)": 1.0
+        }
+      },
+      "ev-v3(neg1)": {
+        "p_reach": 1.0,
+        "expected_steps": 1208136633.838,
+        "first_reached": {
+          "ev-v3(neg1)": 1.0
+        }
+      },
+      "ev-v4(neg1)": {
+        "p_reach": 1.0,
+        "expected_steps": 1030938542.902,
+        "first_reached": {
+          "ev-v4(neg1)": 1.0
+        }
+      },
+      "ev-v5(neg1) | ev-v5(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 2.661,
+        "first_reached": {
+          "ev-v5(neg1)": 0.8903,
+          "ev-v5(pos2)": 0.1097
+        }
+      },
+      "ev-v6(neg1)": {
+        "p_reach": 1.0,
+        "expected_steps": 409091806.036,
+        "first_reached": {
+          "ev-v6(neg1)": 1.0
+        }
+      },
+      "ev-v7(neg1)": {
+        "p_reach": 1.0,
+        "expected_steps": 1342604811.823,
+        "first_reached": {
+          "ev-v7(neg1)": 1.0
+        }
+      },
+      "ev-v8(neg1) | ev-v8(pos1)": {
+        "p_reach": 1.0,
+        "expected_steps": 1.0,
+        "first_reached": {
+          "ev-v8(neg1)": 0.7722,
+          "ev-v8(pos1)": 0.2278
+        }
+      },
+      "ev-v8(neg2) | ev-v8(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 1141799261.619,
+        "first_reached": {
+          "ev-v8(neg2)": 0.8691,
+          "ev-v8(pos2)": 0.1309
+        }
+      },
+      "ev-v9(neg1)": {
+        "p_reach": 1.0,
+        "expected_steps": 301847898.711,
+        "first_reached": {
+          "ev-v9(neg1)": 1.0
+        }
+      }
+    },
+    "lm_time_s": 0.0014187
+  },
+  "rocksample-4-4-s1": {
+    "problem": "rocksample",
+    "n": 4,
+    "k": 4,
+    "seed": 1,
+    "solve_s": 47.9,
+    "value_b0": 34.54,
+    "exact_value": 34.536,
+    "policy_nodes": 37,
+    "policy_edges": 45,
+    "controller_states": 37,
+    "landmarks": 14,
+    "disjunctive": 3,
+    "belief": 0,
+    "edges": 50,
+    "belief_landmarks": 5,
+    "belief_landmarks_beyond_syntactic": 1,
+    "syntactic_baseline": 5,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-rock1(neg3)",
+      "ev-rock2(neg2) | ev-rock2(pos2)",
+      "ev-rock2(neg3)",
+      "ev-rock3(neg3)",
+      "ev-rock4(neg2) | ev-rock4(neg3)"
+    ],
+    "injective": true,
+    "sound_landmarks": 14,
+    "landmarks_total": 14,
+    "sound_orderings": 50,
+    "orderings_total": 50,
+    "single_fact_landmarks_exact": 6,
+    "single_fact_landmarks_missed": [],
+    "exhaustive_check_s": 0.03,
+    "cross_variable_orderings": 9,
+    "cross_variable_examples": [
+      "ev-rock1(neg3) < ev-rock2(neg2) | ev-rock2(pos2)",
+      "ev-rock1(neg3) < ev-rock2(neg3)",
+      "ev-rock3(neg3) < ev-rock1(neg3)",
+      "ev-rock3(neg3) < ev-rock2(neg2) | ev-rock2(pos2)",
+      "ev-rock3(neg3) < ev-rock2(neg3)",
+      "ev-rock4(neg2) | ev-rock4(neg3) < ev-rock1(neg3)"
+    ],
+    "p_terminate": 1.0,
+    "expected_steps": 13.172,
+    "p_end_within_100": 1.0,
+    "timeline": {
+      "ev-rock1(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 7.5,
+        "first_reached": {
+          "ev-rock1(neg3)": 1.0
+        }
+      },
+      "ev-rock2(neg2) | ev-rock2(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 8.5,
+        "first_reached": {
+          "ev-rock2(neg2)": 0.5,
+          "ev-rock2(pos2)": 0.5
+        }
+      },
+      "ev-rock2(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 11.172,
+        "first_reached": {
+          "ev-rock2(neg3)": 1.0
+        }
+      },
+      "ev-rock3(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 5.0,
+        "first_reached": {
+          "ev-rock3(neg3)": 1.0
+        }
+      },
+      "ev-rock4(neg2) | ev-rock4(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 2.0,
+        "first_reached": {
+          "ev-rock4(neg2)": 0.5,
+          "ev-rock4(neg3)": 0.5
+        }
+      }
+    },
+    "lm_time_s": 0.0002064
+  },
+  "rocksample-4-4-s2": {
+    "problem": "rocksample",
+    "n": 4,
+    "k": 4,
+    "seed": 2,
+    "solve_s": 120.1,
+    "value_b0": 32.29,
+    "exact_value": 32.286,
+    "policy_nodes": 50,
+    "policy_edges": 59,
+    "controller_states": 50,
+    "landmarks": 16,
+    "disjunctive": 6,
+    "belief": 0,
+    "edges": 46,
+    "belief_landmarks": 4,
+    "belief_landmarks_beyond_syntactic": 0,
+    "syntactic_baseline": 5,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-rock1(neg3)",
+      "ev-rock2(neg2) | ev-rock2(neg3)",
+      "ev-rock3(neg2) | ev-rock3(neg3)",
+      "ev-rock4(neg2) | ev-rock4(neg3)"
+    ],
+    "injective": true,
+    "sound_landmarks": 16,
+    "landmarks_total": 16,
+    "sound_orderings": 46,
+    "orderings_total": 46,
+    "single_fact_landmarks_exact": 4,
+    "single_fact_landmarks_missed": [],
+    "exhaustive_check_s": 0.043,
+    "cross_variable_orderings": 4,
+    "cross_variable_examples": [
+      "ev-rock1(neg3) < ev-rock4(neg2) | ev-rock4(neg3)",
+      "ev-rock3(neg2) | ev-rock3(neg3) < ev-rock1(neg3)",
+      "ev-rock3(neg2) | ev-rock3(neg3) < ev-rock2(neg2) | ev-rock2(neg3)",
+      "ev-rock3(neg2) | ev-rock3(neg3) < ev-rock4(neg2) | ev-rock4(neg3)"
+    ],
+    "p_terminate": 1.0,
+    "expected_steps": 13.5,
+    "p_end_within_100": 1.0,
+    "timeline": {
+      "ev-rock1(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 8.25,
+        "first_reached": {
+          "ev-rock1(neg3)": 1.0
+        }
+      },
+      "ev-rock2(neg2) | ev-rock2(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 9.125,
+        "first_reached": {
+          "ev-rock2(neg2)": 0.5,
+          "ev-rock2(neg3)": 0.5
+        }
+      },
+      "ev-rock3(neg2) | ev-rock3(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 3.0,
+        "first_reached": {
+          "ev-rock3(neg2)": 0.5,
+          "ev-rock3(neg3)": 0.5
+        }
+      },
+      "ev-rock4(neg2) | ev-rock4(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 10.5,
+        "first_reached": {
+          "ev-rock4(neg2)": 0.25,
+          "ev-rock4(neg3)": 0.75
+        }
+      }
+    },
+    "lm_time_s": 0.0002759
+  },
+  "rocksample-4-4-s3": {
+    "problem": "rocksample",
+    "n": 4,
+    "k": 4,
+    "seed": 3,
+    "solve_s": 27.4,
+    "value_b0": 33.02,
+    "exact_value": 33.022,
+    "policy_nodes": 45,
+    "policy_edges": 54,
+    "controller_states": 45,
+    "landmarks": 16,
+    "disjunctive": 4,
+    "belief": 0,
+    "edges": 61,
+    "belief_landmarks": 4,
+    "belief_landmarks_beyond_syntactic": 0,
+    "syntactic_baseline": 5,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-rock1(neg2) | ev-rock1(neg3)",
+      "ev-rock2(neg2) | ev-rock2(neg3)",
+      "ev-rock3(neg2) | ev-rock3(neg3)",
+      "ev-rock4(neg3)"
+    ],
+    "injective": true,
+    "sound_landmarks": 16,
+    "landmarks_total": 16,
+    "sound_orderings": 61,
+    "orderings_total": 61,
+    "single_fact_landmarks_exact": 6,
+    "single_fact_landmarks_missed": [],
+    "exhaustive_check_s": 0.108,
+    "cross_variable_orderings": 6,
+    "cross_variable_examples": [
+      "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock4(neg3)",
+      "ev-rock2(neg2) | ev-rock2(neg3) < ev-rock1(neg2) | ev-rock1(neg3)",
+      "ev-rock2(neg2) | ev-rock2(neg3) < ev-rock4(neg3)",
+      "ev-rock3(neg2) | ev-rock3(neg3) < ev-rock1(neg2) | ev-rock1(neg3)",
+      "ev-rock3(neg2) | ev-rock3(neg3) < ev-rock2(neg2) | ev-rock2(neg3)",
+      "ev-rock3(neg2) | ev-rock3(neg3) < ev-rock4(neg3)"
+    ],
+    "p_terminate": 1.0,
+    "expected_steps": 13.75,
+    "p_end_within_100": 1.0,
+    "timeline": {
+      "ev-rock1(neg2) | ev-rock1(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 8.375,
+        "first_reached": {
+          "ev-rock1(neg2)": 0.125,
+          "ev-rock1(neg3)": 0.875
+        }
+      },
+      "ev-rock2(neg2) | ev-rock2(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 5.75,
+        "first_reached": {
+          "ev-rock2(neg2)": 0.25,
+          "ev-rock2(neg3)": 0.75
+        }
+      },
+      "ev-rock3(neg2) | ev-rock3(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 3.0,
+        "first_reached": {
+          "ev-rock3(neg2)": 0.5,
+          "ev-rock3(neg3)": 0.5
+        }
+      },
+      "ev-rock4(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 12.75,
+        "first_reached": {
+          "ev-rock4(neg3)": 1.0
+        }
+      }
+    },
+    "lm_time_s": 0.0003899
+  },
+  "rocksample-4-4-s4": {
+    "problem": "rocksample",
+    "n": 4,
+    "k": 4,
+    "seed": 4,
+    "solve_s": 120.1,
+    "value_b0": 31.82,
+    "exact_value": 31.824,
+    "policy_nodes": 67,
+    "policy_edges": 79,
+    "controller_states": 67,
+    "landmarks": 14,
+    "disjunctive": 5,
+    "belief": 0,
+    "edges": 47,
+    "belief_landmarks": 4,
+    "belief_landmarks_beyond_syntactic": 0,
+    "syntactic_baseline": 5,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-rock1(neg2) | ev-rock1(neg3)",
+      "ev-rock2(neg3)",
+      "ev-rock3(neg2) | ev-rock3(neg3)",
+      "ev-rock4(neg2) | ev-rock4(neg3)"
+    ],
+    "injective": true,
+    "sound_landmarks": 14,
+    "landmarks_total": 14,
+    "sound_orderings": 47,
+    "orderings_total": 47,
+    "single_fact_landmarks_exact": 4,
+    "single_fact_landmarks_missed": [],
+    "exhaustive_check_s": 0.177,
+    "cross_variable_orderings": 5,
+    "cross_variable_examples": [
+      "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock2(neg3)",
+      "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock3(neg2) | ev-rock3(neg3)",
+      "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock4(neg2) | ev-rock4(neg3)",
+      "ev-rock4(neg2) | ev-rock4(neg3) < ev-rock2(neg3)",
+      "ev-rock4(neg2) | ev-rock4(neg3) < ev-rock3(neg2) | ev-rock3(neg3)"
+    ],
+    "p_terminate": 1.0,
+    "expected_steps": 14.5,
+    "p_end_within_100": 1.0,
+    "timeline": {
+      "ev-rock1(neg2) | ev-rock1(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 2.5,
+        "first_reached": {
+          "ev-rock1(neg2)": 0.5,
+          "ev-rock1(neg3)": 0.5
+        }
+      },
+      "ev-rock2(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 11.625,
+        "first_reached": {
+          "ev-rock2(neg3)": 1.0
+        }
+      },
+      "ev-rock3(neg2) | ev-rock3(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 9.875,
+        "first_reached": {
+          "ev-rock3(neg2)": 0.375,
+          "ev-rock3(neg3)": 0.625
+        }
+      },
+      "ev-rock4(neg2) | ev-rock4(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 6.5,
+        "first_reached": {
+          "ev-rock4(neg2)": 0.5,
+          "ev-rock4(neg3)": 0.5
+        }
+      }
+    },
+    "lm_time_s": 0.0008154
+  },
+  "rocksample-4-4-s5": {
+    "problem": "rocksample",
+    "n": 4,
+    "k": 4,
+    "seed": 5,
+    "solve_s": 3.2,
+    "value_b0": 34.57,
+    "exact_value": 34.565,
+    "policy_nodes": 16,
+    "policy_edges": 19,
+    "controller_states": 16,
+    "landmarks": 17,
+    "disjunctive": 0,
+    "belief": 0,
+    "edges": 85,
+    "belief_landmarks": 4,
+    "belief_landmarks_beyond_syntactic": 0,
+    "syntactic_baseline": 5,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-rock1(neg3)",
+      "ev-rock2(neg3)",
+      "ev-rock3(neg3)",
+      "ev-rock4(neg3)"
+    ],
+    "injective": true,
+    "sound_landmarks": 17,
+    "landmarks_total": 17,
+    "sound_orderings": 85,
+    "orderings_total": 85,
+    "single_fact_landmarks_exact": 11,
+    "single_fact_landmarks_missed": [],
+    "exhaustive_check_s": 0.015,
+    "cross_variable_orderings": 6,
+    "cross_variable_examples": [
+      "ev-rock2(neg3) < ev-rock1(neg3)",
+      "ev-rock2(neg3) < ev-rock3(neg3)",
+      "ev-rock3(neg3) < ev-rock1(neg3)",
+      "ev-rock4(neg3) < ev-rock1(neg3)",
+      "ev-rock4(neg3) < ev-rock2(neg3)",
+      "ev-rock4(neg3) < ev-rock3(neg3)"
+    ],
+    "p_terminate": 1.0,
+    "expected_steps": 13.0,
+    "p_end_within_100": 1.0,
+    "timeline": {
+      "ev-rock1(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 12.0,
+        "first_reached": {
+          "ev-rock1(neg3)": 1.0
+        }
+      },
+      "ev-rock2(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 5.0,
+        "first_reached": {
+          "ev-rock2(neg3)": 1.0
+        }
+      },
+      "ev-rock3(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 8.5,
+        "first_reached": {
+          "ev-rock3(neg3)": 1.0
+        }
+      },
+      "ev-rock4(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 2.5,
+        "first_reached": {
+          "ev-rock4(neg3)": 1.0
+        }
+      }
+    },
+    "lm_time_s": 0.0002184
+  },
+  "rocksample-5-5-s1": {
+    "problem": "rocksample",
+    "n": 5,
+    "k": 5,
+    "seed": 1,
+    "solve_s": 120.4,
+    "value_b0": 37.02,
+    "exact_value": 37.11,
+    "policy_nodes": 152,
+    "policy_edges": 172,
+    "controller_states": 152,
+    "landmarks": 19,
+    "disjunctive": 8,
+    "belief": 0,
+    "edges": 80,
+    "belief_landmarks": 5,
+    "belief_landmarks_beyond_syntactic": 0,
+    "syntactic_baseline": 6,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-rock1(neg3)",
+      "ev-rock2(neg2) | ev-rock2(neg3)",
+      "ev-rock3(neg2) | ev-rock3(neg3)",
+      "ev-rock4(neg2) | ev-rock4(neg3)",
+      "ev-rock5(neg2) | ev-rock5(neg3)"
+    ],
+    "injective": true,
+    "sound_landmarks": 19,
+    "landmarks_total": 19,
+    "sound_orderings": 80,
+    "orderings_total": 80,
+    "single_fact_landmarks_exact": 5,
+    "single_fact_landmarks_missed": [],
+    "exhaustive_check_s": 1.247,
+    "cross_variable_orderings": 9,
+    "cross_variable_examples": [
+      "ev-rock1(neg3) < ev-rock3(neg2) | ev-rock3(neg3)",
+      "ev-rock2(neg2) | ev-rock2(neg3) < ev-rock1(neg3)",
+      "ev-rock2(neg2) | ev-rock2(neg3) < ev-rock3(neg2) | ev-rock3(neg3)",
+      "ev-rock4(neg2) | ev-rock4(neg3) < ev-rock1(neg3)",
+      "ev-rock4(neg2) | ev-rock4(neg3) < ev-rock2(neg2) | ev-rock2(neg3)",
+      "ev-rock4(neg2) | ev-rock4(neg3) < ev-rock3(neg2) | ev-rock3(neg3)"
+    ],
+    "p_terminate": 1.0,
+    "expected_steps": 19.0,
+    "p_end_within_100": 1.0,
+    "timeline": {
+      "ev-rock1(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 12.0,
+        "first_reached": {
+          "ev-rock1(neg3)": 1.0
+        }
+      },
+      "ev-rock2(neg2) | ev-rock2(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 6.375,
+        "first_reached": {
+          "ev-rock2(neg2)": 0.375,
+          "ev-rock2(neg3)": 0.625
+        }
+      },
+      "ev-rock3(neg2) | ev-rock3(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 14.5,
+        "first_reached": {
+          "ev-rock3(neg2)": 0.5,
+          "ev-rock3(neg3)": 0.5
+        }
+      },
+      "ev-rock4(neg2) | ev-rock4(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 2.0,
+        "first_reached": {
+          "ev-rock4(neg2)": 0.5,
+          "ev-rock4(neg3)": 0.5
+        }
+      },
+      "ev-rock5(neg2) | ev-rock5(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 6.125,
+        "first_reached": {
+          "ev-rock5(neg2)": 0.5,
+          "ev-rock5(neg3)": 0.5
+        }
+      }
+    },
+    "lm_time_s": 0.0006202
+  },
+  "rocksample-5-5-s2": {
+    "problem": "rocksample",
+    "n": 5,
+    "k": 5,
+    "seed": 2,
+    "solve_s": 120.3,
+    "value_b0": 36.05,
+    "exact_value": 36.068,
+    "policy_nodes": 136,
+    "policy_edges": 160,
+    "controller_states": 136,
+    "landmarks": 17,
+    "disjunctive": 9,
+    "belief": 0,
+    "edges": 41,
+    "belief_landmarks": 5,
+    "belief_landmarks_beyond_syntactic": 0,
+    "syntactic_baseline": 6,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-rock1(neg2) | ev-rock1(neg3)",
+      "ev-rock2(neg2) | ev-rock2(neg3)",
+      "ev-rock3(neg2) | ev-rock3(neg3)",
+      "ev-rock4(neg2) | ev-rock4(neg3)",
+      "ev-rock5(neg2) | ev-rock5(neg3)"
+    ],
+    "injective": true,
+    "sound_landmarks": 17,
+    "landmarks_total": 17,
+    "sound_orderings": 41,
+    "orderings_total": 41,
+    "single_fact_landmarks_exact": 2,
+    "single_fact_landmarks_missed": [
+      "at(c2-1)"
+    ],
+    "exhaustive_check_s": 0.613,
+    "cross_variable_orderings": 6,
+    "cross_variable_examples": [
+      "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock2(neg2) | ev-rock2(neg3)",
+      "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock3(neg2) | ev-rock3(neg3)",
+      "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock4(neg2) | ev-rock4(neg3)",
+      "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock5(neg2) | ev-rock5(neg3)",
+      "ev-rock2(neg2) | ev-rock2(neg3) < ev-rock3(neg2) | ev-rock3(neg3)",
+      "ev-rock4(neg2) | ev-rock4(neg3) < ev-rock5(neg2) | ev-rock5(neg3)"
+    ],
+    "p_terminate": 1.0,
+    "expected_steps": 17.281,
+    "p_end_within_100": 1.0,
+    "timeline": {
+      "ev-rock1(neg2) | ev-rock1(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 3.0,
+        "first_reached": {
+          "ev-rock1(neg2)": 0.5,
+          "ev-rock1(neg3)": 0.5
+        }
+      },
+      "ev-rock2(neg2) | ev-rock2(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 8.375,
+        "first_reached": {
+          "ev-rock2(neg2)": 0.375,
+          "ev-rock2(neg3)": 0.625
+        }
+      },
+      "ev-rock3(neg2) | ev-rock3(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 10.625,
+        "first_reached": {
+          "ev-rock3(neg2)": 0.5,
+          "ev-rock3(neg3)": 0.5
+        }
+      },
+      "ev-rock4(neg2) | ev-rock4(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 9.5,
+        "first_reached": {
+          "ev-rock4(neg2)": 0.25,
+          "ev-rock4(neg3)": 0.75
+        }
+      },
+      "ev-rock5(neg2) | ev-rock5(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 13.781,
+        "first_reached": {
+          "ev-rock5(neg2)": 0.2187,
+          "ev-rock5(neg3)": 0.7812
+        }
+      }
+    },
+    "lm_time_s": 0.0005042
+  },
+  "rocksample-5-5-s3": {
+    "problem": "rocksample",
+    "n": 5,
+    "k": 5,
+    "seed": 3,
+    "solve_s": 120.2,
+    "value_b0": 35.25,
+    "exact_value": 35.254,
+    "policy_nodes": 89,
+    "policy_edges": 103,
+    "controller_states": 89,
+    "landmarks": 17,
+    "disjunctive": 7,
+    "belief": 0,
+    "edges": 66,
+    "belief_landmarks": 5,
+    "belief_landmarks_beyond_syntactic": 0,
+    "syntactic_baseline": 6,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-rock1(neg2) | ev-rock1(neg3)",
+      "ev-rock2(neg2) | ev-rock2(neg3)",
+      "ev-rock3(neg2) | ev-rock3(neg3)",
+      "ev-rock4(neg3)",
+      "ev-rock5(neg2) | ev-rock5(neg3)"
+    ],
+    "injective": true,
+    "sound_landmarks": 17,
+    "landmarks_total": 17,
+    "sound_orderings": 66,
+    "orderings_total": 66,
+    "single_fact_landmarks_exact": 4,
+    "single_fact_landmarks_missed": [],
+    "exhaustive_check_s": 0.282,
+    "cross_variable_orderings": 10,
+    "cross_variable_examples": [
+      "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock3(neg2) | ev-rock3(neg3)",
+      "ev-rock2(neg2) | ev-rock2(neg3) < ev-rock1(neg2) | ev-rock1(neg3)",
+      "ev-rock2(neg2) | ev-rock2(neg3) < ev-rock3(neg2) | ev-rock3(neg3)",
+      "ev-rock2(neg2) | ev-rock2(neg3) < ev-rock4(neg3)",
+      "ev-rock2(neg2) | ev-rock2(neg3) < ev-rock5(neg2) | ev-rock5(neg3)",
+      "ev-rock4(neg3) < ev-rock1(neg2) | ev-rock1(neg3)"
+    ],
+    "p_terminate": 1.0,
+    "expected_steps": 17.0,
+    "p_end_within_100": 1.0,
+    "timeline": {
+      "ev-rock1(neg2) | ev-rock1(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 12.0,
+        "first_reached": {
+          "ev-rock1(neg2)": 0.5,
+          "ev-rock1(neg3)": 0.5
+        }
+      },
+      "ev-rock2(neg2) | ev-rock2(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 2.5,
+        "first_reached": {
+          "ev-rock2(neg2)": 0.5,
+          "ev-rock2(neg3)": 0.5
+        }
+      },
+      "ev-rock3(neg2) | ev-rock3(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 15.25,
+        "first_reached": {
+          "ev-rock3(neg2)": 0.5,
+          "ev-rock3(neg3)": 0.5
+        }
+      },
+      "ev-rock4(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 10.0,
+        "first_reached": {
+          "ev-rock4(neg3)": 1.0
+        }
+      },
+      "ev-rock5(neg2) | ev-rock5(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 6.75,
+        "first_reached": {
+          "ev-rock5(neg2)": 0.25,
+          "ev-rock5(neg3)": 0.75
+        }
+      }
+    },
+    "lm_time_s": 0.0003886
+  },
+  "rocksample-7-8-s1": {
+    "problem": "rocksample",
+    "n": 7,
+    "k": 8,
+    "seed": 1,
+    "solve_s": 307.4,
+    "value_b0": 41.47,
+    "exact_value": 43.466,
+    "policy_nodes": 677,
+    "policy_edges": 738,
+    "controller_states": 677,
+    "landmarks": 27,
+    "disjunctive": 13,
+    "belief": 0,
+    "edges": 122,
+    "belief_landmarks": 8,
+    "belief_landmarks_beyond_syntactic": 0,
+    "syntactic_baseline": 9,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-rock1(neg2) | ev-rock1(neg3)",
+      "ev-rock2(neg2) | ev-rock2(neg3)",
+      "ev-rock3(neg2) | ev-rock3(neg3)",
+      "ev-rock4(neg2) | ev-rock4(neg3)",
+      "ev-rock5(neg2) | ev-rock5(neg3)",
+      "ev-rock6(neg2) | ev-rock6(neg3)",
+      "ev-rock7(neg3)",
+      "ev-rock8(neg1) | ev-rock8(neg3)"
+    ],
+    "injective": true,
+    "sound_landmarks": 27,
+    "landmarks_total": 27,
+    "sound_orderings": 122,
+    "orderings_total": 122,
+    "single_fact_landmarks_exact": 4,
+    "single_fact_landmarks_missed": [],
+    "exhaustive_check_s": 31.712,
+    "cross_variable_orderings": 23,
+    "cross_variable_examples": [
+      "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock2(neg2) | ev-rock2(neg3)",
+      "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock3(neg2) | ev-rock3(neg3)",
+      "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock4(neg2) | ev-rock4(neg3)",
+      "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock5(neg2) | ev-rock5(neg3)",
+      "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock6(neg2) | ev-rock6(neg3)",
+      "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock7(neg3)"
+    ],
+    "p_terminate": 1.0,
+    "expected_steps": 27.266,
+    "p_end_within_100": 1.0,
+    "timeline": {
+      "ev-rock1(neg2) | ev-rock1(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 3.0,
+        "first_reached": {
+          "ev-rock1(neg2)": 0.5,
+          "ev-rock1(neg3)": 0.5
+        }
+      },
+      "ev-rock2(neg2) | ev-rock2(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 12.875,
+        "first_reached": {
+          "ev-rock2(neg2)": 0.25,
+          "ev-rock2(neg3)": 0.75
+        }
+      },
+      "ev-rock3(neg2) | ev-rock3(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 9.75,
+        "first_reached": {
+          "ev-rock3(neg2)": 0.5,
+          "ev-rock3(neg3)": 0.5
+        }
+      },
+      "ev-rock4(neg2) | ev-rock4(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 18.172,
+        "first_reached": {
+          "ev-rock4(neg2)": 0.5,
+          "ev-rock4(neg3)": 0.5
+        }
+      },
+      "ev-rock5(neg2) | ev-rock5(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 8.75,
+        "first_reached": {
+          "ev-rock5(neg2)": 0.375,
+          "ev-rock5(neg3)": 0.625
+        }
+      },
+      "ev-rock6(neg2) | ev-rock6(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 24.141,
+        "first_reached": {
+          "ev-rock6(neg2)": 0.2031,
+          "ev-rock6(neg3)": 0.7969
+        }
+      },
+      "ev-rock7(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 7.75,
+        "first_reached": {
+          "ev-rock7(neg3)": 1.0
+        }
+      },
+      "ev-rock8(neg1) | ev-rock8(neg3)": {
+        "p_reach": 1.0,
+        "expected_steps": 18.625,
+        "first_reached": {
+          "ev-rock8(neg1)": 0.5,
+          "ev-rock8(neg3)": 0.5
+        }
+      }
+    },
+    "lm_time_s": 0.0029125
+  },
+  "sensor-0.75": {
+    "problem": "sensor",
+    "p_correct": 0.75,
+    "solve_s": 1.9,
+    "value_b0": 3.55,
+    "exact_value": 3.554,
+    "policy_nodes": 19,
+    "policy_edges": 30,
+    "controller_states": 19,
+    "landmarks": 8,
+    "disjunctive": 4,
+    "belief": 0,
+    "edges": 13,
+    "belief_landmarks": 4,
+    "belief_landmarks_beyond_syntactic": 2,
+    "syntactic_baseline": 2,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+      "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+      "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+      "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+    ],
+    "injective": true,
+    "sound_landmarks": 8,
+    "landmarks_total": 8,
+    "sound_orderings": 13,
+    "orderings_total": 13,
+    "single_fact_landmarks_exact": 1,
+    "single_fact_landmarks_missed": [],
+    "exhaustive_check_s": 0.01,
+    "cross_variable_orderings": 3,
+    "cross_variable_examples": [
+      "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+      "ev-sensor-a(neg2) | ev-sensor-a(pos2) < ev-sensor-b(neg2) | ev-sensor-b(pos2)",
+      "ev-sensor-b(neg1) | ev-sensor-b(pos1) < ev-sensor-a(neg2) | ev-sensor-a(pos2)"
+    ],
+    "p_terminate": 1.0,
+    "expected_steps": 6.4,
+    "p_end_within_100": 1.0,
+    "timeline": {
+      "ev-sensor-a(neg1) | ev-sensor-a(pos1)": {
+        "p_reach": 1.0,
+        "expected_steps": 1.0,
+        "first_reached": {
+          "ev-sensor-a(neg1)": 0.5,
+          "ev-sensor-a(pos1)": 0.5
+        }
+      },
+      "ev-sensor-a(neg2) | ev-sensor-a(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 4.2,
+        "first_reached": {
+          "ev-sensor-a(neg2)": 0.5,
+          "ev-sensor-a(pos2)": 0.5
+        }
+      },
+      "ev-sensor-b(neg1) | ev-sensor-b(pos1)": {
+        "p_reach": 1.0,
+        "expected_steps": 2.0,
+        "first_reached": {
+          "ev-sensor-b(neg1)": 0.5,
+          "ev-sensor-b(pos1)": 0.5
+        }
+      },
+      "ev-sensor-b(neg2) | ev-sensor-b(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 6.4,
+        "first_reached": {
+          "ev-sensor-b(neg2)": 0.5,
+          "ev-sensor-b(pos2)": 0.5
+        }
+      }
+    },
+    "lm_time_s": 0.0001159
+  },
+  "sensor-0.8": {
+    "problem": "sensor",
+    "p_correct": 0.8,
+    "solve_s": 0.3,
+    "value_b0": 6.38,
+    "exact_value": 6.383,
+    "policy_nodes": 20,
+    "policy_edges": 32,
+    "controller_states": 20,
+    "landmarks": 8,
+    "disjunctive": 4,
+    "belief": 0,
+    "edges": 10,
+    "belief_landmarks": 4,
+    "belief_landmarks_beyond_syntactic": 2,
+    "syntactic_baseline": 2,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+      "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+      "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+      "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+    ],
+    "injective": true,
+    "sound_landmarks": 8,
+    "landmarks_total": 8,
+    "sound_orderings": 10,
+    "orderings_total": 10,
+    "single_fact_landmarks_exact": 1,
+    "single_fact_landmarks_missed": [],
+    "exhaustive_check_s": 0.01,
+    "cross_variable_orderings": 0,
+    "cross_variable_examples": [],
+    "p_terminate": 1.0,
+    "expected_steps": 5.882,
+    "p_end_within_100": 1.0,
+    "timeline": {
+      "ev-sensor-a(neg1) | ev-sensor-a(pos1)": {
+        "p_reach": 1.0,
+        "expected_steps": 1.0,
+        "first_reached": {
+          "ev-sensor-a(neg1)": 0.5,
+          "ev-sensor-a(pos1)": 0.5
+        }
+      },
+      "ev-sensor-a(neg2) | ev-sensor-a(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 4.004,
+        "first_reached": {
+          "ev-sensor-a(neg2)": 0.5,
+          "ev-sensor-a(pos2)": 0.5
+        }
+      },
+      "ev-sensor-b(neg1) | ev-sensor-b(pos1)": {
+        "p_reach": 1.0,
+        "expected_steps": 2.786,
+        "first_reached": {
+          "ev-sensor-b(neg1)": 0.5,
+          "ev-sensor-b(pos1)": 0.5
+        }
+      },
+      "ev-sensor-b(neg2) | ev-sensor-b(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 5.415,
+        "first_reached": {
+          "ev-sensor-b(neg2)": 0.5,
+          "ev-sensor-b(pos2)": 0.5
+        }
+      }
+    },
+    "lm_time_s": 0.0001251
+  },
+  "sensor-0.85": {
+    "problem": "sensor",
+    "p_correct": 0.85,
+    "solve_s": 0.1,
+    "value_b0": 8.69,
+    "exact_value": 8.695,
+    "policy_nodes": 21,
+    "policy_edges": 34,
+    "controller_states": 21,
+    "landmarks": 8,
+    "disjunctive": 4,
+    "belief": 0,
+    "edges": 11,
+    "belief_landmarks": 4,
+    "belief_landmarks_beyond_syntactic": 2,
+    "syntactic_baseline": 2,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+      "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+      "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+      "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+    ],
+    "injective": true,
+    "sound_landmarks": 8,
+    "landmarks_total": 8,
+    "sound_orderings": 11,
+    "orderings_total": 11,
+    "single_fact_landmarks_exact": 1,
+    "single_fact_landmarks_missed": [],
+    "exhaustive_check_s": 0.01,
+    "cross_variable_orderings": 1,
+    "cross_variable_examples": [
+      "ev-sensor-b(neg1) | ev-sensor-b(pos1) < ev-sensor-a(neg1) | ev-sensor-a(pos1)"
+    ],
+    "p_terminate": 1.0,
+    "expected_steps": 5.369,
+    "p_end_within_100": 1.0,
+    "timeline": {
+      "ev-sensor-a(neg1) | ev-sensor-a(pos1)": {
+        "p_reach": 1.0,
+        "expected_steps": 2.0,
+        "first_reached": {
+          "ev-sensor-a(neg1)": 0.5,
+          "ev-sensor-a(pos1)": 0.5
+        }
+      },
+      "ev-sensor-a(neg2) | ev-sensor-a(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 4.097,
+        "first_reached": {
+          "ev-sensor-a(neg2)": 0.5,
+          "ev-sensor-a(pos2)": 0.5
+        }
+      },
+      "ev-sensor-b(neg1) | ev-sensor-b(pos1)": {
+        "p_reach": 1.0,
+        "expected_steps": 1.0,
+        "first_reached": {
+          "ev-sensor-b(neg1)": 0.5,
+          "ev-sensor-b(pos1)": 0.5
+        }
+      },
+      "ev-sensor-b(neg2) | ev-sensor-b(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 4.957,
+        "first_reached": {
+          "ev-sensor-b(neg2)": 0.5,
+          "ev-sensor-b(pos2)": 0.5
+        }
+      }
+    },
+    "lm_time_s": 0.0001269
+  },
+  "sensor-0.9": {
+    "problem": "sensor",
+    "p_correct": 0.9,
+    "solve_s": 0.0,
+    "value_b0": 10.47,
+    "exact_value": 10.472,
+    "policy_nodes": 25,
+    "policy_edges": 42,
+    "controller_states": 25,
+    "landmarks": 8,
+    "disjunctive": 4,
+    "belief": 0,
+    "edges": 11,
+    "belief_landmarks": 4,
+    "belief_landmarks_beyond_syntactic": 2,
+    "syntactic_baseline": 2,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+      "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+      "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+      "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+    ],
+    "injective": true,
+    "sound_landmarks": 8,
+    "landmarks_total": 8,
+    "sound_orderings": 11,
+    "orderings_total": 11,
+    "single_fact_landmarks_exact": 1,
+    "single_fact_landmarks_missed": [],
+    "exhaustive_check_s": 0.015,
+    "cross_variable_orderings": 1,
+    "cross_variable_examples": [
+      "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-b(neg1) | ev-sensor-b(pos1)"
+    ],
+    "p_terminate": 1.0,
+    "expected_steps": 4.878,
+    "p_end_within_100": 1.0,
+    "timeline": {
+      "ev-sensor-a(neg1) | ev-sensor-a(pos1)": {
+        "p_reach": 1.0,
+        "expected_steps": 1.0,
+        "first_reached": {
+          "ev-sensor-a(neg1)": 0.5,
+          "ev-sensor-a(pos1)": 0.5
+        }
+      },
+      "ev-sensor-a(neg2) | ev-sensor-a(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 4.159,
+        "first_reached": {
+          "ev-sensor-a(neg2)": 0.5,
+          "ev-sensor-a(pos2)": 0.5
+        }
+      },
+      "ev-sensor-b(neg1) | ev-sensor-b(pos1)": {
+        "p_reach": 1.0,
+        "expected_steps": 2.0,
+        "first_reached": {
+          "ev-sensor-b(neg1)": 0.5,
+          "ev-sensor-b(pos1)": 0.5
+        }
+      },
+      "ev-sensor-b(neg2) | ev-sensor-b(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 4.159,
+        "first_reached": {
+          "ev-sensor-b(neg2)": 0.5,
+          "ev-sensor-b(pos2)": 0.5
+        }
+      }
+    },
+    "lm_time_s": 0.0001305
+  },
+  "sensor-0.95": {
+    "problem": "sensor",
+    "p_correct": 0.95,
+    "solve_s": 0.0,
+    "value_b0": 12.58,
+    "exact_value": 12.58,
+    "policy_nodes": 7,
+    "policy_edges": 6,
+    "controller_states": 7,
+    "landmarks": 6,
+    "disjunctive": 2,
+    "belief": 0,
+    "edges": 7,
+    "belief_landmarks": 2,
+    "belief_landmarks_beyond_syntactic": 0,
+    "syntactic_baseline": 2,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+      "ev-sensor-b(neg1) | ev-sensor-b(pos1)"
+    ],
+    "injective": true,
+    "sound_landmarks": 6,
+    "landmarks_total": 6,
+    "sound_orderings": 7,
+    "orderings_total": 7,
+    "single_fact_landmarks_exact": 1,
+    "single_fact_landmarks_missed": [],
+    "exhaustive_check_s": 0.001,
+    "cross_variable_orderings": 1,
+    "cross_variable_examples": [
+      "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-b(neg1) | ev-sensor-b(pos1)"
+    ],
+    "p_terminate": 1.0,
+    "expected_steps": 2.0,
+    "p_end_within_100": 1.0,
+    "timeline": {
+      "ev-sensor-a(neg1) | ev-sensor-a(pos1)": {
+        "p_reach": 1.0,
+        "expected_steps": 1.0,
+        "first_reached": {
+          "ev-sensor-a(neg1)": 0.5,
+          "ev-sensor-a(pos1)": 0.5
+        }
+      },
+      "ev-sensor-b(neg1) | ev-sensor-b(pos1)": {
+        "p_reach": 1.0,
+        "expected_steps": 2.0,
+        "first_reached": {
+          "ev-sensor-b(neg1)": 0.5,
+          "ev-sensor-b(pos1)": 0.5
+        }
+      }
+    },
+    "lm_time_s": 8.01e-05
+  },
+  "tiger-0.6": {
+    "problem": "tiger",
+    "p_correct": 0.6,
+    "solve_s": 0.6,
+    "value_b0": -17.81,
+    "exact_value": -17.811,
+    "policy_nodes": 17,
+    "policy_edges": 30,
+    "controller_states": 17,
+    "landmarks": 11,
+    "disjunctive": 8,
+    "belief": 0,
+    "edges": 17,
+    "belief_landmarks": 8,
+    "belief_landmarks_beyond_syntactic": 7,
+    "syntactic_baseline": 1,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-direction(neg1) | ev-direction(pos1)",
+      "ev-direction(neg2) | ev-direction(pos2)",
+      "ev-direction(neg3) | ev-direction(pos3)",
+      "ev-direction(neg4) | ev-direction(pos4)",
+      "ev-direction(neg5) | ev-direction(pos5)",
+      "ev-direction(neg6) | ev-direction(pos6)",
+      "ev-direction(neg7) | ev-direction(pos7)",
+      "ev-direction(neg8) | ev-direction(pos8)"
+    ],
+    "injective": true,
+    "sound_landmarks": 11,
+    "landmarks_total": 11,
+    "sound_orderings": 17,
+    "orderings_total": 17,
+    "single_fact_landmarks_exact": 1,
+    "single_fact_landmarks_missed": [],
+    "exhaustive_check_s": 0.013,
+    "cross_variable_orderings": 0,
+    "cross_variable_examples": [],
+    "p_terminate": 1.0,
+    "expected_steps": 36.996,
+    "p_end_within_100": 0.9706,
+    "timeline": {
+      "ev-direction(neg1) | ev-direction(pos1)": {
+        "p_reach": 1.0,
+        "expected_steps": 1.0,
+        "first_reached": {
+          "ev-direction(neg1)": 0.5,
+          "ev-direction(pos1)": 0.5
+        }
+      },
+      "ev-direction(neg2) | ev-direction(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 3.846,
+        "first_reached": {
+          "ev-direction(neg2)": 0.5,
+          "ev-direction(pos2)": 0.5
+        }
+      },
+      "ev-direction(neg3) | ev-direction(pos3)": {
+        "p_reach": 1.0,
+        "expected_steps": 8.143,
+        "first_reached": {
+          "ev-direction(neg3)": 0.5,
+          "ev-direction(pos3)": 0.5
+        }
+      },
+      "ev-direction(neg4) | ev-direction(pos4)": {
+        "p_reach": 1.0,
+        "expected_steps": 13.402,
+        "first_reached": {
+          "ev-direction(neg4)": 0.5,
+          "ev-direction(pos4)": 0.5
+        }
+      },
+      "ev-direction(neg5) | ev-direction(pos5)": {
+        "p_reach": 1.0,
+        "expected_steps": 19.182,
+        "first_reached": {
+          "ev-direction(neg5)": 0.5,
+          "ev-direction(pos5)": 0.5
+        }
+      },
+      "ev-direction(neg6) | ev-direction(pos6)": {
+        "p_reach": 1.0,
+        "expected_steps": 25.158,
+        "first_reached": {
+          "ev-direction(neg6)": 0.5,
+          "ev-direction(pos6)": 0.5
+        }
+      },
+      "ev-direction(neg7) | ev-direction(pos7)": {
+        "p_reach": 1.0,
+        "expected_steps": 31.13,
+        "first_reached": {
+          "ev-direction(neg7)": 0.5,
+          "ev-direction(pos7)": 0.5
+        }
+      },
+      "ev-direction(neg8) | ev-direction(pos8)": {
+        "p_reach": 1.0,
+        "expected_steps": 36.996,
+        "first_reached": {
+          "ev-direction(neg8)": 0.5,
+          "ev-direction(pos8)": 0.5
+        }
+      }
+    },
+    "lm_time_s": 0.0001308
+  },
+  "tiger-0.65": {
+    "problem": "tiger",
+    "p_correct": 0.65,
+    "solve_s": 0.0,
+    "value_b0": -13.75,
+    "exact_value": -13.755,
+    "policy_nodes": 13,
+    "policy_edges": 22,
+    "controller_states": 13,
+    "landmarks": 9,
+    "disjunctive": 6,
+    "belief": 0,
+    "edges": 13,
+    "belief_landmarks": 6,
+    "belief_landmarks_beyond_syntactic": 5,
+    "syntactic_baseline": 1,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-direction(neg1) | ev-direction(pos1)",
+      "ev-direction(neg2) | ev-direction(pos2)",
+      "ev-direction(neg3) | ev-direction(pos3)",
+      "ev-direction(neg4) | ev-direction(pos4)",
+      "ev-direction(neg5) | ev-direction(pos5)",
+      "ev-direction(neg6) | ev-direction(pos6)"
+    ],
+    "injective": true,
+    "sound_landmarks": 9,
+    "landmarks_total": 9,
+    "sound_orderings": 13,
+    "orderings_total": 13,
+    "single_fact_landmarks_exact": 1,
+    "single_fact_landmarks_missed": [],
+    "exhaustive_check_s": 0.007,
+    "cross_variable_orderings": 0,
+    "cross_variable_examples": [],
+    "p_terminate": 1.0,
+    "expected_steps": 19.048,
+    "p_end_within_100": 0.9995,
+    "timeline": {
+      "ev-direction(neg1) | ev-direction(pos1)": {
+        "p_reach": 1.0,
+        "expected_steps": 1.0,
+        "first_reached": {
+          "ev-direction(neg1)": 0.5,
+          "ev-direction(pos1)": 0.5
+        }
+      },
+      "ev-direction(neg2) | ev-direction(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 3.67,
+        "first_reached": {
+          "ev-direction(neg2)": 0.5,
+          "ev-direction(pos2)": 0.5
+        }
+      },
+      "ev-direction(neg3) | ev-direction(pos3)": {
+        "p_reach": 1.0,
+        "expected_steps": 7.299,
+        "first_reached": {
+          "ev-direction(neg3)": 0.5,
+          "ev-direction(pos3)": 0.5
+        }
+      },
+      "ev-direction(neg4) | ev-direction(pos4)": {
+        "p_reach": 1.0,
+        "expected_steps": 11.265,
+        "first_reached": {
+          "ev-direction(neg4)": 0.5,
+          "ev-direction(pos4)": 0.5
+        }
+      },
+      "ev-direction(neg5) | ev-direction(pos5)": {
+        "p_reach": 1.0,
+        "expected_steps": 15.223,
+        "first_reached": {
+          "ev-direction(neg5)": 0.5,
+          "ev-direction(pos5)": 0.5
+        }
+      },
+      "ev-direction(neg6) | ev-direction(pos6)": {
+        "p_reach": 1.0,
+        "expected_steps": 19.048,
+        "first_reached": {
+          "ev-direction(neg6)": 0.5,
+          "ev-direction(pos6)": 0.5
+        }
+      }
+    },
+    "lm_time_s": 0.0001106
+  },
+  "tiger-0.7": {
+    "problem": "tiger",
+    "p_correct": 0.7,
+    "solve_s": 0.0,
+    "value_b0": -7.69,
+    "exact_value": -7.689,
+    "policy_nodes": 9,
+    "policy_edges": 14,
+    "controller_states": 9,
+    "landmarks": 7,
+    "disjunctive": 4,
+    "belief": 0,
+    "edges": 9,
+    "belief_landmarks": 4,
+    "belief_landmarks_beyond_syntactic": 3,
+    "syntactic_baseline": 1,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-direction(neg1) | ev-direction(pos1)",
+      "ev-direction(neg2) | ev-direction(pos2)",
+      "ev-direction(neg3) | ev-direction(pos3)",
+      "ev-direction(neg4) | ev-direction(pos4)"
+    ],
+    "injective": true,
+    "sound_landmarks": 7,
+    "landmarks_total": 7,
+    "sound_orderings": 9,
+    "orderings_total": 9,
+    "single_fact_landmarks_exact": 1,
+    "single_fact_landmarks_missed": [],
+    "exhaustive_check_s": 0.003,
+    "cross_variable_orderings": 0,
+    "cross_variable_examples": [],
+    "p_terminate": 1.0,
+    "expected_steps": 9.347,
+    "p_end_within_100": 1.0,
+    "timeline": {
+      "ev-direction(neg1) | ev-direction(pos1)": {
+        "p_reach": 1.0,
+        "expected_steps": 1.0,
+        "first_reached": {
+          "ev-direction(neg1)": 0.5,
+          "ev-direction(pos1)": 0.5
+        }
+      },
+      "ev-direction(neg2) | ev-direction(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 3.448,
+        "first_reached": {
+          "ev-direction(neg2)": 0.5,
+          "ev-direction(pos2)": 0.5
+        }
+      },
+      "ev-direction(neg3) | ev-direction(pos3)": {
+        "p_reach": 1.0,
+        "expected_steps": 6.405,
+        "first_reached": {
+          "ev-direction(neg3)": 0.5,
+          "ev-direction(pos3)": 0.5
+        }
+      },
+      "ev-direction(neg4) | ev-direction(pos4)": {
+        "p_reach": 1.0,
+        "expected_steps": 9.347,
+        "first_reached": {
+          "ev-direction(neg4)": 0.5,
+          "ev-direction(pos4)": 0.5
+        }
+      }
+    },
+    "lm_time_s": 9.06e-05
+  },
+  "tiger-0.75": {
+    "problem": "tiger",
+    "p_correct": 0.75,
+    "solve_s": 0.0,
+    "value_b0": -0.5,
+    "exact_value": -0.496,
+    "policy_nodes": 7,
+    "policy_edges": 10,
+    "controller_states": 7,
+    "landmarks": 6,
+    "disjunctive": 3,
+    "belief": 0,
+    "edges": 7,
+    "belief_landmarks": 3,
+    "belief_landmarks_beyond_syntactic": 2,
+    "syntactic_baseline": 1,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-direction(neg1) | ev-direction(pos1)",
+      "ev-direction(neg2) | ev-direction(pos2)",
+      "ev-direction(neg3) | ev-direction(pos3)"
+    ],
+    "injective": true,
+    "sound_landmarks": 6,
+    "landmarks_total": 6,
+    "sound_orderings": 7,
+    "orderings_total": 7,
+    "single_fact_landmarks_exact": 1,
+    "single_fact_landmarks_missed": [],
+    "exhaustive_check_s": 0.001,
+    "cross_variable_orderings": 0,
+    "cross_variable_examples": [],
+    "p_terminate": 1.0,
+    "expected_steps": 5.571,
+    "p_end_within_100": 1.0,
+    "timeline": {
+      "ev-direction(neg1) | ev-direction(pos1)": {
+        "p_reach": 1.0,
+        "expected_steps": 1.0,
+        "first_reached": {
+          "ev-direction(neg1)": 0.5,
+          "ev-direction(pos1)": 0.5
+        }
+      },
+      "ev-direction(neg2) | ev-direction(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 3.2,
+        "first_reached": {
+          "ev-direction(neg2)": 0.5,
+          "ev-direction(pos2)": 0.5
+        }
+      },
+      "ev-direction(neg3) | ev-direction(pos3)": {
+        "p_reach": 1.0,
+        "expected_steps": 5.571,
+        "first_reached": {
+          "ev-direction(neg3)": 0.5,
+          "ev-direction(pos3)": 0.5
+        }
+      }
+    },
+    "lm_time_s": 7.93e-05
+  },
+  "tiger-0.8": {
+    "problem": "tiger",
+    "p_correct": 0.8,
+    "solve_s": 0.0,
+    "value_b0": 8.97,
+    "exact_value": 8.967,
+    "policy_nodes": 7,
+    "policy_edges": 10,
+    "controller_states": 7,
+    "landmarks": 6,
+    "disjunctive": 3,
+    "belief": 0,
+    "edges": 7,
+    "belief_landmarks": 3,
+    "belief_landmarks_beyond_syntactic": 2,
+    "syntactic_baseline": 1,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-direction(neg1) | ev-direction(pos1)",
+      "ev-direction(neg2) | ev-direction(pos2)",
+      "ev-direction(neg3) | ev-direction(pos3)"
+    ],
+    "injective": true,
+    "sound_landmarks": 6,
+    "landmarks_total": 6,
+    "sound_orderings": 7,
+    "orderings_total": 7,
+    "single_fact_landmarks_exact": 1,
+    "single_fact_landmarks_missed": [],
+    "exhaustive_check_s": 0.001,
+    "cross_variable_orderings": 0,
+    "cross_variable_examples": [],
+    "p_terminate": 1.0,
+    "expected_steps": 4.846,
+    "p_end_within_100": 1.0,
+    "timeline": {
+      "ev-direction(neg1) | ev-direction(pos1)": {
+        "p_reach": 1.0,
+        "expected_steps": 1.0,
+        "first_reached": {
+          "ev-direction(neg1)": 0.5,
+          "ev-direction(pos1)": 0.5
+        }
+      },
+      "ev-direction(neg2) | ev-direction(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 2.941,
+        "first_reached": {
+          "ev-direction(neg2)": 0.5,
+          "ev-direction(pos2)": 0.5
+        }
+      },
+      "ev-direction(neg3) | ev-direction(pos3)": {
+        "p_reach": 1.0,
+        "expected_steps": 4.846,
+        "first_reached": {
+          "ev-direction(neg3)": 0.5,
+          "ev-direction(pos3)": 0.5
+        }
+      }
+    },
+    "lm_time_s": 8.14e-05
+  },
+  "tiger-0.85": {
+    "problem": "tiger",
+    "p_correct": 0.85,
+    "solve_s": 0.0,
+    "value_b0": 19.37,
+    "exact_value": 19.371,
+    "policy_nodes": 5,
+    "policy_edges": 6,
+    "controller_states": 5,
+    "landmarks": 5,
+    "disjunctive": 2,
+    "belief": 0,
+    "edges": 5,
+    "belief_landmarks": 2,
+    "belief_landmarks_beyond_syntactic": 1,
+    "syntactic_baseline": 1,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-direction(neg1) | ev-direction(pos1)",
+      "ev-direction(neg2) | ev-direction(pos2)"
+    ],
+    "injective": true,
+    "sound_landmarks": 5,
+    "landmarks_total": 5,
+    "sound_orderings": 5,
+    "orderings_total": 5,
+    "single_fact_landmarks_exact": 1,
+    "single_fact_landmarks_missed": [],
+    "exhaustive_check_s": 0.001,
+    "cross_variable_orderings": 0,
+    "cross_variable_examples": [],
+    "p_terminate": 1.0,
+    "expected_steps": 2.685,
+    "p_end_within_100": 1.0,
+    "timeline": {
+      "ev-direction(neg1) | ev-direction(pos1)": {
+        "p_reach": 1.0,
+        "expected_steps": 1.0,
+        "first_reached": {
+          "ev-direction(neg1)": 0.5,
+          "ev-direction(pos1)": 0.5
+        }
+      },
+      "ev-direction(neg2) | ev-direction(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 2.685,
+        "first_reached": {
+          "ev-direction(neg2)": 0.5,
+          "ev-direction(pos2)": 0.5
+        }
+      }
+    },
+    "lm_time_s": 7.28e-05
+  },
+  "tiger-0.9": {
+    "problem": "tiger",
+    "p_correct": 0.9,
+    "solve_s": 0.0,
+    "value_b0": 33.14,
+    "exact_value": 33.143,
+    "policy_nodes": 5,
+    "policy_edges": 6,
+    "controller_states": 5,
+    "landmarks": 5,
+    "disjunctive": 2,
+    "belief": 0,
+    "edges": 5,
+    "belief_landmarks": 2,
+    "belief_landmarks_beyond_syntactic": 1,
+    "syntactic_baseline": 1,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-direction(neg1) | ev-direction(pos1)",
+      "ev-direction(neg2) | ev-direction(pos2)"
+    ],
+    "injective": true,
+    "sound_landmarks": 5,
+    "landmarks_total": 5,
+    "sound_orderings": 5,
+    "orderings_total": 5,
+    "single_fact_landmarks_exact": 1,
+    "single_fact_landmarks_missed": [],
+    "exhaustive_check_s": 0.001,
+    "cross_variable_orderings": 0,
+    "cross_variable_examples": [],
+    "p_terminate": 1.0,
+    "expected_steps": 2.439,
+    "p_end_within_100": 1.0,
+    "timeline": {
+      "ev-direction(neg1) | ev-direction(pos1)": {
+        "p_reach": 1.0,
+        "expected_steps": 1.0,
+        "first_reached": {
+          "ev-direction(neg1)": 0.5,
+          "ev-direction(pos1)": 0.5
+        }
+      },
+      "ev-direction(neg2) | ev-direction(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 2.439,
+        "first_reached": {
+          "ev-direction(neg2)": 0.5,
+          "ev-direction(pos2)": 0.5
+        }
+      }
+    },
+    "lm_time_s": 7.98e-05
+  },
+  "tiger-0.95": {
+    "problem": "tiger",
+    "p_correct": 0.95,
+    "solve_s": 0.0,
+    "value_b0": 43.15,
+    "exact_value": 43.151,
+    "policy_nodes": 5,
+    "policy_edges": 6,
+    "controller_states": 5,
+    "landmarks": 5,
+    "disjunctive": 2,
+    "belief": 0,
+    "edges": 5,
+    "belief_landmarks": 2,
+    "belief_landmarks_beyond_syntactic": 1,
+    "syntactic_baseline": 1,
+    "commitment_landmarks": [],
+    "evidence_chain": [
+      "ev-direction(neg1) | ev-direction(pos1)",
+      "ev-direction(neg2) | ev-direction(pos2)"
+    ],
+    "injective": true,
+    "sound_landmarks": 5,
+    "landmarks_total": 5,
+    "sound_orderings": 5,
+    "orderings_total": 5,
+    "single_fact_landmarks_exact": 1,
+    "single_fact_landmarks_missed": [],
+    "exhaustive_check_s": 0.0,
+    "cross_variable_orderings": 0,
+    "cross_variable_examples": [],
+    "p_terminate": 1.0,
+    "expected_steps": 2.21,
+    "p_end_within_100": 1.0,
+    "timeline": {
+      "ev-direction(neg1) | ev-direction(pos1)": {
+        "p_reach": 1.0,
+        "expected_steps": 1.0,
+        "first_reached": {
+          "ev-direction(neg1)": 0.5,
+          "ev-direction(pos1)": 0.5
+        }
+      },
+      "ev-direction(neg2) | ev-direction(pos2)": {
+        "p_reach": 1.0,
+        "expected_steps": 2.21,
+        "first_reached": {
+          "ev-direction(neg2)": 0.5,
+          "ev-direction(pos2)": 0.5
+        }
+      }
+    },
+    "lm_time_s": 9.74e-05
+  }
+}

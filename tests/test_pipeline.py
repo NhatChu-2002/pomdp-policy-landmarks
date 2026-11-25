@@ -40,9 +40,25 @@ def test_encoder_commits_only_through_policy_rules():
     assert "neg-commit" not in domain and "confirm" not in domain
 
 
+def test_well_formedness_rejects_sign_flip():
+    from policy_landmarks.spec import BSCTransition, BeliefRef, BeliefUpdate
+    spec = HAND_WRITTEN["tiger"]()
+    # leaning left + growl right jumps straight to leaning right: adds k(right) while k(left) holds
+    spec.transitions.append(BSCTransition(
+        "right", (BeliefRef("direction", "left", "pos", holds=True),),
+        (BeliefUpdate("direction", "right", "pos"),),
+        (BeliefUpdate("direction", "left", "pos"),)))
+    try:
+        compile_to_pddl(spec)
+    except ValueError:
+        return
+    raise AssertionError("malformed controller was compiled")
+
+
 def test_landmarks_differ_between_policies(tmp_path=None):
-    if not FAST_DOWNWARD.exists():
-        return                                     # planner not built here
+    if not (FAST_DOWNWARD.parent / "builds" / "release64").exists():
+        import pytest
+        pytest.skip("Fast Downward build not found")
     work = Path(tmp_path or ROOT / "experiments" / "results" / "work" / "tests")
     tiger, _ = graph(run_spec(work / "tiger", HAND_WRITTEN["tiger"]())["parsed"])
     channel, _ = graph(run_spec(work / "channel", HAND_WRITTEN["channel"]())["parsed"])
@@ -53,6 +69,23 @@ def test_landmarks_differ_between_policies(tmp_path=None):
 
 if __name__ == "__main__":
     for test in (test_ground_truth_on_toy_task, test_encoder_commits_only_through_policy_rules,
-                 test_landmarks_differ_between_policies):
+                 test_well_formedness_rejects_sign_flip, test_landmarks_differ_between_policies):
         test()
         print("ok", test.__name__)
+
+
+def test_first_hit_geometric_chain():
+    """Root loops on itself with p=0.5 and ends otherwise: P(end)=1, E[steps]=2."""
+    from policy_landmarks.extraction import first_hit
+    g = {"nodes": [{"id": 0, "kind": "inner"}, {"id": 1, "kind": "commit_end"}],
+         "edges": [{"from": 0, "to": 0, "p": 0.5}, {"from": 0, "to": 1, "p": 0.5}]}
+    p, steps = first_hit(g, {1: 1.0})
+    assert abs(p - 1) < 1e-9 and abs(steps - 2) < 1e-6
+    assert first_hit(g, {0: 1.0}) == (1.0, 0.0)          # target holds at the root
+
+
+def test_p_end_within_geometric_chain():
+    from policy_landmarks.extraction import p_end_within
+    g = {"nodes": [{"id": 0, "kind": "inner"}, {"id": 1, "kind": "commit_end"}],
+         "edges": [{"from": 0, "to": 0, "p": 0.5}, {"from": 0, "to": 1, "p": 0.5}]}
+    assert abs(p_end_within(g, 3) - 0.875) < 1e-12

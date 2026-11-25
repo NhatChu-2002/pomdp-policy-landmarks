@@ -21,7 +21,7 @@ LANDMARK_RE = re.compile(
     r"\((?P<ach_min>\d+),\s*(?P<ach_max>\d+)\)"
 )
 ORDER_RE = re.compile(
-    r"^(?P<direction><-|->)_(?P<order>[A-Za-z]+)\s+LM\s+(?P<target>\d+)"
+    r"^(?P<direction><-|->)_(?P<order>[A-Za-z_]+)\s+LM\s+(?P<target>\d+)"
 )
 FACT_RE = re.compile(
     r"(?P<atom_type>Atom|NegatedAtom)\s+"

@@ -1,0 +1,32 @@
+{
+"problem": "tiger", "p_correct": 0.7,
+"solve_seconds": 0.029000043869018555,
+"value_at_b0": -7.6894030010012315,
+"states": ["left","right"],
+"nodes": [
+{"id":0,"kind":"inner","action":"listen","belief":"0:0.5 1:0.5"},
+{"id":1,"kind":"inner","action":"listen","belief":"0:0.7 1:0.3"},
+{"id":2,"kind":"inner","action":"listen","belief":"0:0.3 1:0.7"},
+{"id":3,"kind":"inner","action":"listen","belief":"0:0.844827586 1:0.155172414"},
+{"id":4,"kind":"inner","action":"listen","belief":"0:0.155172414 1:0.844827586"},
+{"id":5,"kind":"inner","action":"listen","belief":"0:0.927027027 1:0.072972973"},
+{"id":6,"kind":"inner","action":"listen","belief":"0:0.072972973 1:0.927027027"},
+{"id":7,"kind":"commit_end","action":"right","belief":"0:0.967365028 1:0.032634972"},
+{"id":8,"kind":"commit_end","action":"left","belief":"0:0.032634972 1:0.967365028"}
+],
+"edges": [
+{"from":0,"obs":"left","to":1,"p":0.5},
+{"from":0,"obs":"right","to":2,"p":0.5},
+{"from":1,"obs":"left","to":3,"p":0.58},
+{"from":1,"obs":"right","to":0,"p":0.42000000000000004},
+{"from":2,"obs":"left","to":0,"p":0.42000000000000004},
+{"from":2,"obs":"right","to":4,"p":0.58},
+{"from":3,"obs":"left","to":5,"p":0.6379310344827586},
+{"from":3,"obs":"right","to":1,"p":0.36206896551724144},
+{"from":4,"obs":"left","to":2,"p":0.36206896551724144},
+{"from":4,"obs":"right","to":6,"p":0.6379310344827586},
+{"from":5,"obs":"left","to":7,"p":0.6708108108108107},
+{"from":5,"obs":"right","to":3,"p":0.32918918918918927},
+{"from":6,"obs":"left","to":4,"p":0.32918918918918927},
+{"from":6,"obs":"right","to":8,"p":0.6708108108108107}
+]}

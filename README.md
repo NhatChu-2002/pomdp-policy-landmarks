@@ -16,7 +16,8 @@ Run everything from the repository root (Python 3, tested with 3.12; the planner
 python -m policy_landmarks list                   # available controllers
 python -m policy_landmarks explain tiger          # landmarks and orderings
 python -m policy_landmarks explain sensor-2 --induced --check
-python experiments/run_paper.py                   # all paper results, ~1 min
+python experiments/run_paper.py extracted         # main paper results (SARSOP policy graphs), ~1 min
+python experiments/run_paper.py                   # every experiment
 python -m pytest tests                            # fast checks
 ```
 
@@ -31,17 +32,20 @@ policy_landmarks/        the pipeline (Python package)
   spec.py                controller data model: variables, sensing rules, commitment rules
   domains.py             hand-written controllers (HAND_WRITTEN registry)
   induction.py           controllers learned from SARSOP traces (TRACE_SOURCES, induce)
+  extraction.py          controllers extracted from SARSOP policy graphs (main results):
+                         evidence abstraction, PDDL, first-passage times, exact policy value
   encoder.py             controller -> PDDL (one commit action per commitment rule)
   planner.py             run Fast Downward, read the landmark graph
   fd_output.py           parser for Fast Downward's landmark output
   ground_truth.py        exact landmarks/orderings by exhaustive search (checks RHW)
   __main__.py            command line: list / compile / explain
 experiments/
-  run_paper.py           every table in the paper (main, exactness, ablation,
-                         induced, mutation, scaling)
+  run_paper.py           every table (extracted = main paper results; main, exactness,
+                         ablation, induced, mutation, scaling = hand-written controllers)
+  policy_graphs/*.json   SARSOP policy graphs (pomdp/extract_policy_graph.jl), 25 policies
   baselines/             frozen PDDL of earlier encodings, used by the ablation
   results/*.json         paper results; results/work/ holds every run's files
-pomdp/                   Julia POMDP models (SARSOP) and the traces they produce
+pomdp/                   Julia POMDP models (SARSOP), traces, and extract_policy_graph.jl
 tests/                   pytest checks
 generated/               PDDL written by `compile` / `explain` (one folder per controller)
 fast-downward/           the planner, with two small patches (see its README)
@@ -67,6 +71,20 @@ Common problems:
   (needs POMDPs.jl, QuickPOMDPs, NativeSARSOP).
 
 ## Results
+
+**Main results** (`experiments/results/extracted.json`): 25 SARSOP policies
+(Tiger, Sensor, Channel, Mine, RockSample up to (7,8)). The exact value of
+each extracted policy graph equals SARSOP's value (or exceeds its lower bound
+where SARSOP had not converged), except Mine-3x3, whose policy commits to only
+2 of 9 cells. All 1,093 landmarks and orderings are confirmed by exhaustive
+search. Regenerate a policy graph with
+
+```bash
+julia pomdp/extract_policy_graph.jl tiger 0.85 experiments/policy_graphs/tiger-0.85.json
+julia pomdp/extract_policy_graph.jl batch jobs.txt      # one job per line, one Julia process
+```
+
+**Hand-written controllers** (earlier experiments):
 
 | Controller | Landmarks | Disjunctive | Orderings |
 |---|---|---|---|

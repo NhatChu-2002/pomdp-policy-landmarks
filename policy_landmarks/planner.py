@@ -30,8 +30,8 @@ def run_fd(workdir: Path, domain: str, problem: str, search: str = LM_SEARCH) ->
     landmark run never searches. Pass search="astar(blind())" to get a plan.
     """
     workdir.mkdir(parents=True, exist_ok=True)
-    (workdir / "domain.pddl").write_text(domain, encoding="utf-8")
-    (workdir / "problem.pddl").write_text(problem, encoding="utf-8")
+    (workdir / "domain.pddl").write_text(domain.rstrip("\n") + "\n", encoding="utf-8")
+    (workdir / "problem.pddl").write_text(problem.rstrip("\n") + "\n", encoding="utf-8")
     t0 = time.perf_counter()
     proc = subprocess.run(
         [sys.executable, str(FAST_DOWNWARD), "--build", "release64",
@@ -42,6 +42,9 @@ def run_fd(workdir: Path, domain: str, problem: str, search: str = LM_SEARCH) ->
     (workdir / "fd.log").write_text(log, encoding="utf-8")
     if "translate exit code: 0" not in log:
         raise RuntimeError(f"translation failed, see {workdir / 'fd.log'}")
+    # A missing graph means a stock, missing or crashed planner, not "no landmarks".
+    if "lm_rhw" in search and "Landmark graph end." not in log:
+        raise RuntimeError(f"no landmark graph in planner output, see {workdir / 'fd.log'}")
     lm_time = re.search(r"Landmarks generation time: ([\d.e+-]+)s", log)
     plan = re.search(r"Plan length: (\d+) step", log)
     return {"parsed": parse_landmark_text(log), "sas": workdir / "output.sas",
@@ -64,6 +67,16 @@ def graph(parsed: dict) -> tuple[set, set]:
     edges = {(keys[e["from"]], keys[e["to"]]) for e in parsed["order_edges"]
              if e["order"] in SOUND_ORDERS}
     return set(keys.values()), edges
+
+
+def edge_types(parsed: dict) -> dict:
+    """{(landmark key, landmark key): {"gn", "nat", ...}} for sound orderings."""
+    keys = {lm["id"]: lm_key(lm) for lm in parsed["landmarks"]}
+    types: dict = {}
+    for e in parsed["order_edges"]:
+        if e["order"] in SOUND_ORDERS:
+            types.setdefault((keys[e["from"]], keys[e["to"]]), set()).add(e["order"])
+    return types
 
 
 def is_belief_fact(fact: str) -> bool:

@@ -1,0 +1,26 @@
+{
+"problem": "tiger", "p_correct": 0.75,
+"solve_seconds": 0.018000125885009766,
+"value_at_b0": -0.4959026645017009,
+"states": ["left","right"],
+"nodes": [
+{"id":0,"kind":"inner","action":"listen","belief":"0:0.5 1:0.5"},
+{"id":1,"kind":"inner","action":"listen","belief":"0:0.75 1:0.25"},
+{"id":2,"kind":"inner","action":"listen","belief":"0:0.25 1:0.75"},
+{"id":3,"kind":"inner","action":"listen","belief":"0:0.9 1:0.1"},
+{"id":4,"kind":"inner","action":"listen","belief":"0:0.1 1:0.9"},
+{"id":5,"kind":"commit_end","action":"right","belief":"0:0.964285714 1:0.035714286"},
+{"id":6,"kind":"commit_end","action":"left","belief":"0:0.035714286 1:0.964285714"}
+],
+"edges": [
+{"from":0,"obs":"left","to":1,"p":0.5},
+{"from":0,"obs":"right","to":2,"p":0.5},
+{"from":1,"obs":"left","to":3,"p":0.625},
+{"from":1,"obs":"right","to":0,"p":0.375},
+{"from":2,"obs":"left","to":0,"p":0.375},
+{"from":2,"obs":"right","to":4,"p":0.625},
+{"from":3,"obs":"left","to":5,"p":0.7000000000000001},
+{"from":3,"obs":"right","to":1,"p":0.30000000000000004},
+{"from":4,"obs":"left","to":2,"p":0.30000000000000004},
+{"from":4,"obs":"right","to":6,"p":0.7000000000000001}
+]}

@@ -25,12 +25,12 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # repo root, for the package
 
-from policy_landmarks import domains  # noqa: E402
+from policy_landmarks import domains, extraction  # noqa: E402
 from policy_landmarks.domains import HAND_WRITTEN  # noqa: E402
 from policy_landmarks.ground_truth import Task  # noqa: E402
 from policy_landmarks.induction import TRACE_SOURCES, induce  # noqa: E402
 from policy_landmarks.planner import (  # noqa: E402
-    counts, graph, is_belief_fact, run_fd, run_spec, show,
+    counts, edge_types, graph, is_belief_fact, run_fd, run_spec, show,
 )
 from policy_landmarks.spec import (  # noqa: E402
     BSCSpec, BSCTransition, BeliefUpdate, CommitCondition,
@@ -84,6 +84,7 @@ def exp_exactness() -> dict:
         r = run_spec(WORK / "exactness" / name, make())
         task = Task(r["sas"])
         keys, edges = graph(r["parsed"])
+        types = edge_types(r["parsed"])
         rhw_simple = {next(iter(k)) for k in keys if len(k) == 1}
         nontrivial = [n for n, (v, x) in task.fact.items() if task.init[v] != x]
         true_simple = {n for n in nontrivial if task.is_landmark({n})}
@@ -99,7 +100,7 @@ def exp_exactness() -> dict:
         rows[DISPLAY[name]] = {
             "rhw_landmarks_true": sum(task.is_landmark(k) for k in keys),
             "rhw_landmarks": len(keys),
-            "rhw_edges_true": sum(task.order_holds(a, b) for a, b in edges),
+            "rhw_edges_true": sum(_ordering_holds(task, a, b, types[(a, b)]) for a, b in edges),
             "rhw_sound_edges": len(edges),
             "true_nontrivial_simple": len(true_simple),
             "rhw_found_nontrivial_simple": len(true_simple & rhw_simple),
@@ -237,8 +238,84 @@ def exp_scaling() -> dict:
     return rows
 
 
+def _syntactic_baseline(ctrl: dict) -> set:
+    """Disjunctions readable from the goal achievers alone (one backchaining step, Prop. 2)."""
+    achievers = [s for s, _, _, t, _ in ctrl["edges"] if "terminal" in t]
+    achievers += [s for s, _ in ctrl["commits"]]
+    found = set()
+    for pred in {f.split("(")[0] for s in achievers for f in s if "(" in f}:
+        per = [{f for f in s if f.startswith(pred + "(")} for s in achievers]
+        if all(per) and not (set().union(*per) & ctrl["init"]):
+            found.add(frozenset(f"Atom {f}" for f in set().union(*per)))
+    return found
+
+
+def _ordering_holds(task: Task, a, b, kinds: set) -> bool:
+    """Check every reported type: greedy-necessary exactly, natural as natural."""
+    return all(task.gn_holds(a, b) if k == "gn" else task.order_holds(a, b) for k in kinds)
+
+
+def exp_extracted() -> dict:
+    """Controllers extracted from SARSOP policy graphs (faithful by construction)."""
+    rows = {}
+    for path in sorted((HERE / "policy_graphs").glob("*.json")):
+        g = extraction.load(path)
+        ctrl = extraction.controller(g)
+        r = run_fd(WORK / "extracted" / path.stem, *extraction.to_pddl(ctrl, path.stem))
+        task = Task(r["sas"])
+        keys, edges = graph(r["parsed"])
+        init_atoms = {f"Atom {f}" for f in ctrl["init"]}
+        nontrivial = [k for k in keys if not k & init_atoms and not any(
+            a.startswith("NegatedAtom") for a in k) and "Atom done()" not in k]
+        beliefs = [k for k in nontrivial if all(a.startswith("Atom ev-") for a in k)]
+        base = _syntactic_baseline(ctrl)
+        commits = sorted({show(k) for k in nontrivial if any(
+            a.startswith(("Atom sampled(", "Atom chose(")) for a in k)})
+        levels = [k for k in beliefs if len({a.split("(")[0] for a in k}) == 1]
+        var = lambda k: {a.split("(")[0] for a in k}  # noqa: E731
+        cross = [(a, b) for a, b in edges if a in beliefs and b in beliefs and not var(a) & var(b)]
+        types = edge_types(r["parsed"])
+        ends, steps = extraction.first_hit(g, {n["id"]: 1.0 for n in g["nodes"] if n["kind"] != "inner"})
+        t0 = time.perf_counter()
+        sound_lms = sum(task.is_landmark(k) for k in keys)
+        sound_orders = sum(_ordering_holds(task, a, b, types[(a, b)]) for a, b in edges)
+        # every single fact that is a landmark, found or not (a model checker's "A F f" per fact)
+        exact = {n for n in task.fact if n.startswith("Atom ") and n not in init_atoms
+                 and task.is_landmark([n])}
+        exhaustive_s = time.perf_counter() - t0
+        rows[path.stem] = {
+            "problem": g["problem"], **{k: g[k] for k in ("p_correct", "n", "k", "seed") if k in g},
+            "solve_s": round(g["solve_seconds"], 1), "value_b0": round(g["value_at_b0"], 2),
+            "exact_value": round(extraction.policy_value(g), 3),
+            "policy_nodes": ctrl["policy_nodes"], "policy_edges": ctrl["policy_edges"],
+            "controller_states": ctrl["controller_states"],
+            **counts(r["parsed"]),
+            "belief_landmarks": len(beliefs),
+            "belief_landmarks_beyond_syntactic": sum(k not in base for k in beliefs),
+            "syntactic_baseline": len(base),
+            "commitment_landmarks": commits,
+            "evidence_chain": sorted(show(k) for k in levels),
+            "injective": ctrl["controller_states"] == ctrl["policy_nodes"],
+            "sound_landmarks": sound_lms, "landmarks_total": len(keys),
+            "sound_orderings": sound_orders, "orderings_total": len(edges),
+            "single_fact_landmarks_exact": len(exact),
+            "single_fact_landmarks_missed": sorted(n[5:] for n in exact if frozenset([n]) not in keys),
+            "exhaustive_check_s": round(exhaustive_s, 3),
+            "cross_variable_orderings": len(cross),
+            "cross_variable_examples": sorted(f"{show(a)} < {show(b)}" for a, b in cross)[:6],
+            "p_terminate": round(ends, 6),
+            "expected_steps": round(steps, 3) if steps is not None else None,
+            "p_end_within_100": round(extraction.p_end_within(g, 100), 4),
+            "timeline": {show(k): extraction.landmark_timeline(
+                g, ctrl, frozenset(a[5:] for a in k)) for k in sorted(beliefs, key=show)},
+            "lm_time_s": r["lm_time"],
+        }
+    return rows
+
+
 EXPERIMENTS = {"main": exp_main, "exactness": exp_exactness, "ablation": exp_ablation,
-               "induced": exp_induced, "mutation": exp_mutation, "scaling": exp_scaling}
+               "induced": exp_induced, "mutation": exp_mutation, "scaling": exp_scaling,
+               "extracted": exp_extracted}
 
 
 def main(argv: list) -> int:

@@ -263,6 +263,7 @@ def induce_binary_bsc(
     seen_commit: set = set()
     kinds: Dict[str, int] = defaultdict(int)
     pair_outcomes: Dict[Tuple, set] = defaultdict(set)
+    step_keys: List[Tuple] = []
     steps_total = 0
     has_decrement = False
 
@@ -309,7 +310,9 @@ def induce_binary_bsc(
                 cur, obs, _is_c, dom, oth = seq[i]
                 nxt, _o2, _c2, _d2, _o2b = seq[i + 1]
                 steps_total += 1
-                pair_outcomes[(canon(cur, dom), obs)].add(canon(nxt, dom))
+                # Key in the actual value frame: obs is absolute, so the state must be too.
+                step_keys.append((v, cur, obs))
+                pair_outcomes[(v, cur, obs)].add(nxt)
                 if cur == nxt:
                     kinds["self-loop (no belief change)"] += 1
                     continue
@@ -349,7 +352,7 @@ def induce_binary_bsc(
                 emit_commit(v, st, inv[dom_r])
 
     nondet = sum(1 for outs in pair_outcomes.values() if len(outs) > 1)
-    steps_explained = steps_total - nondet
+    steps_explained = sum(1 for k in step_keys if len(pair_outcomes[k]) == 1)
 
     spec = BSCSpec(
         name=name,
@@ -405,8 +408,9 @@ def parse_tiger(csv_path: Path) -> List[List[VarObservation]]:
     return [episodes[k] for k in sorted(episodes)]
 
 
-# RockSample action / observation encoding (see trace_adapters_bsc.py)
-_RS_SAMPLE_ACTION = 5
+# RockSample.jl actions: 1 sample, 2-5 move, 5+i check rock i.
+# shortcut: every post-check belief counts as a commitment, so the induced theta_commit is 1
+# by construction; use extraction.py (commitments = real sample actions) for RockSample claims.
 _RS_SENSE_OFFSET = 5           # sense rock i == action 5+i
 _RS_OBS_GOOD = 1
 

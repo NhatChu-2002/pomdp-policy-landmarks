@@ -80,10 +80,33 @@ def _find_uncertain_vars(spec: BSCSpec) -> Set[str]:
 #  Domain generation
 # ======================================================================
 
+def check_well_formed(spec: BSCSpec, uncertain_vars: Set[str]) -> None:
+    """Raise unless the sentinel lemma's assumptions hold for every sentinel variable.
+
+    (a) A rule that adds a k-V fact is a first-evidence rule (requires every k-V
+        fact false) and adds exactly one k-V fact.
+    (b) A rule that deletes a k-V fact requires that fact to hold.
+    """
+    domains = {v.name: set(v.domain) for v in spec.hidden_variables}
+    for i, t in enumerate(spec.transitions):
+        for v in uncertain_vars:
+            adds = [u for u in t.belief_updates if u.variable == v and u.polarity == "pos"]
+            dels = [u for u in t.retractions if u.variable == v and u.polarity == "pos"]
+            required = {r.value for r in t.belief_precs
+                        if r.variable == v and r.polarity == "pos" and r.holds}
+            negated = {r.value for r in t.belief_precs
+                       if r.variable == v and r.polarity == "pos" and not r.holds}
+            if adds and (len(adds) != 1 or negated != domains[v] or required):
+                raise ValueError(f"transition[{i}] adds k-{v} outside a first-evidence rule")
+            if any(u.value not in required for u in dels):
+                raise ValueError(f"transition[{i}] deletes a k-{v} fact it does not require")
+
+
 def generate_domain(spec: BSCSpec) -> str:
     """Emit the PDDL :domain string."""
     spec.validate()
     uncertain_vars = _find_uncertain_vars(spec)
+    check_well_formed(spec, uncertain_vars)
 
     lines: List[str] = []
     lines.append(f"(define (domain {spec.name})")

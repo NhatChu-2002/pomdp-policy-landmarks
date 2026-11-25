@@ -99,3 +99,21 @@ class Task:
                     elif not hold(t, A):
                         queue.append(t)
         return not (b_first and self._search(b_first, lambda s: False))
+
+    def gn_holds(self, a_key, b_key) -> bool:
+        """Greedy-necessary ordering: on every plan, A holds in the state just before B first holds."""
+        A, B = self.facts(a_key), self.facts(b_key)
+        hold = lambda s, F: any(s[v] == x for v, x in F)  # noqa: E731
+        if hold(self.init, B):
+            return True                          # B is never "first achieved" by an action
+        seen, queue, violations = {self.init}, deque([self.init]), []
+        while queue:
+            s = queue.popleft()
+            for t in self.succ(s):
+                if hold(t, B):
+                    if not hold(s, A):
+                        violations.append(t)
+                elif t not in seen:
+                    seen.add(t)
+                    queue.append(t)
+        return not (violations and self._search(violations, lambda s: False))

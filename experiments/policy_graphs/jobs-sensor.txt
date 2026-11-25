@@ -1,0 +1,5 @@
+sensor 0.75 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/sensor-0.75.json
+sensor 0.8 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/sensor-0.8.json
+sensor 0.85 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/sensor-0.85.json
+sensor 0.9 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/sensor-0.9.json
+sensor 0.95 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/sensor-0.95.json
