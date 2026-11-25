@@ -1,0 +1,28 @@
+{
+"problem": "tiger", "p_correct": 0.8,
+"solver": "sarsop",
+"merges": {"lossy": 0, "lossy_self_loops": 0, "max_diff": 0.0},
+"solve_seconds": 0.019999980926513672,
+"value_at_b0": 8.966837513187166,
+"states": ["left","right"],
+"nodes": [
+{"id":0,"kind":"inner","action":"listen","belief":"0:0.5 1:0.5"},
+{"id":1,"kind":"inner","action":"listen","belief":"0:0.8 1:0.2"},
+{"id":2,"kind":"inner","action":"listen","belief":"0:0.2 1:0.8"},
+{"id":3,"kind":"inner","action":"listen","belief":"0:0.941176471 1:0.058823529"},
+{"id":4,"kind":"inner","action":"listen","belief":"0:0.058823529 1:0.941176471"},
+{"id":5,"kind":"commit_end","action":"right","belief":"0:0.984615385 1:0.015384615"},
+{"id":6,"kind":"commit_end","action":"left","belief":"0:0.015384615 1:0.984615385"}
+],
+"edges": [
+{"from":0,"obs":"left","to":1,"p":0.5},
+{"from":0,"obs":"right","to":2,"p":0.5},
+{"from":1,"obs":"left","to":3,"p":0.6800000000000002},
+{"from":1,"obs":"right","to":0,"p":0.31999999999999995},
+{"from":2,"obs":"left","to":0,"p":0.31999999999999995},
+{"from":2,"obs":"right","to":4,"p":0.6800000000000002},
+{"from":3,"obs":"left","to":5,"p":0.7647058823529411},
+{"from":3,"obs":"right","to":1,"p":0.23529411764705874},
+{"from":4,"obs":"left","to":2,"p":0.23529411764705874},
+{"from":4,"obs":"right","to":6,"p":0.7647058823529411}
+]}

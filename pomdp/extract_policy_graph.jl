@@ -301,9 +301,22 @@ function write_error(out, meta, extra, e)
     end
 end
 
+# EXPORT_ALPHAS=1 also writes <out>.alphas.json: the policy's alpha-vectors over the
+# state order of the graph JSON, with the action of each (research direction R3).
+function write_alphas(out, m, desc, policy)
+    S = ordered_states(m)
+    open(replace(out, r"\.json$" => "") * ".alphas.json", "w") do io
+        println(io, "{\"states\": [", join(q.(desc.(S)), ","), "],")
+        println(io, "\"actions\": [", join(q.(policy.action_map), ","), "],")
+        println(io, "\"alphas\": [", join(["[" * join(a, ",") * "]" for a in policy.alphas], ",\n"), "]}")
+    end
+end
+
 function extract(m, ends, desc, meta, out; kw...)
     try
         policy, solve_s = solve_policy(m; kw...)
+        # alphas first: they are needed exactly when the graph is too large to enumerate
+        get(ENV, "EXPORT_ALPHAS", "0") == "1" && write_alphas(out, m, desc, policy)
         write_graph(out, m, desc, meta, "", solve_s, policy, policy_graph(m, policy, ends))
     catch e
         write_error(out, meta, "", e)

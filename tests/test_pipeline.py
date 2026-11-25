@@ -125,3 +125,21 @@ def test_empirical_landmarks_and_avoid_probability():
     emp = sampling.empirical_landmarks(runs, F({"s(r)"}))
     assert F({"s(a)", "s(b)"}) in emp and F({"done"}) in emp
     assert abs(sampling.avoid_probability(g, ctrl, F({"s(a)"})) - 0.1) < 1e-9
+
+
+def test_symbolic_controller_is_sound_on_a_threshold_policy():
+    """Tiger with two hand-made alpha-vector families: listen near the middle, open a
+    door beyond +-1.5 log-odds units. The abstract controller built from the vectors
+    alone must make 'one net growl either way' a landmark."""
+    import math
+    from policy_landmarks import symbolic as sy
+    from policy_landmarks.exact import StateGraph
+    q = 0.8
+    g = {"problem": "tiger", "p_correct": q, "states": ["left", "right"]}
+    alphas = {"states": ["left", "right"], "actions": ["listen", "right", "left"],
+              "alphas": [[0.0, 0.0], [10.0, -100.0], [-100.0, 10.0]]}
+    m = sy.Model(g, alphas)
+    ctrl = sy.abstract_controller(m, sy.unit_grid(m, 2))
+    sg = StateGraph(ctrl)
+    assert sg.is_landmark(["ev-direction(pos1)", "ev-direction(neg1)"])
+    assert ctrl["commits"]                                  # some cell opens a door

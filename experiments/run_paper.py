@@ -780,12 +780,49 @@ def exp_sampling() -> dict:
     return rows
 
 
+def _kept_symbolic(ctrl: dict) -> set:
+    """Kept-class landmarks of a controller, ignoring the cell-identity facts cx-V(i)."""
+    return {" | ".join(sorted(k)) for k in StateGraph(ctrl).landmarks()
+            if not any(f.startswith("cx-") for f in k) and interpretable(" | ".join(sorted(k)))}
+
+
+def exp_symbolic() -> dict:
+    """R3: landmarks from the alpha-vectors alone (no belief enumeration), refined by
+    halving cells, compared with the exact landmarks of the enumerated policy graph.
+    Sound means every symbolic landmark is a landmark of the exact graph."""
+    from policy_landmarks import symbolic as sy
+    rows = {}
+    for f in sorted((HERE / "policy_graphs" / "alphas").glob("*.alphas.json")):
+        name = f.name.replace(".alphas.json", "")
+        g = extraction.load(HERE / "policy_graphs" / f"{name}.json")
+        model = sy.Model(g, json.loads(f.read_text()))
+        exact_ctrl = extraction.controller(g)
+        exact_sg = StateGraph(exact_ctrl)
+        exact = _kept_symbolic(exact_ctrl)
+        levels = []
+        for h in range(5 if model.u else 3):
+            grid = sy.unit_grid(model, h) if model.u else sy.bin_grid(model, h)
+            t0 = time.perf_counter()
+            ctrl = sy.abstract_controller(model, grid)
+            found = _kept_symbolic(ctrl)
+            levels.append({"halvings": h, "abstract_states": ctrl["abstract_states"],
+                           "mixed_states": ctrl["mixed_states"], "found": len(found),
+                           "sound": all(exact_sg.is_landmark(lm.split(" | ")) for lm in found),
+                           "equal": found == exact, "seconds": round(time.perf_counter() - t0, 2)})
+            if found == exact:
+                break
+        rows[name] = {"policy_nodes": len(g["nodes"]), "exact_landmarks": len(exact),
+                      "alphas": len(model.A), "refinement": levels}
+    return rows
+
+
 EXPERIMENTS = {"main": exp_main, "exactness": exp_exactness, "ablation": exp_ablation,
                "induced": exp_induced, "mutation": exp_mutation, "scaling": exp_scaling,
                "extracted": exp_extracted, "exact": exp_exact, "bins": exp_bins,
                "qmdp": exp_qmdp, "pbvi": exp_pbvi, "mutants": exp_mutants, "kept": exp_kept,
                "large": exp_large, "variants": exp_variants, "monitor": exp_monitor,
-               "knowledge": exp_knowledge, "sampling": exp_sampling}
+               "knowledge": exp_knowledge, "sampling": exp_sampling,
+               "symbolic": exp_symbolic}
 
 
 def main(argv: list) -> int:

@@ -1,0 +1,501 @@
+{
+  "rocksample-4-4-s1": {
+    "policy_nodes": 37,
+    "exact_landmarks": 9,
+    "alphas": 877,
+    "refinement": [
+      {
+        "halvings": 0,
+        "abstract_states": 240,
+        "mixed_states": 72,
+        "found": 7,
+        "sound": true,
+        "equal": false,
+        "seconds": 4.91
+      },
+      {
+        "halvings": 1,
+        "abstract_states": 160,
+        "mixed_states": 32,
+        "found": 7,
+        "sound": true,
+        "equal": false,
+        "seconds": 3.22
+      },
+      {
+        "halvings": 2,
+        "abstract_states": 220,
+        "mixed_states": 15,
+        "found": 9,
+        "sound": true,
+        "equal": false,
+        "seconds": 4.69
+      }
+    ]
+  },
+  "rocksample-4-4-s3": {
+    "policy_nodes": 45,
+    "exact_landmarks": 10,
+    "alphas": 894,
+    "refinement": [
+      {
+        "halvings": 0,
+        "abstract_states": 1039,
+        "mixed_states": 415,
+        "found": 6,
+        "sound": true,
+        "equal": false,
+        "seconds": 21.33
+      },
+      {
+        "halvings": 1,
+        "abstract_states": 51,
+        "mixed_states": 1,
+        "found": 9,
+        "sound": true,
+        "equal": false,
+        "seconds": 1.03
+      },
+      {
+        "halvings": 2,
+        "abstract_states": 83,
+        "mixed_states": 1,
+        "found": 10,
+        "sound": true,
+        "equal": true,
+        "seconds": 1.76
+      }
+    ]
+  },
+  "rocksample-4-4-s5": {
+    "policy_nodes": 16,
+    "exact_landmarks": 11,
+    "alphas": 412,
+    "refinement": [
+      {
+        "halvings": 0,
+        "abstract_states": 15,
+        "mixed_states": 0,
+        "found": 11,
+        "sound": true,
+        "equal": true,
+        "seconds": 0.07
+      }
+    ]
+  },
+  "sensor-0.75": {
+    "policy_nodes": 19,
+    "exact_landmarks": 6,
+    "alphas": 476,
+    "refinement": [
+      {
+        "halvings": 0,
+        "abstract_states": 25,
+        "mixed_states": 15,
+        "found": 4,
+        "sound": true,
+        "equal": false,
+        "seconds": 0.05
+      },
+      {
+        "halvings": 1,
+        "abstract_states": 25,
+        "mixed_states": 9,
+        "found": 4,
+        "sound": true,
+        "equal": false,
+        "seconds": 0.05
+      },
+      {
+        "halvings": 2,
+        "abstract_states": 19,
+        "mixed_states": 0,
+        "found": 6,
+        "sound": true,
+        "equal": true,
+        "seconds": 0.03
+      }
+    ]
+  },
+  "sensor-0.8": {
+    "policy_nodes": 20,
+    "exact_landmarks": 6,
+    "alphas": 547,
+    "refinement": [
+      {
+        "halvings": 0,
+        "abstract_states": 25,
+        "mixed_states": 16,
+        "found": 4,
+        "sound": true,
+        "equal": false,
+        "seconds": 0.07
+      },
+      {
+        "halvings": 1,
+        "abstract_states": 25,
+        "mixed_states": 8,
+        "found": 4,
+        "sound": true,
+        "equal": false,
+        "seconds": 0.07
+      },
+      {
+        "halvings": 2,
+        "abstract_states": 20,
+        "mixed_states": 0,
+        "found": 6,
+        "sound": true,
+        "equal": true,
+        "seconds": 0.06
+      }
+    ]
+  },
+  "sensor-0.85": {
+    "policy_nodes": 21,
+    "exact_landmarks": 6,
+    "alphas": 265,
+    "refinement": [
+      {
+        "halvings": 0,
+        "abstract_states": 25,
+        "mixed_states": 17,
+        "found": 4,
+        "sound": true,
+        "equal": false,
+        "seconds": 0.02
+      },
+      {
+        "halvings": 1,
+        "abstract_states": 25,
+        "mixed_states": 9,
+        "found": 4,
+        "sound": true,
+        "equal": false,
+        "seconds": 0.02
+      },
+      {
+        "halvings": 2,
+        "abstract_states": 21,
+        "mixed_states": 0,
+        "found": 6,
+        "sound": true,
+        "equal": true,
+        "seconds": 0.02
+      }
+    ]
+  },
+  "sensor-0.9": {
+    "policy_nodes": 25,
+    "exact_landmarks": 6,
+    "alphas": 361,
+    "refinement": [
+      {
+        "halvings": 0,
+        "abstract_states": 25,
+        "mixed_states": 17,
+        "found": 4,
+        "sound": true,
+        "equal": false,
+        "seconds": 0.04
+      },
+      {
+        "halvings": 1,
+        "abstract_states": 25,
+        "mixed_states": 11,
+        "found": 4,
+        "sound": true,
+        "equal": false,
+        "seconds": 0.04
+      },
+      {
+        "halvings": 2,
+        "abstract_states": 25,
+        "mixed_states": 9,
+        "found": 4,
+        "sound": true,
+        "equal": false,
+        "seconds": 0.04
+      },
+      {
+        "halvings": 3,
+        "abstract_states": 25,
+        "mixed_states": 0,
+        "found": 6,
+        "sound": true,
+        "equal": true,
+        "seconds": 0.04
+      }
+    ]
+  },
+  "sensor-0.95": {
+    "policy_nodes": 7,
+    "exact_landmarks": 4,
+    "alphas": 10,
+    "refinement": [
+      {
+        "halvings": 0,
+        "abstract_states": 25,
+        "mixed_states": 14,
+        "found": 4,
+        "sound": true,
+        "equal": true,
+        "seconds": 0.0
+      }
+    ]
+  },
+  "tiger-0.6": {
+    "policy_nodes": 17,
+    "exact_landmarks": 10,
+    "alphas": 17,
+    "refinement": [
+      {
+        "halvings": 0,
+        "abstract_states": 17,
+        "mixed_states": 2,
+        "found": 9,
+        "sound": true,
+        "equal": false,
+        "seconds": 0.24
+      },
+      {
+        "halvings": 1,
+        "abstract_states": 17,
+        "mixed_states": 1,
+        "found": 9,
+        "sound": true,
+        "equal": false,
+        "seconds": 0.26
+      },
+      {
+        "halvings": 2,
+        "abstract_states": 17,
+        "mixed_states": 0,
+        "found": 10,
+        "sound": true,
+        "equal": true,
+        "seconds": 0.27
+      }
+    ]
+  },
+  "tiger-0.65": {
+    "policy_nodes": 13,
+    "exact_landmarks": 8,
+    "alphas": 16,
+    "refinement": [
+      {
+        "halvings": 0,
+        "abstract_states": 13,
+        "mixed_states": 2,
+        "found": 7,
+        "sound": true,
+        "equal": false,
+        "seconds": 0.01
+      },
+      {
+        "halvings": 1,
+        "abstract_states": 13,
+        "mixed_states": 1,
+        "found": 7,
+        "sound": true,
+        "equal": false,
+        "seconds": 0.01
+      },
+      {
+        "halvings": 2,
+        "abstract_states": 13,
+        "mixed_states": 1,
+        "found": 7,
+        "sound": true,
+        "equal": false,
+        "seconds": 0.01
+      },
+      {
+        "halvings": 3,
+        "abstract_states": 13,
+        "mixed_states": 1,
+        "found": 7,
+        "sound": true,
+        "equal": false,
+        "seconds": 0.01
+      },
+      {
+        "halvings": 4,
+        "abstract_states": 13,
+        "mixed_states": 0,
+        "found": 8,
+        "sound": true,
+        "equal": true,
+        "seconds": 0.01
+      }
+    ]
+  },
+  "tiger-0.7": {
+    "policy_nodes": 9,
+    "exact_landmarks": 6,
+    "alphas": 9,
+    "refinement": [
+      {
+        "halvings": 0,
+        "abstract_states": 11,
+        "mixed_states": 2,
+        "found": 6,
+        "sound": true,
+        "equal": true,
+        "seconds": 0.0
+      }
+    ]
+  },
+  "tiger-0.75": {
+    "policy_nodes": 7,
+    "exact_landmarks": 5,
+    "alphas": 7,
+    "refinement": [
+      {
+        "halvings": 0,
+        "abstract_states": 9,
+        "mixed_states": 2,
+        "found": 5,
+        "sound": true,
+        "equal": true,
+        "seconds": 0.0
+      }
+    ]
+  },
+  "tiger-0.8": {
+    "policy_nodes": 7,
+    "exact_landmarks": 5,
+    "alphas": 7,
+    "refinement": [
+      {
+        "halvings": 0,
+        "abstract_states": 7,
+        "mixed_states": 2,
+        "found": 4,
+        "sound": true,
+        "equal": false,
+        "seconds": 0.0
+      },
+      {
+        "halvings": 1,
+        "abstract_states": 7,
+        "mixed_states": 1,
+        "found": 4,
+        "sound": true,
+        "equal": false,
+        "seconds": 0.0
+      },
+      {
+        "halvings": 2,
+        "abstract_states": 7,
+        "mixed_states": 0,
+        "found": 5,
+        "sound": true,
+        "equal": true,
+        "seconds": 0.0
+      }
+    ]
+  },
+  "tiger-0.85": {
+    "policy_nodes": 5,
+    "exact_landmarks": 4,
+    "alphas": 5,
+    "refinement": [
+      {
+        "halvings": 0,
+        "abstract_states": 7,
+        "mixed_states": 2,
+        "found": 4,
+        "sound": true,
+        "equal": true,
+        "seconds": 0.0
+      }
+    ]
+  },
+  "tiger-0.9": {
+    "policy_nodes": 5,
+    "exact_landmarks": 4,
+    "alphas": 5,
+    "refinement": [
+      {
+        "halvings": 0,
+        "abstract_states": 5,
+        "mixed_states": 2,
+        "found": 3,
+        "sound": true,
+        "equal": false,
+        "seconds": 0.0
+      },
+      {
+        "halvings": 1,
+        "abstract_states": 5,
+        "mixed_states": 1,
+        "found": 3,
+        "sound": true,
+        "equal": false,
+        "seconds": 0.0
+      },
+      {
+        "halvings": 2,
+        "abstract_states": 5,
+        "mixed_states": 0,
+        "found": 4,
+        "sound": true,
+        "equal": true,
+        "seconds": 0.0
+      }
+    ]
+  },
+  "tiger-0.95": {
+    "policy_nodes": 5,
+    "exact_landmarks": 4,
+    "alphas": 5,
+    "refinement": [
+      {
+        "halvings": 0,
+        "abstract_states": 5,
+        "mixed_states": 2,
+        "found": 3,
+        "sound": true,
+        "equal": false,
+        "seconds": 0.0
+      },
+      {
+        "halvings": 1,
+        "abstract_states": 5,
+        "mixed_states": 1,
+        "found": 3,
+        "sound": true,
+        "equal": false,
+        "seconds": 0.0
+      },
+      {
+        "halvings": 2,
+        "abstract_states": 5,
+        "mixed_states": 1,
+        "found": 3,
+        "sound": true,
+        "equal": false,
+        "seconds": 0.0
+      },
+      {
+        "halvings": 3,
+        "abstract_states": 5,
+        "mixed_states": 1,
+        "found": 3,
+        "sound": true,
+        "equal": false,
+        "seconds": 0.0
+      },
+      {
+        "halvings": 4,
+        "abstract_states": 5,
+        "mixed_states": 0,
+        "found": 4,
+        "sound": true,
+        "equal": true,
+        "seconds": 0.0
+      }
+    ]
+  }
+}

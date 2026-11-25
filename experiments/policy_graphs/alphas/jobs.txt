@@ -1,0 +1,16 @@
+tiger 0.6 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/alphas/tiger-0.6.json
+tiger 0.65 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/alphas/tiger-0.65.json
+tiger 0.7 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/alphas/tiger-0.7.json
+tiger 0.75 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/alphas/tiger-0.75.json
+tiger 0.8 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/alphas/tiger-0.8.json
+tiger 0.85 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/alphas/tiger-0.85.json
+tiger 0.9 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/alphas/tiger-0.9.json
+tiger 0.95 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/alphas/tiger-0.95.json
+sensor 0.75 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/alphas/sensor-0.75.json
+sensor 0.8 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/alphas/sensor-0.8.json
+sensor 0.85 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/alphas/sensor-0.85.json
+sensor 0.9 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/alphas/sensor-0.9.json
+sensor 0.95 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/alphas/sensor-0.95.json
+rocksample 4 4 1 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/alphas/rocksample-4-4-s1.json
+rocksample 4 4 3 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/alphas/rocksample-4-4-s3.json
+rocksample 4 4 5 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/alphas/rocksample-4-4-s5.json
