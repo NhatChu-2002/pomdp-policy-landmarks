@@ -1,0 +1,12 @@
+{
+"problem": "sensor", "p_correct": 0.85,
+"solver": "sarsop",
+"base": "sensor-0.85", "mutation": {"node": 0, "depth": 0, "original_action": "read-b", "new_action": "commit-a-ok-b-faulty"},
+"solve_seconds": 0.4780001640319824,
+"value_at_b0": 8.694552982127936,
+"states": ["a-ok-b-ok","a-ok-b-faulty","a-faulty-b-ok","a-faulty-b-faulty","done"],
+"nodes": [
+{"id":0,"kind":"commit_end","action":"commit-a-ok-b-faulty","belief":"0:0.25 1:0.25 2:0.25 3:0.25"}
+],
+"edges": [
+]}

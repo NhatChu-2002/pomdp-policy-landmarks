@@ -1,0 +1,21 @@
+{
+"problem": "tiger", "p_correct": 0.75,
+"solver": "qmdp",
+"solve_seconds": 0.11899995803833008,
+"value_at_b0": 188.99999982839188,
+"states": ["left","right"],
+"nodes": [
+{"id":0,"kind":"inner","action":"listen","belief":"0:0.5 1:0.5"},
+{"id":1,"kind":"inner","action":"listen","belief":"0:0.75 1:0.25"},
+{"id":2,"kind":"inner","action":"listen","belief":"0:0.25 1:0.75"},
+{"id":3,"kind":"commit_end","action":"right","belief":"0:0.9 1:0.1"},
+{"id":4,"kind":"commit_end","action":"left","belief":"0:0.1 1:0.9"}
+],
+"edges": [
+{"from":0,"obs":"left","to":1,"p":0.5},
+{"from":0,"obs":"right","to":2,"p":0.5},
+{"from":1,"obs":"left","to":3,"p":0.625},
+{"from":1,"obs":"right","to":0,"p":0.375},
+{"from":2,"obs":"left","to":0,"p":0.375},
+{"from":2,"obs":"right","to":4,"p":0.625}
+]}

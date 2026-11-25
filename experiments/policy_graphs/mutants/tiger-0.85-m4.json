@@ -1,0 +1,12 @@
+{
+"problem": "tiger", "p_correct": 0.85,
+"solver": "sarsop",
+"base": "tiger-0.85", "mutation": {"node": 0, "depth": 0, "original_action": "listen", "new_action": "left"},
+"solve_seconds": 0.9630000591278076,
+"value_at_b0": 19.37136796227265,
+"states": ["left","right"],
+"nodes": [
+{"id":0,"kind":"commit_end","action":"left","belief":"0:0.5 1:0.5"}
+],
+"edges": [
+]}

@@ -1,0 +1,33 @@
+{
+"problem": "tiger", "p_correct": 0.65,
+"solver": "qmdp",
+"solve_seconds": 0.1269998550415039,
+"value_at_b0": 188.99999982839188,
+"states": ["left","right"],
+"nodes": [
+{"id":0,"kind":"inner","action":"listen","belief":"0:0.5 1:0.5"},
+{"id":1,"kind":"inner","action":"listen","belief":"0:0.65 1:0.35"},
+{"id":2,"kind":"inner","action":"listen","belief":"0:0.35 1:0.65"},
+{"id":3,"kind":"inner","action":"listen","belief":"0:0.775229358 1:0.224770642"},
+{"id":4,"kind":"inner","action":"listen","belief":"0:0.224770642 1:0.775229358"},
+{"id":5,"kind":"inner","action":"listen","belief":"0:0.86496063 1:0.13503937"},
+{"id":6,"kind":"inner","action":"listen","belief":"0:0.13503937 1:0.86496063"},
+{"id":7,"kind":"commit_end","action":"right","belief":"0:0.92245333 1:0.07754667"},
+{"id":8,"kind":"commit_end","action":"left","belief":"0:0.07754667 1:0.92245333"}
+],
+"edges": [
+{"from":0,"obs":"left","to":1,"p":0.5},
+{"from":0,"obs":"right","to":2,"p":0.5},
+{"from":1,"obs":"left","to":3,"p":0.545},
+{"from":1,"obs":"right","to":0,"p":0.45499999999999996},
+{"from":2,"obs":"left","to":0,"p":0.45499999999999996},
+{"from":2,"obs":"right","to":4,"p":0.545},
+{"from":3,"obs":"left","to":5,"p":0.5825688073394495},
+{"from":3,"obs":"right","to":1,"p":0.4174311926605504},
+{"from":4,"obs":"left","to":2,"p":0.4174311926605504},
+{"from":4,"obs":"right","to":6,"p":0.5825688073394495},
+{"from":5,"obs":"left","to":7,"p":0.6094881889763779},
+{"from":5,"obs":"right","to":3,"p":0.39051181102362204},
+{"from":6,"obs":"left","to":4,"p":0.39051181102362204},
+{"from":6,"obs":"right","to":8,"p":0.6094881889763779}
+]}

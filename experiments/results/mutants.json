@@ -1,0 +1,1383 @@
+{
+  "channel-3-0.85": {
+    "base": {
+      "nodes": 8,
+      "terminates": true,
+      "landmarks": [
+        "chose(commit-v1) | chose(commit-v2) | chose(commit-v3)",
+        "done",
+        "ev-v1(neg1) | ev-v1(pos1)",
+        "ev-v1(neg2) | ev-v1(pos2)",
+        "ev-v2(neg1) | ev-v2(pos1)",
+        "ev-v2(neg2) | ev-v2(pos2)",
+        "ev-v3(neg1) | ev-v3(pos1)",
+        "ev-v3(neg2) | ev-v3(pos2)"
+      ],
+      "orderings": [
+        "ev-v1(neg1) | ev-v1(pos1) < ev-v1(neg2) | ev-v1(pos2)",
+        "ev-v1(neg1) | ev-v1(pos1) < ev-v3(neg2) | ev-v3(pos2)",
+        "ev-v1(neg2) | ev-v1(pos2) < chose(commit-v1) | chose(commit-v2) | chose(commit-v3)",
+        "ev-v1(neg2) | ev-v1(pos2) < done",
+        "ev-v2(neg1) | ev-v2(pos1) < ev-v1(neg2) | ev-v1(pos2)",
+        "ev-v2(neg1) | ev-v2(pos1) < ev-v2(neg2) | ev-v2(pos2)",
+        "ev-v2(neg1) | ev-v2(pos1) < ev-v3(neg2) | ev-v3(pos2)",
+        "ev-v2(neg2) | ev-v2(pos2) < chose(commit-v1) | chose(commit-v2) | chose(commit-v3)",
+        "ev-v2(neg2) | ev-v2(pos2) < done",
+        "ev-v3(neg1) | ev-v3(pos1) < ev-v1(neg2) | ev-v1(pos2)",
+        "ev-v3(neg1) | ev-v3(pos1) < ev-v3(neg2) | ev-v3(pos2)",
+        "ev-v3(neg2) | ev-v3(pos2) < chose(commit-v1) | chose(commit-v2) | chose(commit-v3)",
+        "ev-v3(neg2) | ev-v3(pos2) < done"
+      ],
+      "value": 11.491,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "commit-v1",
+        "commit-v2",
+        "commit-v3",
+        "probe-v1",
+        "probe-v2",
+        "probe-v3"
+      ]
+    },
+    "mutants": [
+      {
+        "mutant": "channel-3-0.85-m1",
+        "node": 1,
+        "depth": 1,
+        "original_action": "probe-v2",
+        "new_action": "commit-v1",
+        "graph_changed": true,
+        "value_change": -11.64,
+        "terminates": true,
+        "landmarks_lost": [
+          "chose(commit-v1) | chose(commit-v2) | chose(commit-v3)",
+          "ev-v1(neg2) | ev-v1(pos2)",
+          "ev-v2(neg2) | ev-v2(pos2)",
+          "ev-v3(neg2) | ev-v3(pos2)"
+        ],
+        "landmarks_gained": [
+          "chose(commit-v1) | chose(commit-v3)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "channel-3-0.85-m10",
+        "node": 4,
+        "depth": 2,
+        "original_action": "probe-v1",
+        "new_action": "commit-v3",
+        "graph_changed": true,
+        "value_change": -9.713,
+        "terminates": true,
+        "landmarks_lost": [
+          "chose(commit-v1) | chose(commit-v2) | chose(commit-v3)",
+          "ev-v1(neg2) | ev-v1(pos2)",
+          "ev-v3(neg2) | ev-v3(pos2)"
+        ],
+        "landmarks_gained": [
+          "chose(commit-v2) | chose(commit-v3)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "channel-3-0.85-m11",
+        "node": 4,
+        "depth": 2,
+        "original_action": "probe-v1",
+        "new_action": "probe-v3",
+        "graph_changed": true,
+        "value_change": -0.136,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": false,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "channel-3-0.85-m12",
+        "node": 4,
+        "depth": 2,
+        "original_action": "probe-v1",
+        "new_action": "commit-v1",
+        "graph_changed": true,
+        "value_change": -0.673,
+        "terminates": true,
+        "landmarks_lost": [
+          "ev-v1(neg2) | ev-v1(pos2)",
+          "ev-v3(neg2) | ev-v3(pos2)"
+        ],
+        "landmarks_gained": [],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "channel-3-0.85-m2",
+        "node": 2,
+        "depth": 1,
+        "original_action": "probe-v1",
+        "new_action": "probe-v2",
+        "graph_changed": true,
+        "value_change": -1.07,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": false,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "channel-3-0.85-m3",
+        "node": 0,
+        "depth": 0,
+        "original_action": "probe-v2",
+        "new_action": "commit-v2",
+        "graph_changed": true,
+        "value_change": -18.158,
+        "terminates": true,
+        "landmarks_lost": [
+          "chose(commit-v1) | chose(commit-v2) | chose(commit-v3)",
+          "ev-v1(neg1) | ev-v1(pos1)",
+          "ev-v1(neg2) | ev-v1(pos2)",
+          "ev-v2(neg1) | ev-v2(pos1)",
+          "ev-v2(neg2) | ev-v2(pos2)",
+          "ev-v3(neg1) | ev-v3(pos1)",
+          "ev-v3(neg2) | ev-v3(pos2)"
+        ],
+        "landmarks_gained": [
+          "chose(commit-v2)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "channel-3-0.85-m4",
+        "node": 0,
+        "depth": 0,
+        "original_action": "probe-v2",
+        "new_action": "probe-v1",
+        "graph_changed": false,
+        "value_change": 0.0,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "channel-3-0.85-m5",
+        "node": 1,
+        "depth": 1,
+        "original_action": "probe-v2",
+        "new_action": "commit-v3",
+        "graph_changed": true,
+        "value_change": -11.64,
+        "terminates": true,
+        "landmarks_lost": [
+          "chose(commit-v1) | chose(commit-v2) | chose(commit-v3)",
+          "ev-v1(neg2) | ev-v1(pos2)",
+          "ev-v2(neg2) | ev-v2(pos2)",
+          "ev-v3(neg2) | ev-v3(pos2)"
+        ],
+        "landmarks_gained": [
+          "chose(commit-v1) | chose(commit-v3)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "channel-3-0.85-m6",
+        "node": 0,
+        "depth": 0,
+        "original_action": "probe-v2",
+        "new_action": "commit-v3",
+        "graph_changed": true,
+        "value_change": -18.158,
+        "terminates": true,
+        "landmarks_lost": [
+          "chose(commit-v1) | chose(commit-v2) | chose(commit-v3)",
+          "ev-v1(neg1) | ev-v1(pos1)",
+          "ev-v1(neg2) | ev-v1(pos2)",
+          "ev-v2(neg1) | ev-v2(pos1)",
+          "ev-v2(neg2) | ev-v2(pos2)",
+          "ev-v3(neg1) | ev-v3(pos1)",
+          "ev-v3(neg2) | ev-v3(pos2)"
+        ],
+        "landmarks_gained": [
+          "chose(commit-v3)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "channel-3-0.85-m7",
+        "node": 0,
+        "depth": 0,
+        "original_action": "probe-v2",
+        "new_action": "commit-v1",
+        "graph_changed": true,
+        "value_change": -18.158,
+        "terminates": true,
+        "landmarks_lost": [
+          "chose(commit-v1) | chose(commit-v2) | chose(commit-v3)",
+          "ev-v1(neg1) | ev-v1(pos1)",
+          "ev-v1(neg2) | ev-v1(pos2)",
+          "ev-v2(neg1) | ev-v2(pos1)",
+          "ev-v2(neg2) | ev-v2(pos2)",
+          "ev-v3(neg1) | ev-v3(pos1)",
+          "ev-v3(neg2) | ev-v3(pos2)"
+        ],
+        "landmarks_gained": [
+          "chose(commit-v1)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "channel-3-0.85-m8",
+        "node": 2,
+        "depth": 1,
+        "original_action": "probe-v1",
+        "new_action": "commit-v1",
+        "graph_changed": true,
+        "value_change": -9.5,
+        "terminates": true,
+        "landmarks_lost": [
+          "chose(commit-v1) | chose(commit-v2) | chose(commit-v3)",
+          "ev-v1(neg1) | ev-v1(pos1)",
+          "ev-v1(neg2) | ev-v1(pos2)",
+          "ev-v2(neg2) | ev-v2(pos2)",
+          "ev-v3(neg1) | ev-v3(pos1)",
+          "ev-v3(neg2) | ev-v3(pos2)"
+        ],
+        "landmarks_gained": [
+          "chose(commit-v1) | chose(commit-v2)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "channel-3-0.85-m9",
+        "node": 1,
+        "depth": 1,
+        "original_action": "probe-v2",
+        "new_action": "probe-v3",
+        "graph_changed": true,
+        "value_change": -0.524,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": false,
+        "p_end_within_100": 1.0
+      }
+    ]
+  },
+  "mine-4-0.85": {
+    "base": {
+      "nodes": 11,
+      "terminates": true,
+      "landmarks": [
+        "done",
+        "ev-v1(neg1) | ev-v1(pos1)",
+        "ev-v2(neg1) | ev-v2(pos1)",
+        "ev-v3(neg1) | ev-v3(pos1)",
+        "ev-v4(neg1) | ev-v4(pos1)"
+      ],
+      "orderings": [
+        "ev-v1(neg1) | ev-v1(pos1) < done",
+        "ev-v2(neg1) | ev-v2(pos1) < done",
+        "ev-v3(neg1) | ev-v3(pos1) < done",
+        "ev-v4(neg1) | ev-v4(pos1) < done"
+      ],
+      "value": 9.564,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "commit-v1",
+        "commit-v2",
+        "commit-v3",
+        "commit-v4",
+        "probe-v1",
+        "probe-v2",
+        "probe-v3",
+        "probe-v4"
+      ]
+    },
+    "mutants": [
+      {
+        "mutant": "mine-4-0.85-m1",
+        "node": 1,
+        "depth": 1,
+        "original_action": "probe-v1",
+        "new_action": "probe-v2",
+        "graph_changed": true,
+        "value_change": -0.334,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": false,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "mine-4-0.85-m10",
+        "node": 5,
+        "depth": 2,
+        "original_action": "probe-v4",
+        "new_action": "probe-v2",
+        "graph_changed": false,
+        "value_change": 0.0,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": false,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "mine-4-0.85-m11",
+        "node": 2,
+        "depth": 1,
+        "original_action": "probe-v3",
+        "new_action": "probe-v4",
+        "graph_changed": false,
+        "value_change": 0.0,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": false,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "mine-4-0.85-m12",
+        "node": 8,
+        "depth": 3,
+        "original_action": "probe-v2",
+        "new_action": "probe-v4",
+        "graph_changed": true,
+        "value_change": -0.284,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": false,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "mine-4-0.85-m2",
+        "node": 1,
+        "depth": 1,
+        "original_action": "probe-v1",
+        "new_action": "commit-v1",
+        "graph_changed": true,
+        "value_change": -2.043,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": false,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "mine-4-0.85-m3",
+        "node": 0,
+        "depth": 0,
+        "original_action": "probe-v1",
+        "new_action": "commit-v1",
+        "graph_changed": true,
+        "value_change": -19.564,
+        "terminates": true,
+        "landmarks_lost": [
+          "ev-v1(neg1) | ev-v1(pos1)",
+          "ev-v2(neg1) | ev-v2(pos1)",
+          "ev-v3(neg1) | ev-v3(pos1)",
+          "ev-v4(neg1) | ev-v4(pos1)"
+        ],
+        "landmarks_gained": [
+          "chose(commit-v1)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "mine-4-0.85-m4",
+        "node": 5,
+        "depth": 2,
+        "original_action": "probe-v4",
+        "new_action": "probe-v3",
+        "graph_changed": true,
+        "value_change": -0.64,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": false,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "mine-4-0.85-m5",
+        "node": 1,
+        "depth": 1,
+        "original_action": "probe-v1",
+        "new_action": "probe-v4",
+        "graph_changed": true,
+        "value_change": -0.334,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": false,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "mine-4-0.85-m6",
+        "node": 7,
+        "depth": 3,
+        "original_action": "probe-v4",
+        "new_action": "commit-v3",
+        "graph_changed": true,
+        "value_change": -7.742,
+        "terminates": true,
+        "landmarks_lost": [
+          "ev-v2(neg1) | ev-v2(pos1)"
+        ],
+        "landmarks_gained": [
+          "chose(commit-v1) | chose(commit-v2) | chose(commit-v3)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "mine-4-0.85-m7",
+        "node": 0,
+        "depth": 0,
+        "original_action": "probe-v1",
+        "new_action": "probe-v4",
+        "graph_changed": false,
+        "value_change": 0.0,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": false,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "mine-4-0.85-m8",
+        "node": 8,
+        "depth": 3,
+        "original_action": "probe-v2",
+        "new_action": "commit-v1",
+        "graph_changed": true,
+        "value_change": -7.996,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [
+          "chose(commit-v1) | chose(commit-v3) | chose(commit-v4)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "mine-4-0.85-m9",
+        "node": 0,
+        "depth": 0,
+        "original_action": "probe-v1",
+        "new_action": "commit-v4",
+        "graph_changed": true,
+        "value_change": -19.564,
+        "terminates": true,
+        "landmarks_lost": [
+          "ev-v1(neg1) | ev-v1(pos1)",
+          "ev-v2(neg1) | ev-v2(pos1)",
+          "ev-v3(neg1) | ev-v3(pos1)",
+          "ev-v4(neg1) | ev-v4(pos1)"
+        ],
+        "landmarks_gained": [
+          "chose(commit-v4)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      }
+    ]
+  },
+  "rocksample-4-4-s1": {
+    "base": {
+      "nodes": 37,
+      "terminates": true,
+      "landmarks": [
+        "at(c2-1)",
+        "at(c3-1)",
+        "done",
+        "ev-rock1(neg3)",
+        "ev-rock2(neg2) | ev-rock2(pos2)",
+        "ev-rock2(neg3)",
+        "ev-rock3(neg3)",
+        "ev-rock4(neg2) | ev-rock4(neg3)",
+        "ev-rock4(neg2) | ev-rock4(pos2)"
+      ],
+      "orderings": [
+        "at(c2-1) < ev-rock3(neg3)",
+        "at(c3-1) < ev-rock1(neg3)",
+        "ev-rock1(neg3) < ev-rock2(neg2) | ev-rock2(pos2)",
+        "ev-rock2(neg2) | ev-rock2(pos2) < ev-rock2(neg3)",
+        "ev-rock2(neg3) < done",
+        "ev-rock3(neg3) < at(c3-1)",
+        "ev-rock4(neg2) | ev-rock4(neg3) < at(c2-1)",
+        "ev-rock4(neg2) | ev-rock4(pos2) < at(c2-1)"
+      ],
+      "value": 34.536,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    "mutants": [
+      {
+        "mutant": "rocksample-4-4-s1-m1",
+        "node": 15,
+        "depth": 6,
+        "original_action": "2",
+        "new_action": "9",
+        "graph_changed": true,
+        "value_change": -0.194,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": false,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "rocksample-4-4-s1-m10",
+        "node": 13,
+        "depth": 6,
+        "original_action": "1",
+        "new_action": "2",
+        "graph_changed": true,
+        "value_change": -7.674,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": false,
+        "p_end_within_100": 0.75
+      },
+      {
+        "mutant": "rocksample-4-4-s1-m11",
+        "node": 14,
+        "depth": 6,
+        "original_action": "3",
+        "new_action": "6",
+        "graph_changed": true,
+        "value_change": -0.083,
+        "terminates": true,
+        "landmarks_lost": [
+          "ev-rock1(neg3)"
+        ],
+        "landmarks_gained": [
+          "ev-rock1(neg2) | ev-rock1(neg3)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "rocksample-4-4-s1-m12",
+        "node": 15,
+        "depth": 6,
+        "original_action": "2",
+        "new_action": "7",
+        "graph_changed": true,
+        "value_change": -0.162,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": false,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "rocksample-4-4-s1-m2",
+        "node": 9,
+        "depth": 4,
+        "original_action": "6",
+        "new_action": "5",
+        "graph_changed": true,
+        "value_change": -9.572,
+        "terminates": true,
+        "landmarks_lost": [
+          "ev-rock4(neg2) | ev-rock4(neg3)",
+          "ev-rock4(neg2) | ev-rock4(pos2)"
+        ],
+        "landmarks_gained": [
+          "at(c1-2)",
+          "at(c2-2)",
+          "ev-rock4(neg3)",
+          "ev-rock4(pos2)",
+          "sampled(rock4)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 0.5
+      },
+      {
+        "mutant": "rocksample-4-4-s1-m3",
+        "node": 0,
+        "depth": 0,
+        "original_action": "9",
+        "new_action": "4",
+        "graph_changed": true,
+        "value_change": -34.536,
+        "terminates": false,
+        "landmarks_lost": [
+          "at(c2-1)",
+          "at(c3-1)",
+          "done",
+          "ev-rock1(neg3)",
+          "ev-rock2(neg2) | ev-rock2(pos2)",
+          "ev-rock2(neg3)",
+          "ev-rock3(neg3)",
+          "ev-rock4(neg2) | ev-rock4(neg3)",
+          "ev-rock4(neg2) | ev-rock4(pos2)"
+        ],
+        "landmarks_gained": [],
+        "orderings_changed": true,
+        "p_end_within_100": 0.0
+      },
+      {
+        "mutant": "rocksample-4-4-s1-m4",
+        "node": 16,
+        "depth": 6,
+        "original_action": "7",
+        "new_action": "6",
+        "graph_changed": true,
+        "value_change": -1.675,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": false,
+        "p_end_within_100": 0.75
+      },
+      {
+        "mutant": "rocksample-4-4-s1-m5",
+        "node": 1,
+        "depth": 1,
+        "original_action": "2",
+        "new_action": "3",
+        "graph_changed": true,
+        "value_change": -1.469,
+        "terminates": true,
+        "landmarks_lost": [
+          "at(c3-1)",
+          "ev-rock1(neg3)",
+          "ev-rock2(neg3)"
+        ],
+        "landmarks_gained": [
+          "ev-rock1(neg2) | ev-rock1(neg3)",
+          "ev-rock2(neg2) | ev-rock2(neg3)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "rocksample-4-4-s1-m6",
+        "node": 5,
+        "depth": 3,
+        "original_action": "3",
+        "new_action": "1",
+        "graph_changed": true,
+        "value_change": -97.62,
+        "terminates": true,
+        "landmarks_lost": [
+          "ev-rock4(neg2) | ev-rock4(neg3)",
+          "ev-rock4(neg2) | ev-rock4(pos2)"
+        ],
+        "landmarks_gained": [
+          "ev-rock4(neg2)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 0.5
+      },
+      {
+        "mutant": "rocksample-4-4-s1-m7",
+        "node": 0,
+        "depth": 0,
+        "original_action": "9",
+        "new_action": "3",
+        "graph_changed": true,
+        "value_change": -0.874,
+        "terminates": true,
+        "landmarks_lost": [
+          "at(c3-1)",
+          "ev-rock1(neg3)",
+          "ev-rock2(neg3)"
+        ],
+        "landmarks_gained": [
+          "at(c3-2)",
+          "ev-rock1(neg2) | ev-rock1(neg3)",
+          "ev-rock1(neg2) | ev-rock1(pos2)",
+          "ev-rock2(neg2) | ev-rock2(neg3)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "rocksample-4-4-s1-m8",
+        "node": 8,
+        "depth": 4,
+        "original_action": "4",
+        "new_action": "2",
+        "graph_changed": true,
+        "value_change": -11.883,
+        "terminates": true,
+        "landmarks_lost": [
+          "ev-rock4(neg2) | ev-rock4(neg3)",
+          "ev-rock4(neg2) | ev-rock4(pos2)"
+        ],
+        "landmarks_gained": [
+          "ev-rock4(neg2)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 0.5
+      },
+      {
+        "mutant": "rocksample-4-4-s1-m9",
+        "node": 16,
+        "depth": 6,
+        "original_action": "7",
+        "new_action": "9",
+        "graph_changed": true,
+        "value_change": -0.056,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": false,
+        "p_end_within_100": 1.0
+      }
+    ]
+  },
+  "rocksample-5-5-s1": {
+    "base": {
+      "nodes": 152,
+      "terminates": true,
+      "landmarks": [
+        "at(c2-3)",
+        "at(c2-4)",
+        "done",
+        "ev-rock1(neg3)",
+        "ev-rock2(neg2) | ev-rock2(neg3)",
+        "ev-rock3(neg2) | ev-rock3(neg3)",
+        "ev-rock3(neg2) | ev-rock3(pos2)",
+        "ev-rock4(neg2) | ev-rock4(neg3)",
+        "ev-rock4(neg2) | ev-rock4(pos2)",
+        "ev-rock5(neg2) | ev-rock5(neg3)",
+        "ev-rock5(neg2) | ev-rock5(pos2)"
+      ],
+      "orderings": [
+        "at(c2-3) < at(c2-4)",
+        "at(c2-4) < ev-rock1(neg3)",
+        "ev-rock1(neg3) < ev-rock3(neg2) | ev-rock3(neg3)",
+        "ev-rock1(neg3) < ev-rock3(neg2) | ev-rock3(pos2)",
+        "ev-rock2(neg2) | ev-rock2(neg3) < at(c2-3)",
+        "ev-rock3(neg2) | ev-rock3(neg3) < done",
+        "ev-rock3(neg2) | ev-rock3(pos2) < done",
+        "ev-rock4(neg2) | ev-rock4(neg3) < ev-rock2(neg2) | ev-rock2(neg3)",
+        "ev-rock4(neg2) | ev-rock4(neg3) < ev-rock5(neg2) | ev-rock5(neg3)",
+        "ev-rock4(neg2) | ev-rock4(neg3) < ev-rock5(neg2) | ev-rock5(pos2)",
+        "ev-rock4(neg2) | ev-rock4(pos2) < ev-rock2(neg2) | ev-rock2(neg3)",
+        "ev-rock4(neg2) | ev-rock4(pos2) < ev-rock5(neg2) | ev-rock5(neg3)",
+        "ev-rock4(neg2) | ev-rock4(pos2) < ev-rock5(neg2) | ev-rock5(pos2)",
+        "ev-rock5(neg2) | ev-rock5(neg3) < at(c2-3)",
+        "ev-rock5(neg2) | ev-rock5(pos2) < at(c2-3)"
+      ],
+      "value": 37.11,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "1",
+        "10",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    "mutants": [
+      {
+        "mutant": "rocksample-5-5-s1-m1",
+        "node": 14,
+        "depth": 5,
+        "original_action": "3",
+        "new_action": "2",
+        "graph_changed": true,
+        "value_change": -0.37,
+        "terminates": true,
+        "landmarks_lost": [
+          "at(c2-4)",
+          "ev-rock1(neg3)"
+        ],
+        "landmarks_gained": [
+          "ev-rock1(neg2) | ev-rock1(neg3)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "rocksample-5-5-s1-m10",
+        "node": 11,
+        "depth": 5,
+        "original_action": "3",
+        "new_action": "7",
+        "graph_changed": true,
+        "value_change": -0.397,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": false,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "rocksample-5-5-s1-m11",
+        "node": 12,
+        "depth": 5,
+        "original_action": "10",
+        "new_action": "9",
+        "graph_changed": true,
+        "value_change": -5.13,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": false,
+        "p_end_within_100": 0.75
+      },
+      {
+        "mutant": "rocksample-5-5-s1-m12",
+        "node": 13,
+        "depth": 5,
+        "original_action": "2",
+        "new_action": "10",
+        "graph_changed": true,
+        "value_change": -5.249,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [
+          "at(c2-2)",
+          "ev-rock2(neg2) | ev-rock2(pos2)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 0.75
+      },
+      {
+        "mutant": "rocksample-5-5-s1-m2",
+        "node": 8,
+        "depth": 4,
+        "original_action": "7",
+        "new_action": "5",
+        "graph_changed": true,
+        "value_change": -13.416,
+        "terminates": true,
+        "landmarks_lost": [
+          "ev-rock4(neg2) | ev-rock4(neg3)",
+          "ev-rock4(neg2) | ev-rock4(pos2)"
+        ],
+        "landmarks_gained": [
+          "at(c2-1)",
+          "ev-rock4(neg2)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 0.5
+      },
+      {
+        "mutant": "rocksample-5-5-s1-m3",
+        "node": 17,
+        "depth": 6,
+        "original_action": "3",
+        "new_action": "5",
+        "graph_changed": true,
+        "value_change": -3.139,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": false,
+        "p_end_within_100": 0.875
+      },
+      {
+        "mutant": "rocksample-5-5-s1-m4",
+        "node": 19,
+        "depth": 6,
+        "original_action": "7",
+        "new_action": "2",
+        "graph_changed": true,
+        "value_change": -5.249,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [
+          "at(c2-2)",
+          "ev-rock2(neg2) | ev-rock2(pos2)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 0.75
+      },
+      {
+        "mutant": "rocksample-5-5-s1-m5",
+        "node": 1,
+        "depth": 1,
+        "original_action": "2",
+        "new_action": "1",
+        "graph_changed": true,
+        "value_change": -117.211,
+        "terminates": true,
+        "landmarks_lost": [
+          "ev-rock4(neg2) | ev-rock4(neg3)",
+          "ev-rock4(neg2) | ev-rock4(pos2)"
+        ],
+        "landmarks_gained": [
+          "at(c2-1)",
+          "ev-rock4(neg2)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 0.5
+      },
+      {
+        "mutant": "rocksample-5-5-s1-m6",
+        "node": 19,
+        "depth": 6,
+        "original_action": "7",
+        "new_action": "6",
+        "graph_changed": true,
+        "value_change": -0.126,
+        "terminates": true,
+        "landmarks_lost": [
+          "at(c2-3)",
+          "at(c2-4)",
+          "ev-rock1(neg3)"
+        ],
+        "landmarks_gained": [
+          "ev-rock1(neg2) | ev-rock1(neg3)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "rocksample-5-5-s1-m7",
+        "node": 20,
+        "depth": 6,
+        "original_action": "1",
+        "new_action": "6",
+        "graph_changed": true,
+        "value_change": -0.109,
+        "terminates": true,
+        "landmarks_lost": [
+          "at(c2-3)",
+          "at(c2-4)",
+          "ev-rock1(neg3)"
+        ],
+        "landmarks_gained": [
+          "ev-rock1(neg2) | ev-rock1(neg3)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "rocksample-5-5-s1-m8",
+        "node": 17,
+        "depth": 6,
+        "original_action": "3",
+        "new_action": "8",
+        "graph_changed": true,
+        "value_change": -0.114,
+        "terminates": true,
+        "landmarks_lost": [
+          "at(c2-3)",
+          "at(c2-4)",
+          "ev-rock1(neg3)"
+        ],
+        "landmarks_gained": [
+          "ev-rock1(neg2) | ev-rock1(neg3)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "rocksample-5-5-s1-m9",
+        "node": 15,
+        "depth": 5,
+        "original_action": "2",
+        "new_action": "1",
+        "graph_changed": true,
+        "value_change": -21.44,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": false,
+        "p_end_within_100": 0.875
+      }
+    ]
+  },
+  "sensor-0.85": {
+    "base": {
+      "nodes": 21,
+      "terminates": true,
+      "landmarks": [
+        "done",
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+      ],
+      "orderings": [
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-b(neg2) | ev-sensor-b(pos2)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2) < done",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1) < ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2) < done"
+      ],
+      "value": 8.695,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "commit-a-faulty-b-faulty",
+        "commit-a-faulty-b-ok",
+        "commit-a-ok-b-faulty",
+        "commit-a-ok-b-ok",
+        "read-a",
+        "read-b"
+      ]
+    },
+    "mutants": [
+      {
+        "mutant": "sensor-0.85-m1",
+        "node": 1,
+        "depth": 1,
+        "original_action": "read-a",
+        "new_action": "commit-a-ok-b-faulty",
+        "graph_changed": true,
+        "value_change": -13.141,
+        "terminates": true,
+        "landmarks_lost": [
+          "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+          "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+          "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+        ],
+        "landmarks_gained": [],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "sensor-0.85-m10",
+        "node": 11,
+        "depth": 3,
+        "original_action": "read-b",
+        "new_action": "commit-a-ok-b-faulty",
+        "graph_changed": true,
+        "value_change": -6.976,
+        "terminates": true,
+        "landmarks_lost": [
+          "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+        ],
+        "landmarks_gained": [],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "sensor-0.85-m11",
+        "node": 15,
+        "depth": 4,
+        "original_action": "read-b",
+        "new_action": "commit-a-ok-b-ok",
+        "graph_changed": true,
+        "value_change": -3.058,
+        "terminates": true,
+        "landmarks_lost": [
+          "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+        ],
+        "landmarks_gained": [],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "sensor-0.85-m12",
+        "node": 17,
+        "depth": 4,
+        "original_action": "read-a",
+        "new_action": "read-b",
+        "graph_changed": true,
+        "value_change": -0.071,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": false,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "sensor-0.85-m2",
+        "node": 19,
+        "depth": 5,
+        "original_action": "read-b",
+        "new_action": "commit-a-ok-b-ok",
+        "graph_changed": true,
+        "value_change": -0.877,
+        "terminates": true,
+        "landmarks_lost": [
+          "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+        ],
+        "landmarks_gained": [],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "sensor-0.85-m3",
+        "node": 0,
+        "depth": 0,
+        "original_action": "read-b",
+        "new_action": "commit-a-faulty-b-ok",
+        "graph_changed": true,
+        "value_change": -18.695,
+        "terminates": true,
+        "landmarks_lost": [
+          "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+          "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+          "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+          "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+        ],
+        "landmarks_gained": [
+          "chose(commit-a-faulty-b-ok)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "sensor-0.85-m4",
+        "node": 6,
+        "depth": 2,
+        "original_action": "read-a",
+        "new_action": "read-b",
+        "graph_changed": true,
+        "value_change": 0.0,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": false,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "sensor-0.85-m5",
+        "node": 1,
+        "depth": 1,
+        "original_action": "read-a",
+        "new_action": "commit-a-faulty-b-faulty",
+        "graph_changed": true,
+        "value_change": -13.141,
+        "terminates": true,
+        "landmarks_lost": [
+          "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+          "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+          "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+        ],
+        "landmarks_gained": [],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "sensor-0.85-m6",
+        "node": 8,
+        "depth": 3,
+        "original_action": "read-b",
+        "new_action": "read-a",
+        "graph_changed": true,
+        "value_change": -0.402,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": false,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "sensor-0.85-m7",
+        "node": 0,
+        "depth": 0,
+        "original_action": "read-b",
+        "new_action": "commit-a-ok-b-faulty",
+        "graph_changed": true,
+        "value_change": -18.695,
+        "terminates": true,
+        "landmarks_lost": [
+          "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+          "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+          "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+          "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+        ],
+        "landmarks_gained": [
+          "chose(commit-a-ok-b-faulty)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "sensor-0.85-m8",
+        "node": 15,
+        "depth": 4,
+        "original_action": "read-b",
+        "new_action": "read-a",
+        "graph_changed": true,
+        "value_change": -0.138,
+        "terminates": true,
+        "landmarks_lost": [],
+        "landmarks_gained": [],
+        "orderings_changed": false,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "sensor-0.85-m9",
+        "node": 1,
+        "depth": 1,
+        "original_action": "read-a",
+        "new_action": "commit-a-ok-b-ok",
+        "graph_changed": true,
+        "value_change": -6.379,
+        "terminates": true,
+        "landmarks_lost": [
+          "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+          "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+          "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+        ],
+        "landmarks_gained": [],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      }
+    ]
+  },
+  "tiger-0.85": {
+    "base": {
+      "nodes": 5,
+      "terminates": true,
+      "landmarks": [
+        "chose(left) | chose(right)",
+        "done",
+        "ev-direction(neg1) | ev-direction(pos1)",
+        "ev-direction(neg2) | ev-direction(pos2)"
+      ],
+      "orderings": [
+        "ev-direction(neg1) | ev-direction(pos1) < ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg2) | ev-direction(pos2) < chose(left) | chose(right)",
+        "ev-direction(neg2) | ev-direction(pos2) < done"
+      ],
+      "value": 19.371,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "left",
+        "listen",
+        "right"
+      ]
+    },
+    "mutants": [
+      {
+        "mutant": "tiger-0.85-m1",
+        "node": 2,
+        "depth": 1,
+        "original_action": "listen",
+        "new_action": "right",
+        "graph_changed": true,
+        "value_change": -359.611,
+        "terminates": true,
+        "landmarks_lost": [
+          "chose(left) | chose(right)",
+          "ev-direction(neg2) | ev-direction(pos2)"
+        ],
+        "landmarks_gained": [
+          "chose(right)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "tiger-0.85-m2",
+        "node": 0,
+        "depth": 0,
+        "original_action": "listen",
+        "new_action": "right",
+        "graph_changed": true,
+        "value_change": -919.371,
+        "terminates": true,
+        "landmarks_lost": [
+          "chose(left) | chose(right)",
+          "ev-direction(neg1) | ev-direction(pos1)",
+          "ev-direction(neg2) | ev-direction(pos2)"
+        ],
+        "landmarks_gained": [
+          "chose(right)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "tiger-0.85-m3",
+        "node": 1,
+        "depth": 1,
+        "original_action": "listen",
+        "new_action": "right",
+        "graph_changed": true,
+        "value_change": -39.645,
+        "terminates": true,
+        "landmarks_lost": [
+          "ev-direction(neg2) | ev-direction(pos2)"
+        ],
+        "landmarks_gained": [],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "tiger-0.85-m4",
+        "node": 0,
+        "depth": 0,
+        "original_action": "listen",
+        "new_action": "left",
+        "graph_changed": true,
+        "value_change": -919.371,
+        "terminates": true,
+        "landmarks_lost": [
+          "chose(left) | chose(right)",
+          "ev-direction(neg1) | ev-direction(pos1)",
+          "ev-direction(neg2) | ev-direction(pos2)"
+        ],
+        "landmarks_gained": [
+          "chose(left)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "tiger-0.85-m5",
+        "node": 1,
+        "depth": 1,
+        "original_action": "listen",
+        "new_action": "left",
+        "graph_changed": true,
+        "value_change": -359.611,
+        "terminates": true,
+        "landmarks_lost": [
+          "chose(left) | chose(right)",
+          "ev-direction(neg2) | ev-direction(pos2)"
+        ],
+        "landmarks_gained": [
+          "chose(left)"
+        ],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      },
+      {
+        "mutant": "tiger-0.85-m6",
+        "node": 2,
+        "depth": 1,
+        "original_action": "listen",
+        "new_action": "left",
+        "graph_changed": true,
+        "value_change": -39.645,
+        "terminates": true,
+        "landmarks_lost": [
+          "ev-direction(neg2) | ev-direction(pos2)"
+        ],
+        "landmarks_gained": [],
+        "orderings_changed": true,
+        "p_end_within_100": 1.0
+      }
+    ]
+  }
+}

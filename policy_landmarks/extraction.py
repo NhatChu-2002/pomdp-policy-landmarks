@@ -109,7 +109,8 @@ def controller(g: dict, bins: tuple = BINS) -> dict:
         effect = set()
         if g["problem"] == "rocksample" and a == RS_SAMPLE:
             cell = next(f for f in src if f.startswith("at("))[4:-1]
-            effect.add(f"sampled({g['rock_at'][cell]})")
+            if cell in g["rock_at"]:             # sampling an empty cell only costs reward
+                effect.add(f"sampled({g['rock_at'][cell]})")
         edges.add((src, a, e["obs"], state[e["to"]], frozenset(effect)))
     commits = {(state[i], n["action"]) for i, n in nodes.items() if n["kind"] == "commit_end"}
     return {"init": state[0], "edges": edges, "commits": commits, "node_state": state,

@@ -1,0 +1,26 @@
+{
+"problem": "probe", "name": "channel", "k": 3, "p_correct": 0.85,
+"solver": "sarsop",
+"base": "channel-3-0.85", "mutation": {"node": 4, "depth": 2, "original_action": "probe-v1", "new_action": "commit-v1"},
+"solve_seconds": 0.004999876022338867,
+"value_at_b0": 11.490946753961765,
+"states": ["v1","v2","v3","done"],
+"nodes": [
+{"id":0,"kind":"inner","action":"probe-v2","belief":"0:0.333333333 1:0.333333333 2:0.333333333"},
+{"id":1,"kind":"inner","action":"probe-v2","belief":"0:0.130434783 1:0.739130435 2:0.130434783"},
+{"id":2,"kind":"inner","action":"probe-v1","belief":"0:0.459459459 1:0.081081081 2:0.459459459"},
+{"id":3,"kind":"commit_end","action":"commit-v2","belief":"0:0.029315961 1:0.941368078 2:0.029315961"},
+{"id":4,"kind":"commit_end","action":"commit-v1","belief":"0:0.828080229 1:0.025787966 2:0.146131805"},
+{"id":5,"kind":"inner","action":"probe-v3","belief":"0:0.130434783 1:0.130434783 2:0.739130435"},
+{"id":6,"kind":"commit_end","action":"commit-v3","belief":"0:0.029315961 1:0.029315961 2:0.941368078"}
+],
+"edges": [
+{"from":0,"obs":"hit-v2","to":1,"p":0.3833333333333333},
+{"from":0,"obs":"miss-v2","to":2,"p":0.6166666666666667},
+{"from":1,"obs":"hit-v2","to":3,"p":0.6673913043478261},
+{"from":1,"obs":"miss-v2","to":0,"p":0.332608695652174},
+{"from":2,"obs":"hit-v1","to":4,"p":0.4716216216216216},
+{"from":2,"obs":"miss-v1","to":5,"p":0.5283783783783783},
+{"from":5,"obs":"hit-v3","to":6,"p":0.667391304347826},
+{"from":5,"obs":"miss-v3","to":0,"p":0.33260869565217394}
+]}

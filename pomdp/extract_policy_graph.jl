@@ -1,13 +1,36 @@
-# Extract the reachable policy graph of a SARSOP policy.
+# Extract the reachable policy graph of a SARSOP (or QMDP) policy.
 #
 #   julia extract_policy_graph.jl tiger <p_correct> <out.json>
+#   julia extract_policy_graph.jl sensor <p_correct> <out.json>
+#   julia extract_policy_graph.jl probe <name> <k> <p_correct> <out.json>
 #   julia extract_policy_graph.jl rocksample <n> <k> <seed> <out.json>
+#   julia extract_policy_graph.jl mutate <problem args...> <count> <seed> <outdir>
+#   julia extract_policy_graph.jl batch <jobs.txt>      (one job per line, one process)
 #
 # Starting from the initial belief, follow the policy: at each belief take the
 # policy's action and branch on every observation with nonzero probability.
 # Beliefs are merged when equal up to 1e-9. The output lists every reachable
 # belief node (belief vector, action) and every edge (observation, probability),
 # so the graph contains exactly the policy's executions with positive probability.
+#
+# Environment:
+#   SOLVER=sarsop (default) | qmdp   recorded as "solver" in the JSON.
+#     qmdp: value iteration on the fully observable MDP, one alpha vector per
+#     action (ignores the value of information).
+#   SARSOP_TIME=<seconds>            SARSOP time limit (default 120).
+#
+# mutate (fault injection): solve once, write the base graph to
+# <outdir>/<base>-base.json, then up to <count> single-action mutants
+# <outdir>/<base>-m<i>.json. A mutant equals the base policy except at the
+# belief of one inner node of the base graph (9-digit rounded key), where it
+# takes a different action. (node, action) pairs are drawn without replacement
+# with MersenneTwister(<seed>), nodes at BFS depth <= 6 first; fewer than <count>
+# mutants are written when fewer distinct pairs exist. Each mutant JSON adds
+#   "base": "<base>", "mutation": {"node", "depth", "original_action", "new_action"}.
+# <base> is tiger-<p>, sensor-<p>, <name>-<k>-<p> or rocksample-<n>-<k>-s<seed>.
+#
+# A failing job (e.g. the graph exceeds MAX_NODES) writes {meta..., "error": "<message>"}
+# instead of a graph, so a batch keeps going.
 
 using POMDPs
 using POMDPTools
@@ -104,15 +127,44 @@ end
 key(b) = Tuple(round.(b.b, digits = 9))
 all_terminal(m, b, S) = all(b.b[i] == 0 || isterminal(m, s) for (i, s) in enumerate(S))
 
-function extract(m, ends, desc, meta, out; max_time = parse(Float64, get(ENV, "SARSOP_TIME", "120")))
+q(x) = "\"" * replace(string(x), "\"" => "'") * "\""
+solver_name() = get(ENV, "SOLVER", "sarsop")
+
+# QMDP: value iteration on the fully observable MDP (terminal states valued 0),
+# then alpha_a(s) = R(s,a) + gamma * sum_s' T(s'|s,a) V(s'), one vector per action.
+function qmdp(m; tol = 1e-8, maxiter = 100_000)
+    S = ordered_states(m); A = ordered_actions(m); g = discount(m)
+    term = [isterminal(m, s) for s in S]
+    R = [term[i] ? 0.0 : reward(m, s, a) for (i, s) in enumerate(S), a in A]
+    T = [term[i] ? Tuple{Int,Float64}[] :
+         [(stateindex(m, sp), p) for (sp, p) in weighted_iterator(transition(m, s, a)) if p > 0]
+         for (i, s) in enumerate(S), a in A]
+    V = zeros(length(S))
+    Q(i, j) = term[i] ? 0.0 : R[i, j] + g * sum((p * V[k] for (k, p) in T[i, j]); init = 0.0)
+    for it in 1:maxiter
+        Vn = [maximum(Q(i, j) for j in eachindex(A)) for i in eachindex(S)]
+        d = maximum(abs.(Vn .- V)); V .= Vn
+        d < tol && break
+        it == maxiter && println("qmdp: value iteration hit $maxiter iterations (residual $d)")
+    end
+    AlphaVectorPolicy(m, [[Q(i, j) for i in eachindex(S)] for j in eachindex(A)], A)
+end
+
+function solve_policy(m; max_time = parse(Float64, get(ENV, "SARSOP_TIME", "120")))
     t0 = time()
-    policy = solve(SARSOPSolver(precision = 1e-3, max_time = max_time), m)
-    solve_s = time() - t0
+    s = solver_name()
+    policy = s == "sarsop" ? solve(SARSOPSolver(precision = 1e-3, max_time = max_time), m) :
+             s == "qmdp" ? qmdp(m) : error("unknown SOLVER $s")
+    policy, time() - t0
+end
+
+# BFS over reachable beliefs; depth[j] is the BFS depth of node j (root 0).
+function policy_graph(m, policy, ends)
     up = DiscreteUpdater(m)
     S = ordered_states(m)
     O = ordered_observations(m)
     b0 = initialize_belief(up, initialstate(m))
-    ids = Dict(key(b0) => 0); beliefs = [b0]; acts = Any[]; kinds = String[]
+    ids = Dict(key(b0) => 0); beliefs = [b0]; depth = [0]; acts = Any[]; kinds = String[]
     edges = Tuple{Int,Any,Int,Float64}[]
     i = 0
     while i < length(beliefs)
@@ -134,47 +186,116 @@ function extract(m, ends, desc, meta, out; max_time = parse(Float64, get(ENV, "S
             kb = key(bp)
             if !haskey(ids, kb)
                 length(beliefs) >= MAX_NODES && error("policy graph exceeds $MAX_NODES nodes")
-                ids[kb] = length(beliefs); push!(beliefs, bp)
+                ids[kb] = length(beliefs); push!(beliefs, bp); push!(depth, depth[i] + 1)
             end
             push!(edges, (i - 1, o, ids[kb], p))
         end
     end
-    q(x) = "\"" * replace(string(x), "\"" => "'") * "\""
+    (; beliefs, depth, acts, kinds, edges)
+end
+
+# `extra` is "" or extra top-level JSON members (without trailing comma).
+function write_graph(out, m, desc, meta, extra, solve_s, policy, g)
+    S = ordered_states(m)
     open(out, "w") do io
         println(io, "{")
         println(io, meta, ",")
+        println(io, "\"solver\": ", q(solver_name()), ",")
+        isempty(extra) || println(io, extra, ",")
         println(io, "\"solve_seconds\": ", solve_s, ",")
-        println(io, "\"value_at_b0\": ", value(policy, b0), ",")
+        println(io, "\"value_at_b0\": ", value(policy, g.beliefs[1]), ",")
         println(io, "\"states\": [", join(q.(desc.(S)), ","), "],")
         println(io, "\"nodes\": [")
-        for (j, b) in enumerate(beliefs)
+        for (j, b) in enumerate(g.beliefs)
             nz = [string(t - 1, ":", round(b.b[t], digits = 9)) for t in eachindex(b.b) if b.b[t] > 0]
-            print(io, "{\"id\":", j - 1, ",\"kind\":", q(kinds[j]), ",\"action\":", q(acts[j]),
+            print(io, "{\"id\":", j - 1, ",\"kind\":", q(g.kinds[j]), ",\"action\":", q(g.acts[j]),
                   ",\"belief\":", q(join(nz, " ")), "}")
-            println(io, j < length(beliefs) ? "," : "")
+            println(io, j < length(g.beliefs) ? "," : "")
         end
         println(io, "],")
         println(io, "\"edges\": [")
-        for (j, (f, o, t, p)) in enumerate(edges)
+        for (j, (f, o, t, p)) in enumerate(g.edges)
             print(io, "{\"from\":", f, ",\"obs\":", q(o), ",\"to\":", t, ",\"p\":", p, "}")
-            println(io, j < length(edges) ? "," : "")
+            println(io, j < length(g.edges) ? "," : "")
         end
         println(io, "]}")
     end
-    println("nodes=", length(beliefs), " edges=", length(edges), " solve=", round(solve_s, digits = 1), "s")
+    println("nodes=", length(g.beliefs), " edges=", length(g.edges), " solve=", round(solve_s, digits = 1), "s")
+end
+
+function write_error(out, meta, extra, e)
+    e isa InterruptException && rethrow()
+    msg = replace(sprint(showerror, e), '\\' => '/', '\n' => ' ', '\r' => ' ', '\t' => ' ')
+    println("ERROR ", out, ": ", msg)
+    open(out, "w") do io
+        println(io, "{", meta, ", \"solver\": ", q(solver_name()), ",", isempty(extra) ? "" : " $extra,",
+                " \"error\": ", q(msg), "}")
+    end
+end
+
+function extract(m, ends, desc, meta, out; kw...)
+    try
+        policy, solve_s = solve_policy(m; kw...)
+        write_graph(out, m, desc, meta, "", solve_s, policy, policy_graph(m, policy, ends))
+    catch e
+        write_error(out, meta, "", e)
+    end
+end
+
+# The base policy except at one belief (9-digit rounded key), where it takes `a`.
+struct Mutant{P<:Policy} <: Policy
+    base::P
+    k::Tuple
+    a::Any
+end
+POMDPs.action(p::Mutant, b) = key(b) == p.k ? p.a : action(p.base, b)
+POMDPs.value(p::Mutant, b) = value(p.base, b)
+
+function mutate(m, ends, desc, meta, name, count, seed, outdir)
+    mkpath(outdir)
+    policy, solve_s = solve_policy(m)
+    g = policy_graph(m, policy, ends)
+    write_graph(joinpath(outdir, "$name-base.json"), m, desc, meta, "", solve_s, policy, g)
+    rng = MersenneTwister(seed)
+    A = collect(actions(m))
+    inner = [j for j in eachindex(g.kinds) if g.kinds[j] == "inner"]
+    cands(ns) = [(j, a) for j in ns for a in A if a != g.acts[j]]
+    pool = shuffle(rng, cands(filter(j -> g.depth[j] <= 6, inner)))
+    append!(pool, shuffle(rng, setdiff(cands(inner), pool)))
+    length(pool) < count && println("only $(length(pool)) distinct mutations for $name")
+    for (i, (j, a)) in enumerate(pool[1:min(count, end)])
+        mut = string("\"base\": ", q(name), ", \"mutation\": {\"node\": ", j - 1, ", \"depth\": ", g.depth[j],
+                     ", \"original_action\": ", q(g.acts[j]), ", \"new_action\": ", q(a), "}")
+        out = joinpath(outdir, "$name-m$i.json")
+        println("mutant $i: node ", j - 1, " ", g.acts[j], " -> ", a); flush(stdout)
+        try
+            mp = Mutant(policy, key(g.beliefs[j]), a)
+            write_graph(out, m, desc, meta, mut, solve_s, mp, policy_graph(m, mp, ends))
+        catch e
+            write_error(out, meta, mut, e)
+        end
+    end
+end
+
+# Returns (model tuple, base name, number of args used).
+function build(args)
+    p = args[1]
+    p == "tiger" && return (tiger(parse(Float64, args[2])), "tiger-$(args[2])", 2)
+    p == "sensor" && return (sensor(parse(Float64, args[2])), "sensor-$(args[2])", 2)
+    p == "probe" && return (probe(args[2], parse(Int, args[3]), parse(Float64, args[4])),
+                            "$(args[2])-$(args[3])-$(args[4])", 4)
+    p == "rocksample" && return (rocksample(parse.(Int, args[2:4])...),
+                                 "rocksample-$(args[2])-$(args[3])-s$(args[4])", 4)
+    error("unknown problem $p")
 end
 
 function run_job(args)
-    if args[1] == "tiger"
-        extract(tiger(parse(Float64, args[2]))..., args[3])
-    elseif args[1] == "probe"
-        extract(probe(args[2], parse(Int, args[3]), parse(Float64, args[4]))..., args[5])
-    elseif args[1] == "sensor"
-        extract(sensor(parse(Float64, args[2]))..., args[3])
-    elseif args[1] == "rocksample"
-        extract(rocksample(parse(Int, args[2]), parse(Int, args[3]), parse(Int, args[4]))..., args[5])
+    if args[1] == "mutate"
+        model, name, n = build(args[2:end])
+        mutate(model..., name, parse(Int, args[n + 2]), parse(Int, args[n + 3]), args[n + 4])
     else
-        error("unknown problem $(args[1])")
+        model, _, n = build(args)
+        extract(model..., args[n + 1])
     end
 end
 
@@ -185,7 +306,13 @@ elseif ARGS[1] == "batch"
     for line in eachline(ARGS[2])
         isempty(strip(line)) && continue
         println("job: ", line); flush(stdout)
-        run_job(split(line))
+        try
+            run_job(split(line))
+        catch e
+            e isa InterruptException && rethrow()
+            println("ERROR job failed: ", sprint(showerror, e))
+        end
+        flush(stdout)
     end
 else
     run_job(ARGS)

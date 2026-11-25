@@ -1,0 +1,1792 @@
+{
+  "channel-3-0.85": {
+    "sarsop": {
+      "nodes": 8,
+      "terminates": true,
+      "landmarks": [
+        "chose(commit-v1) | chose(commit-v2) | chose(commit-v3)",
+        "done",
+        "ev-v1(neg1) | ev-v1(pos1)",
+        "ev-v1(neg2) | ev-v1(pos2)",
+        "ev-v2(neg1) | ev-v2(pos1)",
+        "ev-v2(neg2) | ev-v2(pos2)",
+        "ev-v3(neg1) | ev-v3(pos1)",
+        "ev-v3(neg2) | ev-v3(pos2)"
+      ],
+      "orderings": [
+        "ev-v1(neg1) | ev-v1(pos1) < ev-v1(neg2) | ev-v1(pos2)",
+        "ev-v1(neg1) | ev-v1(pos1) < ev-v3(neg2) | ev-v3(pos2)",
+        "ev-v1(neg2) | ev-v1(pos2) < chose(commit-v1) | chose(commit-v2) | chose(commit-v3)",
+        "ev-v1(neg2) | ev-v1(pos2) < done",
+        "ev-v2(neg1) | ev-v2(pos1) < ev-v1(neg2) | ev-v1(pos2)",
+        "ev-v2(neg1) | ev-v2(pos1) < ev-v2(neg2) | ev-v2(pos2)",
+        "ev-v2(neg1) | ev-v2(pos1) < ev-v3(neg2) | ev-v3(pos2)",
+        "ev-v2(neg2) | ev-v2(pos2) < chose(commit-v1) | chose(commit-v2) | chose(commit-v3)",
+        "ev-v2(neg2) | ev-v2(pos2) < done",
+        "ev-v3(neg1) | ev-v3(pos1) < ev-v1(neg2) | ev-v1(pos2)",
+        "ev-v3(neg1) | ev-v3(pos1) < ev-v3(neg2) | ev-v3(pos2)",
+        "ev-v3(neg2) | ev-v3(pos2) < chose(commit-v1) | chose(commit-v2) | chose(commit-v3)",
+        "ev-v3(neg2) | ev-v3(pos2) < done"
+      ],
+      "value": 11.491,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "commit-v1",
+        "commit-v2",
+        "commit-v3",
+        "probe-v1",
+        "probe-v2",
+        "probe-v3"
+      ]
+    },
+    "qmdp": {
+      "nodes": 16,
+      "terminates": true,
+      "landmarks": [
+        "chose(commit-v1)",
+        "done",
+        "ev-v1(pos1)",
+        "ev-v1(pos2)",
+        "ev-v1(pos3)",
+        "ev-v2(neg1)",
+        "ev-v2(neg2)",
+        "ev-v2(neg3)",
+        "ev-v3(neg1)",
+        "ev-v3(neg2)",
+        "ev-v3(neg3)"
+      ],
+      "orderings": [
+        "ev-v1(pos1) < ev-v1(pos2)",
+        "ev-v1(pos1) < ev-v2(neg2)",
+        "ev-v1(pos1) < ev-v3(neg2)",
+        "ev-v1(pos2) < ev-v1(pos3)",
+        "ev-v1(pos2) < ev-v2(neg3)",
+        "ev-v1(pos2) < ev-v3(neg3)",
+        "ev-v1(pos3) < chose(commit-v1)",
+        "ev-v1(pos3) < done",
+        "ev-v2(neg1) < ev-v1(pos2)",
+        "ev-v2(neg1) < ev-v2(neg2)",
+        "ev-v2(neg1) < ev-v3(neg2)",
+        "ev-v2(neg2) < ev-v1(pos3)",
+        "ev-v2(neg2) < ev-v2(neg3)",
+        "ev-v2(neg2) < ev-v3(neg3)",
+        "ev-v2(neg3) < chose(commit-v1)",
+        "ev-v2(neg3) < done",
+        "ev-v3(neg1) < ev-v1(pos2)",
+        "ev-v3(neg1) < ev-v2(neg2)",
+        "ev-v3(neg1) < ev-v3(neg2)",
+        "ev-v3(neg2) < ev-v1(pos3)",
+        "ev-v3(neg2) < ev-v2(neg3)",
+        "ev-v3(neg2) < ev-v3(neg3)",
+        "ev-v3(neg3) < chose(commit-v1)",
+        "ev-v3(neg3) < done"
+      ],
+      "value": -9.24,
+      "p_end_within_100": 0.337,
+      "actions": [
+        "commit-v1",
+        "probe-v1"
+      ]
+    },
+    "only_sarsop": [
+      "chose(commit-v1) | chose(commit-v2) | chose(commit-v3)",
+      "ev-v1(neg1) | ev-v1(pos1)",
+      "ev-v1(neg2) | ev-v1(pos2)",
+      "ev-v2(neg1) | ev-v2(pos1)",
+      "ev-v2(neg2) | ev-v2(pos2)",
+      "ev-v3(neg1) | ev-v3(pos1)",
+      "ev-v3(neg2) | ev-v3(pos2)"
+    ],
+    "only_qmdp": [
+      "chose(commit-v1)",
+      "ev-v1(pos1)",
+      "ev-v1(pos2)",
+      "ev-v1(pos3)",
+      "ev-v2(neg1)",
+      "ev-v2(neg2)",
+      "ev-v2(neg3)",
+      "ev-v3(neg1)",
+      "ev-v3(neg2)",
+      "ev-v3(neg3)"
+    ],
+    "same_graph": false
+  },
+  "mine-4-0.85": {
+    "sarsop": {
+      "nodes": 11,
+      "terminates": true,
+      "landmarks": [
+        "done",
+        "ev-v1(neg1) | ev-v1(pos1)",
+        "ev-v2(neg1) | ev-v2(pos1)",
+        "ev-v3(neg1) | ev-v3(pos1)",
+        "ev-v4(neg1) | ev-v4(pos1)"
+      ],
+      "orderings": [
+        "ev-v1(neg1) | ev-v1(pos1) < done",
+        "ev-v2(neg1) | ev-v2(pos1) < done",
+        "ev-v3(neg1) | ev-v3(pos1) < done",
+        "ev-v4(neg1) | ev-v4(pos1) < done"
+      ],
+      "value": 9.564,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "commit-v1",
+        "commit-v2",
+        "commit-v3",
+        "commit-v4",
+        "probe-v1",
+        "probe-v2",
+        "probe-v3",
+        "probe-v4"
+      ]
+    },
+    "qmdp": {
+      "nodes": 16,
+      "terminates": true,
+      "landmarks": [
+        "chose(commit-v1)",
+        "done",
+        "ev-v1(pos1)",
+        "ev-v1(pos2)",
+        "ev-v1(pos3)",
+        "ev-v2(neg1)",
+        "ev-v2(neg2)",
+        "ev-v3(neg1)",
+        "ev-v3(neg2)",
+        "ev-v4(neg1)",
+        "ev-v4(neg2)"
+      ],
+      "orderings": [
+        "ev-v1(pos1) < ev-v1(pos2)",
+        "ev-v1(pos2) < ev-v1(pos3)",
+        "ev-v1(pos2) < ev-v2(neg2)",
+        "ev-v1(pos2) < ev-v3(neg2)",
+        "ev-v1(pos2) < ev-v4(neg2)",
+        "ev-v1(pos3) < chose(commit-v1)",
+        "ev-v1(pos3) < done",
+        "ev-v2(neg1) < ev-v1(pos2)",
+        "ev-v2(neg2) < chose(commit-v1)",
+        "ev-v2(neg2) < done",
+        "ev-v3(neg1) < ev-v1(pos2)",
+        "ev-v3(neg2) < chose(commit-v1)",
+        "ev-v3(neg2) < done",
+        "ev-v4(neg1) < ev-v1(pos2)",
+        "ev-v4(neg2) < chose(commit-v1)",
+        "ev-v4(neg2) < done"
+      ],
+      "value": -11.93,
+      "p_end_within_100": 0.2541,
+      "actions": [
+        "commit-v1",
+        "probe-v1"
+      ]
+    },
+    "only_sarsop": [
+      "ev-v1(neg1) | ev-v1(pos1)",
+      "ev-v2(neg1) | ev-v2(pos1)",
+      "ev-v3(neg1) | ev-v3(pos1)",
+      "ev-v4(neg1) | ev-v4(pos1)"
+    ],
+    "only_qmdp": [
+      "chose(commit-v1)",
+      "ev-v1(pos1)",
+      "ev-v1(pos2)",
+      "ev-v1(pos3)",
+      "ev-v2(neg1)",
+      "ev-v2(neg2)",
+      "ev-v3(neg1)",
+      "ev-v3(neg2)",
+      "ev-v4(neg1)",
+      "ev-v4(neg2)"
+    ],
+    "same_graph": false
+  },
+  "mine-9-0.85": {
+    "sarsop": {
+      "nodes": 121,
+      "terminates": true,
+      "landmarks": [
+        "chose(commit-v5) | chose(commit-v8)",
+        "done",
+        "ev-v1(neg1)",
+        "ev-v2(neg1)",
+        "ev-v3(neg1)",
+        "ev-v4(neg1)",
+        "ev-v5(neg1) | ev-v5(pos1)",
+        "ev-v6(neg1)",
+        "ev-v7(neg1)",
+        "ev-v8(neg1) | ev-v8(pos1)",
+        "ev-v8(neg2) | ev-v8(pos2)",
+        "ev-v9(neg1)"
+      ],
+      "orderings": [
+        "ev-v1(neg1) < chose(commit-v5) | chose(commit-v8)",
+        "ev-v1(neg1) < done",
+        "ev-v2(neg1) < chose(commit-v5) | chose(commit-v8)",
+        "ev-v2(neg1) < done",
+        "ev-v3(neg1) < chose(commit-v5) | chose(commit-v8)",
+        "ev-v3(neg1) < done",
+        "ev-v4(neg1) < chose(commit-v5) | chose(commit-v8)",
+        "ev-v4(neg1) < done",
+        "ev-v5(neg1) | ev-v5(pos1) < chose(commit-v5) | chose(commit-v8)",
+        "ev-v5(neg1) | ev-v5(pos1) < done",
+        "ev-v6(neg1) < chose(commit-v5) | chose(commit-v8)",
+        "ev-v6(neg1) < done",
+        "ev-v7(neg1) < chose(commit-v5) | chose(commit-v8)",
+        "ev-v7(neg1) < done",
+        "ev-v8(neg1) | ev-v8(pos1) < ev-v1(neg1)",
+        "ev-v8(neg1) | ev-v8(pos1) < ev-v2(neg1)",
+        "ev-v8(neg1) | ev-v8(pos1) < ev-v3(neg1)",
+        "ev-v8(neg1) | ev-v8(pos1) < ev-v4(neg1)",
+        "ev-v8(neg1) | ev-v8(pos1) < ev-v5(neg1) | ev-v5(pos1)",
+        "ev-v8(neg1) | ev-v8(pos1) < ev-v6(neg1)",
+        "ev-v8(neg1) | ev-v8(pos1) < ev-v7(neg1)",
+        "ev-v8(neg1) | ev-v8(pos1) < ev-v8(neg2) | ev-v8(pos2)",
+        "ev-v8(neg1) | ev-v8(pos1) < ev-v9(neg1)",
+        "ev-v8(neg2) | ev-v8(pos2) < chose(commit-v5) | chose(commit-v8)",
+        "ev-v8(neg2) | ev-v8(pos2) < done",
+        "ev-v9(neg1) < chose(commit-v5) | chose(commit-v8)",
+        "ev-v9(neg1) < done"
+      ],
+      "value": -13.212,
+      "p_end_within_100": 0.2619,
+      "actions": [
+        "commit-v5",
+        "commit-v8",
+        "probe-v1",
+        "probe-v2",
+        "probe-v3",
+        "probe-v4",
+        "probe-v5",
+        "probe-v6",
+        "probe-v7",
+        "probe-v8",
+        "probe-v9"
+      ]
+    },
+    "qmdp": {
+      "nodes": 16,
+      "terminates": true,
+      "landmarks": [
+        "chose(commit-v1)",
+        "done",
+        "ev-v1(pos1)",
+        "ev-v1(pos2)",
+        "ev-v1(pos3)",
+        "ev-v2(neg1)",
+        "ev-v2(neg2)",
+        "ev-v3(neg1)",
+        "ev-v3(neg2)",
+        "ev-v4(neg1)",
+        "ev-v4(neg2)",
+        "ev-v5(neg1)",
+        "ev-v5(neg2)",
+        "ev-v6(neg1)",
+        "ev-v6(neg2)",
+        "ev-v7(neg1)",
+        "ev-v7(neg2)",
+        "ev-v8(neg1)",
+        "ev-v8(neg2)",
+        "ev-v9(neg1)",
+        "ev-v9(neg2)"
+      ],
+      "orderings": [
+        "ev-v1(pos1) < ev-v1(pos2)",
+        "ev-v1(pos1) < ev-v2(neg1)",
+        "ev-v1(pos1) < ev-v3(neg1)",
+        "ev-v1(pos1) < ev-v4(neg1)",
+        "ev-v1(pos1) < ev-v5(neg1)",
+        "ev-v1(pos1) < ev-v6(neg1)",
+        "ev-v1(pos1) < ev-v7(neg1)",
+        "ev-v1(pos1) < ev-v8(neg1)",
+        "ev-v1(pos1) < ev-v9(neg1)",
+        "ev-v1(pos2) < ev-v1(pos3)",
+        "ev-v1(pos2) < ev-v2(neg2)",
+        "ev-v1(pos2) < ev-v3(neg2)",
+        "ev-v1(pos2) < ev-v4(neg2)",
+        "ev-v1(pos2) < ev-v5(neg2)",
+        "ev-v1(pos2) < ev-v6(neg2)",
+        "ev-v1(pos2) < ev-v7(neg2)",
+        "ev-v1(pos2) < ev-v8(neg2)",
+        "ev-v1(pos2) < ev-v9(neg2)",
+        "ev-v1(pos3) < chose(commit-v1)",
+        "ev-v1(pos3) < done",
+        "ev-v2(neg1) < ev-v1(pos3)",
+        "ev-v2(neg1) < ev-v2(neg2)",
+        "ev-v2(neg1) < ev-v3(neg2)",
+        "ev-v2(neg1) < ev-v4(neg2)",
+        "ev-v2(neg1) < ev-v5(neg2)",
+        "ev-v2(neg1) < ev-v6(neg2)",
+        "ev-v2(neg1) < ev-v7(neg2)",
+        "ev-v2(neg1) < ev-v8(neg2)",
+        "ev-v2(neg1) < ev-v9(neg2)",
+        "ev-v2(neg2) < chose(commit-v1)",
+        "ev-v2(neg2) < done",
+        "ev-v3(neg1) < ev-v1(pos3)",
+        "ev-v3(neg1) < ev-v2(neg2)",
+        "ev-v3(neg1) < ev-v3(neg2)",
+        "ev-v3(neg1) < ev-v4(neg2)",
+        "ev-v3(neg1) < ev-v5(neg2)",
+        "ev-v3(neg1) < ev-v6(neg2)",
+        "ev-v3(neg1) < ev-v7(neg2)",
+        "ev-v3(neg1) < ev-v8(neg2)",
+        "ev-v3(neg1) < ev-v9(neg2)",
+        "ev-v3(neg2) < chose(commit-v1)",
+        "ev-v3(neg2) < done",
+        "ev-v4(neg1) < ev-v1(pos3)",
+        "ev-v4(neg1) < ev-v2(neg2)",
+        "ev-v4(neg1) < ev-v3(neg2)",
+        "ev-v4(neg1) < ev-v4(neg2)",
+        "ev-v4(neg1) < ev-v5(neg2)",
+        "ev-v4(neg1) < ev-v6(neg2)",
+        "ev-v4(neg1) < ev-v7(neg2)",
+        "ev-v4(neg1) < ev-v8(neg2)",
+        "ev-v4(neg1) < ev-v9(neg2)",
+        "ev-v4(neg2) < chose(commit-v1)",
+        "ev-v4(neg2) < done",
+        "ev-v5(neg1) < ev-v1(pos3)",
+        "ev-v5(neg1) < ev-v2(neg2)",
+        "ev-v5(neg1) < ev-v3(neg2)",
+        "ev-v5(neg1) < ev-v4(neg2)",
+        "ev-v5(neg1) < ev-v5(neg2)",
+        "ev-v5(neg1) < ev-v6(neg2)",
+        "ev-v5(neg1) < ev-v7(neg2)",
+        "ev-v5(neg1) < ev-v8(neg2)",
+        "ev-v5(neg1) < ev-v9(neg2)",
+        "ev-v5(neg2) < chose(commit-v1)",
+        "ev-v5(neg2) < done",
+        "ev-v6(neg1) < ev-v1(pos3)",
+        "ev-v6(neg1) < ev-v2(neg2)",
+        "ev-v6(neg1) < ev-v3(neg2)",
+        "ev-v6(neg1) < ev-v4(neg2)",
+        "ev-v6(neg1) < ev-v5(neg2)",
+        "ev-v6(neg1) < ev-v6(neg2)",
+        "ev-v6(neg1) < ev-v7(neg2)",
+        "ev-v6(neg1) < ev-v8(neg2)",
+        "ev-v6(neg1) < ev-v9(neg2)",
+        "ev-v6(neg2) < chose(commit-v1)",
+        "ev-v6(neg2) < done",
+        "ev-v7(neg1) < ev-v1(pos3)",
+        "ev-v7(neg1) < ev-v2(neg2)",
+        "ev-v7(neg1) < ev-v3(neg2)",
+        "ev-v7(neg1) < ev-v4(neg2)",
+        "ev-v7(neg1) < ev-v5(neg2)",
+        "ev-v7(neg1) < ev-v6(neg2)",
+        "ev-v7(neg1) < ev-v7(neg2)",
+        "ev-v7(neg1) < ev-v8(neg2)",
+        "ev-v7(neg1) < ev-v9(neg2)",
+        "ev-v7(neg2) < chose(commit-v1)",
+        "ev-v7(neg2) < done",
+        "ev-v8(neg1) < ev-v1(pos3)",
+        "ev-v8(neg1) < ev-v2(neg2)",
+        "ev-v8(neg1) < ev-v3(neg2)",
+        "ev-v8(neg1) < ev-v4(neg2)",
+        "ev-v8(neg1) < ev-v5(neg2)",
+        "ev-v8(neg1) < ev-v6(neg2)",
+        "ev-v8(neg1) < ev-v7(neg2)",
+        "ev-v8(neg1) < ev-v8(neg2)",
+        "ev-v8(neg1) < ev-v9(neg2)",
+        "ev-v8(neg2) < chose(commit-v1)",
+        "ev-v8(neg2) < done",
+        "ev-v9(neg1) < ev-v1(pos3)",
+        "ev-v9(neg1) < ev-v2(neg2)",
+        "ev-v9(neg1) < ev-v3(neg2)",
+        "ev-v9(neg1) < ev-v4(neg2)",
+        "ev-v9(neg1) < ev-v5(neg2)",
+        "ev-v9(neg1) < ev-v6(neg2)",
+        "ev-v9(neg1) < ev-v7(neg2)",
+        "ev-v9(neg1) < ev-v8(neg2)",
+        "ev-v9(neg1) < ev-v9(neg2)",
+        "ev-v9(neg2) < chose(commit-v1)",
+        "ev-v9(neg2) < done"
+      ],
+      "value": -16.413,
+      "p_end_within_100": 0.116,
+      "actions": [
+        "commit-v1",
+        "probe-v1"
+      ]
+    },
+    "only_sarsop": [
+      "chose(commit-v5) | chose(commit-v8)",
+      "ev-v1(neg1)",
+      "ev-v5(neg1) | ev-v5(pos1)",
+      "ev-v8(neg1) | ev-v8(pos1)",
+      "ev-v8(neg2) | ev-v8(pos2)"
+    ],
+    "only_qmdp": [
+      "chose(commit-v1)",
+      "ev-v1(pos1)",
+      "ev-v1(pos2)",
+      "ev-v1(pos3)",
+      "ev-v2(neg2)",
+      "ev-v3(neg2)",
+      "ev-v4(neg2)",
+      "ev-v5(neg1)",
+      "ev-v5(neg2)",
+      "ev-v6(neg2)",
+      "ev-v7(neg2)",
+      "ev-v8(neg1)",
+      "ev-v8(neg2)",
+      "ev-v9(neg2)"
+    ],
+    "same_graph": false
+  },
+  "rocksample-4-4-s1": {
+    "sarsop": {
+      "nodes": 37,
+      "terminates": true,
+      "landmarks": [
+        "at(c2-1)",
+        "at(c3-1)",
+        "done",
+        "ev-rock1(neg3)",
+        "ev-rock2(neg2) | ev-rock2(pos2)",
+        "ev-rock2(neg3)",
+        "ev-rock3(neg3)",
+        "ev-rock4(neg2) | ev-rock4(neg3)",
+        "ev-rock4(neg2) | ev-rock4(pos2)"
+      ],
+      "orderings": [
+        "at(c2-1) < ev-rock3(neg3)",
+        "at(c3-1) < ev-rock1(neg3)",
+        "ev-rock1(neg3) < ev-rock2(neg2) | ev-rock2(pos2)",
+        "ev-rock2(neg2) | ev-rock2(pos2) < ev-rock2(neg3)",
+        "ev-rock2(neg3) < done",
+        "ev-rock3(neg3) < at(c3-1)",
+        "ev-rock4(neg2) | ev-rock4(neg3) < at(c2-1)",
+        "ev-rock4(neg2) | ev-rock4(pos2) < at(c2-1)"
+      ],
+      "value": 34.536,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    "qmdp": {
+      "nodes": 2,
+      "landmarks": null,
+      "orderings": null,
+      "terminates": false,
+      "value": 0.0,
+      "p_end_within_100": 0.0,
+      "actions": [
+        "3",
+        "4"
+      ]
+    },
+    "only_sarsop": [
+      "at(c2-1)",
+      "at(c3-1)",
+      "done",
+      "ev-rock1(neg3)",
+      "ev-rock2(neg2) | ev-rock2(pos2)",
+      "ev-rock2(neg3)",
+      "ev-rock3(neg3)",
+      "ev-rock4(neg2) | ev-rock4(neg3)",
+      "ev-rock4(neg2) | ev-rock4(pos2)"
+    ],
+    "only_qmdp": [],
+    "same_graph": false
+  },
+  "rocksample-4-4-s2": {
+    "sarsop": {
+      "nodes": 50,
+      "terminates": true,
+      "landmarks": [
+        "at(c2-1)",
+        "at(c3-3)",
+        "done",
+        "ev-rock1(neg3)",
+        "ev-rock2(neg2) | ev-rock2(neg3)",
+        "ev-rock2(neg2) | ev-rock2(pos2)",
+        "ev-rock3(neg2) | ev-rock3(neg3)",
+        "ev-rock3(neg2) | ev-rock3(pos2)",
+        "ev-rock4(neg2) | ev-rock4(neg3)"
+      ],
+      "orderings": [
+        "at(c2-1) < ev-rock3(neg2) | ev-rock3(neg3)",
+        "at(c2-1) < ev-rock3(neg2) | ev-rock3(pos2)",
+        "at(c3-3) < ev-rock1(neg3)",
+        "ev-rock1(neg3) < ev-rock4(neg2) | ev-rock4(neg3)",
+        "ev-rock2(neg2) | ev-rock2(neg3) < done",
+        "ev-rock2(neg2) | ev-rock2(pos2) < done",
+        "ev-rock3(neg2) | ev-rock3(neg3) < at(c3-3)",
+        "ev-rock3(neg2) | ev-rock3(neg3) < ev-rock2(neg2) | ev-rock2(neg3)",
+        "ev-rock3(neg2) | ev-rock3(neg3) < ev-rock2(neg2) | ev-rock2(pos2)",
+        "ev-rock3(neg2) | ev-rock3(pos2) < at(c3-3)",
+        "ev-rock3(neg2) | ev-rock3(pos2) < ev-rock2(neg2) | ev-rock2(neg3)",
+        "ev-rock3(neg2) | ev-rock3(pos2) < ev-rock2(neg2) | ev-rock2(pos2)",
+        "ev-rock4(neg2) | ev-rock4(neg3) < done"
+      ],
+      "value": 32.286,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    "qmdp": {
+      "nodes": 3,
+      "landmarks": null,
+      "orderings": null,
+      "terminates": false,
+      "value": 0.0,
+      "p_end_within_100": 0.0,
+      "actions": [
+        "3",
+        "4"
+      ]
+    },
+    "only_sarsop": [
+      "at(c2-1)",
+      "at(c3-3)",
+      "done",
+      "ev-rock1(neg3)",
+      "ev-rock2(neg2) | ev-rock2(neg3)",
+      "ev-rock2(neg2) | ev-rock2(pos2)",
+      "ev-rock3(neg2) | ev-rock3(neg3)",
+      "ev-rock3(neg2) | ev-rock3(pos2)",
+      "ev-rock4(neg2) | ev-rock4(neg3)"
+    ],
+    "only_qmdp": [],
+    "same_graph": false
+  },
+  "rocksample-4-4-s3": {
+    "sarsop": {
+      "nodes": 45,
+      "terminates": true,
+      "landmarks": [
+        "at(c1-2)",
+        "at(c2-4)",
+        "at(c3-4)",
+        "at(c4-4)",
+        "done",
+        "ev-rock1(neg2) | ev-rock1(neg3)",
+        "ev-rock2(neg2) | ev-rock2(neg3)",
+        "ev-rock3(neg2) | ev-rock3(neg3)",
+        "ev-rock3(neg2) | ev-rock3(pos2)",
+        "ev-rock4(neg3)"
+      ],
+      "orderings": [
+        "at(c1-2) < ev-rock3(neg2) | ev-rock3(neg3)",
+        "at(c1-2) < ev-rock3(neg2) | ev-rock3(pos2)",
+        "at(c2-4) < at(c3-4)",
+        "at(c3-4) < at(c4-4)",
+        "at(c4-4) < ev-rock4(neg3)",
+        "ev-rock1(neg2) | ev-rock1(neg3) < at(c3-4)",
+        "ev-rock2(neg2) | ev-rock2(neg3) < at(c2-4)",
+        "ev-rock2(neg2) | ev-rock2(neg3) < ev-rock1(neg2) | ev-rock1(neg3)",
+        "ev-rock3(neg2) | ev-rock3(neg3) < ev-rock2(neg2) | ev-rock2(neg3)",
+        "ev-rock3(neg2) | ev-rock3(pos2) < ev-rock2(neg2) | ev-rock2(neg3)",
+        "ev-rock4(neg3) < done"
+      ],
+      "value": 33.022,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "1",
+        "2",
+        "3",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    "qmdp": {
+      "nodes": 3,
+      "landmarks": null,
+      "orderings": null,
+      "terminates": false,
+      "value": 0.0,
+      "p_end_within_100": 0.0,
+      "actions": [
+        "2",
+        "5"
+      ]
+    },
+    "only_sarsop": [
+      "at(c1-2)",
+      "at(c2-4)",
+      "at(c3-4)",
+      "at(c4-4)",
+      "done",
+      "ev-rock1(neg2) | ev-rock1(neg3)",
+      "ev-rock2(neg2) | ev-rock2(neg3)",
+      "ev-rock3(neg2) | ev-rock3(neg3)",
+      "ev-rock3(neg2) | ev-rock3(pos2)",
+      "ev-rock4(neg3)"
+    ],
+    "only_qmdp": [],
+    "same_graph": false
+  },
+  "rocksample-4-4-s4": {
+    "sarsop": {
+      "nodes": 67,
+      "terminates": true,
+      "landmarks": [
+        "at(c3-4)",
+        "at(c4-4)",
+        "done",
+        "ev-rock1(neg2) | ev-rock1(neg3)",
+        "ev-rock1(neg2) | ev-rock1(pos2)",
+        "ev-rock2(neg3)",
+        "ev-rock3(neg2) | ev-rock3(neg3)",
+        "ev-rock4(neg2) | ev-rock4(neg3)",
+        "ev-rock4(neg2) | ev-rock4(pos2)"
+      ],
+      "orderings": [
+        "at(c3-4) < ev-rock2(neg3)",
+        "at(c4-4) < done",
+        "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock4(neg2) | ev-rock4(neg3)",
+        "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock4(neg2) | ev-rock4(pos2)",
+        "ev-rock1(neg2) | ev-rock1(pos2) < ev-rock4(neg2) | ev-rock4(neg3)",
+        "ev-rock1(neg2) | ev-rock1(pos2) < ev-rock4(neg2) | ev-rock4(pos2)",
+        "ev-rock2(neg3) < at(c4-4)",
+        "ev-rock3(neg2) | ev-rock3(neg3) < at(c4-4)",
+        "ev-rock4(neg2) | ev-rock4(neg3) < at(c3-4)",
+        "ev-rock4(neg2) | ev-rock4(neg3) < ev-rock3(neg2) | ev-rock3(neg3)",
+        "ev-rock4(neg2) | ev-rock4(pos2) < at(c3-4)",
+        "ev-rock4(neg2) | ev-rock4(pos2) < ev-rock3(neg2) | ev-rock3(neg3)"
+      ],
+      "value": 31.824,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "1",
+        "2",
+        "3",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    "qmdp": {
+      "nodes": 3,
+      "landmarks": null,
+      "orderings": null,
+      "terminates": false,
+      "value": 0.0,
+      "p_end_within_100": 0.0,
+      "actions": [
+        "3",
+        "4"
+      ]
+    },
+    "only_sarsop": [
+      "at(c3-4)",
+      "at(c4-4)",
+      "done",
+      "ev-rock1(neg2) | ev-rock1(neg3)",
+      "ev-rock1(neg2) | ev-rock1(pos2)",
+      "ev-rock2(neg3)",
+      "ev-rock3(neg2) | ev-rock3(neg3)",
+      "ev-rock4(neg2) | ev-rock4(neg3)",
+      "ev-rock4(neg2) | ev-rock4(pos2)"
+    ],
+    "only_qmdp": [],
+    "same_graph": false
+  },
+  "rocksample-4-4-s5": {
+    "sarsop": {
+      "nodes": 16,
+      "terminates": true,
+      "landmarks": [
+        "at(c1-2)",
+        "at(c2-2)",
+        "at(c2-3)",
+        "at(c2-4)",
+        "at(c3-4)",
+        "at(c4-4)",
+        "done",
+        "ev-rock1(neg3)",
+        "ev-rock2(neg3)",
+        "ev-rock3(neg3)",
+        "ev-rock4(neg3)"
+      ],
+      "orderings": [
+        "at(c1-2) < ev-rock4(neg3)",
+        "at(c2-2) < ev-rock2(neg3)",
+        "at(c2-3) < at(c2-4)",
+        "at(c2-4) < ev-rock3(neg3)",
+        "at(c3-4) < at(c4-4)",
+        "at(c4-4) < ev-rock1(neg3)",
+        "ev-rock1(neg3) < done",
+        "ev-rock2(neg3) < at(c2-3)",
+        "ev-rock3(neg3) < at(c3-4)",
+        "ev-rock4(neg3) < at(c2-2)"
+      ],
+      "value": 34.565,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "1",
+        "2",
+        "3",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    "qmdp": {
+      "nodes": 17,
+      "landmarks": null,
+      "orderings": null,
+      "terminates": false,
+      "value": 0.0,
+      "p_end_within_100": 0.0,
+      "actions": [
+        "2",
+        "3",
+        "6"
+      ]
+    },
+    "only_sarsop": [
+      "at(c1-2)",
+      "at(c2-2)",
+      "at(c2-3)",
+      "at(c2-4)",
+      "at(c3-4)",
+      "at(c4-4)",
+      "done",
+      "ev-rock1(neg3)",
+      "ev-rock2(neg3)",
+      "ev-rock3(neg3)",
+      "ev-rock4(neg3)"
+    ],
+    "only_qmdp": [],
+    "same_graph": false
+  },
+  "rocksample-5-5-s1": {
+    "sarsop": {
+      "nodes": 152,
+      "terminates": true,
+      "landmarks": [
+        "at(c2-2)",
+        "at(c2-3)",
+        "at(c2-4)",
+        "done",
+        "ev-rock1(neg3)",
+        "ev-rock2(neg2) | ev-rock2(neg3)",
+        "ev-rock3(neg2) | ev-rock3(neg3)",
+        "ev-rock3(neg2) | ev-rock3(pos2)",
+        "ev-rock4(neg2) | ev-rock4(neg3)",
+        "ev-rock4(neg2) | ev-rock4(pos2)",
+        "ev-rock5(neg2) | ev-rock5(neg3)",
+        "ev-rock5(neg2) | ev-rock5(pos2)"
+      ],
+      "orderings": [
+        "at(c2-2) < at(c2-3)",
+        "at(c2-3) < at(c2-4)",
+        "at(c2-4) < ev-rock1(neg3)",
+        "ev-rock1(neg3) < ev-rock3(neg2) | ev-rock3(neg3)",
+        "ev-rock1(neg3) < ev-rock3(neg2) | ev-rock3(pos2)",
+        "ev-rock2(neg2) | ev-rock2(neg3) < at(c2-3)",
+        "ev-rock3(neg2) | ev-rock3(neg3) < done",
+        "ev-rock3(neg2) | ev-rock3(pos2) < done",
+        "ev-rock4(neg2) | ev-rock4(neg3) < at(c2-2)",
+        "ev-rock4(neg2) | ev-rock4(neg3) < ev-rock2(neg2) | ev-rock2(neg3)",
+        "ev-rock4(neg2) | ev-rock4(neg3) < ev-rock5(neg2) | ev-rock5(neg3)",
+        "ev-rock4(neg2) | ev-rock4(neg3) < ev-rock5(neg2) | ev-rock5(pos2)",
+        "ev-rock4(neg2) | ev-rock4(pos2) < at(c2-2)",
+        "ev-rock4(neg2) | ev-rock4(pos2) < ev-rock2(neg2) | ev-rock2(neg3)",
+        "ev-rock4(neg2) | ev-rock4(pos2) < ev-rock5(neg2) | ev-rock5(neg3)",
+        "ev-rock4(neg2) | ev-rock4(pos2) < ev-rock5(neg2) | ev-rock5(pos2)",
+        "ev-rock5(neg2) | ev-rock5(neg3) < at(c2-3)",
+        "ev-rock5(neg2) | ev-rock5(pos2) < at(c2-3)"
+      ],
+      "value": 37.11,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "1",
+        "10",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    "qmdp": {
+      "nodes": 2,
+      "landmarks": null,
+      "orderings": null,
+      "terminates": false,
+      "value": 0.0,
+      "p_end_within_100": 0.0,
+      "actions": [
+        "2",
+        "5"
+      ]
+    },
+    "only_sarsop": [
+      "at(c2-2)",
+      "at(c2-3)",
+      "at(c2-4)",
+      "done",
+      "ev-rock1(neg3)",
+      "ev-rock2(neg2) | ev-rock2(neg3)",
+      "ev-rock3(neg2) | ev-rock3(neg3)",
+      "ev-rock3(neg2) | ev-rock3(pos2)",
+      "ev-rock4(neg2) | ev-rock4(neg3)",
+      "ev-rock4(neg2) | ev-rock4(pos2)",
+      "ev-rock5(neg2) | ev-rock5(neg3)",
+      "ev-rock5(neg2) | ev-rock5(pos2)"
+    ],
+    "only_qmdp": [],
+    "same_graph": false
+  },
+  "rocksample-5-5-s2": {
+    "sarsop": {
+      "nodes": 136,
+      "terminates": true,
+      "landmarks": [
+        "at(c2-1)",
+        "done",
+        "ev-rock1(neg2) | ev-rock1(neg3)",
+        "ev-rock1(neg2) | ev-rock1(pos2)",
+        "ev-rock2(neg2) | ev-rock2(neg3)",
+        "ev-rock3(neg2) | ev-rock3(neg3)",
+        "ev-rock3(neg2) | ev-rock3(pos2)",
+        "ev-rock4(neg2) | ev-rock4(neg3)",
+        "ev-rock5(neg2) | ev-rock5(neg3)"
+      ],
+      "orderings": [
+        "at(c2-1) < ev-rock1(neg2) | ev-rock1(neg3)",
+        "at(c2-1) < ev-rock1(neg2) | ev-rock1(pos2)",
+        "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock2(neg2) | ev-rock2(neg3)",
+        "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock4(neg2) | ev-rock4(neg3)",
+        "ev-rock1(neg2) | ev-rock1(pos2) < ev-rock2(neg2) | ev-rock2(neg3)",
+        "ev-rock1(neg2) | ev-rock1(pos2) < ev-rock4(neg2) | ev-rock4(neg3)",
+        "ev-rock2(neg2) | ev-rock2(neg3) < ev-rock3(neg2) | ev-rock3(neg3)",
+        "ev-rock2(neg2) | ev-rock2(neg3) < ev-rock3(neg2) | ev-rock3(pos2)",
+        "ev-rock3(neg2) | ev-rock3(neg3) < done",
+        "ev-rock3(neg2) | ev-rock3(pos2) < done",
+        "ev-rock4(neg2) | ev-rock4(neg3) < ev-rock5(neg2) | ev-rock5(neg3)",
+        "ev-rock5(neg2) | ev-rock5(neg3) < done"
+      ],
+      "value": 36.068,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "1",
+        "10",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    "qmdp": {
+      "nodes": 3,
+      "landmarks": null,
+      "orderings": null,
+      "terminates": false,
+      "value": 0.0,
+      "p_end_within_100": 0.0,
+      "actions": [
+        "3",
+        "4"
+      ]
+    },
+    "only_sarsop": [
+      "at(c2-1)",
+      "done",
+      "ev-rock1(neg2) | ev-rock1(neg3)",
+      "ev-rock1(neg2) | ev-rock1(pos2)",
+      "ev-rock2(neg2) | ev-rock2(neg3)",
+      "ev-rock3(neg2) | ev-rock3(neg3)",
+      "ev-rock3(neg2) | ev-rock3(pos2)",
+      "ev-rock4(neg2) | ev-rock4(neg3)",
+      "ev-rock5(neg2) | ev-rock5(neg3)"
+    ],
+    "only_qmdp": [],
+    "same_graph": false
+  },
+  "rocksample-5-5-s3": {
+    "sarsop": {
+      "nodes": 89,
+      "terminates": true,
+      "landmarks": [
+        "at(c3-2)",
+        "at(c4-2)",
+        "done",
+        "ev-rock1(neg2) | ev-rock1(neg3)",
+        "ev-rock1(neg2) | ev-rock1(pos2)",
+        "ev-rock2(neg2) | ev-rock2(neg3)",
+        "ev-rock2(neg2) | ev-rock2(pos2)",
+        "ev-rock3(neg2) | ev-rock3(neg3)",
+        "ev-rock3(neg2) | ev-rock3(pos2)",
+        "ev-rock4(neg3)",
+        "ev-rock5(neg2) | ev-rock5(neg3)"
+      ],
+      "orderings": [
+        "at(c3-2) < at(c4-2)",
+        "at(c4-2) < ev-rock4(neg3)",
+        "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock3(neg2) | ev-rock3(neg3)",
+        "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock3(neg2) | ev-rock3(pos2)",
+        "ev-rock1(neg2) | ev-rock1(pos2) < ev-rock3(neg2) | ev-rock3(neg3)",
+        "ev-rock1(neg2) | ev-rock1(pos2) < ev-rock3(neg2) | ev-rock3(pos2)",
+        "ev-rock2(neg2) | ev-rock2(neg3) < at(c3-2)",
+        "ev-rock2(neg2) | ev-rock2(neg3) < ev-rock5(neg2) | ev-rock5(neg3)",
+        "ev-rock2(neg2) | ev-rock2(pos2) < at(c3-2)",
+        "ev-rock2(neg2) | ev-rock2(pos2) < ev-rock5(neg2) | ev-rock5(neg3)",
+        "ev-rock3(neg2) | ev-rock3(neg3) < done",
+        "ev-rock3(neg2) | ev-rock3(pos2) < done",
+        "ev-rock4(neg3) < ev-rock1(neg2) | ev-rock1(neg3)",
+        "ev-rock4(neg3) < ev-rock1(neg2) | ev-rock1(pos2)",
+        "ev-rock5(neg2) | ev-rock5(neg3) < at(c4-2)"
+      ],
+      "value": 35.254,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "1",
+        "10",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    "qmdp": {
+      "nodes": 3,
+      "landmarks": null,
+      "orderings": null,
+      "terminates": false,
+      "value": 0.0,
+      "p_end_within_100": 0.0,
+      "actions": [
+        "3",
+        "4"
+      ]
+    },
+    "only_sarsop": [
+      "at(c3-2)",
+      "at(c4-2)",
+      "done",
+      "ev-rock1(neg2) | ev-rock1(neg3)",
+      "ev-rock1(neg2) | ev-rock1(pos2)",
+      "ev-rock2(neg2) | ev-rock2(neg3)",
+      "ev-rock2(neg2) | ev-rock2(pos2)",
+      "ev-rock3(neg2) | ev-rock3(neg3)",
+      "ev-rock3(neg2) | ev-rock3(pos2)",
+      "ev-rock4(neg3)",
+      "ev-rock5(neg2) | ev-rock5(neg3)"
+    ],
+    "only_qmdp": [],
+    "same_graph": false
+  },
+  "rocksample-7-8-s1": {
+    "sarsop": {
+      "nodes": 677,
+      "terminates": true,
+      "landmarks": [
+        "at(c1-2)",
+        "at(c1-4)",
+        "done",
+        "ev-rock1(neg2) | ev-rock1(neg3)",
+        "ev-rock1(neg2) | ev-rock1(pos2)",
+        "ev-rock2(neg2) | ev-rock2(neg3)",
+        "ev-rock3(neg2) | ev-rock3(neg3)",
+        "ev-rock3(neg2) | ev-rock3(pos2)",
+        "ev-rock4(neg2) | ev-rock4(neg3)",
+        "ev-rock4(neg2) | ev-rock4(pos2)",
+        "ev-rock5(neg2) | ev-rock5(neg3)",
+        "ev-rock6(neg2) | ev-rock6(neg3)",
+        "ev-rock7(neg3)",
+        "ev-rock8(neg1) | ev-rock8(neg3)",
+        "ev-rock8(neg1) | ev-rock8(pos1)"
+      ],
+      "orderings": [
+        "at(c1-2) < ev-rock1(neg2) | ev-rock1(neg3)",
+        "at(c1-2) < ev-rock1(neg2) | ev-rock1(pos2)",
+        "at(c1-4) < ev-rock7(neg3)",
+        "ev-rock1(neg2) | ev-rock1(neg3) < at(c1-4)",
+        "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock5(neg2) | ev-rock5(neg3)",
+        "ev-rock1(neg2) | ev-rock1(pos2) < at(c1-4)",
+        "ev-rock1(neg2) | ev-rock1(pos2) < ev-rock5(neg2) | ev-rock5(neg3)",
+        "ev-rock2(neg2) | ev-rock2(neg3) < ev-rock8(neg1) | ev-rock8(neg3)",
+        "ev-rock2(neg2) | ev-rock2(neg3) < ev-rock8(neg1) | ev-rock8(pos1)",
+        "ev-rock3(neg2) | ev-rock3(neg3) < ev-rock2(neg2) | ev-rock2(neg3)",
+        "ev-rock3(neg2) | ev-rock3(pos2) < ev-rock2(neg2) | ev-rock2(neg3)",
+        "ev-rock4(neg2) | ev-rock4(neg3) < done",
+        "ev-rock4(neg2) | ev-rock4(pos2) < done",
+        "ev-rock5(neg2) | ev-rock5(neg3) < ev-rock8(neg1) | ev-rock8(neg3)",
+        "ev-rock5(neg2) | ev-rock5(neg3) < ev-rock8(neg1) | ev-rock8(pos1)",
+        "ev-rock6(neg2) | ev-rock6(neg3) < done",
+        "ev-rock7(neg3) < ev-rock3(neg2) | ev-rock3(neg3)",
+        "ev-rock7(neg3) < ev-rock3(neg2) | ev-rock3(pos2)",
+        "ev-rock8(neg1) | ev-rock8(neg3) < ev-rock6(neg2) | ev-rock6(neg3)",
+        "ev-rock8(neg1) | ev-rock8(pos1) < ev-rock4(neg2) | ev-rock4(neg3)",
+        "ev-rock8(neg1) | ev-rock8(pos1) < ev-rock4(neg2) | ev-rock4(pos2)",
+        "ev-rock8(neg1) | ev-rock8(pos1) < ev-rock6(neg2) | ev-rock6(neg3)"
+      ],
+      "value": 43.466,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "1",
+        "10",
+        "11",
+        "12",
+        "13",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ]
+    },
+    "qmdp": {
+      "nodes": 8,
+      "landmarks": null,
+      "orderings": null,
+      "terminates": false,
+      "value": 8.574,
+      "p_end_within_100": 0.0,
+      "actions": [
+        "1",
+        "2",
+        "3",
+        "5",
+        "6"
+      ]
+    },
+    "only_sarsop": [
+      "at(c1-2)",
+      "at(c1-4)",
+      "done",
+      "ev-rock1(neg2) | ev-rock1(neg3)",
+      "ev-rock1(neg2) | ev-rock1(pos2)",
+      "ev-rock2(neg2) | ev-rock2(neg3)",
+      "ev-rock3(neg2) | ev-rock3(neg3)",
+      "ev-rock3(neg2) | ev-rock3(pos2)",
+      "ev-rock4(neg2) | ev-rock4(neg3)",
+      "ev-rock4(neg2) | ev-rock4(pos2)",
+      "ev-rock5(neg2) | ev-rock5(neg3)",
+      "ev-rock6(neg2) | ev-rock6(neg3)",
+      "ev-rock7(neg3)",
+      "ev-rock8(neg1) | ev-rock8(neg3)",
+      "ev-rock8(neg1) | ev-rock8(pos1)"
+    ],
+    "only_qmdp": [],
+    "same_graph": false
+  },
+  "sensor-0.75": {
+    "sarsop": {
+      "nodes": 19,
+      "terminates": true,
+      "landmarks": [
+        "done",
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+      ],
+      "orderings": [
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2) < ev-sensor-b(neg2) | ev-sensor-b(pos2)",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1) < ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2) < done"
+      ],
+      "value": 3.554,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "commit-a-faulty-b-faulty",
+        "commit-a-faulty-b-ok",
+        "commit-a-ok-b-faulty",
+        "commit-a-ok-b-ok",
+        "read-a",
+        "read-b"
+      ]
+    },
+    "qmdp": {
+      "nodes": 39,
+      "landmarks": null,
+      "orderings": null,
+      "terminates": false,
+      "value": -20.0,
+      "p_end_within_100": 0.0,
+      "actions": [
+        "read-a"
+      ]
+    },
+    "only_sarsop": [
+      "done",
+      "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+      "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+      "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+      "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+    ],
+    "only_qmdp": [],
+    "same_graph": false
+  },
+  "sensor-0.8": {
+    "sarsop": {
+      "nodes": 20,
+      "terminates": true,
+      "landmarks": [
+        "done",
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+      ],
+      "orderings": [
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2) < done",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1) < ev-sensor-b(neg2) | ev-sensor-b(pos2)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2) < done"
+      ],
+      "value": 6.383,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "commit-a-faulty-b-faulty",
+        "commit-a-faulty-b-ok",
+        "commit-a-ok-b-faulty",
+        "commit-a-ok-b-ok",
+        "read-a",
+        "read-b"
+      ]
+    },
+    "qmdp": {
+      "nodes": 31,
+      "landmarks": null,
+      "orderings": null,
+      "terminates": false,
+      "value": -20.0,
+      "p_end_within_100": 0.0,
+      "actions": [
+        "read-a"
+      ]
+    },
+    "only_sarsop": [
+      "done",
+      "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+      "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+      "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+      "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+    ],
+    "only_qmdp": [],
+    "same_graph": false
+  },
+  "sensor-0.85": {
+    "sarsop": {
+      "nodes": 21,
+      "terminates": true,
+      "landmarks": [
+        "done",
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+      ],
+      "orderings": [
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-b(neg2) | ev-sensor-b(pos2)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2) < done",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1) < ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2) < done"
+      ],
+      "value": 8.695,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "commit-a-faulty-b-faulty",
+        "commit-a-faulty-b-ok",
+        "commit-a-ok-b-faulty",
+        "commit-a-ok-b-ok",
+        "read-a",
+        "read-b"
+      ]
+    },
+    "qmdp": {
+      "nodes": 25,
+      "landmarks": null,
+      "orderings": null,
+      "terminates": false,
+      "value": -20.0,
+      "p_end_within_100": 0.0,
+      "actions": [
+        "read-a"
+      ]
+    },
+    "only_sarsop": [
+      "done",
+      "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+      "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+      "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+      "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+    ],
+    "only_qmdp": [],
+    "same_graph": false
+  },
+  "sensor-0.9": {
+    "sarsop": {
+      "nodes": 25,
+      "terminates": true,
+      "landmarks": [
+        "done",
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+      ],
+      "orderings": [
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2) < done",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1) < ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1) < ev-sensor-b(neg2) | ev-sensor-b(pos2)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2) < done"
+      ],
+      "value": 10.472,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "commit-a-faulty-b-faulty",
+        "commit-a-faulty-b-ok",
+        "commit-a-ok-b-faulty",
+        "commit-a-ok-b-ok",
+        "read-a",
+        "read-b"
+      ]
+    },
+    "qmdp": {
+      "nodes": 21,
+      "landmarks": null,
+      "orderings": null,
+      "terminates": false,
+      "value": -20.0,
+      "p_end_within_100": 0.0,
+      "actions": [
+        "read-a"
+      ]
+    },
+    "only_sarsop": [
+      "done",
+      "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+      "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+      "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+      "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+    ],
+    "only_qmdp": [],
+    "same_graph": false
+  },
+  "sensor-0.95": {
+    "sarsop": {
+      "nodes": 7,
+      "terminates": true,
+      "landmarks": [
+        "done",
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1)"
+      ],
+      "orderings": [
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1) < done"
+      ],
+      "value": 12.58,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "commit-a-faulty-b-faulty",
+        "commit-a-faulty-b-ok",
+        "commit-a-ok-b-faulty",
+        "commit-a-ok-b-ok",
+        "read-a",
+        "read-b"
+      ]
+    },
+    "qmdp": {
+      "nodes": 17,
+      "landmarks": null,
+      "orderings": null,
+      "terminates": false,
+      "value": -20.0,
+      "p_end_within_100": 0.0,
+      "actions": [
+        "read-a"
+      ]
+    },
+    "only_sarsop": [
+      "done",
+      "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+      "ev-sensor-b(neg1) | ev-sensor-b(pos1)"
+    ],
+    "only_qmdp": [],
+    "same_graph": false
+  },
+  "tiger-0.6": {
+    "sarsop": {
+      "nodes": 17,
+      "terminates": true,
+      "landmarks": [
+        "chose(left) | chose(right)",
+        "done",
+        "ev-direction(neg1) | ev-direction(pos1)",
+        "ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg3) | ev-direction(pos3)",
+        "ev-direction(neg4) | ev-direction(pos4)",
+        "ev-direction(neg5) | ev-direction(pos5)",
+        "ev-direction(neg6) | ev-direction(pos6)",
+        "ev-direction(neg7) | ev-direction(pos7)",
+        "ev-direction(neg8) | ev-direction(pos8)"
+      ],
+      "orderings": [
+        "ev-direction(neg1) | ev-direction(pos1) < ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg2) | ev-direction(pos2) < ev-direction(neg3) | ev-direction(pos3)",
+        "ev-direction(neg3) | ev-direction(pos3) < ev-direction(neg4) | ev-direction(pos4)",
+        "ev-direction(neg4) | ev-direction(pos4) < ev-direction(neg5) | ev-direction(pos5)",
+        "ev-direction(neg5) | ev-direction(pos5) < ev-direction(neg6) | ev-direction(pos6)",
+        "ev-direction(neg6) | ev-direction(pos6) < ev-direction(neg7) | ev-direction(pos7)",
+        "ev-direction(neg7) | ev-direction(pos7) < ev-direction(neg8) | ev-direction(pos8)",
+        "ev-direction(neg8) | ev-direction(pos8) < chose(left) | chose(right)",
+        "ev-direction(neg8) | ev-direction(pos8) < done"
+      ],
+      "value": -17.811,
+      "p_end_within_100": 0.9706,
+      "actions": [
+        "left",
+        "listen",
+        "right"
+      ]
+    },
+    "qmdp": {
+      "nodes": 13,
+      "terminates": true,
+      "landmarks": [
+        "chose(left) | chose(right)",
+        "done",
+        "ev-direction(neg1) | ev-direction(pos1)",
+        "ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg3) | ev-direction(pos3)",
+        "ev-direction(neg4) | ev-direction(pos4)",
+        "ev-direction(neg5) | ev-direction(pos5)",
+        "ev-direction(neg6) | ev-direction(pos6)"
+      ],
+      "orderings": [
+        "ev-direction(neg1) | ev-direction(pos1) < ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg2) | ev-direction(pos2) < ev-direction(neg3) | ev-direction(pos3)",
+        "ev-direction(neg3) | ev-direction(pos3) < ev-direction(neg4) | ev-direction(pos4)",
+        "ev-direction(neg4) | ev-direction(pos4) < ev-direction(neg5) | ev-direction(pos5)",
+        "ev-direction(neg5) | ev-direction(pos5) < ev-direction(neg6) | ev-direction(pos6)",
+        "ev-direction(neg6) | ev-direction(pos6) < chose(left) | chose(right)",
+        "ev-direction(neg6) | ev-direction(pos6) < done"
+      ],
+      "value": -18.816,
+      "p_end_within_100": 0.9943,
+      "actions": [
+        "left",
+        "listen",
+        "right"
+      ]
+    },
+    "only_sarsop": [
+      "ev-direction(neg7) | ev-direction(pos7)",
+      "ev-direction(neg8) | ev-direction(pos8)"
+    ],
+    "only_qmdp": [],
+    "same_graph": false
+  },
+  "tiger-0.65": {
+    "sarsop": {
+      "nodes": 13,
+      "terminates": true,
+      "landmarks": [
+        "chose(left) | chose(right)",
+        "done",
+        "ev-direction(neg1) | ev-direction(pos1)",
+        "ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg3) | ev-direction(pos3)",
+        "ev-direction(neg4) | ev-direction(pos4)",
+        "ev-direction(neg5) | ev-direction(pos5)",
+        "ev-direction(neg6) | ev-direction(pos6)"
+      ],
+      "orderings": [
+        "ev-direction(neg1) | ev-direction(pos1) < ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg2) | ev-direction(pos2) < ev-direction(neg3) | ev-direction(pos3)",
+        "ev-direction(neg3) | ev-direction(pos3) < ev-direction(neg4) | ev-direction(pos4)",
+        "ev-direction(neg4) | ev-direction(pos4) < ev-direction(neg5) | ev-direction(pos5)",
+        "ev-direction(neg5) | ev-direction(pos5) < ev-direction(neg6) | ev-direction(pos6)",
+        "ev-direction(neg6) | ev-direction(pos6) < chose(left) | chose(right)",
+        "ev-direction(neg6) | ev-direction(pos6) < done"
+      ],
+      "value": -13.755,
+      "p_end_within_100": 0.9995,
+      "actions": [
+        "left",
+        "listen",
+        "right"
+      ]
+    },
+    "qmdp": {
+      "nodes": 9,
+      "terminates": true,
+      "landmarks": [
+        "chose(left) | chose(right)",
+        "done",
+        "ev-direction(neg1) | ev-direction(pos1)",
+        "ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg3) | ev-direction(pos3)",
+        "ev-direction(neg4) | ev-direction(pos4)"
+      ],
+      "orderings": [
+        "ev-direction(neg1) | ev-direction(pos1) < ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg2) | ev-direction(pos2) < ev-direction(neg3) | ev-direction(pos3)",
+        "ev-direction(neg3) | ev-direction(pos3) < ev-direction(neg4) | ev-direction(pos4)",
+        "ev-direction(neg4) | ev-direction(pos4) < chose(left) | chose(right)",
+        "ev-direction(neg4) | ev-direction(pos4) < done"
+      ],
+      "value": -16.564,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "left",
+        "listen",
+        "right"
+      ]
+    },
+    "only_sarsop": [
+      "ev-direction(neg5) | ev-direction(pos5)",
+      "ev-direction(neg6) | ev-direction(pos6)"
+    ],
+    "only_qmdp": [],
+    "same_graph": false
+  },
+  "tiger-0.7": {
+    "sarsop": {
+      "nodes": 9,
+      "terminates": true,
+      "landmarks": [
+        "chose(left) | chose(right)",
+        "done",
+        "ev-direction(neg1) | ev-direction(pos1)",
+        "ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg3) | ev-direction(pos3)",
+        "ev-direction(neg4) | ev-direction(pos4)"
+      ],
+      "orderings": [
+        "ev-direction(neg1) | ev-direction(pos1) < ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg2) | ev-direction(pos2) < ev-direction(neg3) | ev-direction(pos3)",
+        "ev-direction(neg3) | ev-direction(pos3) < ev-direction(neg4) | ev-direction(pos4)",
+        "ev-direction(neg4) | ev-direction(pos4) < chose(left) | chose(right)",
+        "ev-direction(neg4) | ev-direction(pos4) < done"
+      ],
+      "value": -7.689,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "left",
+        "listen",
+        "right"
+      ]
+    },
+    "qmdp": {
+      "nodes": 7,
+      "terminates": true,
+      "landmarks": [
+        "chose(left) | chose(right)",
+        "done",
+        "ev-direction(neg1) | ev-direction(pos1)",
+        "ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg3) | ev-direction(pos3)"
+      ],
+      "orderings": [
+        "ev-direction(neg1) | ev-direction(pos1) < ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg2) | ev-direction(pos2) < ev-direction(neg3) | ev-direction(pos3)",
+        "ev-direction(neg3) | ev-direction(pos3) < chose(left) | chose(right)",
+        "ev-direction(neg3) | ev-direction(pos3) < done"
+      ],
+      "value": -12.749,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "left",
+        "listen",
+        "right"
+      ]
+    },
+    "only_sarsop": [
+      "ev-direction(neg4) | ev-direction(pos4)"
+    ],
+    "only_qmdp": [],
+    "same_graph": false
+  },
+  "tiger-0.75": {
+    "sarsop": {
+      "nodes": 7,
+      "terminates": true,
+      "landmarks": [
+        "chose(left) | chose(right)",
+        "done",
+        "ev-direction(neg1) | ev-direction(pos1)",
+        "ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg3) | ev-direction(pos3)"
+      ],
+      "orderings": [
+        "ev-direction(neg1) | ev-direction(pos1) < ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg2) | ev-direction(pos2) < ev-direction(neg3) | ev-direction(pos3)",
+        "ev-direction(neg3) | ev-direction(pos3) < chose(left) | chose(right)",
+        "ev-direction(neg3) | ev-direction(pos3) < done"
+      ],
+      "value": -0.496,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "left",
+        "listen",
+        "right"
+      ]
+    },
+    "qmdp": {
+      "nodes": 5,
+      "terminates": true,
+      "landmarks": [
+        "chose(left) | chose(right)",
+        "done",
+        "ev-direction(neg1) | ev-direction(pos1)",
+        "ev-direction(neg2) | ev-direction(pos2)"
+      ],
+      "orderings": [
+        "ev-direction(neg1) | ev-direction(pos1) < ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg2) | ev-direction(pos2) < chose(left) | chose(right)",
+        "ev-direction(neg2) | ev-direction(pos2) < done"
+      ],
+      "value": -20.0,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "left",
+        "listen",
+        "right"
+      ]
+    },
+    "only_sarsop": [
+      "ev-direction(neg3) | ev-direction(pos3)"
+    ],
+    "only_qmdp": [],
+    "same_graph": false
+  },
+  "tiger-0.8": {
+    "sarsop": {
+      "nodes": 7,
+      "terminates": true,
+      "landmarks": [
+        "chose(left) | chose(right)",
+        "done",
+        "ev-direction(neg1) | ev-direction(pos1)",
+        "ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg3) | ev-direction(pos3)"
+      ],
+      "orderings": [
+        "ev-direction(neg1) | ev-direction(pos1) < ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg2) | ev-direction(pos2) < ev-direction(neg3) | ev-direction(pos3)",
+        "ev-direction(neg3) | ev-direction(pos3) < chose(left) | chose(right)",
+        "ev-direction(neg3) | ev-direction(pos3) < done"
+      ],
+      "value": 8.967,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "left",
+        "listen",
+        "right"
+      ]
+    },
+    "qmdp": {
+      "nodes": 5,
+      "terminates": true,
+      "landmarks": [
+        "chose(left) | chose(right)",
+        "done",
+        "ev-direction(neg1) | ev-direction(pos1)",
+        "ev-direction(neg2) | ev-direction(pos2)"
+      ],
+      "orderings": [
+        "ev-direction(neg1) | ev-direction(pos1) < ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg2) | ev-direction(pos2) < chose(left) | chose(right)",
+        "ev-direction(neg2) | ev-direction(pos2) < done"
+      ],
+      "value": 1.685,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "left",
+        "listen",
+        "right"
+      ]
+    },
+    "only_sarsop": [
+      "ev-direction(neg3) | ev-direction(pos3)"
+    ],
+    "only_qmdp": [],
+    "same_graph": false
+  },
+  "tiger-0.85": {
+    "sarsop": {
+      "nodes": 5,
+      "terminates": true,
+      "landmarks": [
+        "chose(left) | chose(right)",
+        "done",
+        "ev-direction(neg1) | ev-direction(pos1)",
+        "ev-direction(neg2) | ev-direction(pos2)"
+      ],
+      "orderings": [
+        "ev-direction(neg1) | ev-direction(pos1) < ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg2) | ev-direction(pos2) < chose(left) | chose(right)",
+        "ev-direction(neg2) | ev-direction(pos2) < done"
+      ],
+      "value": 19.371,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "left",
+        "listen",
+        "right"
+      ]
+    },
+    "qmdp": {
+      "nodes": 5,
+      "terminates": true,
+      "landmarks": [
+        "chose(left) | chose(right)",
+        "done",
+        "ev-direction(neg1) | ev-direction(pos1)",
+        "ev-direction(neg2) | ev-direction(pos2)"
+      ],
+      "orderings": [
+        "ev-direction(neg1) | ev-direction(pos1) < ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg2) | ev-direction(pos2) < chose(left) | chose(right)",
+        "ev-direction(neg2) | ev-direction(pos2) < done"
+      ],
+      "value": 19.371,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "left",
+        "listen",
+        "right"
+      ]
+    },
+    "only_sarsop": [],
+    "only_qmdp": [],
+    "same_graph": true
+  },
+  "tiger-0.9": {
+    "sarsop": {
+      "nodes": 5,
+      "terminates": true,
+      "landmarks": [
+        "chose(left) | chose(right)",
+        "done",
+        "ev-direction(neg1) | ev-direction(pos1)",
+        "ev-direction(neg2) | ev-direction(pos2)"
+      ],
+      "orderings": [
+        "ev-direction(neg1) | ev-direction(pos1) < ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg2) | ev-direction(pos2) < chose(left) | chose(right)",
+        "ev-direction(neg2) | ev-direction(pos2) < done"
+      ],
+      "value": 33.143,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "left",
+        "listen",
+        "right"
+      ]
+    },
+    "qmdp": {
+      "nodes": 5,
+      "terminates": true,
+      "landmarks": [
+        "chose(left) | chose(right)",
+        "done",
+        "ev-direction(neg1) | ev-direction(pos1)",
+        "ev-direction(neg2) | ev-direction(pos2)"
+      ],
+      "orderings": [
+        "ev-direction(neg1) | ev-direction(pos1) < ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg2) | ev-direction(pos2) < chose(left) | chose(right)",
+        "ev-direction(neg2) | ev-direction(pos2) < done"
+      ],
+      "value": 33.143,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "left",
+        "listen",
+        "right"
+      ]
+    },
+    "only_sarsop": [],
+    "only_qmdp": [],
+    "same_graph": true
+  },
+  "tiger-0.95": {
+    "sarsop": {
+      "nodes": 5,
+      "terminates": true,
+      "landmarks": [
+        "chose(left) | chose(right)",
+        "done",
+        "ev-direction(neg1) | ev-direction(pos1)",
+        "ev-direction(neg2) | ev-direction(pos2)"
+      ],
+      "orderings": [
+        "ev-direction(neg1) | ev-direction(pos1) < ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg2) | ev-direction(pos2) < chose(left) | chose(right)",
+        "ev-direction(neg2) | ev-direction(pos2) < done"
+      ],
+      "value": 43.151,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "left",
+        "listen",
+        "right"
+      ]
+    },
+    "qmdp": {
+      "nodes": 3,
+      "terminates": true,
+      "landmarks": [
+        "chose(left) | chose(right)",
+        "done",
+        "ev-direction(neg1) | ev-direction(pos1)"
+      ],
+      "orderings": [
+        "ev-direction(neg1) | ev-direction(pos1) < chose(left) | chose(right)",
+        "ev-direction(neg1) | ev-direction(pos1) < done"
+      ],
+      "value": 33.59,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "left",
+        "listen",
+        "right"
+      ]
+    },
+    "only_sarsop": [
+      "ev-direction(neg2) | ev-direction(pos2)"
+    ],
+    "only_qmdp": [],
+    "same_graph": false
+  }
+}

@@ -1,0 +1,6 @@
+mutate tiger 0.85 12 1 .
+mutate sensor 0.85 12 1 .
+mutate probe channel 3 0.85 12 1 .
+mutate probe mine 4 0.85 12 1 .
+mutate rocksample 4 4 1 12 1 .
+mutate rocksample 5 5 1 12 1 .

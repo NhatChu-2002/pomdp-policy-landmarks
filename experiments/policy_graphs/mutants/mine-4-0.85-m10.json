@@ -1,0 +1,36 @@
+{
+"problem": "probe", "name": "mine", "k": 4, "p_correct": 0.85,
+"solver": "sarsop",
+"base": "mine-4-0.85", "mutation": {"node": 5, "depth": 2, "original_action": "probe-v4", "new_action": "probe-v2"},
+"solve_seconds": 1.6440000534057617,
+"value_at_b0": 9.563821689716288,
+"states": ["v1","v2","v3","v4","done"],
+"nodes": [
+{"id":0,"kind":"inner","action":"probe-v1","belief":"0:0.25 1:0.25 2:0.25 3:0.25"},
+{"id":1,"kind":"inner","action":"probe-v1","belief":"0:0.653846154 1:0.115384615 2:0.115384615 3:0.115384615"},
+{"id":2,"kind":"inner","action":"probe-v3","belief":"0:0.055555556 1:0.314814815 2:0.314814815 3:0.314814815"},
+{"id":3,"kind":"commit_end","action":"commit-v1","belief":"0:0.914556962 1:0.028481013 2:0.028481013 3:0.028481013"},
+{"id":4,"kind":"inner","action":"probe-v3","belief":"0:0.0225 1:0.1275 2:0.7225 3:0.1275"},
+{"id":5,"kind":"inner","action":"probe-v2","belief":"0:0.075 1:0.425 2:0.075 3:0.425"},
+{"id":6,"kind":"commit_end","action":"commit-v3","belief":"0:0.005146778 1:0.029165078 2:0.936523065 3:0.029165078"},
+{"id":7,"kind":"inner","action":"probe-v2","belief":"0:0.025139665 1:0.80726257 2:0.025139665 3:0.142458101"},
+{"id":8,"kind":"inner","action":"probe-v4","belief":"0:0.115384615 1:0.115384615 2:0.115384615 3:0.653846154"},
+{"id":9,"kind":"commit_end","action":"commit-v2","belief":"0:0.005273438 1:0.959570312 2:0.005273438 3:0.029882813"},
+{"id":10,"kind":"commit_end","action":"commit-v4","belief":"0:0.028481013 1:0.028481013 2:0.028481013 3:0.914556962"}
+],
+"edges": [
+{"from":0,"obs":"hit-v1","to":1,"p":0.32499999999999996},
+{"from":0,"obs":"miss-v1","to":2,"p":0.675},
+{"from":1,"obs":"hit-v1","to":3,"p":0.607692307692308},
+{"from":1,"obs":"miss-v1","to":0,"p":0.3923076923076924},
+{"from":2,"obs":"hit-v3","to":4,"p":0.3703703703703703},
+{"from":2,"obs":"miss-v3","to":5,"p":0.6296296296296295},
+{"from":4,"obs":"hit-v3","to":6,"p":0.65575},
+{"from":4,"obs":"miss-v3","to":2,"p":0.34425000000000006},
+{"from":5,"obs":"hit-v2","to":7,"p":0.4474999999999999},
+{"from":5,"obs":"miss-v2","to":8,"p":0.5525},
+{"from":7,"obs":"hit-v2","to":9,"p":0.7150837988826816},
+{"from":7,"obs":"miss-v2","to":5,"p":0.2849162011173185},
+{"from":8,"obs":"hit-v4","to":10,"p":0.6076923076923076},
+{"from":8,"obs":"miss-v4","to":0,"p":0.3923076923076923}
+]}

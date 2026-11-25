@@ -409,9 +409,90 @@ def exp_bins() -> dict:
     return rows
 
 
+def interpretable(lm: str) -> bool:
+    """Single facts, belief disjunctions of one strength or one direction, and
+    commitment disjunctions. Leaves out mixed-level and route disjunctions, which
+    are minimal but restate the evidence chain or list alternative routes."""
+    facts = lm.split(" | ")
+    if len(facts) == 1:
+        return True
+    if all(f.startswith("chose(") for f in facts):
+        return True
+    if all(f.startswith("ev-") for f in facts):
+        levels = [f.split("(")[1][:-1] for f in facts]
+        return "unk" not in levels and (len({x[3:] for x in levels}) == 1
+                                        or len({x[:3] for x in levels}) == 1)
+    return False
+
+
+def _graph_summary(g: dict) -> dict:
+    """Exact interpretable landmarks/orderings of one policy graph, plus behaviour numbers."""
+    ctrl = extraction.controller(g)
+    sg = StateGraph(ctrl)
+    if 0 not in sg.alive:                        # no run ends: landmarks would hold vacuously
+        return {"nodes": len(g["nodes"]), "landmarks": None, "orderings": None, "terminates": False,
+                "value": round(extraction.policy_value(g), 3), "p_end_within_100": 0.0,
+                "actions": sorted({n["action"] for n in g["nodes"] if n["action"] not in (None, "nothing")})}
+    lms = [k for k in sg.landmarks(max_size=3) if interpretable(" | ".join(sorted(k)))]
+    nat = {(a, b) for (a, b), kinds in sg.orderings(lms).items() if "nat" in kinds}
+    show_ = lambda k: " | ".join(sorted(k))  # noqa: E731
+    ends, steps = extraction.first_hit(g, {n["id"]: 1.0 for n in g["nodes"] if n["kind"] != "inner"})
+    return {"nodes": len(g["nodes"]), "terminates": True, "landmarks": sorted(show_(k) for k in lms),
+            "orderings": sorted(f"{show_(a)} < {show_(b)}" for a, b in reduction(nat)),
+            "value": round(extraction.policy_value(g), 3),
+            "p_end_within_100": round(extraction.p_end_within(g, 100), 4),
+            "actions": sorted({n["action"] for n in g["nodes"] if n["action"] not in (None, "nothing")})}
+
+
+def exp_qmdp() -> dict:
+    """SARSOP vs QMDP policies of the same models: what changes in the landmark graph."""
+    rows = {}
+    for path in sorted((HERE / "policy_graphs" / "qmdp").glob("*.json")):
+        q = extraction.load(path)
+        if "error" in q:
+            rows[path.stem] = {"error": q["error"]}
+            continue
+        s = extraction.load(HERE / "policy_graphs" / path.name)
+        a, b = _graph_summary(s), _graph_summary(q)
+        rows[path.stem] = {
+            "sarsop": a, "qmdp": b,
+            "only_sarsop": sorted(set(a["landmarks"]) - set(b["landmarks"] or [])),
+            "only_qmdp": sorted(set(b["landmarks"] or []) - set(a["landmarks"])),
+            "same_graph": a["landmarks"] == b["landmarks"] and a["orderings"] == b["orderings"]}
+    return rows
+
+
+def exp_mutants() -> dict:
+    """Single-action mutants: does the landmark graph change when behaviour changes?"""
+    rows = {}
+    folder = HERE / "policy_graphs" / "mutants"
+    for base_path in sorted(folder.glob("*-base.json")):
+        name = base_path.stem[:-5]
+        base = _graph_summary(extraction.load(base_path))
+        per = []
+        for path in sorted(folder.glob(f"{name}-m*.json")):
+            m = extraction.load(path)
+            if "error" in m:
+                per.append({"mutant": path.stem, "error": m["error"], **m.get("mutation", {})})
+                continue
+            x = _graph_summary(m)
+            per.append({"mutant": path.stem, **m.get("mutation", {}),
+                        "graph_changed": x["nodes"] != base["nodes"] or x["actions"] != base["actions"]
+                                         or x["value"] != base["value"],
+                        "value_change": round(x["value"] - base["value"], 3),
+                        "terminates": x["terminates"],
+                        "landmarks_lost": sorted(set(base["landmarks"]) - set(x["landmarks"] or [])),
+                        "landmarks_gained": sorted(set(x["landmarks"] or []) - set(base["landmarks"])),
+                        "orderings_changed": x["orderings"] != base["orderings"],
+                        "p_end_within_100": x["p_end_within_100"]})
+        rows[name] = {"base": base, "mutants": per}
+    return rows
+
+
 EXPERIMENTS = {"main": exp_main, "exactness": exp_exactness, "ablation": exp_ablation,
                "induced": exp_induced, "mutation": exp_mutation, "scaling": exp_scaling,
-               "extracted": exp_extracted, "exact": exp_exact, "bins": exp_bins}
+               "extracted": exp_extracted, "exact": exp_exact, "bins": exp_bins,
+               "qmdp": exp_qmdp, "mutants": exp_mutants}
 
 
 def main(argv: list) -> int:

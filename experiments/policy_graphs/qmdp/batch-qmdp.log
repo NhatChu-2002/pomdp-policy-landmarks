@@ -1,0 +1,50 @@
+job: tiger 0.6 tiger-0.6.json
+nodes=13 edges=22 solve=0.5s
+job: tiger 0.65 tiger-0.65.json
+nodes=9 edges=14 solve=0.1s
+job: tiger 0.7 tiger-0.7.json
+nodes=7 edges=10 solve=0.2s
+job: tiger 0.75 tiger-0.75.json
+nodes=5 edges=6 solve=0.1s
+job: tiger 0.8 tiger-0.8.json
+nodes=5 edges=6 solve=0.1s
+job: tiger 0.85 tiger-0.85.json
+nodes=5 edges=6 solve=0.2s
+job: tiger 0.9 tiger-0.9.json
+nodes=5 edges=6 solve=0.2s
+job: tiger 0.95 tiger-0.95.json
+nodes=3 edges=2 solve=0.2s
+job: sensor 0.75 sensor-0.75.json
+nodes=39 edges=78 solve=0.0s
+job: sensor 0.8 sensor-0.8.json
+nodes=31 edges=62 solve=0.0s
+job: sensor 0.85 sensor-0.85.json
+nodes=25 edges=50 solve=0.0s
+job: sensor 0.9 sensor-0.9.json
+nodes=21 edges=42 solve=0.0s
+job: sensor 0.95 sensor-0.95.json
+nodes=17 edges=34 solve=0.0s
+job: probe channel 3 0.85 channel-3-0.85.json
+nodes=16 edges=30 solve=0.0s
+job: probe mine 4 0.85 mine-4-0.85.json
+nodes=16 edges=30 solve=0.0s
+job: probe mine 9 0.85 mine-9-0.85.json
+nodes=16 edges=30 solve=0.0s
+job: rocksample 4 4 1 rocksample-4-4-s1.json
+nodes=2 edges=2 solve=0.0s
+job: rocksample 4 4 2 rocksample-4-4-s2.json
+nodes=3 edges=3 solve=0.0s
+job: rocksample 4 4 3 rocksample-4-4-s3.json
+nodes=3 edges=3 solve=0.0s
+job: rocksample 4 4 4 rocksample-4-4-s4.json
+nodes=3 edges=3 solve=0.0s
+job: rocksample 4 4 5 rocksample-4-4-s5.json
+nodes=17 edges=32 solve=0.0s
+job: rocksample 5 5 1 rocksample-5-5-s1.json
+nodes=2 edges=2 solve=0.0s
+job: rocksample 5 5 2 rocksample-5-5-s2.json
+nodes=3 edges=3 solve=0.0s
+job: rocksample 5 5 3 rocksample-5-5-s3.json
+nodes=3 edges=3 solve=0.0s
+job: rocksample 7 8 1 rocksample-7-8-s1.json
+nodes=8 edges=9 solve=0.5s

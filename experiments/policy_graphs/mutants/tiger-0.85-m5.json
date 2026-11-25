@@ -1,0 +1,19 @@
+{
+"problem": "tiger", "p_correct": 0.85,
+"solver": "sarsop",
+"base": "tiger-0.85", "mutation": {"node": 1, "depth": 1, "original_action": "listen", "new_action": "left"},
+"solve_seconds": 0.9630000591278076,
+"value_at_b0": 19.37136796227265,
+"states": ["left","right"],
+"nodes": [
+{"id":0,"kind":"inner","action":"listen","belief":"0:0.5 1:0.5"},
+{"id":1,"kind":"commit_end","action":"left","belief":"0:0.85 1:0.15"},
+{"id":2,"kind":"inner","action":"listen","belief":"0:0.15 1:0.85"},
+{"id":3,"kind":"commit_end","action":"left","belief":"0:0.030201342 1:0.969798658"}
+],
+"edges": [
+{"from":0,"obs":"left","to":1,"p":0.5},
+{"from":0,"obs":"right","to":2,"p":0.5},
+{"from":2,"obs":"left","to":0,"p":0.255},
+{"from":2,"obs":"right","to":3,"p":0.7449999999999999}
+]}
