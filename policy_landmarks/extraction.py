@@ -71,7 +71,10 @@ def hidden_vars(g: dict) -> list:
     return [f"rock{i + 1}" for i in range(k)]      # pos = rock good
 
 
-def abstract(g: dict, belief: dict, bins: tuple = BINS) -> frozenset:
+def abstract(g: dict, belief: dict, bins: tuple = BINS, eps: float | None = None) -> frozenset:
+    """Abstract facts of a belief. Default: graded evidence levels ev-V(level).
+    With `eps`, the knowledge view instead: kn-V(K) if P(V) >= 1 - eps (the policy
+    knows V), kn-V(Knot) if P(V) <= eps (it knows not V), else kn-V(U)."""
     states = g["states"]
     if all(states[i] == "terminal" for i in belief):
         return frozenset({"terminal"})
@@ -103,14 +106,18 @@ def abstract(g: dict, belief: dict, bins: tuple = BINS) -> frozenset:
             marg[f"rock{j + 1}"] += p if c == "1" else 0.0
     assert len(cells) <= 1, "robot position is observable in RockSample and Tag"
     prior = 1 / len(vars_) if g["problem"] in ("probe", "tag") else 0.5   # evidence is relative to the prior
-    facts = {f"ev-{v}({level(marg[v], unit_of(g), prior, bins)})" for v in vars_}
+    if eps is not None:
+        facts = {f"kn-{v}({'K' if marg[v] >= 1 - eps else 'Knot' if marg[v] <= eps else 'U'})"
+                 for v in vars_}
+    else:
+        facts = {f"ev-{v}({level(marg[v], unit_of(g), prior, bins)})" for v in vars_}
     return frozenset(facts | {f"at(c{xy.replace(',', '-')})" for xy in cells})
 
 
-def controller(g: dict, bins: tuple = BINS) -> dict:
+def controller(g: dict, bins: tuple = BINS, eps: float | None = None) -> dict:
     """Quotient of the policy graph under the abstraction."""
     nodes = {n["id"]: n for n in g["nodes"]}
-    state = {i: abstract(g, _belief(n), bins) for i, n in nodes.items()}
+    state = {i: abstract(g, _belief(n), bins, eps) for i, n in nodes.items()}
     edges = set()
     for e in g["edges"]:
         src, a = state[e["from"]], nodes[e["from"]]["action"]

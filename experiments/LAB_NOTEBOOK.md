@@ -167,3 +167,25 @@ work or what we claim), **DROP** (tried, not worth reporting), **OPEN** (unresol
   0.99 and with 10 s / 30 s time limits; evaluate every policy under discount 0.95.
 - Result: running.
 - Verdict: **OPEN**.
+
+### E18. K / K-not knowledge view (advisor's request)
+- Tried: a second abstraction of the same policy graphs, `controller(g, eps=...)`:
+  kn-V(K) if P(V) >= 1-eps (the policy knows V), kn-V(Knot) if P(V) <= eps, else
+  kn-V(U). Same exact extraction. These are the KL / K-not-L literals of contingent
+  planning (Albore et al. 2009; Bonet & Geffner 2011), read probabilistically.
+- Result (eps = 0.05): Tiger, all accuracies: "knows left or knows right" before
+  opening a door. Sensor q = 0.95: knows a, then b, then diagnoses. Sensor q = 0.75:
+  NO knowledge landmark; it diagnoses at 90% confidence. Channel: knows whether value
+  1 is hidden. Mine-3x3: knows the mine is NOT in each of 7 cells, then commits to 5
+  or 8. RockSample(4,4) s1: knows rock 4 bad -> (2,1) -> knows rock 3 bad -> (3,1) ->
+  knows rock 1 bad -> knows rock 2 bad.
+- Confidence each policy always reaches before acting (largest grid eps at which
+  "K or Knot" is a landmark): Sensor 0.75/0.8 at 90%, 0.85 95%, 0.9 98%, 0.95 95%;
+  Tiger 95-99%; Mine-2x2 90% on 3 cells; RockSample 95-99.9% per rock.
+- Learned: the knowledge view gives the advisor-style explanation ("what the policy
+  knows before it acts") and exposes a policy that acts on belief rather than
+  knowledge (Sensor 0.75), which the value alone does not show. The graded view
+  remains the right tool for "how much evidence". The two views answer different
+  questions; present both.
+- Verdict: **PAPER** (new subsection: two views of the same graph; table of the
+  confidence each policy reaches before acting).

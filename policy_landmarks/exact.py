@@ -117,7 +117,7 @@ class StateGraph:
                     queue.append(j)
         return True
 
-    def landmarks(self, max_size: int = 3, complete=("ev-", "chose"), max_combos: int = 20_000) -> list:
+    def landmarks(self, max_size: int = 3, complete=("ev-", "kn-", "chose"), max_combos: int = 20_000) -> list:
         """All minimal landmarks: single facts, and disjunctions of facts with the same
         predicate. Predicates starting with a prefix in `complete` (belief levels and
         commitments, at most 16 facts each here) are enumerated in full; others, such as
