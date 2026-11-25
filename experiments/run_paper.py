@@ -476,7 +476,13 @@ def exp_mutants() -> dict:
                 per.append({"mutant": path.stem, "error": m["error"], **m.get("mutation", {})})
                 continue
             x = _graph_summary(m)
-            per.append({"mutant": path.stem, **m.get("mutation", {}),
+            p_term, _ = extraction.first_hit(m, {n["id"]: 1.0 for n in m["nodes"] if n["kind"] != "inner"})
+            lm_changed = x["terminates"] and (x["landmarks"] != base["landmarks"]
+                                              or x["orderings"] != base["orderings"])
+            category = ("lm" if lm_changed else "end" if p_term < 1 - 1e-9
+                        else "cost" if abs(x["value"] - base["value"]) > 1e-6 else "same")
+            per.append({"mutant": path.stem, **m.get("mutation", {}), "category": category,
+                        "p_terminate": round(p_term, 6),
                         "graph_changed": x["nodes"] != base["nodes"] or x["actions"] != base["actions"]
                                          or x["value"] != base["value"],
                         "value_change": round(x["value"] - base["value"], 3),
@@ -485,14 +491,45 @@ def exp_mutants() -> dict:
                         "landmarks_gained": sorted(set(x["landmarks"] or []) - set(base["landmarks"])),
                         "orderings_changed": x["orderings"] != base["orderings"],
                         "p_end_within_100": x["p_end_within_100"]})
-        rows[name] = {"base": base, "mutants": per}
+        cats = [m.get("category", "error") for m in per]
+        rows[name] = {"base": base, "mutants": per,
+                      "summary": {c: cats.count(c) for c in ("lm", "end", "cost", "same", "error")},
+                      "lm_and_some_runs_never_end": sum(m.get("category") == "lm" and m["p_terminate"] < 1 - 1e-9
+                                                        for m in per)}
+    return rows
+
+
+def exp_kept() -> dict:
+    """Table 1: exact landmarks in the kept classes, ordering-diagram edges, cross-variable
+    orderings, RHW's share of the kept landmarks, termination, and timings."""
+    exact = json.loads((RESULTS / "exact.json").read_text())
+    rows = {}
+    for path in sorted((HERE / "policy_graphs").glob("*.json")):
+        g = extraction.load(path)
+        ctrl = extraction.controller(g)
+        sg = StateGraph(ctrl)
+        t0 = time.perf_counter()
+        lms = [k for k in sg.landmarks() if interpretable(" | ".join(sorted(k)))]
+        nat = {pair for pair, kinds in sg.orderings(lms).items() if "nat" in kinds}
+        seconds = time.perf_counter() - t0
+        pred = lambda k: {f.split("(")[0] for f in k}  # noqa: E731
+        choice = [k for k in lms if all(f.startswith(("ev-", "at(")) for f in k)]
+        cross = {(a, b) for a, b in nat if a in choice and b in choice and not pred(a) & pred(b)}
+        missed = set(exact[path.stem]["rhw_missed"])
+        p_term, steps = extraction.first_hit(g, {n["id"]: 1.0 for n in g["nodes"] if n["kind"] != "inner"})
+        rows[path.stem] = {"landmarks": len(lms), "rhw": sum(" | ".join(sorted(k)) not in missed for k in lms),
+                           "diagram_edges": len(reduction(nat)), "natural": len(nat),
+                           "cross_variable": len(cross), "p_terminate": round(p_term, 6),
+                           "p_end_within_100": round(extraction.p_end_within(g, 100), 4),
+                           "exact_kept_s": round(seconds, 3), "exact_all_s": exact[path.stem]["exact_s"],
+                           "rhw_ms": exact[path.stem]["rhw_lm_ms"]}
     return rows
 
 
 EXPERIMENTS = {"main": exp_main, "exactness": exp_exactness, "ablation": exp_ablation,
                "induced": exp_induced, "mutation": exp_mutation, "scaling": exp_scaling,
                "extracted": exp_extracted, "exact": exp_exact, "bins": exp_bins,
-               "qmdp": exp_qmdp, "mutants": exp_mutants}
+               "qmdp": exp_qmdp, "mutants": exp_mutants, "kept": exp_kept}
 
 
 def main(argv: list) -> int:

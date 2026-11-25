@@ -2,7 +2,8 @@
 "problem": "probe", "name": "mine", "k": 4, "p_correct": 0.85,
 "solver": "sarsop",
 "base": "mine-4-0.85", "mutation": {"node": 0, "depth": 0, "original_action": "probe-v1", "new_action": "commit-v1"},
-"solve_seconds": 1.6440000534057617,
+"merges": {"lossy": 0, "lossy_self_loops": 0, "max_diff": 0.0},
+"solve_seconds": 1.1159999370574951,
 "value_at_b0": 9.563821689716288,
 "states": ["v1","v2","v3","v4","done"],
 "nodes": [

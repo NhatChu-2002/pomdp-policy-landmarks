@@ -2,7 +2,8 @@
 "problem": "probe", "name": "channel", "k": 3, "p_correct": 0.85,
 "solver": "sarsop",
 "base": "channel-3-0.85", "mutation": {"node": 0, "depth": 0, "original_action": "probe-v2", "new_action": "commit-v1"},
-"solve_seconds": 0.004999876022338867,
+"merges": {"lossy": 0, "lossy_self_loops": 0, "max_diff": 0.0},
+"solve_seconds": 0.006000041961669922,
 "value_at_b0": 11.490946753961765,
 "states": ["v1","v2","v3","done"],
 "nodes": [

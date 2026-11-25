@@ -1,0 +1,6 @@
+job: probe channel 3 0.85 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/recheck/qmdp-channel-3-0.85.json
+nodes=16 edges=30 solve=0.0s
+job: probe mine 4 0.85 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/recheck/qmdp-mine-4-0.85.json
+nodes=16 edges=30 solve=0.0s
+job: probe mine 9 0.85 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/recheck/qmdp-mine-9-0.85.json
+nodes=16 edges=30 solve=0.0s

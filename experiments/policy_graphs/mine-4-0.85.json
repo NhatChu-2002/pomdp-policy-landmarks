@@ -1,6 +1,8 @@
 {
 "problem": "probe", "name": "mine", "k": 4, "p_correct": 0.85,
-"solve_seconds": 1.191999912261963,
+"solver": "sarsop",
+"merges": {"lossy": 0, "lossy_self_loops": 0, "max_diff": 0.0},
+"solve_seconds": 1.0529999732971191,
 "value_at_b0": 9.563821689716288,
 "states": ["v1","v2","v3","v4","done"],
 "nodes": [

@@ -3,20 +3,22 @@
     "problem": "probe",
     "p_correct": 0.85,
     "k": 3,
-    "solve_s": 0.7,
+    "solve_s": 0.1,
     "value_b0": 11.49,
     "exact_value": 11.491,
     "policy_nodes": 8,
     "policy_edges": 10,
     "controller_states": 8,
-    "landmarks": 11,
-    "disjunctive": 6,
+    "landmarks": 12,
+    "disjunctive": 7,
     "belief": 0,
-    "edges": 19,
+    "edges": 23,
     "belief_landmarks": 6,
     "belief_landmarks_beyond_syntactic": 3,
     "syntactic_baseline": 3,
-    "commitment_landmarks": [],
+    "commitment_landmarks": [
+      "chose(commit-v1) | chose(commit-v2) | chose(commit-v3)"
+    ],
     "evidence_chain": [
       "ev-v1(neg1) | ev-v1(pos1)",
       "ev-v1(neg2) | ev-v1(pos2)",
@@ -26,13 +28,13 @@
       "ev-v3(neg2) | ev-v3(pos2)"
     ],
     "injective": true,
-    "sound_landmarks": 11,
-    "landmarks_total": 11,
-    "sound_orderings": 19,
-    "orderings_total": 19,
+    "sound_landmarks": 12,
+    "landmarks_total": 12,
+    "sound_orderings": 23,
+    "orderings_total": 23,
     "single_fact_landmarks_exact": 1,
     "single_fact_landmarks_missed": [],
-    "exhaustive_check_s": 0.001,
+    "exhaustive_check_s": 0.002,
     "cross_variable_orderings": 2,
     "cross_variable_examples": [
       "ev-v1(neg1) | ev-v1(pos1) < ev-v3(neg2) | ev-v3(pos2)",
@@ -91,26 +93,28 @@
         }
       }
     },
-    "lm_time_s": 0.0001352
+    "lm_time_s": 0.0001506
   },
   "mine-4-0.85": {
     "problem": "probe",
     "p_correct": 0.85,
     "k": 4,
-    "solve_s": 1.2,
+    "solve_s": 1.1,
     "value_b0": 9.56,
     "exact_value": 9.564,
     "policy_nodes": 11,
     "policy_edges": 14,
     "controller_states": 11,
-    "landmarks": 8,
-    "disjunctive": 4,
+    "landmarks": 9,
+    "disjunctive": 5,
     "belief": 0,
-    "edges": 8,
+    "edges": 13,
     "belief_landmarks": 4,
     "belief_landmarks_beyond_syntactic": 0,
     "syntactic_baseline": 4,
-    "commitment_landmarks": [],
+    "commitment_landmarks": [
+      "chose(commit-v1) | chose(commit-v2) | chose(commit-v3) | chose(commit-v4)"
+    ],
     "evidence_chain": [
       "ev-v1(neg1) | ev-v1(neg2) | ev-v1(pos2)",
       "ev-v2(neg1) | ev-v2(pos2)",
@@ -118,13 +122,13 @@
       "ev-v4(neg1) | ev-v4(pos2)"
     ],
     "injective": true,
-    "sound_landmarks": 8,
-    "landmarks_total": 8,
-    "sound_orderings": 8,
-    "orderings_total": 8,
+    "sound_landmarks": 9,
+    "landmarks_total": 9,
+    "sound_orderings": 13,
+    "orderings_total": 13,
     "single_fact_landmarks_exact": 1,
     "single_fact_landmarks_missed": [],
-    "exhaustive_check_s": 0.002,
+    "exhaustive_check_s": 0.004,
     "cross_variable_orderings": 0,
     "cross_variable_examples": [],
     "p_terminate": 1.0,
@@ -164,26 +168,28 @@
         }
       }
     },
-    "lm_time_s": 0.000143
+    "lm_time_s": 0.0001523
   },
   "mine-9-0.85": {
     "problem": "probe",
     "p_correct": 0.85,
     "k": 9,
-    "solve_s": 120.7,
+    "solve_s": 121.2,
     "value_b0": 0.38,
     "exact_value": -13.212,
     "policy_nodes": 121,
     "policy_edges": 238,
     "controller_states": 92,
-    "landmarks": 21,
-    "disjunctive": 3,
+    "landmarks": 22,
+    "disjunctive": 4,
     "belief": 0,
-    "edges": 59,
+    "edges": 69,
     "belief_landmarks": 10,
     "belief_landmarks_beyond_syntactic": 1,
     "syntactic_baseline": 9,
-    "commitment_landmarks": [],
+    "commitment_landmarks": [
+      "chose(commit-v5) | chose(commit-v8)"
+    ],
     "evidence_chain": [
       "ev-v1(neg1)",
       "ev-v2(neg1)",
@@ -197,13 +203,13 @@
       "ev-v9(neg1)"
     ],
     "injective": false,
-    "sound_landmarks": 21,
-    "landmarks_total": 21,
-    "sound_orderings": 59,
-    "orderings_total": 59,
+    "sound_landmarks": 22,
+    "landmarks_total": 22,
+    "sound_orderings": 69,
+    "orderings_total": 69,
     "single_fact_landmarks_exact": 8,
     "single_fact_landmarks_missed": [],
-    "exhaustive_check_s": 0.232,
+    "exhaustive_check_s": 0.304,
     "cross_variable_orderings": 6,
     "cross_variable_examples": [
       "ev-v8(neg1) | ev-v8(pos1) < ev-v1(neg1)",
@@ -291,14 +297,14 @@
         }
       }
     },
-    "lm_time_s": 0.0014187
+    "lm_time_s": 0.0015484
   },
   "rocksample-4-4-s1": {
     "problem": "rocksample",
     "n": 4,
     "k": 4,
     "seed": 1,
-    "solve_s": 47.9,
+    "solve_s": 23.3,
     "value_b0": 34.54,
     "exact_value": 34.536,
     "policy_nodes": 37,
@@ -378,14 +384,14 @@
         }
       }
     },
-    "lm_time_s": 0.0002064
+    "lm_time_s": 0.0002154
   },
   "rocksample-4-4-s2": {
     "problem": "rocksample",
     "n": 4,
     "k": 4,
     "seed": 2,
-    "solve_s": 120.1,
+    "solve_s": 100.7,
     "value_b0": 32.29,
     "exact_value": 32.286,
     "policy_nodes": 50,
@@ -456,14 +462,14 @@
         }
       }
     },
-    "lm_time_s": 0.0002759
+    "lm_time_s": 0.0002654
   },
   "rocksample-4-4-s3": {
     "problem": "rocksample",
     "n": 4,
     "k": 4,
     "seed": 3,
-    "solve_s": 27.4,
+    "solve_s": 24.3,
     "value_b0": 33.02,
     "exact_value": 33.022,
     "policy_nodes": 45,
@@ -490,7 +496,7 @@
     "orderings_total": 61,
     "single_fact_landmarks_exact": 6,
     "single_fact_landmarks_missed": [],
-    "exhaustive_check_s": 0.108,
+    "exhaustive_check_s": 0.046,
     "cross_variable_orderings": 6,
     "cross_variable_examples": [
       "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock4(neg3)",
@@ -536,7 +542,7 @@
         }
       }
     },
-    "lm_time_s": 0.0003899
+    "lm_time_s": 0.0002652
   },
   "rocksample-4-4-s4": {
     "problem": "rocksample",
@@ -570,7 +576,7 @@
     "orderings_total": 47,
     "single_fact_landmarks_exact": 4,
     "single_fact_landmarks_missed": [],
-    "exhaustive_check_s": 0.177,
+    "exhaustive_check_s": 0.083,
     "cross_variable_orderings": 5,
     "cross_variable_examples": [
       "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock2(neg3)",
@@ -615,14 +621,14 @@
         }
       }
     },
-    "lm_time_s": 0.0008154
+    "lm_time_s": 0.0003019
   },
   "rocksample-4-4-s5": {
     "problem": "rocksample",
     "n": 4,
     "k": 4,
     "seed": 5,
-    "solve_s": 3.2,
+    "solve_s": 3.0,
     "value_b0": 34.57,
     "exact_value": 34.565,
     "policy_nodes": 16,
@@ -649,7 +655,7 @@
     "orderings_total": 85,
     "single_fact_landmarks_exact": 11,
     "single_fact_landmarks_missed": [],
-    "exhaustive_check_s": 0.015,
+    "exhaustive_check_s": 0.008,
     "cross_variable_orderings": 6,
     "cross_variable_examples": [
       "ev-rock2(neg3) < ev-rock1(neg3)",
@@ -692,7 +698,7 @@
         }
       }
     },
-    "lm_time_s": 0.0002184
+    "lm_time_s": 0.0001779
   },
   "rocksample-5-5-s1": {
     "problem": "rocksample",
@@ -700,15 +706,15 @@
     "k": 5,
     "seed": 1,
     "solve_s": 120.4,
-    "value_b0": 37.02,
+    "value_b0": 37.06,
     "exact_value": 37.11,
     "policy_nodes": 152,
     "policy_edges": 172,
     "controller_states": 152,
     "landmarks": 19,
-    "disjunctive": 8,
+    "disjunctive": 9,
     "belief": 0,
-    "edges": 80,
+    "edges": 81,
     "belief_landmarks": 5,
     "belief_landmarks_beyond_syntactic": 0,
     "syntactic_baseline": 6,
@@ -723,11 +729,11 @@
     "injective": true,
     "sound_landmarks": 19,
     "landmarks_total": 19,
-    "sound_orderings": 80,
-    "orderings_total": 80,
-    "single_fact_landmarks_exact": 5,
+    "sound_orderings": 81,
+    "orderings_total": 81,
+    "single_fact_landmarks_exact": 4,
     "single_fact_landmarks_missed": [],
-    "exhaustive_check_s": 1.247,
+    "exhaustive_check_s": 0.623,
     "cross_variable_orderings": 9,
     "cross_variable_examples": [
       "ev-rock1(neg3) < ev-rock3(neg2) | ev-rock3(neg3)",
@@ -781,7 +787,7 @@
         }
       }
     },
-    "lm_time_s": 0.0006202
+    "lm_time_s": 0.0006281
   },
   "rocksample-5-5-s2": {
     "problem": "rocksample",
@@ -818,7 +824,7 @@
     "single_fact_landmarks_missed": [
       "at(c2-1)"
     ],
-    "exhaustive_check_s": 0.613,
+    "exhaustive_check_s": 0.301,
     "cross_variable_orderings": 6,
     "cross_variable_examples": [
       "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock2(neg2) | ev-rock2(neg3)",
@@ -873,7 +879,7 @@
         }
       }
     },
-    "lm_time_s": 0.0005042
+    "lm_time_s": 0.0004921
   },
   "rocksample-5-5-s3": {
     "problem": "rocksample",
@@ -908,7 +914,7 @@
     "orderings_total": 66,
     "single_fact_landmarks_exact": 4,
     "single_fact_landmarks_missed": [],
-    "exhaustive_check_s": 0.282,
+    "exhaustive_check_s": 0.141,
     "cross_variable_orderings": 10,
     "cross_variable_examples": [
       "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock3(neg2) | ev-rock3(neg3)",
@@ -962,21 +968,21 @@
         }
       }
     },
-    "lm_time_s": 0.0003886
+    "lm_time_s": 0.0004053
   },
   "rocksample-7-8-s1": {
     "problem": "rocksample",
     "n": 7,
     "k": 8,
     "seed": 1,
-    "solve_s": 307.4,
-    "value_b0": 41.47,
-    "exact_value": 43.466,
-    "policy_nodes": 677,
-    "policy_edges": 738,
-    "controller_states": 677,
+    "solve_s": 302.9,
+    "value_b0": 42.44,
+    "exact_value": 43.758,
+    "policy_nodes": 593,
+    "policy_edges": 644,
+    "controller_states": 593,
     "landmarks": 27,
-    "disjunctive": 13,
+    "disjunctive": 16,
     "belief": 0,
     "edges": 122,
     "belief_landmarks": 8,
@@ -990,17 +996,20 @@
       "ev-rock4(neg2) | ev-rock4(neg3)",
       "ev-rock5(neg2) | ev-rock5(neg3)",
       "ev-rock6(neg2) | ev-rock6(neg3)",
-      "ev-rock7(neg3)",
-      "ev-rock8(neg1) | ev-rock8(neg3)"
+      "ev-rock7(neg2) | ev-rock7(neg3)",
+      "ev-rock8(neg1) | ev-rock8(neg2) | ev-rock8(neg3)"
     ],
     "injective": true,
     "sound_landmarks": 27,
     "landmarks_total": 27,
     "sound_orderings": 122,
     "orderings_total": 122,
-    "single_fact_landmarks_exact": 4,
-    "single_fact_landmarks_missed": [],
-    "exhaustive_check_s": 31.712,
+    "single_fact_landmarks_exact": 3,
+    "single_fact_landmarks_missed": [
+      "at(c1-2)",
+      "at(c6-5)"
+    ],
+    "exhaustive_check_s": 11.073,
     "cross_variable_orderings": 23,
     "cross_variable_examples": [
       "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock2(neg2) | ev-rock2(neg3)",
@@ -1008,10 +1017,10 @@
       "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock4(neg2) | ev-rock4(neg3)",
       "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock5(neg2) | ev-rock5(neg3)",
       "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock6(neg2) | ev-rock6(neg3)",
-      "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock7(neg3)"
+      "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock7(neg2) | ev-rock7(neg3)"
     ],
     "p_terminate": 1.0,
-    "expected_steps": 27.266,
+    "expected_steps": 27.078,
     "p_end_within_100": 1.0,
     "timeline": {
       "ev-rock1(neg2) | ev-rock1(neg3)": {
@@ -1024,15 +1033,15 @@
       },
       "ev-rock2(neg2) | ev-rock2(neg3)": {
         "p_reach": 1.0,
-        "expected_steps": 12.875,
+        "expected_steps": 11.937,
         "first_reached": {
-          "ev-rock2(neg2)": 0.25,
-          "ev-rock2(neg3)": 0.75
+          "ev-rock2(neg2)": 0.3125,
+          "ev-rock2(neg3)": 0.6875
         }
       },
       "ev-rock3(neg2) | ev-rock3(neg3)": {
         "p_reach": 1.0,
-        "expected_steps": 9.75,
+        "expected_steps": 10.063,
         "first_reached": {
           "ev-rock3(neg2)": 0.5,
           "ev-rock3(neg3)": 0.5
@@ -1040,7 +1049,7 @@
       },
       "ev-rock4(neg2) | ev-rock4(neg3)": {
         "p_reach": 1.0,
-        "expected_steps": 18.172,
+        "expected_steps": 18.156,
         "first_reached": {
           "ev-rock4(neg2)": 0.5,
           "ev-rock4(neg3)": 0.5
@@ -1048,55 +1057,59 @@
       },
       "ev-rock5(neg2) | ev-rock5(neg3)": {
         "p_reach": 1.0,
-        "expected_steps": 8.75,
+        "expected_steps": 9.25,
         "first_reached": {
-          "ev-rock5(neg2)": 0.375,
-          "ev-rock5(neg3)": 0.625
+          "ev-rock5(neg2)": 0.125,
+          "ev-rock5(neg3)": 0.875
         }
       },
       "ev-rock6(neg2) | ev-rock6(neg3)": {
         "p_reach": 1.0,
-        "expected_steps": 24.141,
+        "expected_steps": 24.93,
         "first_reached": {
-          "ev-rock6(neg2)": 0.2031,
-          "ev-rock6(neg3)": 0.7969
+          "ev-rock6(neg2)": 0.0469,
+          "ev-rock6(neg3)": 0.9531
         }
       },
-      "ev-rock7(neg3)": {
+      "ev-rock7(neg2) | ev-rock7(neg3)": {
         "p_reach": 1.0,
-        "expected_steps": 7.75,
+        "expected_steps": 7.5,
         "first_reached": {
-          "ev-rock7(neg3)": 1.0
+          "ev-rock7(neg2)": 0.25,
+          "ev-rock7(neg3)": 0.75
         }
       },
-      "ev-rock8(neg1) | ev-rock8(neg3)": {
+      "ev-rock8(neg1) | ev-rock8(neg2) | ev-rock8(neg3)": {
         "p_reach": 1.0,
-        "expected_steps": 18.625,
+        "expected_steps": 19.0,
         "first_reached": {
-          "ev-rock8(neg1)": 0.5,
+          "ev-rock8(neg1)": 0.1875,
+          "ev-rock8(neg2)": 0.3125,
           "ev-rock8(neg3)": 0.5
         }
       }
     },
-    "lm_time_s": 0.0029125
+    "lm_time_s": 0.0023071
   },
   "sensor-0.75": {
     "problem": "sensor",
     "p_correct": 0.75,
-    "solve_s": 1.9,
+    "solve_s": 0.1,
     "value_b0": 3.55,
     "exact_value": 3.554,
     "policy_nodes": 19,
     "policy_edges": 30,
     "controller_states": 19,
-    "landmarks": 8,
-    "disjunctive": 4,
+    "landmarks": 9,
+    "disjunctive": 5,
     "belief": 0,
-    "edges": 13,
+    "edges": 16,
     "belief_landmarks": 4,
     "belief_landmarks_beyond_syntactic": 2,
     "syntactic_baseline": 2,
-    "commitment_landmarks": [],
+    "commitment_landmarks": [
+      "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)"
+    ],
     "evidence_chain": [
       "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
       "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
@@ -1104,13 +1117,13 @@
       "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
     ],
     "injective": true,
-    "sound_landmarks": 8,
-    "landmarks_total": 8,
-    "sound_orderings": 13,
-    "orderings_total": 13,
+    "sound_landmarks": 9,
+    "landmarks_total": 9,
+    "sound_orderings": 16,
+    "orderings_total": 16,
     "single_fact_landmarks_exact": 1,
     "single_fact_landmarks_missed": [],
-    "exhaustive_check_s": 0.01,
+    "exhaustive_check_s": 0.008,
     "cross_variable_orderings": 3,
     "cross_variable_examples": [
       "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-b(neg1) | ev-sensor-b(pos1)",
@@ -1154,25 +1167,27 @@
         }
       }
     },
-    "lm_time_s": 0.0001159
+    "lm_time_s": 0.0001313
   },
   "sensor-0.8": {
     "problem": "sensor",
     "p_correct": 0.8,
-    "solve_s": 0.3,
+    "solve_s": 0.1,
     "value_b0": 6.38,
     "exact_value": 6.383,
     "policy_nodes": 20,
     "policy_edges": 32,
     "controller_states": 20,
-    "landmarks": 8,
-    "disjunctive": 4,
+    "landmarks": 9,
+    "disjunctive": 5,
     "belief": 0,
-    "edges": 10,
+    "edges": 13,
     "belief_landmarks": 4,
     "belief_landmarks_beyond_syntactic": 2,
     "syntactic_baseline": 2,
-    "commitment_landmarks": [],
+    "commitment_landmarks": [
+      "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)"
+    ],
     "evidence_chain": [
       "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
       "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
@@ -1180,13 +1195,13 @@
       "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
     ],
     "injective": true,
-    "sound_landmarks": 8,
-    "landmarks_total": 8,
-    "sound_orderings": 10,
-    "orderings_total": 10,
+    "sound_landmarks": 9,
+    "landmarks_total": 9,
+    "sound_orderings": 13,
+    "orderings_total": 13,
     "single_fact_landmarks_exact": 1,
     "single_fact_landmarks_missed": [],
-    "exhaustive_check_s": 0.01,
+    "exhaustive_check_s": 0.009,
     "cross_variable_orderings": 0,
     "cross_variable_examples": [],
     "p_terminate": 1.0,
@@ -1226,25 +1241,27 @@
         }
       }
     },
-    "lm_time_s": 0.0001251
+    "lm_time_s": 0.0001369
   },
   "sensor-0.85": {
     "problem": "sensor",
     "p_correct": 0.85,
-    "solve_s": 0.1,
+    "solve_s": 0.0,
     "value_b0": 8.69,
     "exact_value": 8.695,
     "policy_nodes": 21,
     "policy_edges": 34,
     "controller_states": 21,
-    "landmarks": 8,
-    "disjunctive": 4,
+    "landmarks": 9,
+    "disjunctive": 5,
     "belief": 0,
-    "edges": 11,
+    "edges": 14,
     "belief_landmarks": 4,
     "belief_landmarks_beyond_syntactic": 2,
     "syntactic_baseline": 2,
-    "commitment_landmarks": [],
+    "commitment_landmarks": [
+      "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)"
+    ],
     "evidence_chain": [
       "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
       "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
@@ -1252,13 +1269,13 @@
       "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
     ],
     "injective": true,
-    "sound_landmarks": 8,
-    "landmarks_total": 8,
-    "sound_orderings": 11,
-    "orderings_total": 11,
+    "sound_landmarks": 9,
+    "landmarks_total": 9,
+    "sound_orderings": 14,
+    "orderings_total": 14,
     "single_fact_landmarks_exact": 1,
     "single_fact_landmarks_missed": [],
-    "exhaustive_check_s": 0.01,
+    "exhaustive_check_s": 0.009,
     "cross_variable_orderings": 1,
     "cross_variable_examples": [
       "ev-sensor-b(neg1) | ev-sensor-b(pos1) < ev-sensor-a(neg1) | ev-sensor-a(pos1)"
@@ -1300,7 +1317,7 @@
         }
       }
     },
-    "lm_time_s": 0.0001269
+    "lm_time_s": 0.0001613
   },
   "sensor-0.9": {
     "problem": "sensor",
@@ -1311,14 +1328,16 @@
     "policy_nodes": 25,
     "policy_edges": 42,
     "controller_states": 25,
-    "landmarks": 8,
-    "disjunctive": 4,
+    "landmarks": 9,
+    "disjunctive": 5,
     "belief": 0,
-    "edges": 11,
+    "edges": 14,
     "belief_landmarks": 4,
     "belief_landmarks_beyond_syntactic": 2,
     "syntactic_baseline": 2,
-    "commitment_landmarks": [],
+    "commitment_landmarks": [
+      "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)"
+    ],
     "evidence_chain": [
       "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
       "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
@@ -1326,13 +1345,13 @@
       "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
     ],
     "injective": true,
-    "sound_landmarks": 8,
-    "landmarks_total": 8,
-    "sound_orderings": 11,
-    "orderings_total": 11,
+    "sound_landmarks": 9,
+    "landmarks_total": 9,
+    "sound_orderings": 14,
+    "orderings_total": 14,
     "single_fact_landmarks_exact": 1,
     "single_fact_landmarks_missed": [],
-    "exhaustive_check_s": 0.015,
+    "exhaustive_check_s": 0.013,
     "cross_variable_orderings": 1,
     "cross_variable_examples": [
       "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-b(neg1) | ev-sensor-b(pos1)"
@@ -1374,7 +1393,7 @@
         }
       }
     },
-    "lm_time_s": 0.0001305
+    "lm_time_s": 0.0001481
   },
   "sensor-0.95": {
     "problem": "sensor",
@@ -1385,23 +1404,25 @@
     "policy_nodes": 7,
     "policy_edges": 6,
     "controller_states": 7,
-    "landmarks": 6,
-    "disjunctive": 2,
+    "landmarks": 7,
+    "disjunctive": 3,
     "belief": 0,
-    "edges": 7,
+    "edges": 10,
     "belief_landmarks": 2,
     "belief_landmarks_beyond_syntactic": 0,
     "syntactic_baseline": 2,
-    "commitment_landmarks": [],
+    "commitment_landmarks": [
+      "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)"
+    ],
     "evidence_chain": [
       "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
       "ev-sensor-b(neg1) | ev-sensor-b(pos1)"
     ],
     "injective": true,
-    "sound_landmarks": 6,
-    "landmarks_total": 6,
-    "sound_orderings": 7,
-    "orderings_total": 7,
+    "sound_landmarks": 7,
+    "landmarks_total": 7,
+    "sound_orderings": 10,
+    "orderings_total": 10,
     "single_fact_landmarks_exact": 1,
     "single_fact_landmarks_missed": [],
     "exhaustive_check_s": 0.001,
@@ -1430,7 +1451,7 @@
         }
       }
     },
-    "lm_time_s": 8.01e-05
+    "lm_time_s": 9.53e-05
   },
   "tiger-0.6": {
     "problem": "tiger",
@@ -1441,14 +1462,16 @@
     "policy_nodes": 17,
     "policy_edges": 30,
     "controller_states": 17,
-    "landmarks": 11,
-    "disjunctive": 8,
+    "landmarks": 12,
+    "disjunctive": 9,
     "belief": 0,
-    "edges": 17,
+    "edges": 19,
     "belief_landmarks": 8,
     "belief_landmarks_beyond_syntactic": 7,
     "syntactic_baseline": 1,
-    "commitment_landmarks": [],
+    "commitment_landmarks": [
+      "chose(left) | chose(right)"
+    ],
     "evidence_chain": [
       "ev-direction(neg1) | ev-direction(pos1)",
       "ev-direction(neg2) | ev-direction(pos2)",
@@ -1460,13 +1483,13 @@
       "ev-direction(neg8) | ev-direction(pos8)"
     ],
     "injective": true,
-    "sound_landmarks": 11,
-    "landmarks_total": 11,
-    "sound_orderings": 17,
-    "orderings_total": 17,
+    "sound_landmarks": 12,
+    "landmarks_total": 12,
+    "sound_orderings": 19,
+    "orderings_total": 19,
     "single_fact_landmarks_exact": 1,
     "single_fact_landmarks_missed": [],
-    "exhaustive_check_s": 0.013,
+    "exhaustive_check_s": 0.009,
     "cross_variable_orderings": 0,
     "cross_variable_examples": [],
     "p_terminate": 1.0,
@@ -1538,7 +1561,7 @@
         }
       }
     },
-    "lm_time_s": 0.0001308
+    "lm_time_s": 0.0001341
   },
   "tiger-0.65": {
     "problem": "tiger",
@@ -1549,14 +1572,16 @@
     "policy_nodes": 13,
     "policy_edges": 22,
     "controller_states": 13,
-    "landmarks": 9,
-    "disjunctive": 6,
+    "landmarks": 10,
+    "disjunctive": 7,
     "belief": 0,
-    "edges": 13,
+    "edges": 15,
     "belief_landmarks": 6,
     "belief_landmarks_beyond_syntactic": 5,
     "syntactic_baseline": 1,
-    "commitment_landmarks": [],
+    "commitment_landmarks": [
+      "chose(left) | chose(right)"
+    ],
     "evidence_chain": [
       "ev-direction(neg1) | ev-direction(pos1)",
       "ev-direction(neg2) | ev-direction(pos2)",
@@ -1566,13 +1591,13 @@
       "ev-direction(neg6) | ev-direction(pos6)"
     ],
     "injective": true,
-    "sound_landmarks": 9,
-    "landmarks_total": 9,
-    "sound_orderings": 13,
-    "orderings_total": 13,
+    "sound_landmarks": 10,
+    "landmarks_total": 10,
+    "sound_orderings": 15,
+    "orderings_total": 15,
     "single_fact_landmarks_exact": 1,
     "single_fact_landmarks_missed": [],
-    "exhaustive_check_s": 0.007,
+    "exhaustive_check_s": 0.004,
     "cross_variable_orderings": 0,
     "cross_variable_examples": [],
     "p_terminate": 1.0,
@@ -1628,7 +1653,7 @@
         }
       }
     },
-    "lm_time_s": 0.0001106
+    "lm_time_s": 0.0001168
   },
   "tiger-0.7": {
     "problem": "tiger",
@@ -1639,14 +1664,16 @@
     "policy_nodes": 9,
     "policy_edges": 14,
     "controller_states": 9,
-    "landmarks": 7,
-    "disjunctive": 4,
+    "landmarks": 8,
+    "disjunctive": 5,
     "belief": 0,
-    "edges": 9,
+    "edges": 11,
     "belief_landmarks": 4,
     "belief_landmarks_beyond_syntactic": 3,
     "syntactic_baseline": 1,
-    "commitment_landmarks": [],
+    "commitment_landmarks": [
+      "chose(left) | chose(right)"
+    ],
     "evidence_chain": [
       "ev-direction(neg1) | ev-direction(pos1)",
       "ev-direction(neg2) | ev-direction(pos2)",
@@ -1654,13 +1681,13 @@
       "ev-direction(neg4) | ev-direction(pos4)"
     ],
     "injective": true,
-    "sound_landmarks": 7,
-    "landmarks_total": 7,
-    "sound_orderings": 9,
-    "orderings_total": 9,
+    "sound_landmarks": 8,
+    "landmarks_total": 8,
+    "sound_orderings": 11,
+    "orderings_total": 11,
     "single_fact_landmarks_exact": 1,
     "single_fact_landmarks_missed": [],
-    "exhaustive_check_s": 0.003,
+    "exhaustive_check_s": 0.002,
     "cross_variable_orderings": 0,
     "cross_variable_examples": [],
     "p_terminate": 1.0,
@@ -1700,7 +1727,7 @@
         }
       }
     },
-    "lm_time_s": 9.06e-05
+    "lm_time_s": 9.95e-05
   },
   "tiger-0.75": {
     "problem": "tiger",
@@ -1711,24 +1738,26 @@
     "policy_nodes": 7,
     "policy_edges": 10,
     "controller_states": 7,
-    "landmarks": 6,
-    "disjunctive": 3,
+    "landmarks": 7,
+    "disjunctive": 4,
     "belief": 0,
-    "edges": 7,
+    "edges": 9,
     "belief_landmarks": 3,
     "belief_landmarks_beyond_syntactic": 2,
     "syntactic_baseline": 1,
-    "commitment_landmarks": [],
+    "commitment_landmarks": [
+      "chose(left) | chose(right)"
+    ],
     "evidence_chain": [
       "ev-direction(neg1) | ev-direction(pos1)",
       "ev-direction(neg2) | ev-direction(pos2)",
       "ev-direction(neg3) | ev-direction(pos3)"
     ],
     "injective": true,
-    "sound_landmarks": 6,
-    "landmarks_total": 6,
-    "sound_orderings": 7,
-    "orderings_total": 7,
+    "sound_landmarks": 7,
+    "landmarks_total": 7,
+    "sound_orderings": 9,
+    "orderings_total": 9,
     "single_fact_landmarks_exact": 1,
     "single_fact_landmarks_missed": [],
     "exhaustive_check_s": 0.001,
@@ -1763,7 +1792,7 @@
         }
       }
     },
-    "lm_time_s": 7.93e-05
+    "lm_time_s": 0.0001259
   },
   "tiger-0.8": {
     "problem": "tiger",
@@ -1774,24 +1803,26 @@
     "policy_nodes": 7,
     "policy_edges": 10,
     "controller_states": 7,
-    "landmarks": 6,
-    "disjunctive": 3,
+    "landmarks": 7,
+    "disjunctive": 4,
     "belief": 0,
-    "edges": 7,
+    "edges": 9,
     "belief_landmarks": 3,
     "belief_landmarks_beyond_syntactic": 2,
     "syntactic_baseline": 1,
-    "commitment_landmarks": [],
+    "commitment_landmarks": [
+      "chose(left) | chose(right)"
+    ],
     "evidence_chain": [
       "ev-direction(neg1) | ev-direction(pos1)",
       "ev-direction(neg2) | ev-direction(pos2)",
       "ev-direction(neg3) | ev-direction(pos3)"
     ],
     "injective": true,
-    "sound_landmarks": 6,
-    "landmarks_total": 6,
-    "sound_orderings": 7,
-    "orderings_total": 7,
+    "sound_landmarks": 7,
+    "landmarks_total": 7,
+    "sound_orderings": 9,
+    "orderings_total": 9,
     "single_fact_landmarks_exact": 1,
     "single_fact_landmarks_missed": [],
     "exhaustive_check_s": 0.001,
@@ -1826,7 +1857,7 @@
         }
       }
     },
-    "lm_time_s": 8.14e-05
+    "lm_time_s": 9e-05
   },
   "tiger-0.85": {
     "problem": "tiger",
@@ -1837,23 +1868,25 @@
     "policy_nodes": 5,
     "policy_edges": 6,
     "controller_states": 5,
-    "landmarks": 5,
-    "disjunctive": 2,
+    "landmarks": 6,
+    "disjunctive": 3,
     "belief": 0,
-    "edges": 5,
+    "edges": 7,
     "belief_landmarks": 2,
     "belief_landmarks_beyond_syntactic": 1,
     "syntactic_baseline": 1,
-    "commitment_landmarks": [],
+    "commitment_landmarks": [
+      "chose(left) | chose(right)"
+    ],
     "evidence_chain": [
       "ev-direction(neg1) | ev-direction(pos1)",
       "ev-direction(neg2) | ev-direction(pos2)"
     ],
     "injective": true,
-    "sound_landmarks": 5,
-    "landmarks_total": 5,
-    "sound_orderings": 5,
-    "orderings_total": 5,
+    "sound_landmarks": 6,
+    "landmarks_total": 6,
+    "sound_orderings": 7,
+    "orderings_total": 7,
     "single_fact_landmarks_exact": 1,
     "single_fact_landmarks_missed": [],
     "exhaustive_check_s": 0.001,
@@ -1880,7 +1913,7 @@
         }
       }
     },
-    "lm_time_s": 7.28e-05
+    "lm_time_s": 7.61e-05
   },
   "tiger-0.9": {
     "problem": "tiger",
@@ -1891,23 +1924,25 @@
     "policy_nodes": 5,
     "policy_edges": 6,
     "controller_states": 5,
-    "landmarks": 5,
-    "disjunctive": 2,
+    "landmarks": 6,
+    "disjunctive": 3,
     "belief": 0,
-    "edges": 5,
+    "edges": 7,
     "belief_landmarks": 2,
     "belief_landmarks_beyond_syntactic": 1,
     "syntactic_baseline": 1,
-    "commitment_landmarks": [],
+    "commitment_landmarks": [
+      "chose(left) | chose(right)"
+    ],
     "evidence_chain": [
       "ev-direction(neg1) | ev-direction(pos1)",
       "ev-direction(neg2) | ev-direction(pos2)"
     ],
     "injective": true,
-    "sound_landmarks": 5,
-    "landmarks_total": 5,
-    "sound_orderings": 5,
-    "orderings_total": 5,
+    "sound_landmarks": 6,
+    "landmarks_total": 6,
+    "sound_orderings": 7,
+    "orderings_total": 7,
     "single_fact_landmarks_exact": 1,
     "single_fact_landmarks_missed": [],
     "exhaustive_check_s": 0.001,
@@ -1934,7 +1969,7 @@
         }
       }
     },
-    "lm_time_s": 7.98e-05
+    "lm_time_s": 7.52e-05
   },
   "tiger-0.95": {
     "problem": "tiger",
@@ -1945,26 +1980,28 @@
     "policy_nodes": 5,
     "policy_edges": 6,
     "controller_states": 5,
-    "landmarks": 5,
-    "disjunctive": 2,
+    "landmarks": 6,
+    "disjunctive": 3,
     "belief": 0,
-    "edges": 5,
+    "edges": 7,
     "belief_landmarks": 2,
     "belief_landmarks_beyond_syntactic": 1,
     "syntactic_baseline": 1,
-    "commitment_landmarks": [],
+    "commitment_landmarks": [
+      "chose(left) | chose(right)"
+    ],
     "evidence_chain": [
       "ev-direction(neg1) | ev-direction(pos1)",
       "ev-direction(neg2) | ev-direction(pos2)"
     ],
     "injective": true,
-    "sound_landmarks": 5,
-    "landmarks_total": 5,
-    "sound_orderings": 5,
-    "orderings_total": 5,
+    "sound_landmarks": 6,
+    "landmarks_total": 6,
+    "sound_orderings": 7,
+    "orderings_total": 7,
     "single_fact_landmarks_exact": 1,
     "single_fact_landmarks_missed": [],
-    "exhaustive_check_s": 0.0,
+    "exhaustive_check_s": 0.001,
     "cross_variable_orderings": 0,
     "cross_variable_examples": [],
     "p_terminate": 1.0,
@@ -1988,6 +2025,6 @@
         }
       }
     },
-    "lm_time_s": 9.74e-05
+    "lm_time_s": 7.93e-05
   }
 }

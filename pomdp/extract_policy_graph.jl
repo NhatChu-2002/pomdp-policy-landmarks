@@ -166,6 +166,10 @@ function policy_graph(m, policy, ends)
     b0 = initialize_belief(up, initialstate(m))
     ids = Dict(key(b0) => 0); beliefs = [b0]; depth = [0]; acts = Any[]; kinds = String[]
     edges = Tuple{Int,Any,Int,Float64}[]
+    # Lossy merges: a new belief that rounds to an existing node but differs from it
+    # by more than 1e-12 (floating-point noise). They can create loops that the exact
+    # belief process does not have, so every graph reports them.
+    lossy, lossy_self, max_diff = 0, 0, 0.0
     i = 0
     while i < length(beliefs)
         i += 1
@@ -187,11 +191,16 @@ function policy_graph(m, policy, ends)
             if !haskey(ids, kb)
                 length(beliefs) >= MAX_NODES && error("policy graph exceeds $MAX_NODES nodes")
                 ids[kb] = length(beliefs); push!(beliefs, bp); push!(depth, depth[i] + 1)
+            else
+                d = maximum(abs.(bp.b .- beliefs[ids[kb] + 1].b))
+                if d > 1e-12
+                    lossy += 1; lossy_self += ids[kb] == i - 1; max_diff = max(max_diff, d)
+                end
             end
             push!(edges, (i - 1, o, ids[kb], p))
         end
     end
-    (; beliefs, depth, acts, kinds, edges)
+    (; beliefs, depth, acts, kinds, edges, lossy, lossy_self, max_diff)
 end
 
 # `extra` is "" or extra top-level JSON members (without trailing comma).
@@ -202,6 +211,8 @@ function write_graph(out, m, desc, meta, extra, solve_s, policy, g)
         println(io, meta, ",")
         println(io, "\"solver\": ", q(solver_name()), ",")
         isempty(extra) || println(io, extra, ",")
+        println(io, "\"merges\": {\"lossy\": ", g.lossy, ", \"lossy_self_loops\": ", g.lossy_self,
+                ", \"max_diff\": ", g.max_diff, "},")
         println(io, "\"solve_seconds\": ", solve_s, ",")
         println(io, "\"value_at_b0\": ", value(policy, g.beliefs[1]), ",")
         println(io, "\"states\": [", join(q.(desc.(S)), ","), "],")

@@ -116,6 +116,7 @@
       "nodes": 11,
       "terminates": true,
       "landmarks": [
+        "chose(commit-v1) | chose(commit-v2) | chose(commit-v3) | chose(commit-v4)",
         "done",
         "ev-v1(neg1) | ev-v1(pos1)",
         "ev-v2(neg1) | ev-v2(pos1)",
@@ -123,9 +124,13 @@
         "ev-v4(neg1) | ev-v4(pos1)"
       ],
       "orderings": [
+        "ev-v1(neg1) | ev-v1(pos1) < chose(commit-v1) | chose(commit-v2) | chose(commit-v3) | chose(commit-v4)",
         "ev-v1(neg1) | ev-v1(pos1) < done",
+        "ev-v2(neg1) | ev-v2(pos1) < chose(commit-v1) | chose(commit-v2) | chose(commit-v3) | chose(commit-v4)",
         "ev-v2(neg1) | ev-v2(pos1) < done",
+        "ev-v3(neg1) | ev-v3(pos1) < chose(commit-v1) | chose(commit-v2) | chose(commit-v3) | chose(commit-v4)",
         "ev-v3(neg1) | ev-v3(pos1) < done",
+        "ev-v4(neg1) | ev-v4(pos1) < chose(commit-v1) | chose(commit-v2) | chose(commit-v3) | chose(commit-v4)",
         "ev-v4(neg1) | ev-v4(pos1) < done"
       ],
       "value": 9.564,
@@ -183,6 +188,7 @@
       ]
     },
     "only_sarsop": [
+      "chose(commit-v1) | chose(commit-v2) | chose(commit-v3) | chose(commit-v4)",
       "ev-v1(neg1) | ev-v1(pos1)",
       "ev-v2(neg1) | ev-v2(pos1)",
       "ev-v3(neg1) | ev-v3(pos1)",
@@ -779,7 +785,6 @@
       "nodes": 152,
       "terminates": true,
       "landmarks": [
-        "at(c2-2)",
         "at(c2-3)",
         "at(c2-4)",
         "done",
@@ -793,7 +798,6 @@
         "ev-rock5(neg2) | ev-rock5(pos2)"
       ],
       "orderings": [
-        "at(c2-2) < at(c2-3)",
         "at(c2-3) < at(c2-4)",
         "at(c2-4) < ev-rock1(neg3)",
         "ev-rock1(neg3) < ev-rock3(neg2) | ev-rock3(neg3)",
@@ -801,11 +805,9 @@
         "ev-rock2(neg2) | ev-rock2(neg3) < at(c2-3)",
         "ev-rock3(neg2) | ev-rock3(neg3) < done",
         "ev-rock3(neg2) | ev-rock3(pos2) < done",
-        "ev-rock4(neg2) | ev-rock4(neg3) < at(c2-2)",
         "ev-rock4(neg2) | ev-rock4(neg3) < ev-rock2(neg2) | ev-rock2(neg3)",
         "ev-rock4(neg2) | ev-rock4(neg3) < ev-rock5(neg2) | ev-rock5(neg3)",
         "ev-rock4(neg2) | ev-rock4(neg3) < ev-rock5(neg2) | ev-rock5(pos2)",
-        "ev-rock4(neg2) | ev-rock4(pos2) < at(c2-2)",
         "ev-rock4(neg2) | ev-rock4(pos2) < ev-rock2(neg2) | ev-rock2(neg3)",
         "ev-rock4(neg2) | ev-rock4(pos2) < ev-rock5(neg2) | ev-rock5(neg3)",
         "ev-rock4(neg2) | ev-rock4(pos2) < ev-rock5(neg2) | ev-rock5(pos2)",
@@ -840,7 +842,6 @@
       ]
     },
     "only_sarsop": [
-      "at(c2-2)",
       "at(c2-3)",
       "at(c2-4)",
       "done",
@@ -1005,11 +1006,11 @@
   },
   "rocksample-7-8-s1": {
     "sarsop": {
-      "nodes": 677,
+      "nodes": 593,
       "terminates": true,
       "landmarks": [
         "at(c1-2)",
-        "at(c1-4)",
+        "at(c6-5)",
         "done",
         "ev-rock1(neg2) | ev-rock1(neg3)",
         "ev-rock1(neg2) | ev-rock1(pos2)",
@@ -1020,35 +1021,40 @@
         "ev-rock4(neg2) | ev-rock4(pos2)",
         "ev-rock5(neg2) | ev-rock5(neg3)",
         "ev-rock6(neg2) | ev-rock6(neg3)",
-        "ev-rock7(neg3)",
-        "ev-rock8(neg1) | ev-rock8(neg3)",
-        "ev-rock8(neg1) | ev-rock8(pos1)"
+        "ev-rock7(neg2) | ev-rock7(neg3)",
+        "ev-rock8(neg1) | ev-rock8(neg2) | ev-rock8(neg3)"
       ],
       "orderings": [
         "at(c1-2) < ev-rock1(neg2) | ev-rock1(neg3)",
         "at(c1-2) < ev-rock1(neg2) | ev-rock1(pos2)",
-        "at(c1-4) < ev-rock7(neg3)",
-        "ev-rock1(neg2) | ev-rock1(neg3) < at(c1-4)",
+        "at(c6-5) < done",
         "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock5(neg2) | ev-rock5(neg3)",
-        "ev-rock1(neg2) | ev-rock1(pos2) < at(c1-4)",
+        "ev-rock1(neg2) | ev-rock1(neg3) < ev-rock7(neg2) | ev-rock7(neg3)",
         "ev-rock1(neg2) | ev-rock1(pos2) < ev-rock5(neg2) | ev-rock5(neg3)",
-        "ev-rock2(neg2) | ev-rock2(neg3) < ev-rock8(neg1) | ev-rock8(neg3)",
-        "ev-rock2(neg2) | ev-rock2(neg3) < ev-rock8(neg1) | ev-rock8(pos1)",
-        "ev-rock3(neg2) | ev-rock3(neg3) < ev-rock2(neg2) | ev-rock2(neg3)",
-        "ev-rock3(neg2) | ev-rock3(pos2) < ev-rock2(neg2) | ev-rock2(neg3)",
-        "ev-rock4(neg2) | ev-rock4(neg3) < done",
-        "ev-rock4(neg2) | ev-rock4(pos2) < done",
-        "ev-rock5(neg2) | ev-rock5(neg3) < ev-rock8(neg1) | ev-rock8(neg3)",
-        "ev-rock5(neg2) | ev-rock5(neg3) < ev-rock8(neg1) | ev-rock8(pos1)",
+        "ev-rock1(neg2) | ev-rock1(pos2) < ev-rock7(neg2) | ev-rock7(neg3)",
+        "ev-rock2(neg2) | ev-rock2(neg3) < ev-rock4(neg2) | ev-rock4(neg3)",
+        "ev-rock2(neg2) | ev-rock2(neg3) < ev-rock4(neg2) | ev-rock4(pos2)",
+        "ev-rock2(neg2) | ev-rock2(neg3) < ev-rock8(neg1) | ev-rock8(neg2) | ev-rock8(neg3)",
+        "ev-rock3(neg2) | ev-rock3(neg3) < ev-rock4(neg2) | ev-rock4(neg3)",
+        "ev-rock3(neg2) | ev-rock3(neg3) < ev-rock4(neg2) | ev-rock4(pos2)",
+        "ev-rock3(neg2) | ev-rock3(neg3) < ev-rock8(neg1) | ev-rock8(neg2) | ev-rock8(neg3)",
+        "ev-rock3(neg2) | ev-rock3(pos2) < ev-rock4(neg2) | ev-rock4(neg3)",
+        "ev-rock3(neg2) | ev-rock3(pos2) < ev-rock4(neg2) | ev-rock4(pos2)",
+        "ev-rock3(neg2) | ev-rock3(pos2) < ev-rock8(neg1) | ev-rock8(neg2) | ev-rock8(neg3)",
+        "ev-rock4(neg2) | ev-rock4(neg3) < at(c6-5)",
+        "ev-rock4(neg2) | ev-rock4(neg3) < ev-rock6(neg2) | ev-rock6(neg3)",
+        "ev-rock4(neg2) | ev-rock4(pos2) < at(c6-5)",
+        "ev-rock4(neg2) | ev-rock4(pos2) < ev-rock6(neg2) | ev-rock6(neg3)",
+        "ev-rock5(neg2) | ev-rock5(neg3) < ev-rock4(neg2) | ev-rock4(neg3)",
+        "ev-rock5(neg2) | ev-rock5(neg3) < ev-rock4(neg2) | ev-rock4(pos2)",
+        "ev-rock5(neg2) | ev-rock5(neg3) < ev-rock8(neg1) | ev-rock8(neg2) | ev-rock8(neg3)",
         "ev-rock6(neg2) | ev-rock6(neg3) < done",
-        "ev-rock7(neg3) < ev-rock3(neg2) | ev-rock3(neg3)",
-        "ev-rock7(neg3) < ev-rock3(neg2) | ev-rock3(pos2)",
-        "ev-rock8(neg1) | ev-rock8(neg3) < ev-rock6(neg2) | ev-rock6(neg3)",
-        "ev-rock8(neg1) | ev-rock8(pos1) < ev-rock4(neg2) | ev-rock4(neg3)",
-        "ev-rock8(neg1) | ev-rock8(pos1) < ev-rock4(neg2) | ev-rock4(pos2)",
-        "ev-rock8(neg1) | ev-rock8(pos1) < ev-rock6(neg2) | ev-rock6(neg3)"
+        "ev-rock7(neg2) | ev-rock7(neg3) < ev-rock2(neg2) | ev-rock2(neg3)",
+        "ev-rock7(neg2) | ev-rock7(neg3) < ev-rock3(neg2) | ev-rock3(neg3)",
+        "ev-rock7(neg2) | ev-rock7(neg3) < ev-rock3(neg2) | ev-rock3(pos2)",
+        "ev-rock8(neg1) | ev-rock8(neg2) | ev-rock8(neg3) < ev-rock6(neg2) | ev-rock6(neg3)"
       ],
-      "value": 43.466,
+      "value": 43.758,
       "p_end_within_100": 1.0,
       "actions": [
         "1",
@@ -1083,7 +1089,7 @@
     },
     "only_sarsop": [
       "at(c1-2)",
-      "at(c1-4)",
+      "at(c6-5)",
       "done",
       "ev-rock1(neg2) | ev-rock1(neg3)",
       "ev-rock1(neg2) | ev-rock1(pos2)",
@@ -1094,9 +1100,8 @@
       "ev-rock4(neg2) | ev-rock4(pos2)",
       "ev-rock5(neg2) | ev-rock5(neg3)",
       "ev-rock6(neg2) | ev-rock6(neg3)",
-      "ev-rock7(neg3)",
-      "ev-rock8(neg1) | ev-rock8(neg3)",
-      "ev-rock8(neg1) | ev-rock8(pos1)"
+      "ev-rock7(neg2) | ev-rock7(neg3)",
+      "ev-rock8(neg1) | ev-rock8(neg2) | ev-rock8(neg3)"
     ],
     "only_qmdp": [],
     "same_graph": false
@@ -1106,6 +1111,7 @@
       "nodes": 19,
       "terminates": true,
       "landmarks": [
+        "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
         "done",
         "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
         "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
@@ -1116,6 +1122,7 @@
         "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-b(neg1) | ev-sensor-b(pos1)",
         "ev-sensor-a(neg2) | ev-sensor-a(pos2) < ev-sensor-b(neg2) | ev-sensor-b(pos2)",
         "ev-sensor-b(neg1) | ev-sensor-b(pos1) < ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2) < chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
         "ev-sensor-b(neg2) | ev-sensor-b(pos2) < done"
       ],
       "value": 3.554,
@@ -1141,6 +1148,7 @@
       ]
     },
     "only_sarsop": [
+      "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
       "done",
       "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
       "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
@@ -1155,6 +1163,7 @@
       "nodes": 20,
       "terminates": true,
       "landmarks": [
+        "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
         "done",
         "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
         "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
@@ -1164,8 +1173,10 @@
       "orderings": [
         "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-a(neg2) | ev-sensor-a(pos2)",
         "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2) < chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
         "ev-sensor-a(neg2) | ev-sensor-a(pos2) < done",
         "ev-sensor-b(neg1) | ev-sensor-b(pos1) < ev-sensor-b(neg2) | ev-sensor-b(pos2)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2) < chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
         "ev-sensor-b(neg2) | ev-sensor-b(pos2) < done"
       ],
       "value": 6.383,
@@ -1191,6 +1202,7 @@
       ]
     },
     "only_sarsop": [
+      "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
       "done",
       "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
       "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
@@ -1205,6 +1217,7 @@
       "nodes": 21,
       "terminates": true,
       "landmarks": [
+        "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
         "done",
         "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
         "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
@@ -1214,8 +1227,10 @@
       "orderings": [
         "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-a(neg2) | ev-sensor-a(pos2)",
         "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-b(neg2) | ev-sensor-b(pos2)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2) < chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
         "ev-sensor-a(neg2) | ev-sensor-a(pos2) < done",
         "ev-sensor-b(neg1) | ev-sensor-b(pos1) < ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2) < chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
         "ev-sensor-b(neg2) | ev-sensor-b(pos2) < done"
       ],
       "value": 8.695,
@@ -1241,6 +1256,7 @@
       ]
     },
     "only_sarsop": [
+      "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
       "done",
       "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
       "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
@@ -1255,6 +1271,7 @@
       "nodes": 25,
       "terminates": true,
       "landmarks": [
+        "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
         "done",
         "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
         "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
@@ -1263,9 +1280,11 @@
       ],
       "orderings": [
         "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2) < chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
         "ev-sensor-a(neg2) | ev-sensor-a(pos2) < done",
         "ev-sensor-b(neg1) | ev-sensor-b(pos1) < ev-sensor-a(neg2) | ev-sensor-a(pos2)",
         "ev-sensor-b(neg1) | ev-sensor-b(pos1) < ev-sensor-b(neg2) | ev-sensor-b(pos2)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2) < chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
         "ev-sensor-b(neg2) | ev-sensor-b(pos2) < done"
       ],
       "value": 10.472,
@@ -1291,6 +1310,7 @@
       ]
     },
     "only_sarsop": [
+      "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
       "done",
       "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
       "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
@@ -1305,12 +1325,14 @@
       "nodes": 7,
       "terminates": true,
       "landmarks": [
+        "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
         "done",
         "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
         "ev-sensor-b(neg1) | ev-sensor-b(pos1)"
       ],
       "orderings": [
         "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1) < chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
         "ev-sensor-b(neg1) | ev-sensor-b(pos1) < done"
       ],
       "value": 12.58,
@@ -1336,6 +1358,7 @@
       ]
     },
     "only_sarsop": [
+      "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
       "done",
       "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
       "ev-sensor-b(neg1) | ev-sensor-b(pos1)"

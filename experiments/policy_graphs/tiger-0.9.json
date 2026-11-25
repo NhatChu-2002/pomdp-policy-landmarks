@@ -1,6 +1,8 @@
 {
 "problem": "tiger", "p_correct": 0.9,
-"solve_seconds": 0.010999917984008789,
+"solver": "sarsop",
+"merges": {"lossy": 0, "lossy_self_loops": 0, "max_diff": 0.0},
+"solve_seconds": 0.009999990463256836,
 "value_at_b0": 33.142506640626905,
 "states": ["left","right"],
 "nodes": [

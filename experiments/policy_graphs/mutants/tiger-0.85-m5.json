@@ -2,7 +2,8 @@
 "problem": "tiger", "p_correct": 0.85,
 "solver": "sarsop",
 "base": "tiger-0.85", "mutation": {"node": 1, "depth": 1, "original_action": "listen", "new_action": "left"},
-"solve_seconds": 0.9630000591278076,
+"merges": {"lossy": 0, "lossy_self_loops": 0, "max_diff": 0.0},
+"solve_seconds": 0.6349999904632568,
 "value_at_b0": 19.37136796227265,
 "states": ["left","right"],
 "nodes": [

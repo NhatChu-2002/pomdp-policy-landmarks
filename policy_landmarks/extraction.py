@@ -222,8 +222,14 @@ def to_pddl(ctrl: dict, name: str) -> tuple[str, str]:
             eff = [_atom(f) for f in sorted(t - s)] + [f"(not {_atom(f)})" for f in sorted(s - t)]
         eff += [_atom(f) for f in sorted(extra)]
         actions.append(_action(f"e{i}-a{_san(a)}-o{_san(o)}", s, eff))
+    # A commitment adds chose(a); a separate finish action needs it to add done, so the
+    # translator keeps chose facts (it drops facts that no action or goal needs).
+    # Deleting the source state stops every policy step after a commitment.
     for j, (s, a) in enumerate(sorted(ctrl["commits"], key=str)):
-        actions.append(_action(f"c{j}-{_san(a)}", s, [_atom(f"chose({_san(a)})"), "(done)"]))
+        actions.append(_action(f"c{j}-{_san(a)}", s, [_atom(f"chose({_san(a)})")]
+                               + [f"(not {_atom(f)})" for f in sorted(s)]))
+    for a in sorted({_san(a) for _, a in ctrl["commits"]}):
+        actions.append(_action(f"finish-{a}", frozenset({f"chose({a})"}), ["(done)"]))
 
     facts = set(ctrl["init"])
     for s, _, _, t, extra in ctrl["edges"]:

@@ -1,6 +1,8 @@
 {
 "problem": "sensor", "p_correct": 0.8,
-"solve_seconds": 0.2739999294281006,
+"solver": "sarsop",
+"merges": {"lossy": 0, "lossy_self_loops": 0, "max_diff": 0.0},
+"solve_seconds": 0.10899996757507324,
 "value_at_b0": 6.383386492685965,
 "states": ["a-ok-b-ok","a-ok-b-faulty","a-faulty-b-ok","a-faulty-b-faulty","done"],
 "nodes": [

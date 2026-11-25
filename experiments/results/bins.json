@@ -273,8 +273,8 @@
     "default": {
       "controller_states": 152,
       "injective": true,
-      "landmarks": 31,
-      "cross_variable_orderings": 189,
+      "landmarks": 34,
+      "cross_variable_orderings": 209,
       "resolution_order": [
         "rock4",
         "rock5",
@@ -285,10 +285,10 @@
       "same_order_as_default": true
     },
     "coarse": {
-      "controller_states": 61,
+      "controller_states": 62,
       "injective": false,
-      "landmarks": 29,
-      "cross_variable_orderings": 136,
+      "landmarks": 32,
+      "cross_variable_orderings": 152,
       "resolution_order": [
         "rock4",
         "rock5",
@@ -301,8 +301,8 @@
     "shifted": {
       "controller_states": 152,
       "injective": true,
-      "landmarks": 31,
-      "cross_variable_orderings": 189,
+      "landmarks": 34,
+      "cross_variable_orderings": 209,
       "resolution_order": [
         "rock4",
         "rock5",
@@ -315,8 +315,8 @@
     "fine": {
       "controller_states": 152,
       "injective": true,
-      "landmarks": 31,
-      "cross_variable_orderings": 189,
+      "landmarks": 34,
+      "cross_variable_orderings": 209,
       "resolution_order": [
         "rock4",
         "rock5",
@@ -445,10 +445,10 @@
   },
   "rocksample-7-8-s1": {
     "default": {
-      "controller_states": 677,
+      "controller_states": 593,
       "injective": true,
-      "landmarks": 84,
-      "cross_variable_orderings": 629,
+      "landmarks": 61,
+      "cross_variable_orderings": 405,
       "resolution_order": [
         "rock1",
         "rock7",
@@ -462,10 +462,10 @@
       "same_order_as_default": true
     },
     "coarse": {
-      "controller_states": 225,
+      "controller_states": 175,
       "injective": false,
-      "landmarks": 82,
-      "cross_variable_orderings": 478,
+      "landmarks": 59,
+      "cross_variable_orderings": 308,
       "resolution_order": [
         "rock1",
         "rock7",
@@ -479,10 +479,10 @@
       "same_order_as_default": true
     },
     "shifted": {
-      "controller_states": 677,
+      "controller_states": 593,
       "injective": true,
-      "landmarks": 83,
-      "cross_variable_orderings": 571,
+      "landmarks": 61,
+      "cross_variable_orderings": 405,
       "resolution_order": [
         "rock1",
         "rock7",
@@ -496,10 +496,10 @@
       "same_order_as_default": true
     },
     "fine": {
-      "controller_states": 677,
+      "controller_states": 593,
       "injective": true,
-      "landmarks": 83,
-      "cross_variable_orderings": 571,
+      "landmarks": 61,
+      "cross_variable_orderings": 405,
       "resolution_order": [
         "rock1",
         "rock7",

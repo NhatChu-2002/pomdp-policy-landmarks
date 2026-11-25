@@ -1,0 +1,3 @@
+probe channel 3 0.85 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/qmdp/channel-3-0.85.json
+probe mine 4 0.85 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/qmdp/mine-4-0.85.json
+probe mine 9 0.85 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/qmdp/mine-9-0.85.json

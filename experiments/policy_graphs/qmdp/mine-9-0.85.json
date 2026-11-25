@@ -1,6 +1,7 @@
 {
 "problem": "probe", "name": "mine", "k": 9, "p_correct": 0.85,
 "solver": "qmdp",
+"merges": {"lossy": 1, "lossy_self_loops": 1, "max_diff": 9.389816979435581e-11},
 "solve_seconds": 0.0,
 "value_at_b0": 18.0,
 "states": ["v1","v2","v3","v4","v5","v6","v7","v8","v9","done"],

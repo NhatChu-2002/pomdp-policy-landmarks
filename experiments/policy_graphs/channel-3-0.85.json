@@ -1,6 +1,8 @@
 {
 "problem": "probe", "name": "channel", "k": 3, "p_correct": 0.85,
-"solve_seconds": 0.7349998950958252,
+"solver": "sarsop",
+"merges": {"lossy": 0, "lossy_self_loops": 0, "max_diff": 0.0},
+"solve_seconds": 0.07699990272521973,
 "value_at_b0": 11.490946753961765,
 "states": ["v1","v2","v3","done"],
 "nodes": [

@@ -116,9 +116,11 @@ class StateGraph:
                     queue.append(j)
         return True
 
-    def landmarks(self, max_size: int = 3) -> list:
-        """All minimal landmarks: single facts, and disjunctions of up to `max_size` facts
-        with the same predicate. Facts true initially are left out (they are trivial)."""
+    def landmarks(self, max_size: int = 3, complete=("ev-", "chose")) -> list:
+        """All minimal landmarks: single facts, and disjunctions of facts with the same
+        predicate. Predicates starting with a prefix in `complete` (belief levels and
+        commitments, at most 16 facts each here) are enumerated in full; others, such as
+        robot cells, up to `max_size` facts. Facts true initially are left out."""
         initial = self.facts[0]
         facts = sorted(f for f in self.holds if f not in initial)
         found = [frozenset([f]) for f in facts if self.is_landmark([f])]
@@ -127,8 +129,10 @@ class StateGraph:
         for f in facts:
             if f not in singles and "(" in f:
                 groups.setdefault(f.split("(")[0], []).append(f)
-        for size in range(2, max_size + 1):
-            for group in groups.values():
+        for size in range(2, max(len(g) for g in groups.values()) + 1 if groups else 2):
+            for pred_name, group in groups.items():
+                if size > (len(group) if pred_name.startswith(complete) else max_size):
+                    continue
                 for combo in combinations(group, size):
                     key = frozenset(combo)
                     if not any(k < key for k in found) and self.is_landmark(key):

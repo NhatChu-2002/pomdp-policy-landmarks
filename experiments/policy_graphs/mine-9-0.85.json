@@ -1,7 +1,9 @@
 {
 "problem": "probe", "name": "mine", "k": 9, "p_correct": 0.85,
-"solve_seconds": 120.65100002288818,
-"value_at_b0": 0.3786674311434798,
+"solver": "sarsop",
+"merges": {"lossy": 8, "lossy_self_loops": 7, "max_diff": 4.054840907485868e-10},
+"solve_seconds": 121.18499994277954,
+"value_at_b0": 0.3791934801310764,
 "states": ["v1","v2","v3","v4","v5","v6","v7","v8","v9","done"],
 "nodes": [
 {"id":0,"kind":"inner","action":"probe-v8","belief":"0:0.111111111 1:0.111111111 2:0.111111111 3:0.111111111 4:0.111111111 5:0.111111111 6:0.111111111 7:0.111111111 8:0.111111111"},
