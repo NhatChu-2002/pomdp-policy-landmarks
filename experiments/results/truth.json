@@ -1,0 +1,968 @@
+{
+ "rocksample-4-4-s1": {
+  "20": {
+   "efficiency": 20,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.0344,
+   "good_rocks_left_behind": [
+    0.0,
+    0.0013,
+    0.0,
+    0.0085
+   ],
+   "bad_samples_by_rock": [
+    0.0,
+    0.0259,
+    0.0,
+    0.0085
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 34.536
+  },
+  "10": {
+   "efficiency": 10,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.068,
+   "good_rocks_left_behind": [
+    0.0,
+    0.0048,
+    0.0,
+    0.0167
+   ],
+   "bad_samples_by_rock": [
+    0.0,
+    0.0513,
+    0.0,
+    0.0167
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 34.07
+  },
+  "5": {
+   "efficiency": 5,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.1314,
+   "good_rocks_left_behind": [
+    0.0,
+    0.0168,
+    0.0,
+    0.0324
+   ],
+   "bad_samples_by_rock": [
+    0.0,
+    0.099,
+    0.0,
+    0.0324
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 33.153
+  },
+  "2": {
+   "efficiency": 2,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.2801,
+   "good_rocks_left_behind": [
+    0.0,
+    0.0669,
+    0.0,
+    0.0732
+   ],
+   "bad_samples_by_rock": [
+    0.0,
+    0.2069,
+    0.0,
+    0.0732
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 30.764
+  }
+ },
+ "rocksample-4-4-s2": {
+  "20": {
+   "efficiency": 20,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.0247,
+   "good_rocks_left_behind": [
+    0.0,
+    0.0119,
+    0.0085,
+    0.0043
+   ],
+   "bad_samples_by_rock": [
+    0.0,
+    0.0119,
+    0.0085,
+    0.0043
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 32.286
+  },
+  "10": {
+   "efficiency": 10,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.0483,
+   "good_rocks_left_behind": [
+    0.0,
+    0.0232,
+    0.0167,
+    0.0084
+   ],
+   "bad_samples_by_rock": [
+    0.0,
+    0.0232,
+    0.0167,
+    0.0084
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 31.799
+  },
+  "5": {
+   "efficiency": 5,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.0925,
+   "good_rocks_left_behind": [
+    0.0,
+    0.044,
+    0.0324,
+    0.0162
+   ],
+   "bad_samples_by_rock": [
+    0.0,
+    0.044,
+    0.0324,
+    0.0162
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 30.883
+  },
+  "2": {
+   "efficiency": 2,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.2044,
+   "good_rocks_left_behind": [
+    0.0,
+    0.0945,
+    0.0732,
+    0.0366
+   ],
+   "bad_samples_by_rock": [
+    0.0,
+    0.0945,
+    0.0732,
+    0.0366
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 28.544
+  }
+ },
+ "rocksample-4-4-s3": {
+  "20": {
+   "efficiency": 20,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.0149,
+   "good_rocks_left_behind": [
+    0.0021,
+    0.0043,
+    0.0085,
+    0.0
+   ],
+   "bad_samples_by_rock": [
+    0.0021,
+    0.0043,
+    0.0085,
+    0.0
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 33.022
+  },
+  "10": {
+   "efficiency": 10,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.0293,
+   "good_rocks_left_behind": [
+    0.0042,
+    0.0084,
+    0.0167,
+    0.0
+   ],
+   "bad_samples_by_rock": [
+    0.0042,
+    0.0084,
+    0.0167,
+    0.0
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 32.685
+  },
+  "5": {
+   "efficiency": 5,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.0566,
+   "good_rocks_left_behind": [
+    0.0081,
+    0.0162,
+    0.0324,
+    0.0
+   ],
+   "bad_samples_by_rock": [
+    0.0081,
+    0.0162,
+    0.0324,
+    0.0
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 32.046
+  },
+  "2": {
+   "efficiency": 2,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.1281,
+   "good_rocks_left_behind": [
+    0.0183,
+    0.0366,
+    0.0732,
+    0.0
+   ],
+   "bad_samples_by_rock": [
+    0.0183,
+    0.0366,
+    0.0732,
+    0.0
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 30.374
+  }
+ },
+ "rocksample-4-4-s4": {
+  "20": {
+   "efficiency": 20,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.0337,
+   "good_rocks_left_behind": [
+    0.0167,
+    0.0,
+    0.0084,
+    0.0085
+   ],
+   "bad_samples_by_rock": [
+    0.0167,
+    0.0,
+    0.0084,
+    0.0085
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 31.824
+  },
+  "10": {
+   "efficiency": 10,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.0656,
+   "good_rocks_left_behind": [
+    0.0324,
+    0.0,
+    0.0165,
+    0.0167
+   ],
+   "bad_samples_by_rock": [
+    0.0324,
+    0.0,
+    0.0165,
+    0.0167
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 31.111
+  },
+  "5": {
+   "efficiency": 5,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.1242,
+   "good_rocks_left_behind": [
+    0.0605,
+    0.0,
+    0.0313,
+    0.0324
+   ],
+   "bad_samples_by_rock": [
+    0.0605,
+    0.0,
+    0.0313,
+    0.0324
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 29.801
+  },
+  "2": {
+   "efficiency": 2,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.2661,
+   "good_rocks_left_behind": [
+    0.125,
+    0.0,
+    0.0679,
+    0.0732
+   ],
+   "bad_samples_by_rock": [
+    0.125,
+    0.0,
+    0.0679,
+    0.0732
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 26.649
+  }
+ },
+ "rocksample-4-4-s5": {
+  "20": {
+   "efficiency": 20,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.0,
+   "good_rocks_left_behind": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "bad_samples_by_rock": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 34.565
+  },
+  "10": {
+   "efficiency": 10,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.0,
+   "good_rocks_left_behind": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "bad_samples_by_rock": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 34.565
+  },
+  "5": {
+   "efficiency": 5,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.0,
+   "good_rocks_left_behind": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "bad_samples_by_rock": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 34.565
+  },
+  "2": {
+   "efficiency": 2,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.0,
+   "good_rocks_left_behind": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "bad_samples_by_rock": [
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 34.565
+  }
+ },
+ "rocksample-5-5-s1": {
+  "20": {
+   "efficiency": 20,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.0362,
+   "good_rocks_left_behind": [
+    0.0,
+    0.0064,
+    0.012,
+    0.0085,
+    0.0094
+   ],
+   "bad_samples_by_rock": [
+    0.0,
+    0.0064,
+    0.012,
+    0.0085,
+    0.0094
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 37.11
+  },
+  "10": {
+   "efficiency": 10,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.071,
+   "good_rocks_left_behind": [
+    0.0,
+    0.0126,
+    0.0233,
+    0.0167,
+    0.0184
+   ],
+   "bad_samples_by_rock": [
+    0.0,
+    0.0126,
+    0.0233,
+    0.0167,
+    0.0184
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 36.396
+  },
+  "5": {
+   "efficiency": 5,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.1365,
+   "good_rocks_left_behind": [
+    0.0,
+    0.0243,
+    0.0445,
+    0.0324,
+    0.0354
+   ],
+   "bad_samples_by_rock": [
+    0.0,
+    0.0243,
+    0.0445,
+    0.0324,
+    0.0354
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 35.048
+  },
+  "2": {
+   "efficiency": 2,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.3041,
+   "good_rocks_left_behind": [
+    0.0,
+    0.0549,
+    0.0969,
+    0.0732,
+    0.0791
+   ],
+   "bad_samples_by_rock": [
+    0.0,
+    0.0549,
+    0.0969,
+    0.0732,
+    0.0791
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 31.581
+  }
+ },
+ "rocksample-5-5-s2": {
+  "20": {
+   "efficiency": 20,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.0356,
+   "good_rocks_left_behind": [
+    0.0085,
+    0.0072,
+    0.0118,
+    0.0043,
+    0.0037
+   ],
+   "bad_samples_by_rock": [
+    0.0085,
+    0.0072,
+    0.0118,
+    0.0043,
+    0.0037
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 36.068
+  },
+  "10": {
+   "efficiency": 10,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.0697,
+   "good_rocks_left_behind": [
+    0.0167,
+    0.0142,
+    0.023,
+    0.0084,
+    0.0073
+   ],
+   "bad_samples_by_rock": [
+    0.0167,
+    0.0142,
+    0.023,
+    0.0084,
+    0.0073
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 35.363
+  },
+  "5": {
+   "efficiency": 5,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.1337,
+   "good_rocks_left_behind": [
+    0.0324,
+    0.0273,
+    0.0437,
+    0.0162,
+    0.0142
+   ],
+   "bad_samples_by_rock": [
+    0.0324,
+    0.0273,
+    0.0437,
+    0.0162,
+    0.0142
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 34.039
+  },
+  "2": {
+   "efficiency": 2,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.2966,
+   "good_rocks_left_behind": [
+    0.0732,
+    0.0608,
+    0.0939,
+    0.0366,
+    0.032
+   ],
+   "bad_samples_by_rock": [
+    0.0732,
+    0.0608,
+    0.0939,
+    0.0366,
+    0.032
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 30.664
+  }
+ },
+ "rocksample-5-5-s3": {
+  "20": {
+   "efficiency": 20,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.0548,
+   "good_rocks_left_behind": [
+    0.0085,
+    0.0167,
+    0.0253,
+    0.0,
+    0.0043
+   ],
+   "bad_samples_by_rock": [
+    0.0085,
+    0.0167,
+    0.0253,
+    0.0,
+    0.0043
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 35.254
+  },
+  "10": {
+   "efficiency": 10,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.1055,
+   "good_rocks_left_behind": [
+    0.0167,
+    0.0324,
+    0.0481,
+    0.0,
+    0.0084
+   ],
+   "bad_samples_by_rock": [
+    0.0167,
+    0.0324,
+    0.0481,
+    0.0,
+    0.0084
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 34.345
+  },
+  "5": {
+   "efficiency": 5,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.196,
+   "good_rocks_left_behind": [
+    0.0324,
+    0.0605,
+    0.0869,
+    0.0,
+    0.0162
+   ],
+   "bad_samples_by_rock": [
+    0.0324,
+    0.0605,
+    0.0869,
+    0.0,
+    0.0162
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 32.714
+  },
+  "2": {
+   "efficiency": 2,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.3989,
+   "good_rocks_left_behind": [
+    0.0732,
+    0.125,
+    0.164,
+    0.0,
+    0.0366
+   ],
+   "bad_samples_by_rock": [
+    0.0732,
+    0.125,
+    0.164,
+    0.0,
+    0.0366
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 29.0
+  }
+ },
+ "rocksample-7-8-s1": {
+  "20": {
+   "efficiency": 20,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.531,
+   "good_rocks_left_behind": [
+    0.0085,
+    0.0053,
+    0.0089,
+    0.0152,
+    0.0021,
+    0.0029,
+    0.0043,
+    0.0306
+   ],
+   "bad_samples_by_rock": [
+    0.0085,
+    0.0053,
+    0.0089,
+    0.0152,
+    0.0021,
+    0.456,
+    0.0043,
+    0.0306
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 43.758
+  },
+  "10": {
+   "efficiency": 10,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.6025,
+   "good_rocks_left_behind": [
+    0.0167,
+    0.0105,
+    0.0176,
+    0.0295,
+    0.0042,
+    0.0054,
+    0.0084,
+    0.0572
+   ],
+   "bad_samples_by_rock": [
+    0.0167,
+    0.0105,
+    0.0176,
+    0.0295,
+    0.0042,
+    0.4585,
+    0.0084,
+    0.0572
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 42.739
+  },
+  "5": {
+   "efficiency": 5,
+   "p_end": 1.0,
+   "expected_bad_samples": 0.7291,
+   "good_rocks_left_behind": [
+    0.0324,
+    0.0202,
+    0.0339,
+    0.0551,
+    0.0081,
+    0.0095,
+    0.0162,
+    0.1007
+   ],
+   "bad_samples_by_rock": [
+    0.0324,
+    0.0202,
+    0.0339,
+    0.0551,
+    0.0081,
+    0.4626,
+    0.0162,
+    0.1007
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 40.9
+  },
+  "2": {
+   "efficiency": 2,
+   "p_end": 1.0,
+   "expected_bad_samples": 1.0132,
+   "good_rocks_left_behind": [
+    0.0732,
+    0.0458,
+    0.0762,
+    0.1143,
+    0.0183,
+    0.017,
+    0.0366,
+    0.1787
+   ],
+   "bad_samples_by_rock": [
+    0.0732,
+    0.0458,
+    0.0762,
+    0.1143,
+    0.0183,
+    0.4701,
+    0.0366,
+    0.1787
+   ],
+   "good_rocks_initially": [
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5,
+    0.5
+   ],
+   "value": 36.587
+  }
+ }
+}

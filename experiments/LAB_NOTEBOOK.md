@@ -288,3 +288,26 @@ work or what we claim), **DROP** (tried, not worth reporting), **OPEN** (unresol
   at 99% confidence). This is the route to POMCP / learned policies (R4).
 - Verdict: **PAPER** (answers reviewer B's Monte Carlo question) + new direction:
   **delta-landmarks** (exact from the graph, statistical from samples).
+
+### E22. R2: correctness on the product with the true rocks
+- Tried: `policy_landmarks/truth.py` runs a RockSample policy graph jointly with the
+  true rock qualities (rocks fixed except sampling; moves deterministic), with a true
+  sensor whose efficiency may differ from the model (20 nominal; 10, 5, 2). Exact
+  expected bad samples, good rocks left behind, and value, no simulation
+  (`results/truth.json`).
+- Validation: at the nominal sensor the product value equals the graph value on all
+  9 RockSample policies (after fixing a bug: exit reward first not credited); weak-
+  sensor values agree with E16's simulations (seed 1, efficiency 2: 30.76 exact vs
+  31.14 simulated).
+- Result: value drops only ~11% (seed 1: 34.5 -> 30.8) while mistakes multiply (bad
+  samples x8, good rocks left x14). Per rock (43 rocks, 9 policies): the 11 rocks whose
+  cell is a landmark (visited on every run) have exactly 0 errors under every sensor;
+  the 32 others average 0.033 errors nominal and 0.162 with the weak sensor (max 0.49).
+  Seed 5's policy visits every rock and is immune.
+- Learned: the landmark graph predicts which beliefs are exposed to a sensor fault
+  (resolved remotely vs by visiting), and the product chain quantifies it. This turns
+  E16's negative result into a positive one: timing cannot see a miscalibrated sensor,
+  but the structure of the landmarks can. RockSample(7,8)'s unconverged policy samples
+  rock 6 with 0.46 expected errors even with the nominal sensor.
+- Verdict: **PAPER** (new RQ: from landmarks to robustness) + generalize beyond
+  RockSample (Sensor, Tag) next.
