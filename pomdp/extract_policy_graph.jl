@@ -179,7 +179,9 @@ function run_job(args)
 end
 
 # `batch <jobs.txt>` runs one job per line in a single process (package loading is slow).
-if ARGS[1] == "batch"
+# Guarded so that other scripts can `include` the model builders.
+if abspath(PROGRAM_FILE) != @__FILE__
+elseif ARGS[1] == "batch"
     for line in eachline(ARGS[2])
         isempty(strip(line)) && continue
         println("job: ", line); flush(stdout)
