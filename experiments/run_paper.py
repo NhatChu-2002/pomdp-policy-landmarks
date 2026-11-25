@@ -599,11 +599,101 @@ def exp_large() -> dict:
     return rows
 
 
+def exp_variants() -> dict:
+    """Same model, other SARSOP settings (discount 0.90/0.99 for solving, 10 s/30 s time
+    limits): policies with nearly the same value (under the paper's discount 0.95) but
+    different landmark graphs."""
+    rows = {}
+    for base in sorted((HERE / "policy_graphs").glob("rocksample-[45]-*.json")):
+        pols = {"base": base} | {p.stem.split("-")[-1]: p for p in
+                                 sorted((HERE / "policy_graphs" / "variants").glob(base.stem + "-*.json"))}
+        info = {}
+        for name, path in pols.items():
+            g = extraction.load(path)
+            if "error" in g:
+                continue
+            summ = _graph_summary(g)
+            info[name] = {"value": summ["value"], "terminates": summ["terminates"],
+                          "landmarks": summ["landmarks"], "orderings": summ["orderings"],
+                          "order": _resolution_order(g) if summ["terminates"] else None,
+                          "nodes": summ["nodes"], "lossy": (g.get("merges") or {}).get("lossy")}
+        pairs = []
+        names = sorted(info)
+        for i, a in enumerate(names):
+            for b in names[i + 1:]:
+                va, vb = info[a]["value"], info[b]["value"]
+                if not (info[a]["terminates"] and info[b]["terminates"]):
+                    continue
+                pairs.append({"a": a, "b": b, "value_gap_pct": round(100 * abs(va - vb) / max(abs(va), abs(vb)), 2),
+                              "same_landmarks": info[a]["landmarks"] == info[b]["landmarks"],
+                              "same_orderings": info[a]["orderings"] == info[b]["orderings"],
+                              "same_order": info[a]["order"] == info[b]["order"],
+                              "only_a": sorted(set(info[a]["landmarks"]) - set(info[b]["landmarks"])),
+                              "only_b": sorted(set(info[b]["landmarks"]) - set(info[a]["landmarks"]))})
+        rows[base.stem] = {"policies": info, "pairs": pairs}
+    return rows
+
+
+def exp_monitor() -> dict:
+    """Runtime monitoring: flag a run when a landmark of the nominal policy is not yet
+    reached later than in 99% of nominal runs. Thresholds come from half of the nominal
+    runs; false alarms are measured on the other half."""
+    rows = {}
+    folder = HERE / "monitor"
+    for seed in sorted({p.stem.split("-")[1] for p in folder.glob("rs44-*.jsonl")}):
+        g = extraction.load(HERE / "policy_graphs" / f"rocksample-4-4-{seed}.json")
+        ctrl = extraction.controller(g)
+        lms = [k for k in StateGraph(ctrl).landmarks(max_size=1)
+               if interpretable(" | ".join(sorted(k))) and all(f.startswith(("ev-", "at(")) for f in k)]
+
+        def runs(eff):
+            out = []
+            for line in (folder / f"rs44-{seed}-eff{eff}.jsonl").read_text().splitlines():
+                e = json.loads(line)
+                facts = [extraction.abstract(g, {int(i): float(x) for i, x in
+                                                 (t.split(":") for t in st["b"].split())})
+                         for st in e["steps"]]
+                first = {k: next((t for t, f in enumerate(facts) if f & k), None) for k in lms}
+                out.append({"first": first, "len": len(facts), "ended": e["ended"], "ret": e["return"]})
+            return out
+
+        nominal = runs(20)
+        calib, test = nominal[::2], nominal[1::2]
+        q99 = lambda xs: sorted(xs)[min(len(xs) - 1, int(0.99 * len(xs)))]  # noqa: E731
+        tau = {k: q99([r["first"][k] if r["first"][k] is not None else r["len"] for r in calib]) for k in lms}
+        tau_len = q99([r["len"] for r in calib])
+
+        def flags(r):
+            lm = [max(tau[k] + 1, 0) for k in lms if (r["first"][k] if r["first"][k] is not None else 10**9) > tau[k]]
+            lm_t = min(lm) if lm else None                    # step at which a landmark is overdue
+            first_lm = min((k for k in lms if (r["first"][k] if r["first"][k] is not None else 10**9) > tau[k]),
+                           key=lambda k: tau[k], default=None)
+            len_t = tau_len + 1 if r["len"] > tau_len else None
+            return lm_t, len_t, first_lm
+
+        per = {}
+        for eff, data in (("20 (held-out)", test), *((e, runs(e)) for e in (10, 5, 2))):
+            fl = [flags(r) for r in data]
+            hit = [f for f in fl if f[0] is not None]
+            per[str(eff)] = {
+                "runs": len(data), "mean_return": round(sum(r["ret"] for r in data) / len(data), 3),
+                "ended": sum(r["ended"] for r in data),
+                "flagged_by_landmarks": len(hit),
+                "flagged_by_length": sum(f[1] is not None for f in fl),
+                "median_flag_step": sorted(f[0] for f in hit)[len(hit) // 2] if hit else None,
+                "median_length_flag_step": tau_len + 1,
+                "landmark_flagged_first_by_count": dict(sorted(
+                    __import__("collections").Counter(" | ".join(sorted(f[2])) for f in hit).items(),
+                    key=lambda kv: -kv[1])[:5])}
+        rows[seed] = {"landmarks": len(lms), "tau_len": tau_len, "worlds": per}
+    return rows
+
+
 EXPERIMENTS = {"main": exp_main, "exactness": exp_exactness, "ablation": exp_ablation,
                "induced": exp_induced, "mutation": exp_mutation, "scaling": exp_scaling,
                "extracted": exp_extracted, "exact": exp_exact, "bins": exp_bins,
                "qmdp": exp_qmdp, "pbvi": exp_pbvi, "mutants": exp_mutants, "kept": exp_kept,
-               "large": exp_large}
+               "large": exp_large, "variants": exp_variants, "monitor": exp_monitor}
 
 
 def main(argv: list) -> int:

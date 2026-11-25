@@ -1,0 +1,148 @@
+{
+  "s1": {
+    "landmarks": 8,
+    "tau_len": 17,
+    "worlds": {
+      "20 (held-out)": {
+        "runs": 500,
+        "mean_return": 34.734,
+        "ended": 500,
+        "flagged_by_landmarks": 2,
+        "flagged_by_length": 2,
+        "median_flag_step": 16,
+        "median_length_flag_step": 18,
+        "landmark_flagged_first_by_count": {
+          "ev-rock2(neg3)": 2
+        }
+      },
+      "10": {
+        "runs": 1000,
+        "mean_return": 33.621,
+        "ended": 1000,
+        "flagged_by_landmarks": 15,
+        "flagged_by_length": 15,
+        "median_flag_step": 16,
+        "median_length_flag_step": 18,
+        "landmark_flagged_first_by_count": {
+          "ev-rock2(neg3)": 15
+        }
+      },
+      "5": {
+        "runs": 1000,
+        "mean_return": 33.13,
+        "ended": 1000,
+        "flagged_by_landmarks": 35,
+        "flagged_by_length": 35,
+        "median_flag_step": 16,
+        "median_length_flag_step": 18,
+        "landmark_flagged_first_by_count": {
+          "ev-rock2(neg3)": 35
+        }
+      },
+      "2": {
+        "runs": 1000,
+        "mean_return": 31.14,
+        "ended": 1000,
+        "flagged_by_landmarks": 70,
+        "flagged_by_length": 70,
+        "median_flag_step": 16,
+        "median_length_flag_step": 18,
+        "landmark_flagged_first_by_count": {
+          "ev-rock2(neg3)": 70
+        }
+      }
+    }
+  },
+  "s3": {
+    "landmarks": 9,
+    "tau_len": 17,
+    "worlds": {
+      "20 (held-out)": {
+        "runs": 500,
+        "mean_return": 33.305,
+        "ended": 500,
+        "flagged_by_landmarks": 0,
+        "flagged_by_length": 0,
+        "median_flag_step": null,
+        "median_length_flag_step": 18,
+        "landmark_flagged_first_by_count": {}
+      },
+      "10": {
+        "runs": 1000,
+        "mean_return": 32.799,
+        "ended": 1000,
+        "flagged_by_landmarks": 0,
+        "flagged_by_length": 0,
+        "median_flag_step": null,
+        "median_length_flag_step": 18,
+        "landmark_flagged_first_by_count": {}
+      },
+      "5": {
+        "runs": 1000,
+        "mean_return": 32.019,
+        "ended": 1000,
+        "flagged_by_landmarks": 0,
+        "flagged_by_length": 0,
+        "median_flag_step": null,
+        "median_length_flag_step": 18,
+        "landmark_flagged_first_by_count": {}
+      },
+      "2": {
+        "runs": 1000,
+        "mean_return": 30.931,
+        "ended": 1000,
+        "flagged_by_landmarks": 0,
+        "flagged_by_length": 0,
+        "median_flag_step": null,
+        "median_length_flag_step": 18,
+        "landmark_flagged_first_by_count": {}
+      }
+    }
+  },
+  "s5": {
+    "landmarks": 10,
+    "tau_len": 15,
+    "worlds": {
+      "20 (held-out)": {
+        "runs": 500,
+        "mean_return": 35.547,
+        "ended": 500,
+        "flagged_by_landmarks": 0,
+        "flagged_by_length": 0,
+        "median_flag_step": null,
+        "median_length_flag_step": 16,
+        "landmark_flagged_first_by_count": {}
+      },
+      "10": {
+        "runs": 1000,
+        "mean_return": 35.685,
+        "ended": 1000,
+        "flagged_by_landmarks": 0,
+        "flagged_by_length": 0,
+        "median_flag_step": null,
+        "median_length_flag_step": 16,
+        "landmark_flagged_first_by_count": {}
+      },
+      "5": {
+        "runs": 1000,
+        "mean_return": 35.685,
+        "ended": 1000,
+        "flagged_by_landmarks": 0,
+        "flagged_by_length": 0,
+        "median_flag_step": null,
+        "median_length_flag_step": 16,
+        "landmark_flagged_first_by_count": {}
+      },
+      "2": {
+        "runs": 1000,
+        "mean_return": 35.685,
+        "ended": 1000,
+        "flagged_by_landmarks": 0,
+        "flagged_by_length": 0,
+        "median_flag_step": null,
+        "median_length_flag_step": 16,
+        "landmark_flagged_first_by_count": {}
+      }
+    }
+  }
+}

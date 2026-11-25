@@ -105,13 +105,61 @@ function rocksample(n, k, seed)
     cells = [(x, y) for x in 1:n for y in 1:n if (x, y) != (1, 1)]
     rocks = cells[randperm(rng, length(cells))[1:k]]
     m = RockSamplePOMDP(map_size = (n, n), rocks_positions = rocks, init_pos = (1, 1),
-                        sensor_efficiency = 20.0, discount_factor = 0.95,
+                        sensor_efficiency = parse(Float64, get(ENV, "RS_EFFICIENCY", "20.0")),
+                        discount_factor = parse(Float64, get(ENV, "DISCOUNT", "0.95")),
                         good_rock_reward = 20.0)
     desc(s) = isterminal(m, s) ? "terminal" :
         string(s.pos[1], ",", s.pos[2], "|", join(Int.(collect(s.rocks))))
     # Exiting the grid ends the episode; the graph stops at the exit action.
     rock_at = join(["\"$(x)-$(y)\": \"rock$i\"" for (i, (x, y)) in enumerate(rocks)], ", ")
-    m, a -> false, desc, "\"problem\": \"rocksample\", \"n\": $n, \"k\": $k, \"seed\": $seed, \"rock_at\": {$rock_at}"
+    m, a -> false, desc, "\"problem\": \"rocksample\", \"n\": $n, \"k\": $k, \"seed\": $seed, \"rock_at\": {$rock_at}, " *
+        "\"discount\": $(discount(m)), \"efficiency\": $(m.sensor_efficiency)"
+end
+
+# Tag (Pineau, Gordon and Thrun 2003): a robot searches for an opponent on a 29-cell
+# map, a 10x2 corridor with a 3x3 room above columns 6-8. The robot starts in the
+# bottom-left cell and sees its own cell and whether the opponent shares it; the
+# opponent starts uniformly in another cell and moves away from the robot with
+# probability 0.8 (split over the moves that increase the distance), else stays.
+# Tagging in the opponent's cell ends the episode (+10); a failed tag costs 10, a move 1.
+function tag()
+    cells = vcat([(x, y) for y in 1:2 for x in 1:10], [(x, y) for y in 3:5 for x in 6:8])
+    onmap = Set(cells)
+    dirs = Dict("north" => (0, 1), "south" => (0, -1), "east" => (1, 0), "west" => (-1, 0))
+    move(c, d) = (n = (c[1] + d[1], c[2] + d[2]); n in onmap ? n : c)
+    dist(a, b) = abs(a[1] - b[1]) + abs(a[2] - b[2])
+    T0 = (0, 0, 0, 0)                                   # tagged (terminal)
+    start = (1, 1)
+    states = vcat([(r..., o...) for r in cells for o in cells], [T0])
+    function opponent(o, r)
+        away = unique([move(o, d) for d in values(dirs) if dist(move(o, d), r) > dist(o, r)])
+        isempty(away) && return [o], [1.0]
+        vcat(away, [o]), vcat(fill(0.8 / length(away), length(away)), [0.2])
+    end
+    m = QuickPOMDP(
+        states = states, actions = ["north", "south", "east", "west", "tag"],
+        observations = vcat([(c..., v) for c in cells for v in 0:1], [(0, 0, 0)]),
+        initialstate = Uniform([(start..., o...) for o in cells if o != start]),
+        discount = 0.95, isterminal = s -> s == T0,
+        transition = function (s, a)
+            s == T0 && return Deterministic(T0)
+            r, o = (s[1], s[2]), (s[3], s[4])
+            a == "tag" && r == o && return Deterministic(T0)
+            r2 = a == "tag" ? r : move(r, dirs[a])
+            os, ps = opponent(o, r)
+            SparseCat([(r2..., x...) for x in os], ps)
+        end,
+        observation = function (a, sp)
+            sp == T0 && return Deterministic((0, 0, 0))
+            Deterministic((sp[1], sp[2], Int((sp[1], sp[2]) == (sp[3], sp[4]))))
+        end,
+        reward = function (s, a)
+            s == T0 && return 0.0
+            a == "tag" ? ((s[1], s[2]) == (s[3], s[4]) ? 10.0 : -10.0) : -1.0
+        end,
+    )
+    desc(s) = s == T0 ? "terminal" : string(s[1], ",", s[2], "|", s[3], ",", s[4])
+    m, a -> false, desc, "\"problem\": \"tag\""
 end
 
 function obs_prob(m, b, a, o, S)
@@ -306,6 +354,7 @@ function build(args)
                             "$(args[2])-$(args[3])-$(args[4])", 4)
     p == "rocksample" && return (rocksample(parse.(Int, args[2:4])...),
                                  "rocksample-$(args[2])-$(args[3])-s$(args[4])", 4)
+    p == "tag" && return (tag(), "tag", 1)
     error("unknown problem $p")
 end
 

@@ -64,6 +64,9 @@ def hidden_vars(g: dict) -> list:
         return ["sensor-a", "sensor-b"]            # pos = sensor ok
     if g["problem"] == "probe":
         return [f"v{i + 1}" for i in range(g["k"])]  # pos = this value is the hidden one
+    if g["problem"] == "tag":                      # pos = the opponent is in this cell
+        cells = sorted({s.split("|")[1] for s in g["states"] if s != "terminal"})
+        return [f"opp{c.replace(',', '-')}" for c in cells]
     k = len(next(s for s in g["states"] if s != "terminal").split("|")[1])
     return [f"rock{i + 1}" for i in range(k)]      # pos = rock good
 
@@ -84,6 +87,11 @@ def abstract(g: dict, belief: dict, bins: tuple = BINS) -> frozenset:
             if s in marg:
                 marg[s] += p
             continue
+        if g["problem"] == "tag":
+            robot, opp = s.split("|")
+            cells.add(robot)
+            marg[f"opp{opp.replace(',', '-')}"] += p
+            continue
         if g["problem"] == "sensor":
             if s != "done":
                 marg["sensor-a"] += p if s.startswith("a-ok") else 0.0
@@ -93,8 +101,8 @@ def abstract(g: dict, belief: dict, bins: tuple = BINS) -> frozenset:
         cells.add(xy)
         for j, c in enumerate(bits):
             marg[f"rock{j + 1}"] += p if c == "1" else 0.0
-    assert len(cells) <= 1, "robot position is observable in RockSample"
-    prior = 1 / len(vars_) if g["problem"] == "probe" else 0.5   # evidence is relative to the prior
+    assert len(cells) <= 1, "robot position is observable in RockSample and Tag"
+    prior = 1 / len(vars_) if g["problem"] in ("probe", "tag") else 0.5   # evidence is relative to the prior
     facts = {f"ev-{v}({level(marg[v], unit_of(g), prior, bins)})" for v in vars_}
     return frozenset(facts | {f"at(c{xy.replace(',', '-')})" for xy in cells})
 
@@ -169,6 +177,11 @@ def _reward(g: dict, node: dict) -> float:
     b, states, a = _belief(node), g["states"], node["action"]
     if g["problem"] == "tiger":
         return -1.0 if a == "listen" else sum(p * (-100.0 if states[i] == a else 10.0) for i, p in b.items())
+    if g["problem"] == "tag":
+        if a != "tag":
+            return -1.0
+        return sum(p * (10.0 if states[i].split("|")[0] == states[i].split("|")[1] else -10.0)
+                   for i, p in b.items() if states[i] != "terminal")
     if g["problem"] in ("sensor", "probe"):
         if not a.startswith("commit"):
             return -1.0
