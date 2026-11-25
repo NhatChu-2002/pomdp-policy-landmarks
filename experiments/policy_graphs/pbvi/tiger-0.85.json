@@ -1,0 +1,22 @@
+{
+"problem": "tiger", "p_correct": 0.85,
+"solver": "pbvi",
+"merges": {"lossy": 0, "lossy_self_loops": 0, "max_diff": 0.0},
+"solve_seconds": 1.0090000629425049,
+"value_at_b0": 19.196087619647724,
+"states": ["left","right"],
+"nodes": [
+{"id":0,"kind":"inner","action":"listen","belief":"0:0.5 1:0.5"},
+{"id":1,"kind":"inner","action":"listen","belief":"0:0.85 1:0.15"},
+{"id":2,"kind":"inner","action":"listen","belief":"0:0.15 1:0.85"},
+{"id":3,"kind":"commit_end","action":"right","belief":"0:0.969798658 1:0.030201342"},
+{"id":4,"kind":"commit_end","action":"left","belief":"0:0.030201342 1:0.969798658"}
+],
+"edges": [
+{"from":0,"obs":"left","to":1,"p":0.5},
+{"from":0,"obs":"right","to":2,"p":0.5},
+{"from":1,"obs":"left","to":3,"p":0.7449999999999999},
+{"from":1,"obs":"right","to":0,"p":0.255},
+{"from":2,"obs":"left","to":0,"p":0.255},
+{"from":2,"obs":"right","to":4,"p":0.7449999999999999}
+]}

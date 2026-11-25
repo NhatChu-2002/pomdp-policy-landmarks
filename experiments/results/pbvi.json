@@ -1,0 +1,609 @@
+{
+  "mine-4-0.85": {
+    "sarsop": {
+      "nodes": 11,
+      "terminates": true,
+      "landmarks": [
+        "chose(commit-v1) | chose(commit-v2) | chose(commit-v3) | chose(commit-v4)",
+        "done",
+        "ev-v1(neg1) | ev-v1(pos1)",
+        "ev-v2(neg1) | ev-v2(pos1)",
+        "ev-v3(neg1) | ev-v3(pos1)",
+        "ev-v4(neg1) | ev-v4(pos1)"
+      ],
+      "orderings": [
+        "ev-v1(neg1) | ev-v1(pos1) < chose(commit-v1) | chose(commit-v2) | chose(commit-v3) | chose(commit-v4)",
+        "ev-v1(neg1) | ev-v1(pos1) < done",
+        "ev-v2(neg1) | ev-v2(pos1) < chose(commit-v1) | chose(commit-v2) | chose(commit-v3) | chose(commit-v4)",
+        "ev-v2(neg1) | ev-v2(pos1) < done",
+        "ev-v3(neg1) | ev-v3(pos1) < chose(commit-v1) | chose(commit-v2) | chose(commit-v3) | chose(commit-v4)",
+        "ev-v3(neg1) | ev-v3(pos1) < done",
+        "ev-v4(neg1) | ev-v4(pos1) < chose(commit-v1) | chose(commit-v2) | chose(commit-v3) | chose(commit-v4)",
+        "ev-v4(neg1) | ev-v4(pos1) < done"
+      ],
+      "value": 9.564,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "commit-v1",
+        "commit-v2",
+        "commit-v3",
+        "commit-v4",
+        "probe-v1",
+        "probe-v2",
+        "probe-v3",
+        "probe-v4"
+      ]
+    },
+    "other": {
+      "nodes": 5,
+      "terminates": true,
+      "landmarks": [
+        "chose(commit-v1) | chose(commit-v2)",
+        "done",
+        "ev-v1(neg1) | ev-v1(pos1)",
+        "ev-v1(neg2) | ev-v1(pos2)"
+      ],
+      "orderings": [
+        "ev-v1(neg1) | ev-v1(pos1) < ev-v1(neg2) | ev-v1(pos2)",
+        "ev-v1(neg2) | ev-v1(pos2) < chose(commit-v1) | chose(commit-v2)",
+        "ev-v1(neg2) | ev-v1(pos2) < done"
+      ],
+      "value": -3.06,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "commit-v1",
+        "commit-v2",
+        "probe-v1"
+      ]
+    },
+    "only_sarsop": [
+      "chose(commit-v1) | chose(commit-v2) | chose(commit-v3) | chose(commit-v4)",
+      "ev-v2(neg1) | ev-v2(pos1)",
+      "ev-v3(neg1) | ev-v3(pos1)",
+      "ev-v4(neg1) | ev-v4(pos1)"
+    ],
+    "only_other": [
+      "chose(commit-v1) | chose(commit-v2)",
+      "ev-v1(neg2) | ev-v1(pos2)"
+    ],
+    "same_graph": false,
+    "merges": {
+      "lossy": 0,
+      "lossy_self_loops": 0,
+      "max_diff": 0.0
+    }
+  },
+  "sensor-0.75": {
+    "sarsop": {
+      "nodes": 19,
+      "terminates": true,
+      "landmarks": [
+        "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
+        "done",
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+      ],
+      "orderings": [
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2) < ev-sensor-b(neg2) | ev-sensor-b(pos2)",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1) < ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2) < chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2) < done"
+      ],
+      "value": 3.554,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "commit-a-faulty-b-faulty",
+        "commit-a-faulty-b-ok",
+        "commit-a-ok-b-faulty",
+        "commit-a-ok-b-ok",
+        "read-a",
+        "read-b"
+      ]
+    },
+    "other": {
+      "nodes": 5,
+      "terminates": true,
+      "landmarks": [
+        "chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-ok)",
+        "done",
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2)"
+      ],
+      "orderings": [
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2) < chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-ok)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2) < done"
+      ],
+      "value": -4.653,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "commit-a-faulty-b-ok",
+        "commit-a-ok-b-ok",
+        "read-a"
+      ]
+    },
+    "only_sarsop": [
+      "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
+      "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+      "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+    ],
+    "only_other": [
+      "chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-ok)"
+    ],
+    "same_graph": false,
+    "merges": {
+      "lossy": 0,
+      "lossy_self_loops": 0,
+      "max_diff": 0.0
+    }
+  },
+  "sensor-0.8": {
+    "sarsop": {
+      "nodes": 20,
+      "terminates": true,
+      "landmarks": [
+        "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
+        "done",
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+      ],
+      "orderings": [
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2) < chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2) < done",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1) < ev-sensor-b(neg2) | ev-sensor-b(pos2)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2) < chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2) < done"
+      ],
+      "value": 6.383,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "commit-a-faulty-b-faulty",
+        "commit-a-faulty-b-ok",
+        "commit-a-ok-b-faulty",
+        "commit-a-ok-b-ok",
+        "read-a",
+        "read-b"
+      ]
+    },
+    "other": {
+      "nodes": 5,
+      "terminates": true,
+      "landmarks": [
+        "chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-ok)",
+        "done",
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2)"
+      ],
+      "orderings": [
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2) < chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-ok)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2) < done"
+      ],
+      "value": -3.757,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "commit-a-faulty-b-ok",
+        "commit-a-ok-b-ok",
+        "read-a"
+      ]
+    },
+    "only_sarsop": [
+      "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
+      "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+      "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+    ],
+    "only_other": [
+      "chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-ok)"
+    ],
+    "same_graph": false,
+    "merges": {
+      "lossy": 0,
+      "lossy_self_loops": 0,
+      "max_diff": 0.0
+    }
+  },
+  "sensor-0.85": {
+    "sarsop": {
+      "nodes": 21,
+      "terminates": true,
+      "landmarks": [
+        "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
+        "done",
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+      ],
+      "orderings": [
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-b(neg2) | ev-sensor-b(pos2)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2) < chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2) < done",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1) < ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2) < chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2) < done"
+      ],
+      "value": 8.695,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "commit-a-faulty-b-faulty",
+        "commit-a-faulty-b-ok",
+        "commit-a-ok-b-faulty",
+        "commit-a-ok-b-ok",
+        "read-a",
+        "read-b"
+      ]
+    },
+    "other": {
+      "nodes": 5,
+      "terminates": true,
+      "landmarks": [
+        "chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-ok)",
+        "done",
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2)"
+      ],
+      "orderings": [
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2) < chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-ok)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2) < done"
+      ],
+      "value": -3.06,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "commit-a-faulty-b-ok",
+        "commit-a-ok-b-ok",
+        "read-a"
+      ]
+    },
+    "only_sarsop": [
+      "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
+      "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+      "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+    ],
+    "only_other": [
+      "chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-ok)"
+    ],
+    "same_graph": false,
+    "merges": {
+      "lossy": 0,
+      "lossy_self_loops": 0,
+      "max_diff": 0.0
+    }
+  },
+  "sensor-0.9": {
+    "sarsop": {
+      "nodes": 25,
+      "terminates": true,
+      "landmarks": [
+        "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
+        "done",
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+      ],
+      "orderings": [
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2) < chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2) < done",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1) < ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1) < ev-sensor-b(neg2) | ev-sensor-b(pos2)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2) < chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
+        "ev-sensor-b(neg2) | ev-sensor-b(pos2) < done"
+      ],
+      "value": 10.472,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "commit-a-faulty-b-faulty",
+        "commit-a-faulty-b-ok",
+        "commit-a-ok-b-faulty",
+        "commit-a-ok-b-ok",
+        "read-a",
+        "read-b"
+      ]
+    },
+    "other": {
+      "nodes": 5,
+      "terminates": true,
+      "landmarks": [
+        "chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-ok)",
+        "done",
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2)"
+      ],
+      "orderings": [
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-a(neg2) | ev-sensor-a(pos2)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2) < chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-ok)",
+        "ev-sensor-a(neg2) | ev-sensor-a(pos2) < done"
+      ],
+      "value": -2.544,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "commit-a-faulty-b-ok",
+        "commit-a-ok-b-ok",
+        "read-a"
+      ]
+    },
+    "only_sarsop": [
+      "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
+      "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+      "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
+    ],
+    "only_other": [
+      "chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-ok)"
+    ],
+    "same_graph": false,
+    "merges": {
+      "lossy": 0,
+      "lossy_self_loops": 0,
+      "max_diff": 0.0
+    }
+  },
+  "sensor-0.95": {
+    "sarsop": {
+      "nodes": 7,
+      "terminates": true,
+      "landmarks": [
+        "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
+        "done",
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1)"
+      ],
+      "orderings": [
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1) < ev-sensor-b(neg1) | ev-sensor-b(pos1)",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1) < chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
+        "ev-sensor-b(neg1) | ev-sensor-b(pos1) < done"
+      ],
+      "value": 12.58,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "commit-a-faulty-b-faulty",
+        "commit-a-faulty-b-ok",
+        "commit-a-ok-b-faulty",
+        "commit-a-ok-b-ok",
+        "read-a",
+        "read-b"
+      ]
+    },
+    "other": {
+      "nodes": 3,
+      "terminates": true,
+      "landmarks": [
+        "chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-ok)",
+        "done",
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1)"
+      ],
+      "orderings": [
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1) < chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-ok)",
+        "ev-sensor-a(neg1) | ev-sensor-a(pos1) < done"
+      ],
+      "value": -1.95,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "commit-a-faulty-b-ok",
+        "commit-a-ok-b-ok",
+        "read-a"
+      ]
+    },
+    "only_sarsop": [
+      "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
+      "ev-sensor-b(neg1) | ev-sensor-b(pos1)"
+    ],
+    "only_other": [
+      "chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-ok)"
+    ],
+    "same_graph": false,
+    "merges": {
+      "lossy": 0,
+      "lossy_self_loops": 0,
+      "max_diff": 0.0
+    }
+  },
+  "tiger-0.6": {
+    "sarsop": {
+      "nodes": 17,
+      "terminates": true,
+      "landmarks": [
+        "chose(left) | chose(right)",
+        "done",
+        "ev-direction(neg1) | ev-direction(pos1)",
+        "ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg3) | ev-direction(pos3)",
+        "ev-direction(neg4) | ev-direction(pos4)",
+        "ev-direction(neg5) | ev-direction(pos5)",
+        "ev-direction(neg6) | ev-direction(pos6)",
+        "ev-direction(neg7) | ev-direction(pos7)",
+        "ev-direction(neg8) | ev-direction(pos8)"
+      ],
+      "orderings": [
+        "ev-direction(neg1) | ev-direction(pos1) < ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg2) | ev-direction(pos2) < ev-direction(neg3) | ev-direction(pos3)",
+        "ev-direction(neg3) | ev-direction(pos3) < ev-direction(neg4) | ev-direction(pos4)",
+        "ev-direction(neg4) | ev-direction(pos4) < ev-direction(neg5) | ev-direction(pos5)",
+        "ev-direction(neg5) | ev-direction(pos5) < ev-direction(neg6) | ev-direction(pos6)",
+        "ev-direction(neg6) | ev-direction(pos6) < ev-direction(neg7) | ev-direction(pos7)",
+        "ev-direction(neg7) | ev-direction(pos7) < ev-direction(neg8) | ev-direction(pos8)",
+        "ev-direction(neg8) | ev-direction(pos8) < chose(left) | chose(right)",
+        "ev-direction(neg8) | ev-direction(pos8) < done"
+      ],
+      "value": -17.811,
+      "p_end_within_100": 0.9706,
+      "actions": [
+        "left",
+        "listen",
+        "right"
+      ]
+    },
+    "other": {
+      "nodes": 99,
+      "landmarks": null,
+      "orderings": null,
+      "terminates": false,
+      "value": -20.0,
+      "p_end_within_100": 0.0,
+      "actions": [
+        "listen"
+      ]
+    },
+    "only_sarsop": [
+      "chose(left) | chose(right)",
+      "done",
+      "ev-direction(neg1) | ev-direction(pos1)",
+      "ev-direction(neg2) | ev-direction(pos2)",
+      "ev-direction(neg3) | ev-direction(pos3)",
+      "ev-direction(neg4) | ev-direction(pos4)",
+      "ev-direction(neg5) | ev-direction(pos5)",
+      "ev-direction(neg6) | ev-direction(pos6)",
+      "ev-direction(neg7) | ev-direction(pos7)",
+      "ev-direction(neg8) | ev-direction(pos8)"
+    ],
+    "only_other": [],
+    "same_graph": false,
+    "merges": {
+      "lossy": 2,
+      "lossy_self_loops": 2,
+      "max_diff": 7.841642890582534e-10
+    }
+  },
+  "tiger-0.65": {
+    "sarsop": {
+      "nodes": 13,
+      "terminates": true,
+      "landmarks": [
+        "chose(left) | chose(right)",
+        "done",
+        "ev-direction(neg1) | ev-direction(pos1)",
+        "ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg3) | ev-direction(pos3)",
+        "ev-direction(neg4) | ev-direction(pos4)",
+        "ev-direction(neg5) | ev-direction(pos5)",
+        "ev-direction(neg6) | ev-direction(pos6)"
+      ],
+      "orderings": [
+        "ev-direction(neg1) | ev-direction(pos1) < ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg2) | ev-direction(pos2) < ev-direction(neg3) | ev-direction(pos3)",
+        "ev-direction(neg3) | ev-direction(pos3) < ev-direction(neg4) | ev-direction(pos4)",
+        "ev-direction(neg4) | ev-direction(pos4) < ev-direction(neg5) | ev-direction(pos5)",
+        "ev-direction(neg5) | ev-direction(pos5) < ev-direction(neg6) | ev-direction(pos6)",
+        "ev-direction(neg6) | ev-direction(pos6) < chose(left) | chose(right)",
+        "ev-direction(neg6) | ev-direction(pos6) < done"
+      ],
+      "value": -13.755,
+      "p_end_within_100": 0.9995,
+      "actions": [
+        "left",
+        "listen",
+        "right"
+      ]
+    },
+    "other": {
+      "nodes": 38,
+      "terminates": true,
+      "landmarks": [
+        "chose(right)",
+        "done",
+        "ev-direction(pos1)",
+        "ev-direction(pos2)",
+        "ev-direction(pos3)",
+        "ev-direction(pos4)"
+      ],
+      "orderings": [
+        "ev-direction(pos1) < ev-direction(pos2)",
+        "ev-direction(pos2) < ev-direction(pos3)",
+        "ev-direction(pos3) < ev-direction(pos4)",
+        "ev-direction(pos4) < chose(right)",
+        "ev-direction(pos4) < done"
+      ],
+      "value": -18.926,
+      "p_end_within_100": 0.5416,
+      "actions": [
+        "listen",
+        "right"
+      ]
+    },
+    "only_sarsop": [
+      "chose(left) | chose(right)",
+      "ev-direction(neg1) | ev-direction(pos1)",
+      "ev-direction(neg2) | ev-direction(pos2)",
+      "ev-direction(neg3) | ev-direction(pos3)",
+      "ev-direction(neg4) | ev-direction(pos4)",
+      "ev-direction(neg5) | ev-direction(pos5)",
+      "ev-direction(neg6) | ev-direction(pos6)"
+    ],
+    "only_other": [
+      "chose(right)",
+      "ev-direction(pos1)",
+      "ev-direction(pos2)",
+      "ev-direction(pos3)",
+      "ev-direction(pos4)"
+    ],
+    "same_graph": false,
+    "merges": {
+      "lossy": 1,
+      "lossy_self_loops": 1,
+      "max_diff": 6.198870897967128e-10
+    }
+  },
+  "tiger-0.85": {
+    "sarsop": {
+      "nodes": 5,
+      "terminates": true,
+      "landmarks": [
+        "chose(left) | chose(right)",
+        "done",
+        "ev-direction(neg1) | ev-direction(pos1)",
+        "ev-direction(neg2) | ev-direction(pos2)"
+      ],
+      "orderings": [
+        "ev-direction(neg1) | ev-direction(pos1) < ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg2) | ev-direction(pos2) < chose(left) | chose(right)",
+        "ev-direction(neg2) | ev-direction(pos2) < done"
+      ],
+      "value": 19.371,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "left",
+        "listen",
+        "right"
+      ]
+    },
+    "other": {
+      "nodes": 5,
+      "terminates": true,
+      "landmarks": [
+        "chose(left) | chose(right)",
+        "done",
+        "ev-direction(neg1) | ev-direction(pos1)",
+        "ev-direction(neg2) | ev-direction(pos2)"
+      ],
+      "orderings": [
+        "ev-direction(neg1) | ev-direction(pos1) < ev-direction(neg2) | ev-direction(pos2)",
+        "ev-direction(neg2) | ev-direction(pos2) < chose(left) | chose(right)",
+        "ev-direction(neg2) | ev-direction(pos2) < done"
+      ],
+      "value": 19.371,
+      "p_end_within_100": 1.0,
+      "actions": [
+        "left",
+        "listen",
+        "right"
+      ]
+    },
+    "only_sarsop": [],
+    "only_other": [],
+    "same_graph": true,
+    "merges": {
+      "lossy": 0,
+      "lossy_self_loops": 0,
+      "max_diff": 0.0
+    }
+  }
+}

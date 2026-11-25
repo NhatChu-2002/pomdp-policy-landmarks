@@ -241,3 +241,17 @@ work or what we claim), **DROP** (tried, not worth reporting), **OPEN** (unresol
 - Learned: report exact values, not grid steps; present the knowledge view as a
   shared vocabulary with a per-run guarantee, not as new information.
 - Verdict: **PAPER** (numbers) + **LESSON**.
+
+### E13 (final). PBVI coverage and what its policies do
+- Result (`results/pbvi.json`): with 5 iterations and a 3-minute cap per model, PBVI
+  finished 9 of 25 models (Sensor x5, Tiger 0.6/0.65/0.85, Mine-2x2); all RockSample,
+  Channel, Mine-3x3 and five Tiger accuracies timed out.
+- The finished policies are much worse than SARSOP's (Sensor q=0.75: -4.65 vs 3.55;
+  Mine-2x2: -3.06 vs 9.56), and the landmark graphs say why: every PBVI Sensor policy
+  lacks "sensor b reaches +-1" (it never reads sensor b) and commits only to diagnoses
+  with b working; the Mine-2x2 policy commits only to cells 1 or 2; Tiger 0.6 never
+  ends; Tiger 0.85 has exactly SARSOP's graph and value.
+- Learned: under-converged point-based policies are a natural use case: the landmark
+  diff names the information they skip. But 5-iteration PBVI is a weak solver;
+  present it as "an under-converged second solver", not as a fair comparison.
+- Verdict: **PAPER** (short, in RQ4 next to QMDP), with coverage stated (9 of 25).

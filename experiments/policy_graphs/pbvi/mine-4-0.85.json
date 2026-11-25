@@ -1,0 +1,22 @@
+{
+"problem": "probe", "name": "mine", "k": 4, "p_correct": 0.85,
+"solver": "pbvi",
+"merges": {"lossy": 0, "lossy_self_loops": 0, "max_diff": 0.0},
+"solve_seconds": 1.250999927520752,
+"value_at_b0": -3.0626638815843643,
+"states": ["v1","v2","v3","v4","done"],
+"nodes": [
+{"id":0,"kind":"inner","action":"probe-v1","belief":"0:0.25 1:0.25 2:0.25 3:0.25"},
+{"id":1,"kind":"inner","action":"probe-v1","belief":"0:0.653846154 1:0.115384615 2:0.115384615 3:0.115384615"},
+{"id":2,"kind":"inner","action":"probe-v1","belief":"0:0.055555556 1:0.314814815 2:0.314814815 3:0.314814815"},
+{"id":3,"kind":"commit_end","action":"commit-v1","belief":"0:0.914556962 1:0.028481013 2:0.028481013 3:0.028481013"},
+{"id":4,"kind":"commit_end","action":"commit-v2","belief":"0:0.010273973 1:0.329908676 2:0.329908676 3:0.329908676"}
+],
+"edges": [
+{"from":0,"obs":"hit-v1","to":1,"p":0.32499999999999996},
+{"from":0,"obs":"miss-v1","to":2,"p":0.675},
+{"from":1,"obs":"hit-v1","to":3,"p":0.607692307692308},
+{"from":1,"obs":"miss-v1","to":0,"p":0.3923076923076924},
+{"from":2,"obs":"hit-v1","to":0,"p":0.18888888888888888},
+{"from":2,"obs":"miss-v1","to":4,"p":0.8111111111111111}
+]}

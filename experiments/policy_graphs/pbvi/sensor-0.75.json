@@ -1,0 +1,22 @@
+{
+"problem": "sensor", "p_correct": 0.75,
+"solver": "pbvi",
+"merges": {"lossy": 0, "lossy_self_loops": 0, "max_diff": 0.0},
+"solve_seconds": 2.485999822616577,
+"value_at_b0": -4.657682207713171,
+"states": ["a-ok-b-ok","a-ok-b-faulty","a-faulty-b-ok","a-faulty-b-faulty","done"],
+"nodes": [
+{"id":0,"kind":"inner","action":"read-a","belief":"0:0.25 1:0.25 2:0.25 3:0.25"},
+{"id":1,"kind":"inner","action":"read-a","belief":"0:0.375 1:0.375 2:0.125 3:0.125"},
+{"id":2,"kind":"inner","action":"read-a","belief":"0:0.125 1:0.125 2:0.375 3:0.375"},
+{"id":3,"kind":"commit_end","action":"commit-a-ok-b-ok","belief":"0:0.45 1:0.45 2:0.05 3:0.05"},
+{"id":4,"kind":"commit_end","action":"commit-a-faulty-b-ok","belief":"0:0.05 1:0.05 2:0.45 3:0.45"}
+],
+"edges": [
+{"from":0,"obs":"a-agree","to":1,"p":0.5},
+{"from":0,"obs":"a-disagree","to":2,"p":0.5},
+{"from":1,"obs":"a-agree","to":3,"p":0.625},
+{"from":1,"obs":"a-disagree","to":0,"p":0.375},
+{"from":2,"obs":"a-agree","to":0,"p":0.375},
+{"from":2,"obs":"a-disagree","to":4,"p":0.625}
+]}

@@ -1,0 +1,46 @@
+job: tiger 0.7 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/tiger-0.7.json
+TIMEOUT/FAIL: tiger 0.7 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/tiger-0.7.json
+job: tiger 0.75 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/tiger-0.75.json
+TIMEOUT/FAIL: tiger 0.75 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/tiger-0.75.json
+job: tiger 0.8 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/tiger-0.8.json
+TIMEOUT/FAIL: tiger 0.8 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/tiger-0.8.json
+job: tiger 0.85 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/tiger-0.85.json
+nodes=5 edges=6 solve=1.0s
+job: tiger 0.9 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/tiger-0.9.json
+TIMEOUT/FAIL: tiger 0.9 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/tiger-0.9.json
+job: tiger 0.95 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/tiger-0.95.json
+TIMEOUT/FAIL: tiger 0.95 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/tiger-0.95.json
+job: rocksample 4 4 1 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/rocksample-4-4-s1.json
+TIMEOUT/FAIL: rocksample 4 4 1 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/rocksample-4-4-s1.json
+job: rocksample 4 4 2 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/rocksample-4-4-s2.json
+TIMEOUT/FAIL: rocksample 4 4 2 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/rocksample-4-4-s2.json
+job: rocksample 4 4 3 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/rocksample-4-4-s3.json
+TIMEOUT/FAIL: rocksample 4 4 3 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/rocksample-4-4-s3.json
+job: rocksample 4 4 4 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/rocksample-4-4-s4.json
+TIMEOUT/FAIL: rocksample 4 4 4 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/rocksample-4-4-s4.json
+job: rocksample 4 4 5 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/rocksample-4-4-s5.json
+TIMEOUT/FAIL: rocksample 4 4 5 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/rocksample-4-4-s5.json
+job: rocksample 5 5 1 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/rocksample-5-5-s1.json
+TIMEOUT/FAIL: rocksample 5 5 1 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/rocksample-5-5-s1.json
+job: rocksample 5 5 2 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/rocksample-5-5-s2.json
+TIMEOUT/FAIL: rocksample 5 5 2 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/rocksample-5-5-s2.json
+job: rocksample 5 5 3 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/rocksample-5-5-s3.json
+TIMEOUT/FAIL: rocksample 5 5 3 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/rocksample-5-5-s3.json
+job: probe channel 3 0.85 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/channel-3-0.85.json
+TIMEOUT/FAIL: probe channel 3 0.85 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/channel-3-0.85.json
+job: probe mine 4 0.85 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/mine-4-0.85.json
+nodes=5 edges=6 solve=1.3s
+job: probe mine 9 0.85 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/mine-9-0.85.json
+TIMEOUT/FAIL: probe mine 9 0.85 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/mine-9-0.85.json
+job: sensor 0.75 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/sensor-0.75.json
+nodes=5 edges=6 solve=2.5s
+job: sensor 0.8 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/sensor-0.8.json
+nodes=5 edges=6 solve=2.5s
+job: sensor 0.85 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/sensor-0.85.json
+nodes=5 edges=6 solve=2.9s
+job: sensor 0.9 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/sensor-0.9.json
+nodes=5 edges=6 solve=3.4s
+job: sensor 0.95 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/sensor-0.95.json
+nodes=3 edges=2 solve=2.8s
+job: rocksample 7 8 1 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/rocksample-7-8-s1.json
+TIMEOUT/FAIL: rocksample 7 8 1 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/pbvi/rocksample-7-8-s1.json
