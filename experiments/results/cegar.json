@@ -1,0 +1,323 @@
+{
+  "rocksample-4-4-s5": {
+    "candidates": 44,
+    "exact_landmarks": 12,
+    "proven": 12,
+    "unsound": 0,
+    "recall": "12/12",
+    "undecided": 0,
+    "rules_initial": 6437,
+    "rules_final": 6533,
+    "seconds": 740.7,
+    "results": [
+      {
+        "candidate": "ev-rock1(neg3)",
+        "exact": true,
+        "proven": true,
+        "iterations": 85,
+        "seconds": 491.4
+      },
+      {
+        "candidate": "ev-rock1(neg2)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 5.0
+      },
+      {
+        "candidate": "ev-rock1(neg1)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 5.4
+      },
+      {
+        "candidate": "ev-rock1(pos1)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 5.0
+      },
+      {
+        "candidate": "ev-rock1(pos2)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 5.4
+      },
+      {
+        "candidate": "ev-rock1(pos3)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 5.2
+      },
+      {
+        "candidate": "ev-rock1(neg2) | ev-rock1(neg3)",
+        "exact": true,
+        "proven": true,
+        "iterations": 0,
+        "seconds": 4.5
+      },
+      {
+        "candidate": "ev-rock1(pos2) | ev-rock1(pos3)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 4.9
+      },
+      {
+        "candidate": "ev-rock1(neg1) | ev-rock1(pos1)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 5.2
+      },
+      {
+        "candidate": "ev-rock1(neg2) | ev-rock1(pos2)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 5.8
+      },
+      {
+        "candidate": "ev-rock1(neg3) | ev-rock1(pos3)",
+        "exact": true,
+        "proven": true,
+        "iterations": 0,
+        "seconds": 5.8
+      },
+      {
+        "candidate": "ev-rock2(neg3)",
+        "exact": true,
+        "proven": true,
+        "iterations": 0,
+        "seconds": 5.5
+      },
+      {
+        "candidate": "ev-rock2(neg2)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 5.6
+      },
+      {
+        "candidate": "ev-rock2(neg1)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 5.2
+      },
+      {
+        "candidate": "ev-rock2(pos1)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 5.0
+      },
+      {
+        "candidate": "ev-rock2(pos2)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 4.9
+      },
+      {
+        "candidate": "ev-rock2(pos3)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 4.9
+      },
+      {
+        "candidate": "ev-rock2(neg2) | ev-rock2(neg3)",
+        "exact": true,
+        "proven": true,
+        "iterations": 0,
+        "seconds": 4.4
+      },
+      {
+        "candidate": "ev-rock2(pos2) | ev-rock2(pos3)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 4.7
+      },
+      {
+        "candidate": "ev-rock2(neg1) | ev-rock2(pos1)",
+        "exact": false,
+        "proven": false,
+        "iterations": 1,
+        "seconds": 9.7
+      },
+      {
+        "candidate": "ev-rock2(neg2) | ev-rock2(pos2)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 5.0
+      },
+      {
+        "candidate": "ev-rock2(neg3) | ev-rock2(pos3)",
+        "exact": true,
+        "proven": true,
+        "iterations": 0,
+        "seconds": 3.9
+      },
+      {
+        "candidate": "ev-rock3(neg3)",
+        "exact": true,
+        "proven": true,
+        "iterations": 0,
+        "seconds": 4.5
+      },
+      {
+        "candidate": "ev-rock3(neg2)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 5.3
+      },
+      {
+        "candidate": "ev-rock3(neg1)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 5.0
+      },
+      {
+        "candidate": "ev-rock3(pos1)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 5.4
+      },
+      {
+        "candidate": "ev-rock3(pos2)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 5.2
+      },
+      {
+        "candidate": "ev-rock3(pos3)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 5.0
+      },
+      {
+        "candidate": "ev-rock3(neg2) | ev-rock3(neg3)",
+        "exact": true,
+        "proven": true,
+        "iterations": 0,
+        "seconds": 4.7
+      },
+      {
+        "candidate": "ev-rock3(pos2) | ev-rock3(pos3)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 5.0
+      },
+      {
+        "candidate": "ev-rock3(neg1) | ev-rock3(pos1)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 5.0
+      },
+      {
+        "candidate": "ev-rock3(neg2) | ev-rock3(pos2)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 4.9
+      },
+      {
+        "candidate": "ev-rock3(neg3) | ev-rock3(pos3)",
+        "exact": true,
+        "proven": true,
+        "iterations": 0,
+        "seconds": 4.3
+      },
+      {
+        "candidate": "ev-rock4(neg3)",
+        "exact": true,
+        "proven": true,
+        "iterations": 0,
+        "seconds": 4.4
+      },
+      {
+        "candidate": "ev-rock4(neg2)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 5.0
+      },
+      {
+        "candidate": "ev-rock4(neg1)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 4.9
+      },
+      {
+        "candidate": "ev-rock4(pos1)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 5.0
+      },
+      {
+        "candidate": "ev-rock4(pos2)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 6.9
+      },
+      {
+        "candidate": "ev-rock4(pos3)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 6.3
+      },
+      {
+        "candidate": "ev-rock4(neg2) | ev-rock4(neg3)",
+        "exact": true,
+        "proven": true,
+        "iterations": 0,
+        "seconds": 5.6
+      },
+      {
+        "candidate": "ev-rock4(pos2) | ev-rock4(pos3)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 5.7
+      },
+      {
+        "candidate": "ev-rock4(neg1) | ev-rock4(pos1)",
+        "exact": false,
+        "proven": false,
+        "iterations": 1,
+        "seconds": 12.9
+      },
+      {
+        "candidate": "ev-rock4(neg2) | ev-rock4(pos2)",
+        "exact": false,
+        "proven": false,
+        "iterations": 0,
+        "seconds": 6.8
+      },
+      {
+        "candidate": "ev-rock4(neg3) | ev-rock4(pos3)",
+        "exact": true,
+        "proven": true,
+        "iterations": 0,
+        "seconds": 3.2
+      }
+    ]
+  }
+}

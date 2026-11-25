@@ -852,13 +852,51 @@ def exp_symbolic_categorical() -> dict:
     return rows
 
 
+def exp_cegar(names=("rocksample-4-4-s5",)) -> dict:
+    """R3c: verify every candidate belief landmark (single levels and kept-class pairs
+    per rock) with counterexample-guided refinement, and compare with the exact graph."""
+    from policy_landmarks import cegar, symbolic as sy
+    levels = ["neg3", "neg2", "neg1", "unk", "pos1", "pos2", "pos3"]     # bin grid cells 0..6
+    pairs = [("neg2", "neg3"), ("pos2", "pos3"), ("neg1", "pos1"), ("neg2", "pos2"), ("neg3", "pos3")]
+    rows = {}
+    for name in names:
+        g = extraction.load(HERE / "policy_graphs" / "alphas" / f"{name}.json")
+        m = sy.Model(g, json.loads((HERE / "policy_graphs" / "alphas" / f"{name}.alphas.json").read_text()))
+        grid, edges = sy.bin_grid(m, 0), (-4.5, 4.5)
+        positions = [(i, j) for i in range(1, m.n + 1) for j in range(1, m.n + 1)]
+        exact = StateGraph(extraction.controller(g))
+        t0 = time.perf_counter()
+        rules = cegar.initial_rules(m, grid, positions, edges)
+        n0 = len(rules)
+        results = []
+        for v, var in enumerate(m.vars):
+            cands = [(lv,) for lv in levels if lv != "unk"] + pairs
+            for cand in cands:
+                facts = [f"ev-{var}({lv})" for lv in cand]
+                truth = exact.is_landmark(facts)
+                banned = {f"(cv-{var} c{levels.index(lv)})" for lv in cand}
+                t = time.perf_counter()
+                res = cegar.verify(m, grid, rules, banned, WORK / "cegar" / name, edges, max_iter=300)
+                results.append({"candidate": " | ".join(facts), "exact": truth, "proven": res["landmark"],
+                                "iterations": res["iterations"], "seconds": round(time.perf_counter() - t, 1)})
+        proven = [r for r in results if r["proven"]]
+        rows[name] = {"candidates": len(results), "exact_landmarks": sum(r["exact"] for r in results),
+                      "proven": len(proven), "unsound": sum(not r["exact"] for r in proven),
+                      "recall": f"{sum(r['exact'] for r in proven)}/{sum(r['exact'] for r in results)}",
+                      "undecided": sum(r["proven"] is None for r in results),
+                      "rules_initial": n0, "rules_final": len(rules),
+                      "seconds": round(time.perf_counter() - t0, 1), "results": results}
+    return rows
+
+
 EXPERIMENTS = {"main": exp_main, "exactness": exp_exactness, "ablation": exp_ablation,
                "induced": exp_induced, "mutation": exp_mutation, "scaling": exp_scaling,
                "extracted": exp_extracted, "exact": exp_exact, "bins": exp_bins,
                "qmdp": exp_qmdp, "pbvi": exp_pbvi, "mutants": exp_mutants, "kept": exp_kept,
                "large": exp_large, "variants": exp_variants, "monitor": exp_monitor,
                "knowledge": exp_knowledge, "sampling": exp_sampling,
-               "symbolic": exp_symbolic, "symbolic_categorical": exp_symbolic_categorical}
+               "symbolic": exp_symbolic, "symbolic_categorical": exp_symbolic_categorical,
+               "cegar": exp_cegar}
 
 
 def main(argv: list) -> int:
