@@ -6,12 +6,12 @@
     "refinement": [
       {
         "halvings": 0,
-        "abstract_states": 240,
+        "abstract_states": 242,
         "mixed_states": 72,
         "found": 7,
         "sound": true,
         "equal": false,
-        "seconds": 4.91
+        "seconds": 0.2
       },
       {
         "halvings": 1,
@@ -20,7 +20,7 @@
         "found": 7,
         "sound": true,
         "equal": false,
-        "seconds": 3.22
+        "seconds": 0.12
       },
       {
         "halvings": 2,
@@ -29,7 +29,7 @@
         "found": 9,
         "sound": true,
         "equal": false,
-        "seconds": 4.69
+        "seconds": 0.21
       }
     ]
   },
@@ -45,7 +45,7 @@
         "found": 6,
         "sound": true,
         "equal": false,
-        "seconds": 21.33
+        "seconds": 0.81
       },
       {
         "halvings": 1,
@@ -54,7 +54,7 @@
         "found": 9,
         "sound": true,
         "equal": false,
-        "seconds": 1.03
+        "seconds": 0.04
       },
       {
         "halvings": 2,
@@ -63,7 +63,7 @@
         "found": 10,
         "sound": true,
         "equal": true,
-        "seconds": 1.76
+        "seconds": 0.07
       }
     ]
   },
@@ -79,7 +79,7 @@
         "found": 11,
         "sound": true,
         "equal": true,
-        "seconds": 0.07
+        "seconds": 0.02
       }
     ]
   },
@@ -90,12 +90,12 @@
     "refinement": [
       {
         "halvings": 0,
-        "abstract_states": 25,
-        "mixed_states": 15,
+        "abstract_states": 180,
+        "mixed_states": 113,
         "found": 4,
         "sound": true,
         "equal": false,
-        "seconds": 0.05
+        "seconds": 1.87
       },
       {
         "halvings": 1,
@@ -104,7 +104,7 @@
         "found": 4,
         "sound": true,
         "equal": false,
-        "seconds": 0.05
+        "seconds": 0.01
       },
       {
         "halvings": 2,
@@ -113,7 +113,7 @@
         "found": 6,
         "sound": true,
         "equal": true,
-        "seconds": 0.03
+        "seconds": 0.0
       }
     ]
   },
@@ -124,12 +124,12 @@
     "refinement": [
       {
         "halvings": 0,
-        "abstract_states": 25,
-        "mixed_states": 16,
+        "abstract_states": 180,
+        "mixed_states": 113,
         "found": 4,
         "sound": true,
         "equal": false,
-        "seconds": 0.07
+        "seconds": 1.61
       },
       {
         "halvings": 1,
@@ -138,7 +138,7 @@
         "found": 4,
         "sound": true,
         "equal": false,
-        "seconds": 0.07
+        "seconds": 0.01
       },
       {
         "halvings": 2,
@@ -147,7 +147,7 @@
         "found": 6,
         "sound": true,
         "equal": true,
-        "seconds": 0.06
+        "seconds": 0.0
       }
     ]
   },
@@ -158,12 +158,12 @@
     "refinement": [
       {
         "halvings": 0,
-        "abstract_states": 25,
-        "mixed_states": 17,
+        "abstract_states": 180,
+        "mixed_states": 113,
         "found": 4,
         "sound": true,
         "equal": false,
-        "seconds": 0.02
+        "seconds": 1.66
       },
       {
         "halvings": 1,
@@ -172,7 +172,7 @@
         "found": 4,
         "sound": true,
         "equal": false,
-        "seconds": 0.02
+        "seconds": 0.0
       },
       {
         "halvings": 2,
@@ -181,7 +181,7 @@
         "found": 6,
         "sound": true,
         "equal": true,
-        "seconds": 0.02
+        "seconds": 0.0
       }
     ]
   },
@@ -192,12 +192,12 @@
     "refinement": [
       {
         "halvings": 0,
-        "abstract_states": 25,
-        "mixed_states": 17,
+        "abstract_states": 180,
+        "mixed_states": 113,
         "found": 4,
         "sound": true,
         "equal": false,
-        "seconds": 0.04
+        "seconds": 1.7
       },
       {
         "halvings": 1,
@@ -206,7 +206,7 @@
         "found": 4,
         "sound": true,
         "equal": false,
-        "seconds": 0.04
+        "seconds": 0.01
       },
       {
         "halvings": 2,
@@ -215,7 +215,7 @@
         "found": 4,
         "sound": true,
         "equal": false,
-        "seconds": 0.04
+        "seconds": 0.0
       },
       {
         "halvings": 3,
@@ -224,7 +224,7 @@
         "found": 6,
         "sound": true,
         "equal": true,
-        "seconds": 0.04
+        "seconds": 0.0
       }
     ]
   },
@@ -256,7 +256,7 @@
         "found": 9,
         "sound": true,
         "equal": false,
-        "seconds": 0.24
+        "seconds": 0.23
       },
       {
         "halvings": 1,
@@ -265,7 +265,7 @@
         "found": 9,
         "sound": true,
         "equal": false,
-        "seconds": 0.26
+        "seconds": 0.24
       },
       {
         "halvings": 2,

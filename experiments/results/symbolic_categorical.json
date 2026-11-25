@@ -1,0 +1,53 @@
+{
+  "channel-3-0.85": {
+    "abstract_states": 61,
+    "mixed_states": 10,
+    "commit_actions": [
+      "commit-v1",
+      "commit-v2",
+      "commit-v3"
+    ],
+    "commit_landmarks": [
+      "chose(commit-v1) | chose(commit-v2) | chose(commit-v3)"
+    ],
+    "exact_commit_landmarks": [
+      "chose(commit-v1) | chose(commit-v2) | chose(commit-v3)"
+    ],
+    "graph_lossy_merges": 0,
+    "seconds": 0.0
+  },
+  "mine-4-0.85": {
+    "abstract_states": 119,
+    "mixed_states": 19,
+    "commit_actions": [
+      "commit-v1",
+      "commit-v2",
+      "commit-v3",
+      "commit-v4"
+    ],
+    "commit_landmarks": [
+      "chose(commit-v1) | chose(commit-v2) | chose(commit-v3) | chose(commit-v4)"
+    ],
+    "exact_commit_landmarks": [
+      "chose(commit-v1) | chose(commit-v2) | chose(commit-v3) | chose(commit-v4)"
+    ],
+    "graph_lossy_merges": 0,
+    "seconds": 0.0
+  },
+  "mine-9-0.85": {
+    "abstract_states": 3670,
+    "mixed_states": 416,
+    "commit_actions": [
+      "commit-v5",
+      "commit-v8"
+    ],
+    "commit_landmarks": [
+      "chose(commit-v5) | chose(commit-v8)"
+    ],
+    "exact_commit_landmarks": [
+      "chose(commit-v5) | chose(commit-v8)"
+    ],
+    "graph_lossy_merges": 8,
+    "seconds": 8.2
+  }
+}

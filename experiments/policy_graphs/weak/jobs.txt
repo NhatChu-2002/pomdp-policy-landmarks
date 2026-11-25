@@ -1,0 +1,4 @@
+rocksample 4 4 1 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/weak/rocksample-4-4-s1-eff5.json
+rocksample 4 4 3 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/weak/rocksample-4-4-s3-eff5.json
+rocksample 5 5 1 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/weak/rocksample-5-5-s1-eff5.json
+rocksample 7 8 1 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/weak/rocksample-7-8-s1-eff5.json

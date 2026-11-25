@@ -20,3 +20,6 @@ scratch/
 .vs/
 .vscode/
 **/.claude/
+
+# alpha-vectors of weak-sensor RockSample models are 50-500 MB: regenerate with EXPORT_ALPHAS=1
+experiments/policy_graphs/weak/*.alphas.json

@@ -795,6 +795,8 @@ def exp_symbolic() -> dict:
     for f in sorted((HERE / "policy_graphs" / "alphas").glob("*.alphas.json")):
         name = f.name.replace(".alphas.json", "")
         g = extraction.load(HERE / "policy_graphs" / f"{name}.json")
+        if g["problem"] == "probe":
+            continue                                         # see exp_symbolic_categorical
         model = sy.Model(g, json.loads(f.read_text()))
         exact_ctrl = extraction.controller(g)
         exact_sg = StateGraph(exact_ctrl)
@@ -816,13 +818,47 @@ def exp_symbolic() -> dict:
     return rows
 
 
+def exp_symbolic_categorical() -> dict:
+    """R3 on one categorical variable (Channel, Mine): coordinates are log-weights, so a
+    cell fixes the net hits on each value. Facts here mean net evidence, not the exact
+    graph's marginal levels, so we compare what both can state exactly: which values
+    the policy may commit to, and whether committing is a landmark."""
+    from policy_landmarks import symbolic as sy
+    rows = {}
+    for name in ("channel-3-0.85", "mine-4-0.85", "mine-9-0.85"):
+        f = HERE / "policy_graphs" / "alphas" / f"{name}.alphas.json"
+        g = extraction.load(HERE / "policy_graphs" / f"{name}.json")
+        model = sy.Model(g, json.loads(f.read_text()))
+        exact = StateGraph(extraction.controller(g))
+        exact_commit = sorted(" | ".join(sorted(k)) for k in exact.landmarks()
+                              if any(x.startswith("chose") for x in k))
+        t0 = time.perf_counter()
+        try:
+            # lattice model: exact at lattice points inside the window, tails summarize the rest
+            ctrl = sy.abstract_controller(model, sy.unit_grid(model, 0, levels=6), max_states=200_000,
+                                          points=True)
+        except RuntimeError as e:
+            rows[name] = {"error": str(e), "seconds": round(time.perf_counter() - t0, 1)}
+            continue
+        sg = StateGraph(ctrl)
+        ends = 0 in sg.alive
+        commit = (sorted(" | ".join(sorted(k)) for k in sg.landmarks(max_size=1, complete=("chose",))
+                         if any(x.startswith("chose") for x in k)) if ends else None)
+        rows[name] = {"abstract_states": ctrl["abstract_states"], "mixed_states": ctrl["mixed_states"],
+                      "commit_actions": sorted({a for _, a in ctrl["commits"]}),
+                      "commit_landmarks": commit, "exact_commit_landmarks": exact_commit,
+                      "graph_lossy_merges": (g.get("merges") or {}).get("lossy"),
+                      "seconds": round(time.perf_counter() - t0, 1)}
+    return rows
+
+
 EXPERIMENTS = {"main": exp_main, "exactness": exp_exactness, "ablation": exp_ablation,
                "induced": exp_induced, "mutation": exp_mutation, "scaling": exp_scaling,
                "extracted": exp_extracted, "exact": exp_exact, "bins": exp_bins,
                "qmdp": exp_qmdp, "pbvi": exp_pbvi, "mutants": exp_mutants, "kept": exp_kept,
                "large": exp_large, "variants": exp_variants, "monitor": exp_monitor,
                "knowledge": exp_knowledge, "sampling": exp_sampling,
-               "symbolic": exp_symbolic}
+               "symbolic": exp_symbolic, "symbolic_categorical": exp_symbolic_categorical}
 
 
 def main(argv: list) -> int:

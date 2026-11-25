@@ -43,6 +43,12 @@ class Model:
         elif self.problem == "sensor":
             self.vars, self.u = ["sensor-a", "sensor-b"], math.log(g["p_correct"] / (1 - g["p_correct"]))
             self.terminal = {a for a in self.actions if a.startswith("commit")}
+        elif self.problem == "probe":
+            # one categorical variable: coordinate v is the log-weight of value v (belief
+            # = softmax of the weights); probing v adds +-u to coordinate v only
+            self.vars = [s for s in self.states if s != "done"]
+            self.u = math.log(g["p_correct"] / (1 - g["p_correct"]))
+            self.terminal = {a for a in self.actions if a.startswith("commit")}
         else:
             k = len(next(s for s in self.states if s != "terminal").split("|")[1])
             self.vars, self.u = [f"rock{i + 1}" for i in range(k)], None
@@ -58,6 +64,8 @@ class Model:
                 pos, bits = None, (s == "left",)
             elif self.problem == "sensor":
                 pos, bits = None, (s.startswith("a-ok"), s.endswith("b-ok"))
+            elif self.problem == "probe":
+                pos, bits = None, tuple(v == s for v in self.vars)
             else:
                 xy, b = s.split("|")
                 pos, bits = tuple(map(int, xy.split(","))), tuple(c == "1" for c in b)
@@ -72,22 +80,36 @@ class Model:
             b[i] = math.prod(p if bit else 1 - p for p, bit in zip(probs, bits))
         return b
 
+    def corner(self, pos, coords) -> np.ndarray:
+        """A belief (or, for a categorical variable, a positive multiple of one) at a
+        corner of a box. Comparisons of alpha-vectors keep their sign under positive
+        scaling, so unnormalized weights are enough."""
+        if self.problem != "probe":
+            return self.belief(pos, [sigmoid(c) for c in coords])
+        b = np.zeros(len(self.states))
+        top = max(c for c in coords if c not in (INF, -INF)) if any(c not in (INF, -INF) for c in coords) else 0.0
+        for i, bits in self.rows[pos]:
+            c = coords[bits.index(True)]
+            c = top + 60.0 if c == INF else c       # shortcut: +inf as a weight e^60 above the rest
+            b[i] = 0.0 if c == -INF else math.exp(c - top)
+        return b
+
     def possible_actions(self, pos, box) -> set:
         """Actions the alpha-vector policy can choose at some belief in the box
         (sound over-approximation: an action is dropped only if each of its vectors is
         beaten everywhere in the box by one vector of another action)."""
-        corners = [self.belief(pos, [sigmoid(c) for c in corner])
-                   for corner in itertools.product(*[(lo, hi) for lo, hi in box])]
+        corners = [self.corner(pos, corner)
+                   for corner in itertools.product(*[(lo,) if lo == hi else (lo, hi) for lo, hi in box])]
         M = self.A @ np.array(corners).T                     # vectors x corners
         acts = np.array(self.actions)
-        out = set()
-        for a in set(self.actions):
-            mine, other = M[acts == a], M[acts != a]
-            if other.size == 0:
-                out.add(a)
-                continue
-            # vector i of a is dominated if some other vector is larger at every corner
-            dominated = (other[None, :, :] > mine[:, None, :]).all(axis=2).any(axis=1)
+        winners = np.unique(M.argmax(axis=0))                # best vector at each corner
+        out = set(acts[winners])                             # chosen at a corner: possible
+        W = M[winners]
+        for a in set(self.actions) - out:
+            # a is dropped only if each of its vectors is beaten at every corner by one
+            # corner winner (testing only winners keeps the check sound and fast)
+            mine = M[acts == a]
+            dominated = (W[None, :, :] > mine[:, None, :]).all(axis=2).any(axis=1)
             if not dominated.all():
                 out.add(a)
         return out
@@ -96,6 +118,10 @@ class Model:
         """[(observation, variable index or None, shift or None, new pos, terminal)]"""
         if a in self.terminal:
             return [("commit", None, None, pos, True)]
+        if self.problem == "probe":
+            v = self.vars.index(a[len("probe-"):])
+            return [(f"hit-{self.vars[v]}", v, +self.u, pos, False),
+                    (f"miss-{self.vars[v]}", v, -self.u, pos, False)]
         if self.problem in ("tiger", "sensor"):
             v = 0 if self.problem == "tiger" else (0 if a == "read-a" else 1)
             plus = "left" if self.problem == "tiger" else f"{a[-1]}-agree"
@@ -158,7 +184,8 @@ def level_name(model: Model, v: int, lo: float, hi: float) -> str:
     return "unk" if k == 0 else ("pos" if mid > 0 else "neg") + str(k)
 
 
-def abstract_controller(model: Model, grid: Grid, max_states: int = 200_000) -> dict:
+def abstract_controller(model: Model, grid: Grid, max_states: int = 200_000,
+                        points: bool = False) -> dict:
     """BFS over abstract states (observable part, cell per variable) reachable under
     the over-approximated action sets. Returns a controller in the format of
     extraction.controller (facts: ev-V(level), at(cell), plus cx-V(i) for the cell)."""
@@ -172,12 +199,30 @@ def abstract_controller(model: Model, grid: Grid, max_states: int = 200_000) -> 
             out.add(f"at(c{pos[0]}-{pos[1]})")
         return frozenset(out)
 
+    n_cells = [len(e) - 1 for e in grid.edges]
+    zero = grid.cell(0, 0.0)
+
+    def canonical(cells):
+        """Categorical log-weights are defined up to a common shift: move the leading
+        finite value back to the start cell. Shifting only downward keeps the lower
+        tail sound (a shifted tail stays inside the tail)."""
+        if model.problem != "probe" or any(c == n_cells[v] - 1 for v, c in enumerate(cells)):
+            return cells
+        finite = [c for c in cells if c > 0]
+        d = max(finite) - zero if finite else 0
+        return tuple(0 if c == 0 else max(c - d, 0) for c in cells) if d > 0 else cells
+
     start = (model.start(), tuple(grid.cell(v, 0.0) for v in range(len(model.vars))))
     seen, frontier = {start}, [start]
     edges, commits, mixed = set(), set(), 0
     while frontier:
         pos, cells = frontier.pop()
         box = [grid.interval(v, c) for v, c in enumerate(cells)]
+        if points:
+            # Lattice models (every observation shifts by +-u from 0) reach only the lattice
+            # point at the center of a finite unit cell: use it exactly; tails stay boxes.
+            box = [(m, m) if lo != -INF and hi != INF else (lo, hi)
+                   for lo, hi in box for m in [(lo + hi) / 2]]
         acts = model.possible_actions(pos, box)
         mixed += len(acts) > 1
         src = facts(pos, cells)
@@ -201,7 +246,7 @@ def abstract_controller(model: Model, grid: Grid, max_states: int = 200_000) -> 
                 if model.problem == "rocksample" and a == "1" and v is not None:
                     effect = frozenset({f"sampled(rock{v + 1})"})
                 for t in targets:
-                    nxt = (npos, t)
+                    nxt = (npos, canonical(t))
                     edges.add((src, a, obs, facts(*nxt), effect))
                     if nxt not in seen:
                         seen.add(nxt)
