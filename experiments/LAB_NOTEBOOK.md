@@ -203,3 +203,10 @@ work or what we claim), **DROP** (tried, not worth reporting), **OPEN** (unresol
   near-identical returns, different information-gathering strategies.
 - Verdict: **PAPER** (RQ4 headline; answers reviewer B's "no case where landmarks
   show what value/actions do not").
+
+### E13 (update). PBVI, one model per process, 3-minute cap
+- Result: after 15 of 25 models, PBVI finished 3 (Tiger 0.6, 0.65 and one more
+  Tiger) and timed out on the other Tiger accuracies and on all 8 RockSample maps.
+- Verdict: **DROP** from the paper's claims; mention as a limitation (no second
+  point-based solver beyond QMDP). If a second solver is needed later, try HSVI or a
+  newer PBVI with a time limit, or Perseus.
