@@ -689,11 +689,50 @@ def exp_monitor() -> dict:
     return rows
 
 
+def _confidence_before_acting(g: dict, var: str, tol: float = 1e-4) -> float | None:
+    """Largest c such that every run that ends first believes `var` or its negation
+    with probability >= c ("knows" it in the knowledge view with eps = 1 - c).
+    Bisection on eps; a K-or-Knot landmark only gets easier as eps grows."""
+    def known(eps):
+        sg = StateGraph(extraction.controller(g, eps=eps))
+        return 0 in sg.alive and sg.is_landmark([f"kn-{var}(K)", f"kn-{var}(Knot)"])
+    lo, hi = 0.0, 0.5                             # eps; at 0.5 every belief is "known"
+    if not known(hi - 1e-9):
+        return None
+    while hi - lo > tol:
+        mid = (lo + hi) / 2
+        lo, hi = (lo, mid) if known(mid) else (mid, hi)
+    return round(1 - hi, 4)
+
+
+def exp_knowledge() -> dict:
+    """Knowledge view (eps = 0.05) landmarks, and the confidence each policy always
+    reaches about each hidden variable before the episode ends."""
+    rows = {}
+    for path in sorted((HERE / "policy_graphs").glob("*.json")):
+        g = extraction.load(path)
+        sg = StateGraph(extraction.controller(g, eps=0.05))
+        if 0 not in sg.alive:
+            rows[path.stem] = {"terminates": False}
+            continue
+        lms = [k for k in sg.landmarks(max_size=1)
+               if all(f.startswith(("kn-", "chose", "at(")) for f in k) and not any(f.endswith("(U)") for f in k)]
+        nat = {pair for pair, kinds in sg.orderings(lms).items() if "nat" in kinds}
+        show_ = lambda k: " | ".join(sorted(k))  # noqa: E731
+        conf = {v: _confidence_before_acting(g, v) for v in extraction.hidden_vars(g)}
+        rows[path.stem] = {"landmarks": sorted(show_(k) for k in lms),
+                           "orderings": sorted(f"{show_(a)} < {show_(b)}" for a, b in reduction(nat)),
+                           "confidence_before_acting": conf,
+                           "min_confidence": min((c for c in conf.values() if c is not None), default=None)}
+    return rows
+
+
 EXPERIMENTS = {"main": exp_main, "exactness": exp_exactness, "ablation": exp_ablation,
                "induced": exp_induced, "mutation": exp_mutation, "scaling": exp_scaling,
                "extracted": exp_extracted, "exact": exp_exact, "bins": exp_bins,
                "qmdp": exp_qmdp, "pbvi": exp_pbvi, "mutants": exp_mutants, "kept": exp_kept,
-               "large": exp_large, "variants": exp_variants, "monitor": exp_monitor}
+               "large": exp_large, "variants": exp_variants, "monitor": exp_monitor,
+               "knowledge": exp_knowledge}
 
 
 def main(argv: list) -> int:

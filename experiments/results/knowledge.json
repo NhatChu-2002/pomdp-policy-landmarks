@@ -1,0 +1,487 @@
+{
+  "channel-3-0.85": {
+    "landmarks": [
+      "chose(commit-v1) | chose(commit-v2) | chose(commit-v3)",
+      "kn-v1(K) | kn-v1(Knot)"
+    ],
+    "orderings": [
+      "kn-v1(K) | kn-v1(Knot) < chose(commit-v1) | chose(commit-v2) | chose(commit-v3)"
+    ],
+    "confidence_before_acting": {
+      "v1": 0.9646,
+      "v2": 0.9413,
+      "v3": 0.9413
+    },
+    "min_confidence": 0.9413
+  },
+  "mine-4-0.85": {
+    "landmarks": [
+      "chose(commit-v1) | chose(commit-v2) | chose(commit-v3) | chose(commit-v4)",
+      "kn-v4(K) | kn-v4(Knot)"
+    ],
+    "orderings": [
+      "kn-v4(K) | kn-v4(Knot) < chose(commit-v1) | chose(commit-v2) | chose(commit-v3) | chose(commit-v4)"
+    ],
+    "confidence_before_acting": {
+      "v1": 0.9146,
+      "v2": 0.9146,
+      "v3": 0.9365,
+      "v4": 0.9595
+    },
+    "min_confidence": 0.9146
+  },
+  "mine-9-0.85": {
+    "landmarks": [
+      "chose(commit-v5) | chose(commit-v8)",
+      "kn-v1(Knot)",
+      "kn-v2(Knot)",
+      "kn-v3(Knot)",
+      "kn-v4(Knot)",
+      "kn-v6(Knot)",
+      "kn-v7(Knot)",
+      "kn-v9(Knot)"
+    ],
+    "orderings": [
+      "kn-v1(Knot) < chose(commit-v5) | chose(commit-v8)",
+      "kn-v2(Knot) < chose(commit-v5) | chose(commit-v8)",
+      "kn-v3(Knot) < chose(commit-v5) | chose(commit-v8)",
+      "kn-v4(Knot) < chose(commit-v5) | chose(commit-v8)",
+      "kn-v6(Knot) < chose(commit-v5) | chose(commit-v8)",
+      "kn-v7(Knot) < chose(commit-v5) | chose(commit-v8)",
+      "kn-v9(Knot) < chose(commit-v5) | chose(commit-v8)"
+    ],
+    "confidence_before_acting": {
+      "v1": 0.9745,
+      "v2": 0.9745,
+      "v3": 0.9745,
+      "v4": 0.9745,
+      "v5": 0.8889,
+      "v6": 0.9745,
+      "v7": 0.9745,
+      "v8": 0.8889,
+      "v9": 0.9745
+    },
+    "min_confidence": 0.8889
+  },
+  "rocksample-4-4-s1": {
+    "landmarks": [
+      "at(c2-1)",
+      "at(c3-1)",
+      "kn-rock1(Knot)",
+      "kn-rock2(Knot)",
+      "kn-rock3(Knot)",
+      "kn-rock4(Knot)"
+    ],
+    "orderings": [
+      "at(c2-1) < kn-rock3(Knot)",
+      "at(c3-1) < kn-rock1(Knot)",
+      "kn-rock1(Knot) < kn-rock2(Knot)",
+      "kn-rock3(Knot) < at(c3-1)",
+      "kn-rock4(Knot) < at(c2-1)"
+    ],
+    "confidence_before_acting": {
+      "rock1": 0.9999,
+      "rock2": 0.9973,
+      "rock3": 0.9999,
+      "rock4": 0.9829
+    },
+    "min_confidence": 0.9829
+  },
+  "rocksample-4-4-s2": {
+    "landmarks": [
+      "at(c2-1)",
+      "at(c3-3)",
+      "kn-rock1(Knot)",
+      "kn-rock2(Knot)",
+      "kn-rock3(Knot)",
+      "kn-rock4(Knot)"
+    ],
+    "orderings": [
+      "at(c2-1) < kn-rock3(Knot)",
+      "at(c3-3) < kn-rock1(Knot)",
+      "kn-rock1(Knot) < kn-rock4(Knot)",
+      "kn-rock3(Knot) < at(c3-3)",
+      "kn-rock3(Knot) < kn-rock2(Knot)"
+    ],
+    "confidence_before_acting": {
+      "rock1": 0.9999,
+      "rock2": 0.9627,
+      "rock3": 0.9829,
+      "rock4": 0.9829
+    },
+    "min_confidence": 0.9627
+  },
+  "rocksample-4-4-s3": {
+    "landmarks": [
+      "at(c1-2)",
+      "at(c2-4)",
+      "at(c3-4)",
+      "at(c4-4)",
+      "kn-rock1(Knot)",
+      "kn-rock2(Knot)",
+      "kn-rock3(Knot)",
+      "kn-rock4(Knot)"
+    ],
+    "orderings": [
+      "at(c1-2) < kn-rock3(Knot)",
+      "at(c2-4) < at(c3-4)",
+      "at(c3-4) < at(c4-4)",
+      "at(c4-4) < kn-rock4(Knot)",
+      "kn-rock1(Knot) < at(c3-4)",
+      "kn-rock2(Knot) < at(c2-4)",
+      "kn-rock2(Knot) < kn-rock1(Knot)",
+      "kn-rock3(Knot) < kn-rock2(Knot)"
+    ],
+    "confidence_before_acting": {
+      "rock1": 0.9829,
+      "rock2": 0.9829,
+      "rock3": 0.9829,
+      "rock4": 0.9999
+    },
+    "min_confidence": 0.9829
+  },
+  "rocksample-4-4-s4": {
+    "landmarks": [
+      "at(c3-4)",
+      "at(c4-4)",
+      "kn-rock1(Knot)",
+      "kn-rock2(Knot)",
+      "kn-rock3(Knot)",
+      "kn-rock4(Knot)"
+    ],
+    "orderings": [
+      "at(c3-4) < kn-rock2(Knot)",
+      "kn-rock1(Knot) < kn-rock4(Knot)",
+      "kn-rock2(Knot) < at(c4-4)",
+      "kn-rock3(Knot) < at(c4-4)",
+      "kn-rock4(Knot) < at(c3-4)",
+      "kn-rock4(Knot) < kn-rock3(Knot)"
+    ],
+    "confidence_before_acting": {
+      "rock1": 0.9665,
+      "rock2": 0.9999,
+      "rock3": 0.9665,
+      "rock4": 0.9829
+    },
+    "min_confidence": 0.9665
+  },
+  "rocksample-4-4-s5": {
+    "landmarks": [
+      "at(c1-2)",
+      "at(c2-2)",
+      "at(c2-3)",
+      "at(c2-4)",
+      "at(c3-4)",
+      "at(c4-4)",
+      "kn-rock1(Knot)",
+      "kn-rock2(Knot)",
+      "kn-rock3(Knot)",
+      "kn-rock4(Knot)"
+    ],
+    "orderings": [
+      "at(c1-2) < kn-rock4(Knot)",
+      "at(c2-2) < kn-rock2(Knot)",
+      "at(c2-3) < at(c2-4)",
+      "at(c2-4) < kn-rock3(Knot)",
+      "at(c3-4) < at(c4-4)",
+      "at(c4-4) < kn-rock1(Knot)",
+      "kn-rock2(Knot) < at(c2-3)",
+      "kn-rock3(Knot) < at(c3-4)",
+      "kn-rock4(Knot) < at(c2-2)"
+    ],
+    "confidence_before_acting": {
+      "rock1": 0.9999,
+      "rock2": 0.9999,
+      "rock3": 0.9999,
+      "rock4": 0.9999
+    },
+    "min_confidence": 0.9999
+  },
+  "rocksample-5-5-s1": {
+    "landmarks": [
+      "at(c2-3)",
+      "at(c2-4)",
+      "kn-rock1(Knot)",
+      "kn-rock2(Knot)",
+      "kn-rock3(Knot)",
+      "kn-rock4(Knot)",
+      "kn-rock5(Knot)"
+    ],
+    "orderings": [
+      "at(c2-3) < at(c2-4)",
+      "at(c2-4) < kn-rock1(Knot)",
+      "kn-rock1(Knot) < kn-rock3(Knot)",
+      "kn-rock2(Knot) < at(c2-3)",
+      "kn-rock4(Knot) < kn-rock2(Knot)",
+      "kn-rock4(Knot) < kn-rock5(Knot)",
+      "kn-rock5(Knot) < at(c2-3)"
+    ],
+    "confidence_before_acting": {
+      "rock1": 0.9999,
+      "rock2": 0.9829,
+      "rock3": 0.9761,
+      "rock4": 0.9829,
+      "rock5": 0.9761
+    },
+    "min_confidence": 0.9761
+  },
+  "rocksample-5-5-s2": {
+    "landmarks": [
+      "at(c2-1)",
+      "kn-rock1(Knot)",
+      "kn-rock2(Knot)",
+      "kn-rock3(Knot)",
+      "kn-rock4(Knot)",
+      "kn-rock5(Knot)"
+    ],
+    "orderings": [
+      "at(c2-1) < kn-rock1(Knot)",
+      "kn-rock1(Knot) < kn-rock2(Knot)",
+      "kn-rock1(Knot) < kn-rock4(Knot)",
+      "kn-rock2(Knot) < kn-rock3(Knot)",
+      "kn-rock4(Knot) < kn-rock5(Knot)"
+    ],
+    "confidence_before_acting": {
+      "rock1": 0.9829,
+      "rock2": 0.9761,
+      "rock3": 0.9627,
+      "rock4": 0.9829,
+      "rock5": 0.9829
+    },
+    "min_confidence": 0.9627
+  },
+  "rocksample-5-5-s3": {
+    "landmarks": [
+      "at(c3-2)",
+      "at(c4-2)",
+      "kn-rock1(Knot)",
+      "kn-rock2(Knot)",
+      "kn-rock4(Knot)",
+      "kn-rock5(Knot)"
+    ],
+    "orderings": [
+      "at(c3-2) < at(c4-2)",
+      "at(c4-2) < kn-rock4(Knot)",
+      "kn-rock2(Knot) < at(c3-2)",
+      "kn-rock2(Knot) < kn-rock5(Knot)",
+      "kn-rock4(Knot) < kn-rock1(Knot)",
+      "kn-rock5(Knot) < at(c4-2)"
+    ],
+    "confidence_before_acting": {
+      "rock1": 0.9829,
+      "rock2": 0.9665,
+      "rock3": 0.9481,
+      "rock4": 0.9999,
+      "rock5": 0.9829
+    },
+    "min_confidence": 0.9481
+  },
+  "rocksample-7-8-s1": {
+    "landmarks": [
+      "at(c1-2)",
+      "at(c6-5)",
+      "kn-rock1(Knot)",
+      "kn-rock2(Knot)",
+      "kn-rock3(Knot)",
+      "kn-rock4(Knot)",
+      "kn-rock5(Knot)",
+      "kn-rock7(Knot)"
+    ],
+    "orderings": [
+      "at(c1-2) < kn-rock1(Knot)",
+      "kn-rock1(Knot) < kn-rock5(Knot)",
+      "kn-rock1(Knot) < kn-rock7(Knot)",
+      "kn-rock2(Knot) < kn-rock4(Knot)",
+      "kn-rock3(Knot) < kn-rock4(Knot)",
+      "kn-rock4(Knot) < at(c6-5)",
+      "kn-rock5(Knot) < kn-rock4(Knot)",
+      "kn-rock7(Knot) < kn-rock2(Knot)",
+      "kn-rock7(Knot) < kn-rock3(Knot)"
+    ],
+    "confidence_before_acting": {
+      "rock1": 0.9829,
+      "rock2": 0.9829,
+      "rock3": 0.9761,
+      "rock4": 0.9506,
+      "rock5": 0.9829,
+      "rock6": 0.9282,
+      "rock7": 0.9829,
+      "rock8": 0.919
+    },
+    "min_confidence": 0.919
+  },
+  "sensor-0.75": {
+    "landmarks": [
+      "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)"
+    ],
+    "orderings": [],
+    "confidence_before_acting": {
+      "sensor-a": 0.9,
+      "sensor-b": 0.9
+    },
+    "min_confidence": 0.9
+  },
+  "sensor-0.8": {
+    "landmarks": [
+      "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)"
+    ],
+    "orderings": [],
+    "confidence_before_acting": {
+      "sensor-a": 0.9412,
+      "sensor-b": 0.9412
+    },
+    "min_confidence": 0.9412
+  },
+  "sensor-0.85": {
+    "landmarks": [
+      "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
+      "kn-sensor-a(K) | kn-sensor-a(Knot)",
+      "kn-sensor-b(K) | kn-sensor-b(Knot)"
+    ],
+    "orderings": [
+      "kn-sensor-a(K) | kn-sensor-a(Knot) < chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
+      "kn-sensor-b(K) | kn-sensor-b(Knot) < chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)"
+    ],
+    "confidence_before_acting": {
+      "sensor-a": 0.9698,
+      "sensor-b": 0.9698
+    },
+    "min_confidence": 0.9698
+  },
+  "sensor-0.9": {
+    "landmarks": [
+      "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
+      "kn-sensor-a(K) | kn-sensor-a(Knot)",
+      "kn-sensor-b(K) | kn-sensor-b(Knot)"
+    ],
+    "orderings": [
+      "kn-sensor-a(K) | kn-sensor-a(Knot) < chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
+      "kn-sensor-b(K) | kn-sensor-b(Knot) < chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)"
+    ],
+    "confidence_before_acting": {
+      "sensor-a": 0.9878,
+      "sensor-b": 0.9878
+    },
+    "min_confidence": 0.9878
+  },
+  "sensor-0.95": {
+    "landmarks": [
+      "chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)",
+      "kn-sensor-a(K) | kn-sensor-a(Knot)",
+      "kn-sensor-b(K) | kn-sensor-b(Knot)"
+    ],
+    "orderings": [
+      "kn-sensor-a(K) | kn-sensor-a(Knot) < kn-sensor-b(K) | kn-sensor-b(Knot)",
+      "kn-sensor-b(K) | kn-sensor-b(Knot) < chose(commit-a-faulty-b-faulty) | chose(commit-a-faulty-b-ok) | chose(commit-a-ok-b-faulty) | chose(commit-a-ok-b-ok)"
+    ],
+    "confidence_before_acting": {
+      "sensor-a": 0.95,
+      "sensor-b": 0.95
+    },
+    "min_confidence": 0.95
+  },
+  "tiger-0.6": {
+    "landmarks": [
+      "chose(left) | chose(right)",
+      "kn-direction(K) | kn-direction(Knot)"
+    ],
+    "orderings": [
+      "kn-direction(K) | kn-direction(Knot) < chose(left) | chose(right)"
+    ],
+    "confidence_before_acting": {
+      "direction": 0.9624
+    },
+    "min_confidence": 0.9624
+  },
+  "tiger-0.65": {
+    "landmarks": [
+      "chose(left) | chose(right)",
+      "kn-direction(K) | kn-direction(Knot)"
+    ],
+    "orderings": [
+      "kn-direction(K) | kn-direction(Knot) < chose(left) | chose(right)"
+    ],
+    "confidence_before_acting": {
+      "direction": 0.9762
+    },
+    "min_confidence": 0.9762
+  },
+  "tiger-0.7": {
+    "landmarks": [
+      "chose(left) | chose(right)",
+      "kn-direction(K) | kn-direction(Knot)"
+    ],
+    "orderings": [
+      "kn-direction(K) | kn-direction(Knot) < chose(left) | chose(right)"
+    ],
+    "confidence_before_acting": {
+      "direction": 0.9673
+    },
+    "min_confidence": 0.9673
+  },
+  "tiger-0.75": {
+    "landmarks": [
+      "chose(left) | chose(right)",
+      "kn-direction(K) | kn-direction(Knot)"
+    ],
+    "orderings": [
+      "kn-direction(K) | kn-direction(Knot) < chose(left) | chose(right)"
+    ],
+    "confidence_before_acting": {
+      "direction": 0.9642
+    },
+    "min_confidence": 0.9642
+  },
+  "tiger-0.8": {
+    "landmarks": [
+      "chose(left) | chose(right)",
+      "kn-direction(K) | kn-direction(Knot)"
+    ],
+    "orderings": [
+      "kn-direction(K) | kn-direction(Knot) < chose(left) | chose(right)"
+    ],
+    "confidence_before_acting": {
+      "direction": 0.9846
+    },
+    "min_confidence": 0.9846
+  },
+  "tiger-0.85": {
+    "landmarks": [
+      "chose(left) | chose(right)",
+      "kn-direction(K) | kn-direction(Knot)"
+    ],
+    "orderings": [
+      "kn-direction(K) | kn-direction(Knot) < chose(left) | chose(right)"
+    ],
+    "confidence_before_acting": {
+      "direction": 0.9698
+    },
+    "min_confidence": 0.9698
+  },
+  "tiger-0.9": {
+    "landmarks": [
+      "chose(left) | chose(right)",
+      "kn-direction(K) | kn-direction(Knot)"
+    ],
+    "orderings": [
+      "kn-direction(K) | kn-direction(Knot) < chose(left) | chose(right)"
+    ],
+    "confidence_before_acting": {
+      "direction": 0.9878
+    },
+    "min_confidence": 0.9878
+  },
+  "tiger-0.95": {
+    "landmarks": [
+      "chose(left) | chose(right)",
+      "kn-direction(K) | kn-direction(Knot)"
+    ],
+    "orderings": [
+      "kn-direction(K) | kn-direction(Knot) < chose(left) | chose(right)"
+    ],
+    "confidence_before_acting": {
+      "direction": 0.9972
+    },
+    "min_confidence": 0.9972
+  }
+}

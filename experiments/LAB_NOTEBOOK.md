@@ -225,3 +225,19 @@ work or what we claim), **DROP** (tried, not worth reporting), **OPEN** (unresol
   every derived quantity from a graph with lossy merges needs a same-policy
   simulation check.
 - Verdict: **LESSON**.
+
+### E20. Re-review of v5 (reviewer B) and exact confidence numbers
+- Result: B 7/10 (accept, from 6). New WRONG (minor): the Sensor q = 0.8 policy
+  diagnoses at 0.94, not 0.9. Remaining: Tag's 16% never-ending runs (shuttling
+  between (9,1) and (10,1)) look like a merge loop or a second defective policy;
+  larger models are unconverged (gaps 7.0 and 10.4); no Monte Carlo baseline; the
+  knowledge view is a threshold on the same beliefs (presentation, not new
+  information); no script for its numbers.
+- Done: `run_paper.py knowledge` computes, by bisection on eps, the confidence each
+  policy always reaches about each variable before the episode ends
+  (`results/knowledge.json`): Sensor 0.90 / 0.94 / 0.97 / 0.99 / 0.95 for q = 0.75
+  ... 0.95; Tiger 0.962-0.997; RockSample 0.919-0.9999 per rock; Channel 0.94-0.96;
+  Mine-2x2 0.91-0.96; Mine-3x3 0.89-0.97.
+- Learned: report exact values, not grid steps; present the knowledge view as a
+  shared vocabulary with a per-run guarantee, not as new information.
+- Verdict: **PAPER** (numbers) + **LESSON**.
