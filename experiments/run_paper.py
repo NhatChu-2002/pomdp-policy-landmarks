@@ -878,12 +878,16 @@ def exp_cegar(names=("rocksample-4-4-s5",)) -> dict:
                 t = time.perf_counter()
                 res = cegar.verify(m, grid, rules, banned, WORK / "cegar" / name, edges, max_iter=300)
                 results.append({"candidate": " | ".join(facts), "exact": truth, "proven": res["landmark"],
+                                "certified_counterexample": res.get("certified"),
                                 "iterations": res["iterations"], "seconds": round(time.perf_counter() - t, 1)})
         proven = [r for r in results if r["proven"]]
         rows[name] = {"candidates": len(results), "exact_landmarks": sum(r["exact"] for r in results),
                       "proven": len(proven), "unsound": sum(not r["exact"] for r in proven),
                       "recall": f"{sum(r['exact'] for r in proven)}/{sum(r['exact'] for r in results)}",
                       "undecided": sum(r["proven"] is None for r in results),
+                      "refuted_certified": sum(bool(r["certified_counterexample"]) for r in results),
+                      "refuted_uncertified": sum(r["proven"] is False and not r["certified_counterexample"]
+                                                 for r in results),
                       "rules_initial": n0, "rules_final": len(rules),
                       "seconds": round(time.perf_counter() - t0, 1), "results": results}
     return rows

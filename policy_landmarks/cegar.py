@@ -125,6 +125,30 @@ def compile_task(model, grid, rules, banned: set, edges, name="cegar"):
     return domain, problem, init
 
 
+def exact_replay(model: Model, grid: Grid, rules: list, steps: list) -> bool:
+    """Is the plan a real run of the policy? Replays it with exact log-odds: each action
+    must be the alpha-vector policy's choice at the exact belief, and each chosen cell
+    must contain the exact value. True certifies that a run of positive probability
+    avoids the candidate, so it is not a landmark."""
+    lam = [0.0] * len(model.vars)
+    for name in steps:
+        i, j, t = name.split("-")[:3]
+        pos, a, _ = rules[int(i[1:])]
+        b = model.corner(pos, lam)
+        if model.actions[int((model.A @ b).argmax())] != a:
+            return False
+        obs, v, shift, npos, term = model.step(pos, a)[int(j[1:])]
+        if term:
+            return True
+        if v is not None and shift is not None:
+            if {lam[v], shift} == {INF, -INF}:
+                return False                                  # observation impossible here
+            lam[v] = lam[v] + shift
+            if grid.cell(v, lam[v]) != int(t[1:]):
+                return False                                  # plan picked a cell never reached
+    return True
+
+
 def verify(model: Model, grid: Grid, rules: list, banned: set, workdir: Path, edges,
            max_iter: int = 200) -> dict:
     """Is `banned` (a set of fact strings such as '(cv-rock4 c1)') a landmark? Refines
@@ -155,7 +179,8 @@ def verify(model: Model, grid: Grid, rules: list, banned: set, workdir: Path, ed
                 cells[v] = int(t[1:])
             pos = npos
         if spurious is None:
-            return {"landmark": False, "iterations": it, "rules": len(rules), "counterexample": steps}
+            return {"landmark": False, "iterations": it, "rules": len(rules), "counterexample": steps,
+                    "certified": exact_replay(model, grid, rules, steps)}
         rpos, a, assign = rules[spurious]
         coarse = [v for v, (kind, _) in assign.items() if kind == "k"]
         # split the coarse variable whose fine cell at the spurious state excludes the action
