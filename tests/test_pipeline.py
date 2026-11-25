@@ -107,3 +107,21 @@ def test_exact_engine_on_a_toy_controller():
     assert order == {(disj, done): {"nat", "gn"}}
     assert not sg.is_landmark(["chose(open-a)"])          # only the pos branch commits
     assert closure({(1, 2), (2, 3)}) == {(1, 2), (2, 3), (1, 3)}
+
+
+def test_empirical_landmarks_and_avoid_probability():
+    """Root -> A (p=0.9) or B (p=0.1) -> end. 'A' survives only runs that miss B."""
+    import random
+    from policy_landmarks import sampling
+    F = frozenset
+    g = {"problem": "toy",
+         "nodes": [{"id": 0, "kind": "inner", "action": "x"}, {"id": 1, "kind": "inner", "action": "x"},
+                   {"id": 2, "kind": "inner", "action": "x"}, {"id": 3, "kind": "terminal", "action": None}],
+         "edges": [{"from": 0, "to": 1, "p": 0.9, "obs": "a"}, {"from": 0, "to": 2, "p": 0.1, "obs": "b"},
+                   {"from": 1, "to": 3, "p": 1.0, "obs": "n"}, {"from": 2, "to": 3, "p": 1.0, "obs": "n"}]}
+    ctrl = {"node_state": {0: F({"s(r)"}), 1: F({"s(a)"}), 2: F({"s(b)"}), 3: F({"terminal"})}}
+    runs = [sampling.run_facts(g, ctrl, random.Random(k)) for k in range(200)]
+    assert all("done" in r for r in runs)
+    emp = sampling.empirical_landmarks(runs, F({"s(r)"}))
+    assert F({"s(a)", "s(b)"}) in emp and F({"done"}) in emp
+    assert abs(sampling.avoid_probability(g, ctrl, F({"s(a)"})) - 0.1) < 1e-9

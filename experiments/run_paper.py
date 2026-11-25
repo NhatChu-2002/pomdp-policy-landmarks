@@ -727,12 +727,65 @@ def exp_knowledge() -> dict:
     return rows
 
 
+def exp_sampling() -> dict:
+    """R1: landmarks from N sampled runs vs the exact graph (single facts and
+    same-predicate pairs). True landmarks always survive; we count the
+    non-landmarks that survive by chance, and compare with the exact survival
+    probability (1 - q)^N, q = P(a run that ends avoids F)."""
+    import random as _random
+    from policy_landmarks import sampling
+    sizes, reps = (5, 10, 20, 50, 100, 300), 10
+    rows = {}
+    paths = sorted((HERE / "policy_graphs").glob("*.json")) + [HERE / "policy_graphs" / "large" / "tag.json"]
+    for path in paths:
+        g = extraction.load(path)
+        ctrl = extraction.controller(g)
+        sg = StateGraph(ctrl)
+        if 0 not in sg.alive:
+            continue
+        exact = set(sg.landmarks(max_size=2, complete=()))
+        initial = sg.facts[0]
+        p_term = extraction.first_hit(g, {n["id"]: 1.0 for n in g["nodes"] if n["kind"] != "inner"})[0]
+        rng = _random.Random(1)
+        per = {}
+        worst = {}
+        for n_runs in sizes:
+            fp, exact_hits = [], 0
+            for _ in range(reps):
+                runs = []
+                while len(runs) < n_runs:
+                    r = sampling.run_facts(g, ctrl, rng)
+                    if r is not None:
+                        runs.append(r)
+                emp = sampling.empirical_landmarks(runs, initial)
+                false = emp - exact
+                fp.append(len(false))
+                exact_hits += emp == exact
+                for f in false:
+                    worst[f] = worst.get(f, 0) + 1
+            per[str(n_runs)] = {"mean_false": round(sum(fp) / reps, 2), "max_false": max(fp),
+                                "share_exact": exact_hits / reps}
+        # survival bound for the most persistent false landmarks
+        top = sorted(worst.items(), key=lambda kv: -kv[1])[:3]
+        bound = []
+        for key, count in top:
+            avoid = sampling.avoid_probability(g, ctrl, key)
+            q = None if avoid is None else avoid / p_term
+            bound.append({"landmark": " | ".join(sorted(key)), "times_survived": count,
+                          "q_avoid": None if q is None else round(q, 6),
+                          "runs_for_1pct": None if not q or q >= 1 else
+                          __import__("math").ceil(__import__("math").log(0.01) / __import__("math").log(1 - q))})
+        rows[path.stem] = {"exact_landmarks": len(exact), "p_terminate": round(p_term, 4),
+                           "by_runs": per, "most_persistent_false": bound}
+    return rows
+
+
 EXPERIMENTS = {"main": exp_main, "exactness": exp_exactness, "ablation": exp_ablation,
                "induced": exp_induced, "mutation": exp_mutation, "scaling": exp_scaling,
                "extracted": exp_extracted, "exact": exp_exact, "bins": exp_bins,
                "qmdp": exp_qmdp, "pbvi": exp_pbvi, "mutants": exp_mutants, "kept": exp_kept,
                "large": exp_large, "variants": exp_variants, "monitor": exp_monitor,
-               "knowledge": exp_knowledge}
+               "knowledge": exp_knowledge, "sampling": exp_sampling}
 
 
 def main(argv: list) -> int:

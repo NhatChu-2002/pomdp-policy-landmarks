@@ -266,3 +266,25 @@ work or what we claim), **DROP** (tried, not worth reporting), **OPEN** (unresol
 - Learned: the non-termination is real, not a merge artifact: a second flawed
   time-limited SARSOP policy. Check graph-derived numbers on the same policy.
 - Verdict: **PAPER** (Tag paragraph, v5.1).
+
+## 2026-11-25: research phase (plan: Thesis_draft(2)/notes/research-plan.md)
+
+### E21. R1: landmarks from sampled runs
+- Tried: sample N runs from each policy graph (Markov chain), keep single facts and
+  same-predicate pairs that hold on every sampled run that ends ("empirical
+  landmarks"), compare with the exact set; 10 repetitions per N; exact probability q
+  that a run that ends avoids a false landmark (`policy_landmarks/sampling.py`,
+  `results/sampling.json`).
+- Result: true landmarks always survive (by definition); false ones vanish after
+  10-50 runs for Tiger/Sensor/Channel/Mine and 20-100 for RockSample 4x4/5x5. They
+  persist where policies have rare branches: RockSample(7,8) still has 1 false
+  landmark at 300 runs ("at (3,4) or (7,7)", q = 0.0078, ~590 runs for 1% risk);
+  Tag has 5 at 300 runs ("opponent ruled out of (7,4)", q = 0.00095, ~4,800 runs).
+- Learned: (1) exact extraction matters exactly where rare branches exist; (2) many
+  "near-landmarks" hold on 99.9% of runs, which may be more useful to a user than
+  strict landmarks -> delta-landmarks (reached with probability >= 1 - delta);
+  (3) sampling gives a clean guarantee for delta-landmarks even without enumeration:
+  if F holds on all N runs, P(q_F > delta) <= (1 - delta)^N (N = 300 -> delta = 1.5%
+  at 99% confidence). This is the route to POMCP / learned policies (R4).
+- Verdict: **PAPER** (answers reviewer B's Monte Carlo question) + new direction:
+  **delta-landmarks** (exact from the graph, statistical from samples).
