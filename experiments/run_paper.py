@@ -26,6 +26,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # repo root, for the package
 
 from policy_landmarks import domains, extraction  # noqa: E402
+from policy_landmarks.exact import StateGraph, closure, reduction  # noqa: E402
 from policy_landmarks.domains import HAND_WRITTEN  # noqa: E402
 from policy_landmarks.ground_truth import Task  # noqa: E402
 from policy_landmarks.induction import TRACE_SOURCES, induce  # noqa: E402
@@ -313,9 +314,104 @@ def exp_extracted() -> dict:
     return rows
 
 
+def _names(key) -> frozenset:
+    """RHW atom names -> fact names of the exact engine ('Atom done()' -> 'done')."""
+    return frozenset(a[5:-2] if a.endswith("()") else a[5:] for a in key)
+
+
+def _exact_row(g: dict, ctrl: dict, rhw: dict | None = None) -> dict:
+    """Exact landmarks/orderings of one controller, their classes, and RHW's recall."""
+    sg = StateGraph(ctrl)
+    t0 = time.perf_counter()
+    lms = sg.landmarks(max_size=3)
+    order = sg.orderings(lms)
+    exact_s = time.perf_counter() - t0
+    nat = {pair for pair, kinds in order.items() if "nat" in kinds}
+    pred = lambda k: {f.split("(")[0] for f in k}  # noqa: E731
+    belief = [k for k in lms if all(f.startswith("ev-") for f in k)]
+    base = {_names(k) for k in _syntactic_baseline(ctrl)}
+    moves = [k for k in lms if all(f.startswith("at(") for f in k)]
+    commits = [k for k in lms if any(f.startswith(("sampled(", "chose(")) for f in k)]
+    chosen = set(belief) | set(moves)
+    cross = [(a, b) for a, b in nat if a in chosen and b in chosen and not pred(a) & pred(b)]
+    show_ = lambda k: " | ".join(sorted(k))  # noqa: E731
+    row = {
+        "exact_landmarks": len(lms), "exact_natural": len(nat),
+        "exact_gn": sum("gn" in kinds for kinds in order.values()),
+        "exact_hasse_edges": len(reduction(nat)),
+        "belief_landmarks": len(belief), "baseline": len([k for k in belief if k in base]),
+        "belief_beyond_baseline": len([k for k in belief if k not in base]),
+        "move_landmarks": len(moves), "commit_landmarks": [show_(k) for k in commits],
+        "cross_variable_orderings": len(cross),
+        "cross_variable_hasse": sorted(f"{show_(a)} < {show_(b)}" for a, b in reduction(set(cross))),
+        "landmarks": sorted(show_(k) for k in lms), "exact_s": round(exact_s, 3),
+        "states": len(sg.states),
+    }
+    if rhw is not None:
+        keys, edges = graph(rhw["parsed"])
+        initial = sg.facts[0]
+        found = {_names(k) for k in keys
+                 if all(a.startswith("Atom ") for a in k) and not _names(k) & initial}
+        assert all(sg.is_landmark(k) for k in found), "RHW reported a non-landmark"
+        rhw_order = closure({(_names(a), _names(b)) for a, b in edges})
+        row.update({
+            "rhw_landmarks_found": len(found & set(lms)),
+            "rhw_nonminimal": sorted(show_(k) for k in found - set(lms)),
+            "rhw_missed": sorted(show_(k) for k in set(lms) - found),
+            "rhw_natural_found": len(nat & rhw_order),
+            "rhw_lm_ms": round(rhw["lm_time"] * 1000, 3),
+        })
+    return row
+
+
+def exp_exact() -> dict:
+    """Complete landmark graphs by search on the explicit state graph, and RHW's recall."""
+    rows = {}
+    for path in sorted((HERE / "policy_graphs").glob("*.json")):
+        g = extraction.load(path)
+        ctrl = extraction.controller(g)
+        rhw = run_fd(WORK / "extracted" / path.stem, *extraction.to_pddl(ctrl, path.stem))
+        rows[path.stem] = _exact_row(g, ctrl, rhw)
+    return rows
+
+
+BIN_VARIANTS = {"default": (0.5, 2.5, 4.5), "coarse": (1.0, 4.0), "shifted": (1.0, 3.0, 5.0),
+                "fine": (0.25, 1.5, 3.0, 4.5)}
+
+
+def exp_bins() -> dict:
+    """RockSample: do landmark counts and the rock resolution order survive other bin edges?"""
+    rows = {}
+    for path in sorted((HERE / "policy_graphs").glob("rocksample-*.json")):
+        g = extraction.load(path)
+        per = {}
+        for name, bins in BIN_VARIANTS.items():
+            ctrl = extraction.controller(g, bins)
+            row = _exact_row(g, ctrl)
+            # each rock's last belief landmark, and when it is first reached
+            last = {}
+            for lm in row["landmarks"]:
+                facts = frozenset(lm.split(" | "))
+                rock = next(iter(facts)).split("(")[0]
+                if rock.startswith("ev-") and len({f.split("(")[0] for f in facts}) == 1:
+                    t = extraction.landmark_timeline(g, ctrl, facts)["expected_steps"]
+                    if t is not None and t > last.get(rock, (-1, ""))[0]:
+                        last[rock] = (t, lm)
+            per[name] = {"controller_states": ctrl["controller_states"],
+                         "injective": ctrl["controller_states"] == ctrl["policy_nodes"],
+                         "landmarks": row["exact_landmarks"],
+                         "cross_variable_orderings": row["cross_variable_orderings"],
+                         "resolution_order": [r[3:] for r, _ in sorted(last.items(), key=lambda kv: kv[1][0])]}
+        ref = per["default"]["resolution_order"]
+        for v in per.values():
+            v["same_order_as_default"] = v["resolution_order"] == ref
+        rows[path.stem] = per
+    return rows
+
+
 EXPERIMENTS = {"main": exp_main, "exactness": exp_exactness, "ablation": exp_ablation,
                "induced": exp_induced, "mutation": exp_mutation, "scaling": exp_scaling,
-               "extracted": exp_extracted}
+               "extracted": exp_extracted, "exact": exp_exact, "bins": exp_bins}
 
 
 def main(argv: list) -> int:

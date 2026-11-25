@@ -33,12 +33,12 @@ EPS = 1e-9
 RS_SAMPLE = "1"              # RockSample.jl: 1 sample, 2-5 move N/E/S/W, 5+i check rock i
 
 
-def level(p: float, unit: float | None = None, prior: float = 0.5) -> str:
+def level(p: float, unit: float | None = None, prior: float = 0.5, bins: tuple = BINS) -> str:
     """Evidence level of P(first value) = p: log-odds relative to the prior,
     in units of `unit` (one observation), else binned."""
     p = min(1 - EPS, max(EPS, p))
     lo = math.log(p / (1 - p)) - math.log(prior / (1 - prior))
-    k = min(9, round(abs(lo) / unit)) if unit else sum(abs(lo) >= b for b in BINS)
+    k = min(9, round(abs(lo) / unit)) if unit else sum(abs(lo) >= b for b in bins)
     return "unk" if k == 0 else ("pos" if lo > 0 else "neg") + str(k)
 
 
@@ -68,7 +68,7 @@ def hidden_vars(g: dict) -> list:
     return [f"rock{i + 1}" for i in range(k)]      # pos = rock good
 
 
-def abstract(g: dict, belief: dict) -> frozenset:
+def abstract(g: dict, belief: dict, bins: tuple = BINS) -> frozenset:
     states = g["states"]
     if all(states[i] == "terminal" for i in belief):
         return frozenset({"terminal"})
@@ -95,14 +95,14 @@ def abstract(g: dict, belief: dict) -> frozenset:
             marg[f"rock{j + 1}"] += p if c == "1" else 0.0
     assert len(cells) <= 1, "robot position is observable in RockSample"
     prior = 1 / len(vars_) if g["problem"] == "probe" else 0.5   # evidence is relative to the prior
-    facts = {f"ev-{v}({level(marg[v], unit_of(g), prior)})" for v in vars_}
+    facts = {f"ev-{v}({level(marg[v], unit_of(g), prior, bins)})" for v in vars_}
     return frozenset(facts | {f"at(c{xy.replace(',', '-')})" for xy in cells})
 
 
-def controller(g: dict) -> dict:
+def controller(g: dict, bins: tuple = BINS) -> dict:
     """Quotient of the policy graph under the abstraction."""
     nodes = {n["id"]: n for n in g["nodes"]}
-    state = {i: abstract(g, _belief(n)) for i, n in nodes.items()}
+    state = {i: abstract(g, _belief(n), bins) for i, n in nodes.items()}
     edges = set()
     for e in g["edges"]:
         src, a = state[e["from"]], nodes[e["from"]]["action"]

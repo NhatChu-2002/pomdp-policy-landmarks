@@ -89,3 +89,21 @@ def test_p_end_within_geometric_chain():
     g = {"nodes": [{"id": 0, "kind": "inner"}, {"id": 1, "kind": "commit_end"}],
          "edges": [{"from": 0, "to": 0, "p": 0.5}, {"from": 0, "to": 1, "p": 0.5}]}
     assert abs(p_end_within(g, 3) - 0.875) < 1e-12
+
+
+def test_exact_engine_on_a_toy_controller():
+    """unk -> pos1 | neg1 -> end: the disjunction is the only belief landmark, ordered before done."""
+    from policy_landmarks.exact import StateGraph, closure
+    F = frozenset
+    unk, pos, neg = F({"ev-x(unk)"}), F({"ev-x(pos1)"}), F({"ev-x(neg1)"})
+    ctrl = {"init": unk, "commits": {(pos, "open-a")},
+            "edges": {(unk, "look", "a", pos, F()), (unk, "look", "b", neg, F()),
+                      (neg, "leave", "none", F({"terminal"}), F())}}
+    sg = StateGraph(ctrl)
+    lms = set(sg.landmarks())
+    disj, done = F({"ev-x(pos1)", "ev-x(neg1)"}), F({"done"})
+    assert lms == {disj, done}
+    order = sg.orderings(list(lms))
+    assert order == {(disj, done): {"nat", "gn"}}
+    assert not sg.is_landmark(["chose(open-a)"])          # only the pos branch commits
+    assert closure({(1, 2), (2, 3)}) == {(1, 2), (2, 3), (1, 3)}

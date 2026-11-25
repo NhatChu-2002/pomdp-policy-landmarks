@@ -1,0 +1,516 @@
+{
+  "rocksample-4-4-s1": {
+    "default": {
+      "controller_states": 37,
+      "injective": true,
+      "landmarks": 13,
+      "cross_variable_orderings": 46,
+      "resolution_order": [
+        "rock4",
+        "rock3",
+        "rock1",
+        "rock2"
+      ],
+      "same_order_as_default": true
+    },
+    "coarse": {
+      "controller_states": 22,
+      "injective": false,
+      "landmarks": 12,
+      "cross_variable_orderings": 36,
+      "resolution_order": [
+        "rock4",
+        "rock3",
+        "rock1",
+        "rock2"
+      ],
+      "same_order_as_default": true
+    },
+    "shifted": {
+      "controller_states": 37,
+      "injective": true,
+      "landmarks": 13,
+      "cross_variable_orderings": 46,
+      "resolution_order": [
+        "rock4",
+        "rock3",
+        "rock1",
+        "rock2"
+      ],
+      "same_order_as_default": true
+    },
+    "fine": {
+      "controller_states": 37,
+      "injective": true,
+      "landmarks": 13,
+      "cross_variable_orderings": 46,
+      "resolution_order": [
+        "rock4",
+        "rock3",
+        "rock1",
+        "rock2"
+      ],
+      "same_order_as_default": true
+    }
+  },
+  "rocksample-4-4-s2": {
+    "default": {
+      "controller_states": 50,
+      "injective": true,
+      "landmarks": 18,
+      "cross_variable_orderings": 53,
+      "resolution_order": [
+        "rock3",
+        "rock1",
+        "rock2",
+        "rock4"
+      ],
+      "same_order_as_default": true
+    },
+    "coarse": {
+      "controller_states": 38,
+      "injective": false,
+      "landmarks": 16,
+      "cross_variable_orderings": 32,
+      "resolution_order": [
+        "rock3",
+        "rock1",
+        "rock2",
+        "rock4"
+      ],
+      "same_order_as_default": true
+    },
+    "shifted": {
+      "controller_states": 50,
+      "injective": true,
+      "landmarks": 18,
+      "cross_variable_orderings": 53,
+      "resolution_order": [
+        "rock3",
+        "rock1",
+        "rock2",
+        "rock4"
+      ],
+      "same_order_as_default": true
+    },
+    "fine": {
+      "controller_states": 50,
+      "injective": true,
+      "landmarks": 18,
+      "cross_variable_orderings": 53,
+      "resolution_order": [
+        "rock3",
+        "rock1",
+        "rock2",
+        "rock4"
+      ],
+      "same_order_as_default": true
+    }
+  },
+  "rocksample-4-4-s3": {
+    "default": {
+      "controller_states": 45,
+      "injective": true,
+      "landmarks": 14,
+      "cross_variable_orderings": 44,
+      "resolution_order": [
+        "rock3",
+        "rock2",
+        "rock1",
+        "rock4"
+      ],
+      "same_order_as_default": true
+    },
+    "coarse": {
+      "controller_states": 23,
+      "injective": false,
+      "landmarks": 13,
+      "cross_variable_orderings": 33,
+      "resolution_order": [
+        "rock3",
+        "rock2",
+        "rock1",
+        "rock4"
+      ],
+      "same_order_as_default": true
+    },
+    "shifted": {
+      "controller_states": 45,
+      "injective": true,
+      "landmarks": 14,
+      "cross_variable_orderings": 44,
+      "resolution_order": [
+        "rock3",
+        "rock2",
+        "rock1",
+        "rock4"
+      ],
+      "same_order_as_default": true
+    },
+    "fine": {
+      "controller_states": 45,
+      "injective": true,
+      "landmarks": 14,
+      "cross_variable_orderings": 44,
+      "resolution_order": [
+        "rock3",
+        "rock2",
+        "rock1",
+        "rock4"
+      ],
+      "same_order_as_default": true
+    }
+  },
+  "rocksample-4-4-s4": {
+    "default": {
+      "controller_states": 67,
+      "injective": true,
+      "landmarks": 25,
+      "cross_variable_orderings": 91,
+      "resolution_order": [
+        "rock1",
+        "rock4",
+        "rock3",
+        "rock2"
+      ],
+      "same_order_as_default": true
+    },
+    "coarse": {
+      "controller_states": 48,
+      "injective": false,
+      "landmarks": 24,
+      "cross_variable_orderings": 77,
+      "resolution_order": [
+        "rock1",
+        "rock4",
+        "rock3",
+        "rock2"
+      ],
+      "same_order_as_default": true
+    },
+    "shifted": {
+      "controller_states": 67,
+      "injective": true,
+      "landmarks": 25,
+      "cross_variable_orderings": 91,
+      "resolution_order": [
+        "rock1",
+        "rock4",
+        "rock3",
+        "rock2"
+      ],
+      "same_order_as_default": true
+    },
+    "fine": {
+      "controller_states": 67,
+      "injective": true,
+      "landmarks": 25,
+      "cross_variable_orderings": 91,
+      "resolution_order": [
+        "rock1",
+        "rock4",
+        "rock3",
+        "rock2"
+      ],
+      "same_order_as_default": true
+    }
+  },
+  "rocksample-4-4-s5": {
+    "default": {
+      "controller_states": 16,
+      "injective": true,
+      "landmarks": 11,
+      "cross_variable_orderings": 30,
+      "resolution_order": [
+        "rock4",
+        "rock2",
+        "rock3",
+        "rock1"
+      ],
+      "same_order_as_default": true
+    },
+    "coarse": {
+      "controller_states": 16,
+      "injective": true,
+      "landmarks": 11,
+      "cross_variable_orderings": 30,
+      "resolution_order": [
+        "rock4",
+        "rock2",
+        "rock3",
+        "rock1"
+      ],
+      "same_order_as_default": true
+    },
+    "shifted": {
+      "controller_states": 16,
+      "injective": true,
+      "landmarks": 11,
+      "cross_variable_orderings": 30,
+      "resolution_order": [
+        "rock4",
+        "rock2",
+        "rock3",
+        "rock1"
+      ],
+      "same_order_as_default": true
+    },
+    "fine": {
+      "controller_states": 16,
+      "injective": true,
+      "landmarks": 11,
+      "cross_variable_orderings": 30,
+      "resolution_order": [
+        "rock4",
+        "rock2",
+        "rock3",
+        "rock1"
+      ],
+      "same_order_as_default": true
+    }
+  },
+  "rocksample-5-5-s1": {
+    "default": {
+      "controller_states": 152,
+      "injective": true,
+      "landmarks": 31,
+      "cross_variable_orderings": 189,
+      "resolution_order": [
+        "rock4",
+        "rock5",
+        "rock2",
+        "rock1",
+        "rock3"
+      ],
+      "same_order_as_default": true
+    },
+    "coarse": {
+      "controller_states": 61,
+      "injective": false,
+      "landmarks": 29,
+      "cross_variable_orderings": 136,
+      "resolution_order": [
+        "rock4",
+        "rock5",
+        "rock2",
+        "rock1",
+        "rock3"
+      ],
+      "same_order_as_default": true
+    },
+    "shifted": {
+      "controller_states": 152,
+      "injective": true,
+      "landmarks": 31,
+      "cross_variable_orderings": 189,
+      "resolution_order": [
+        "rock4",
+        "rock5",
+        "rock2",
+        "rock1",
+        "rock3"
+      ],
+      "same_order_as_default": true
+    },
+    "fine": {
+      "controller_states": 152,
+      "injective": true,
+      "landmarks": 31,
+      "cross_variable_orderings": 189,
+      "resolution_order": [
+        "rock4",
+        "rock5",
+        "rock2",
+        "rock1",
+        "rock3"
+      ],
+      "same_order_as_default": true
+    }
+  },
+  "rocksample-5-5-s2": {
+    "default": {
+      "controller_states": 136,
+      "injective": true,
+      "landmarks": 45,
+      "cross_variable_orderings": 126,
+      "resolution_order": [
+        "rock1",
+        "rock2",
+        "rock4",
+        "rock3",
+        "rock5"
+      ],
+      "same_order_as_default": true
+    },
+    "coarse": {
+      "controller_states": 95,
+      "injective": false,
+      "landmarks": 43,
+      "cross_variable_orderings": 79,
+      "resolution_order": [
+        "rock1",
+        "rock2",
+        "rock4",
+        "rock3",
+        "rock5"
+      ],
+      "same_order_as_default": true
+    },
+    "shifted": {
+      "controller_states": 136,
+      "injective": true,
+      "landmarks": 45,
+      "cross_variable_orderings": 126,
+      "resolution_order": [
+        "rock1",
+        "rock2",
+        "rock4",
+        "rock3",
+        "rock5"
+      ],
+      "same_order_as_default": true
+    },
+    "fine": {
+      "controller_states": 136,
+      "injective": true,
+      "landmarks": 45,
+      "cross_variable_orderings": 126,
+      "resolution_order": [
+        "rock1",
+        "rock2",
+        "rock4",
+        "rock3",
+        "rock5"
+      ],
+      "same_order_as_default": true
+    }
+  },
+  "rocksample-5-5-s3": {
+    "default": {
+      "controller_states": 89,
+      "injective": true,
+      "landmarks": 23,
+      "cross_variable_orderings": 120,
+      "resolution_order": [
+        "rock2",
+        "rock5",
+        "rock4",
+        "rock1",
+        "rock3"
+      ],
+      "same_order_as_default": true
+    },
+    "coarse": {
+      "controller_states": 53,
+      "injective": false,
+      "landmarks": 22,
+      "cross_variable_orderings": 100,
+      "resolution_order": [
+        "rock2",
+        "rock5",
+        "rock4",
+        "rock1",
+        "rock3"
+      ],
+      "same_order_as_default": true
+    },
+    "shifted": {
+      "controller_states": 89,
+      "injective": true,
+      "landmarks": 23,
+      "cross_variable_orderings": 120,
+      "resolution_order": [
+        "rock2",
+        "rock5",
+        "rock4",
+        "rock1",
+        "rock3"
+      ],
+      "same_order_as_default": true
+    },
+    "fine": {
+      "controller_states": 89,
+      "injective": true,
+      "landmarks": 23,
+      "cross_variable_orderings": 120,
+      "resolution_order": [
+        "rock2",
+        "rock5",
+        "rock4",
+        "rock1",
+        "rock3"
+      ],
+      "same_order_as_default": true
+    }
+  },
+  "rocksample-7-8-s1": {
+    "default": {
+      "controller_states": 677,
+      "injective": true,
+      "landmarks": 84,
+      "cross_variable_orderings": 629,
+      "resolution_order": [
+        "rock1",
+        "rock7",
+        "rock5",
+        "rock3",
+        "rock2",
+        "rock4",
+        "rock8",
+        "rock6"
+      ],
+      "same_order_as_default": true
+    },
+    "coarse": {
+      "controller_states": 225,
+      "injective": false,
+      "landmarks": 82,
+      "cross_variable_orderings": 478,
+      "resolution_order": [
+        "rock1",
+        "rock7",
+        "rock5",
+        "rock3",
+        "rock2",
+        "rock4",
+        "rock8",
+        "rock6"
+      ],
+      "same_order_as_default": true
+    },
+    "shifted": {
+      "controller_states": 677,
+      "injective": true,
+      "landmarks": 83,
+      "cross_variable_orderings": 571,
+      "resolution_order": [
+        "rock1",
+        "rock7",
+        "rock5",
+        "rock3",
+        "rock2",
+        "rock4",
+        "rock8",
+        "rock6"
+      ],
+      "same_order_as_default": true
+    },
+    "fine": {
+      "controller_states": 677,
+      "injective": true,
+      "landmarks": 83,
+      "cross_variable_orderings": 571,
+      "resolution_order": [
+        "rock1",
+        "rock7",
+        "rock5",
+        "rock3",
+        "rock2",
+        "rock4",
+        "rock8",
+        "rock6"
+      ],
+      "same_order_as_default": true
+    }
+  }
+}
