@@ -210,3 +210,18 @@ work or what we claim), **DROP** (tried, not worth reporting), **OPEN** (unresol
 - Verdict: **DROP** from the paper's claims; mention as a limitation (no second
   point-based solver beyond QMDP). If a second solver is needed later, try HSVI or a
   newer PBVI with a time limit, or Perseus.
+
+### E19. Re-review of v5 (reviewer A)
+- Result: A 6/10 (from 5). Resolved: Mine-3x3, exactness cap, RHW figure, QMDP merges,
+  timing. Remaining: no user study / second solver / graph >= 5,000 nodes; Tag P(term)
+  unverified (47 nodes in a region closed by the lossy merge); overreach ("31 of 44"
+  includes granularity differences, lead with 12 of 44 order changes; 90% confidence
+  is readable from end-node beliefs; Theorem 1(2) does not hold for the non-injective
+  knowledge view).
+- Done: text fixes (title, abstract, theorem scope, least solution of first-passage
+  equations, Table 3 caption); Tag re-solved once and checked by simulation of the
+  same policy (`pomdp/check_graph_by_simulation.jl`, running).
+- Learned: lead with the substantive number (order changes), not the inclusive one;
+  every derived quantity from a graph with lossy merges needs a same-policy
+  simulation check.
+- Verdict: **LESSON**.
