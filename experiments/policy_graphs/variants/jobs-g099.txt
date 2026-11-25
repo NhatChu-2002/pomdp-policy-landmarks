@@ -1,0 +1,8 @@
+rocksample 4 4 1 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/variants/rocksample-4-4-s1-g0.99.json
+rocksample 4 4 2 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/variants/rocksample-4-4-s2-g0.99.json
+rocksample 4 4 3 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/variants/rocksample-4-4-s3-g0.99.json
+rocksample 4 4 4 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/variants/rocksample-4-4-s4-g0.99.json
+rocksample 4 4 5 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/variants/rocksample-4-4-s5-g0.99.json
+rocksample 5 5 1 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/variants/rocksample-5-5-s1-g0.99.json
+rocksample 5 5 2 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/variants/rocksample-5-5-s2-g0.99.json
+rocksample 5 5 3 C:/AI_planning/Landmark_dump/FD_LANDMARK_DUMP/experiments/policy_graphs/variants/rocksample-5-5-s3-g0.99.json

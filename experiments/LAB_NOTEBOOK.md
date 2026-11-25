@@ -189,3 +189,17 @@ work or what we claim), **DROP** (tried, not worth reporting), **OPEN** (unresol
   questions; present both.
 - Verdict: **PAPER** (new subsection: two views of the same graph; table of the
   confidence each policy reaches before acting).
+
+### E17 (result). Same value, different beliefs
+- Result (`results/variants.json`): 8 RockSample maps, 30 policies (base, solved with
+  discount 0.90 / 0.99, or with 10 s / 30 s SARSOP limits; all evaluated under
+  discount 0.95; no lossy merges). 44 pairs of policies on the same map have values
+  within 1% of each other; 31 of them have different landmark graphs, and 15 differ
+  in the order in which they resolve the rocks. Example: RockSample(4,4) seed 1, the
+  policy solved with discount 0.99 is 0.46% worse in value but checks rock 3 before
+  rock 4 (base: rock 4 first); RockSample(5,5) seed 3 base vs discount 0.90: 0.48%
+  apart, orders 2,5,4,1,3 vs 5,4,1,2,3.
+- Learned: this is the clearest case of landmarks showing what the value cannot:
+  near-identical returns, different information-gathering strategies.
+- Verdict: **PAPER** (RQ4 headline; answers reviewer B's "no case where landmarks
+  show what value/actions do not").
