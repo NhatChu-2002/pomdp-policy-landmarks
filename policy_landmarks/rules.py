@@ -136,3 +136,119 @@ def level_of(model: Model, grid: Grid, fact: str) -> str:
     v = model.vars.index(var)
     lo, hi = grid.interval(v, int(c.rstrip(")")[1:]))
     return f"ev-{var}({level_name(model, v, lo, hi)})"
+
+
+
+# --- Context rules: fine cell for the acted variable, coarse class for all others ----
+
+COARSE = ("neg", "unk", "pos")
+
+
+def coarse_class(grid: Grid, v: int, c: int, edges=(-0.5, 0.5)) -> int:
+    """0 / 1 / 2 for cells below edges[0], between, above edges[1] (fine edges must
+    include both, as the bin grid does)."""
+    lo, hi = grid.interval(v, c)
+    return 0 if hi <= edges[0] else 2 if lo >= edges[1] else 1
+
+
+def _context_box(model, grid, ctx: dict, fine: dict, points: bool, edges=(-0.5, 0.5)):
+    """Box for coarse classes `ctx` {var: 0/1/2} and fine cells `fine` {var: cell}."""
+    box = []
+    for v in range(len(model.vars)):
+        if v in fine:
+            lo, hi = grid.interval(v, fine[v])
+            if points and lo != -INF and hi != INF:
+                lo = hi = (lo + hi) / 2
+        else:
+            k = ctx[v]
+            lo, hi = ((-INF, edges[0]), (edges[0], edges[1]), (edges[1], INF))[k]
+        box.append((lo, hi))
+    return box
+
+
+def extract_context_rules(model: Model, grid: Grid, positions: list, points: bool = False,
+                          edges=(-0.5, 0.5)):
+    """[(pos, action, {var: class}, {var: cell})]: every combination of coarse classes of
+    the non-acted variables, with the acted variable's fine cell, where the action is
+    possible (box test). Covers every belief where the policy can take the action."""
+    import itertools
+    n_cells = [len(e) - 1 for e in grid.edges]
+    k = len(model.vars)
+    rules = []
+    for pos in positions:
+        for a in sorted(model.possible_actions(pos, [(-INF, INF)] * k)):
+            acted = _acted_var(model, pos, a)
+            others = [v for v in range(k) if v != acted]
+            for classes in itertools.product(range(3), repeat=len(others)):
+                ctx = dict(zip(others, classes))
+                cells = range(n_cells[acted]) if acted is not None else [None]
+                for c in cells:
+                    fine = {acted: c} if c is not None else {}
+                    if a in model.possible_actions(pos, _context_box(model, grid, ctx, fine, points, edges)):
+                        rules.append((pos, a, ctx, fine))
+    return rules
+
+
+def to_pddl_context(model: Model, grid: Grid, rules: list, name: str, points: bool = False,
+                    edges=(-0.5, 0.5)):
+    """STRIPS with a fine fact cv-V(cK) and a coarse fact ck-V(neg|unk|pos) per variable,
+    both updated when the acted variable moves."""
+    actions = []
+
+    def at(pos):
+        return f"(at c{pos[0]}-{pos[1]})" if pos is not None else None
+
+    for i, (pos, a, ctx, fine) in enumerate(rules):
+        pre = ["(live)"] + ([at(pos)] if pos is not None else [])
+        pre += [f"(ck-{model.vars[v]} {COARSE[k]})" for v, k in ctx.items()]
+        pre += [f"(cv-{model.vars[v]} c{c})" for v, c in fine.items()]
+        for j, (obs, v, shift, npos, term) in enumerate(model.step(pos, a)):
+            san = "".join(ch if ch.isalnum() else "-" for ch in f"{a}-{obs}").lower()
+            if term:
+                eff = ["(done)", "(not (live))"] + ([f"(chose {san})"] if obs == "commit" else [])
+                actions.append((f"r{i}-o{j}-{san}", pre, eff))
+                continue
+            c = fine.get(v) if v is not None else None
+            targets = [c]
+            if v is not None and shift is not None:
+                lo, hi = grid.interval(v, c)
+                if points and lo != -INF and hi != INF:
+                    lo = hi = (lo + hi) / 2
+                targets = ([grid.cell(v, shift)] if shift in (INF, -INF)
+                           else list(grid.cells_overlapping(v, lo + shift, hi + shift)))
+            for t in targets:
+                eff = []
+                if v is not None and shift is not None and t != c:
+                    eff += [f"(cv-{model.vars[v]} c{t})", f"(not (cv-{model.vars[v]} c{c}))"]
+                    k0, k1 = coarse_class(grid, v, c, edges), coarse_class(grid, v, t, edges)
+                    if k0 != k1:
+                        eff += [f"(ck-{model.vars[v]} {COARSE[k1]})", f"(not (ck-{model.vars[v]} {COARSE[k0]}))"]
+                if pos is not None and npos != pos:
+                    eff += [at(npos), f"(not {at(pos)})"]
+                if model.problem == "rocksample" and a == "1" and v is not None:
+                    eff.append(f"(sampled rock{v + 1})")
+                actions.append((f"r{i}-o{j}-t{t}-{san}", pre, eff or ["(live)"]))
+
+    n_cells = [len(e) - 1 for e in grid.edges]
+    preds = ["(live)", "(done)", "(chose ?a)", "(sampled ?r)", "(at ?p)"]
+    preds += [f"(cv-{v} ?c)" for v in model.vars] + [f"(ck-{v} ?k)" for v in model.vars]
+    objs = {f"c{c}" for n in n_cells for c in range(n)} | set(COARSE)
+    for _, pre, eff in actions:
+        for p in pre + eff:
+            atom = p[len("(not "):-1] if p.startswith("(not ") else p
+            if atom.startswith(("(at ", "(chose ", "(sampled ")):
+                objs.add(atom.split()[1].rstrip(")"))
+    domain = "\n".join([f"(define (domain {name})", "  (:requirements :strips)",
+                        "  (:predicates " + " ".join(preds) + ")"]
+                       + [f"  (:action {n} :parameters ()\n    :precondition (and {' '.join(pre)})\n"
+                          f"    :effect (and {' '.join(eff)}))" for n, pre, eff in actions] + [")"])
+    start = []
+    for v in range(len(model.vars)):
+        c0 = grid.cell(v, 0.0)
+        start += [f"(cv-{model.vars[v]} c{c0})", f"(ck-{model.vars[v]} {COARSE[coarse_class(grid, v, c0, edges)]})"]
+    if model.start() is not None:
+        start.append(at(model.start()))
+    problem = "\n".join([f"(define (problem p-{name}) (:domain {name})",
+                         f"  (:objects {' '.join(sorted(objs))})",
+                         "  (:init (live) " + " ".join(start) + ")", "  (:goal (done)))"])
+    return domain, problem, len(actions)
