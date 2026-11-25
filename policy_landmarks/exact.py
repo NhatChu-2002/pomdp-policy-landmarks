@@ -12,6 +12,7 @@ from __future__ import annotations
 
 from collections import deque
 from itertools import combinations
+from math import comb
 
 from .extraction import _san
 
@@ -116,7 +117,7 @@ class StateGraph:
                     queue.append(j)
         return True
 
-    def landmarks(self, max_size: int = 3, complete=("ev-", "chose")) -> list:
+    def landmarks(self, max_size: int = 3, complete=("ev-", "chose"), max_combos: int = 20_000) -> list:
         """All minimal landmarks: single facts, and disjunctions of facts with the same
         predicate. Predicates starting with a prefix in `complete` (belief levels and
         commitments, at most 16 facts each here) are enumerated in full; others, such as
@@ -129,9 +130,13 @@ class StateGraph:
         for f in facts:
             if f not in singles and "(" in f:
                 groups.setdefault(f.split("(")[0], []).append(f)
+        self.truncated = set()                    # groups whose disjunctions were cut short
         for size in range(2, max(len(g) for g in groups.values()) + 1 if groups else 2):
             for pred_name, group in groups.items():
                 if size > (len(group) if pred_name.startswith(complete) else max_size):
+                    continue
+                if not pred_name.startswith(complete) and comb(len(group), size) > max_combos:
+                    self.truncated.add(pred_name)  # e.g. sets of cells on a large map
                     continue
                 for combo in combinations(group, size):
                     key = frozenset(combo)

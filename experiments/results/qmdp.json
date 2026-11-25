@@ -39,7 +39,7 @@
         "probe-v3"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 16,
       "terminates": true,
       "landmarks": [
@@ -97,7 +97,7 @@
       "ev-v3(neg1) | ev-v3(pos1)",
       "ev-v3(neg2) | ev-v3(pos2)"
     ],
-    "only_qmdp": [
+    "only_other": [
       "chose(commit-v1)",
       "ev-v1(pos1)",
       "ev-v1(pos2)",
@@ -109,7 +109,12 @@
       "ev-v3(neg2)",
       "ev-v3(neg3)"
     ],
-    "same_graph": false
+    "same_graph": false,
+    "merges": {
+      "lossy": 1,
+      "lossy_self_loops": 1,
+      "max_diff": 3.755926790262771e-10
+    }
   },
   "mine-4-0.85": {
     "sarsop": {
@@ -146,7 +151,7 @@
         "probe-v4"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 16,
       "terminates": true,
       "landmarks": [
@@ -194,7 +199,7 @@
       "ev-v3(neg1) | ev-v3(pos1)",
       "ev-v4(neg1) | ev-v4(pos1)"
     ],
-    "only_qmdp": [
+    "only_other": [
       "chose(commit-v1)",
       "ev-v1(pos1)",
       "ev-v1(pos2)",
@@ -206,7 +211,12 @@
       "ev-v4(neg1)",
       "ev-v4(neg2)"
     ],
-    "same_graph": false
+    "same_graph": false,
+    "merges": {
+      "lossy": 1,
+      "lossy_self_loops": 1,
+      "max_diff": 2.5039511939563533e-10
+    }
   },
   "mine-9-0.85": {
     "sarsop": {
@@ -271,7 +281,7 @@
         "probe-v9"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 16,
       "terminates": true,
       "landmarks": [
@@ -421,7 +431,7 @@
       "ev-v8(neg1) | ev-v8(pos1)",
       "ev-v8(neg2) | ev-v8(pos2)"
     ],
-    "only_qmdp": [
+    "only_other": [
       "chose(commit-v1)",
       "ev-v1(pos1)",
       "ev-v1(pos2)",
@@ -437,7 +447,12 @@
       "ev-v8(neg2)",
       "ev-v9(neg2)"
     ],
-    "same_graph": false
+    "same_graph": false,
+    "merges": {
+      "lossy": 1,
+      "lossy_self_loops": 1,
+      "max_diff": 9.389816979435581e-11
+    }
   },
   "rocksample-4-4-s1": {
     "sarsop": {
@@ -477,7 +492,7 @@
         "9"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 2,
       "landmarks": null,
       "orderings": null,
@@ -500,8 +515,9 @@
       "ev-rock4(neg2) | ev-rock4(neg3)",
       "ev-rock4(neg2) | ev-rock4(pos2)"
     ],
-    "only_qmdp": [],
-    "same_graph": false
+    "only_other": [],
+    "same_graph": false,
+    "merges": null
   },
   "rocksample-4-4-s2": {
     "sarsop": {
@@ -547,7 +563,7 @@
         "9"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 3,
       "landmarks": null,
       "orderings": null,
@@ -570,8 +586,9 @@
       "ev-rock3(neg2) | ev-rock3(pos2)",
       "ev-rock4(neg2) | ev-rock4(neg3)"
     ],
-    "only_qmdp": [],
-    "same_graph": false
+    "only_other": [],
+    "same_graph": false,
+    "merges": null
   },
   "rocksample-4-4-s3": {
     "sarsop": {
@@ -615,7 +632,7 @@
         "9"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 3,
       "landmarks": null,
       "orderings": null,
@@ -639,8 +656,9 @@
       "ev-rock3(neg2) | ev-rock3(pos2)",
       "ev-rock4(neg3)"
     ],
-    "only_qmdp": [],
-    "same_graph": false
+    "only_other": [],
+    "same_graph": false,
+    "merges": null
   },
   "rocksample-4-4-s4": {
     "sarsop": {
@@ -684,7 +702,7 @@
         "9"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 3,
       "landmarks": null,
       "orderings": null,
@@ -707,8 +725,9 @@
       "ev-rock4(neg2) | ev-rock4(neg3)",
       "ev-rock4(neg2) | ev-rock4(pos2)"
     ],
-    "only_qmdp": [],
-    "same_graph": false
+    "only_other": [],
+    "same_graph": false,
+    "merges": null
   },
   "rocksample-4-4-s5": {
     "sarsop": {
@@ -751,7 +770,7 @@
         "9"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 17,
       "landmarks": null,
       "orderings": null,
@@ -777,8 +796,9 @@
       "ev-rock3(neg3)",
       "ev-rock4(neg3)"
     ],
-    "only_qmdp": [],
-    "same_graph": false
+    "only_other": [],
+    "same_graph": false,
+    "merges": null
   },
   "rocksample-5-5-s1": {
     "sarsop": {
@@ -829,7 +849,7 @@
         "9"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 2,
       "landmarks": null,
       "orderings": null,
@@ -854,8 +874,9 @@
       "ev-rock5(neg2) | ev-rock5(neg3)",
       "ev-rock5(neg2) | ev-rock5(pos2)"
     ],
-    "only_qmdp": [],
-    "same_graph": false
+    "only_other": [],
+    "same_graph": false,
+    "merges": null
   },
   "rocksample-5-5-s2": {
     "sarsop": {
@@ -901,7 +922,7 @@
         "9"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 3,
       "landmarks": null,
       "orderings": null,
@@ -924,8 +945,9 @@
       "ev-rock4(neg2) | ev-rock4(neg3)",
       "ev-rock5(neg2) | ev-rock5(neg3)"
     ],
-    "only_qmdp": [],
-    "same_graph": false
+    "only_other": [],
+    "same_graph": false,
+    "merges": null
   },
   "rocksample-5-5-s3": {
     "sarsop": {
@@ -976,7 +998,7 @@
         "9"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 3,
       "landmarks": null,
       "orderings": null,
@@ -1001,8 +1023,9 @@
       "ev-rock4(neg3)",
       "ev-rock5(neg2) | ev-rock5(neg3)"
     ],
-    "only_qmdp": [],
-    "same_graph": false
+    "only_other": [],
+    "same_graph": false,
+    "merges": null
   },
   "rocksample-7-8-s1": {
     "sarsop": {
@@ -1072,7 +1095,7 @@
         "9"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 8,
       "landmarks": null,
       "orderings": null,
@@ -1103,8 +1126,9 @@
       "ev-rock7(neg2) | ev-rock7(neg3)",
       "ev-rock8(neg1) | ev-rock8(neg2) | ev-rock8(neg3)"
     ],
-    "only_qmdp": [],
-    "same_graph": false
+    "only_other": [],
+    "same_graph": false,
+    "merges": null
   },
   "sensor-0.75": {
     "sarsop": {
@@ -1136,7 +1160,7 @@
         "read-b"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 39,
       "landmarks": null,
       "orderings": null,
@@ -1155,8 +1179,9 @@
       "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
       "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
     ],
-    "only_qmdp": [],
-    "same_graph": false
+    "only_other": [],
+    "same_graph": false,
+    "merges": null
   },
   "sensor-0.8": {
     "sarsop": {
@@ -1190,7 +1215,7 @@
         "read-b"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 31,
       "landmarks": null,
       "orderings": null,
@@ -1209,8 +1234,9 @@
       "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
       "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
     ],
-    "only_qmdp": [],
-    "same_graph": false
+    "only_other": [],
+    "same_graph": false,
+    "merges": null
   },
   "sensor-0.85": {
     "sarsop": {
@@ -1244,7 +1270,7 @@
         "read-b"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 25,
       "landmarks": null,
       "orderings": null,
@@ -1263,8 +1289,9 @@
       "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
       "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
     ],
-    "only_qmdp": [],
-    "same_graph": false
+    "only_other": [],
+    "same_graph": false,
+    "merges": null
   },
   "sensor-0.9": {
     "sarsop": {
@@ -1298,7 +1325,7 @@
         "read-b"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 21,
       "landmarks": null,
       "orderings": null,
@@ -1317,8 +1344,9 @@
       "ev-sensor-b(neg1) | ev-sensor-b(pos1)",
       "ev-sensor-b(neg2) | ev-sensor-b(pos2)"
     ],
-    "only_qmdp": [],
-    "same_graph": false
+    "only_other": [],
+    "same_graph": false,
+    "merges": null
   },
   "sensor-0.95": {
     "sarsop": {
@@ -1346,7 +1374,7 @@
         "read-b"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 17,
       "landmarks": null,
       "orderings": null,
@@ -1363,8 +1391,9 @@
       "ev-sensor-a(neg1) | ev-sensor-a(pos1)",
       "ev-sensor-b(neg1) | ev-sensor-b(pos1)"
     ],
-    "only_qmdp": [],
-    "same_graph": false
+    "only_other": [],
+    "same_graph": false,
+    "merges": null
   },
   "tiger-0.6": {
     "sarsop": {
@@ -1401,7 +1430,7 @@
         "right"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 13,
       "terminates": true,
       "landmarks": [
@@ -1435,8 +1464,9 @@
       "ev-direction(neg7) | ev-direction(pos7)",
       "ev-direction(neg8) | ev-direction(pos8)"
     ],
-    "only_qmdp": [],
-    "same_graph": false
+    "only_other": [],
+    "same_graph": false,
+    "merges": null
   },
   "tiger-0.65": {
     "sarsop": {
@@ -1469,7 +1499,7 @@
         "right"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 9,
       "terminates": true,
       "landmarks": [
@@ -1499,8 +1529,9 @@
       "ev-direction(neg5) | ev-direction(pos5)",
       "ev-direction(neg6) | ev-direction(pos6)"
     ],
-    "only_qmdp": [],
-    "same_graph": false
+    "only_other": [],
+    "same_graph": false,
+    "merges": null
   },
   "tiger-0.7": {
     "sarsop": {
@@ -1529,7 +1560,7 @@
         "right"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 7,
       "terminates": true,
       "landmarks": [
@@ -1556,8 +1587,9 @@
     "only_sarsop": [
       "ev-direction(neg4) | ev-direction(pos4)"
     ],
-    "only_qmdp": [],
-    "same_graph": false
+    "only_other": [],
+    "same_graph": false,
+    "merges": null
   },
   "tiger-0.75": {
     "sarsop": {
@@ -1584,7 +1616,7 @@
         "right"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 5,
       "terminates": true,
       "landmarks": [
@@ -1609,8 +1641,9 @@
     "only_sarsop": [
       "ev-direction(neg3) | ev-direction(pos3)"
     ],
-    "only_qmdp": [],
-    "same_graph": false
+    "only_other": [],
+    "same_graph": false,
+    "merges": null
   },
   "tiger-0.8": {
     "sarsop": {
@@ -1637,7 +1670,7 @@
         "right"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 5,
       "terminates": true,
       "landmarks": [
@@ -1662,8 +1695,9 @@
     "only_sarsop": [
       "ev-direction(neg3) | ev-direction(pos3)"
     ],
-    "only_qmdp": [],
-    "same_graph": false
+    "only_other": [],
+    "same_graph": false,
+    "merges": null
   },
   "tiger-0.85": {
     "sarsop": {
@@ -1688,7 +1722,7 @@
         "right"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 5,
       "terminates": true,
       "landmarks": [
@@ -1711,8 +1745,9 @@
       ]
     },
     "only_sarsop": [],
-    "only_qmdp": [],
-    "same_graph": true
+    "only_other": [],
+    "same_graph": true,
+    "merges": null
   },
   "tiger-0.9": {
     "sarsop": {
@@ -1737,7 +1772,7 @@
         "right"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 5,
       "terminates": true,
       "landmarks": [
@@ -1760,8 +1795,9 @@
       ]
     },
     "only_sarsop": [],
-    "only_qmdp": [],
-    "same_graph": true
+    "only_other": [],
+    "same_graph": true,
+    "merges": null
   },
   "tiger-0.95": {
     "sarsop": {
@@ -1786,7 +1822,7 @@
         "right"
       ]
     },
-    "qmdp": {
+    "other": {
       "nodes": 3,
       "terminates": true,
       "landmarks": [
@@ -1809,7 +1845,8 @@
     "only_sarsop": [
       "ev-direction(neg2) | ev-direction(pos2)"
     ],
-    "only_qmdp": [],
-    "same_graph": false
+    "only_other": [],
+    "same_graph": false,
+    "merges": null
   }
 }

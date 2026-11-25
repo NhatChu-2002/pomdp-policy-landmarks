@@ -345,6 +345,7 @@ def _exact_row(g: dict, ctrl: dict, rhw: dict | None = None) -> dict:
         "cross_variable_orderings": len(cross),
         "cross_variable_hasse": sorted(f"{show_(a)} < {show_(b)}" for a, b in reduction(set(cross))),
         "landmarks": sorted(show_(k) for k in lms), "exact_s": round(exact_s, 3),
+        "truncated_groups": sorted(sg.truncated),
         "states": len(sg.states),
     }
     if rhw is not None:
@@ -444,10 +445,40 @@ def _graph_summary(g: dict) -> dict:
             "actions": sorted({n["action"] for n in g["nodes"] if n["action"] not in (None, "nothing")})}
 
 
+def _resolution_order(g: dict) -> list:
+    """Hidden variables sorted by when the policy first reaches its last belief landmark."""
+    ctrl = extraction.controller(g)
+    lms = [k for k in StateGraph(ctrl).landmarks(max_size=1)
+           if all(f.startswith("ev-") for f in k) and len({f.split("(")[0] for f in k}) == 1]
+    last: dict = {}
+    for k in lms:
+        t = extraction.landmark_timeline(g, ctrl, frozenset(k))["expected_steps"]
+        var = next(iter(k)).split("(")[0][3:]
+        if t is not None and t > last.get(var, -1.0):
+            last[var] = t
+    return [v for v, _ in sorted(last.items(), key=lambda kv: kv[1])]
+
+
+def _pairs_agree(a: list, b: list) -> tuple:
+    """(variable pairs ordered the same way, pairs ordered in both lists)."""
+    common = [v for v in a if v in b]
+    pairs = [(x, y) for i, x in enumerate(common) for y in common[i + 1:]]
+    return sum(b.index(x) < b.index(y) for x, y in pairs), len(pairs)
+
+
+def exp_pbvi() -> dict:
+    """SARSOP vs PBVI (a second point-based solver) on the same models."""
+    return _compare_solvers("pbvi", order=True)
+
+
 def exp_qmdp() -> dict:
     """SARSOP vs QMDP policies of the same models: what changes in the landmark graph."""
+    return _compare_solvers("qmdp")
+
+
+def _compare_solvers(folder: str, order: bool = False) -> dict:
     rows = {}
-    for path in sorted((HERE / "policy_graphs" / "qmdp").glob("*.json")):
+    for path in sorted((HERE / "policy_graphs" / folder).glob("*.json")):
         q = extraction.load(path)
         if "error" in q:
             rows[path.stem] = {"error": q["error"]}
@@ -455,10 +486,16 @@ def exp_qmdp() -> dict:
         s = extraction.load(HERE / "policy_graphs" / path.name)
         a, b = _graph_summary(s), _graph_summary(q)
         rows[path.stem] = {
-            "sarsop": a, "qmdp": b,
+            "sarsop": a, "other": b,
             "only_sarsop": sorted(set(a["landmarks"]) - set(b["landmarks"] or [])),
-            "only_qmdp": sorted(set(b["landmarks"] or []) - set(a["landmarks"])),
-            "same_graph": a["landmarks"] == b["landmarks"] and a["orderings"] == b["orderings"]}
+            "only_other": sorted(set(b["landmarks"] or []) - set(a["landmarks"])),
+            "same_graph": a["landmarks"] == b["landmarks"] and a["orderings"] == b["orderings"],
+            "merges": q.get("merges")}
+        if order and q["problem"] == "rocksample" and b["terminates"]:
+            ra, rb = _resolution_order(s), _resolution_order(q)
+            agree, total = _pairs_agree(ra, rb)
+            rows[path.stem].update({"order_sarsop": ra, "order_other": rb,
+                                    "order_pairs_agree": agree, "order_pairs": total})
     return rows
 
 
@@ -526,10 +563,47 @@ def exp_kept() -> dict:
     return rows
 
 
+def exp_large() -> dict:
+    """Larger RockSample models (policy_graphs/large): the cost follows the policy graph,
+    not the state space."""
+    rows = {}
+    for path in sorted((HERE / "policy_graphs" / "large").glob("*.json")):
+        g = extraction.load(path)
+        if "error" in g:
+            rows[path.stem] = {"error": g["error"]}
+            continue
+        ctrl = extraction.controller(g)
+        sg = StateGraph(ctrl)
+        t0 = time.perf_counter()
+        lms = [k for k in sg.landmarks() if interpretable(" | ".join(sorted(k)))]
+        nat = {pair for pair, kinds in sg.orderings(lms).items() if "nat" in kinds}
+        seconds = time.perf_counter() - t0
+        pred = lambda k: {f.split("(")[0] for f in k}  # noqa: E731
+        choice = [k for k in lms if all(f.startswith(("ev-", "at(")) for f in k)]
+        cross = {(a, b) for a, b in nat if a in choice and b in choice and not pred(a) & pred(b)}
+        rhw = run_fd(WORK / "large" / path.stem, *extraction.to_pddl(ctrl, path.stem))
+        keys, _ = graph(rhw["parsed"])
+        found = {_names(k) for k in keys if all(a.startswith("Atom ") for a in k)}
+        p_term, steps = extraction.first_hit(g, {n["id"]: 1.0 for n in g["nodes"] if n["kind"] != "inner"})
+        rows[path.stem] = {
+            "states": len(g["states"]), "solve_s": round(g["solve_seconds"], 1),
+            "policy_nodes": ctrl["policy_nodes"], "controller_states": ctrl["controller_states"],
+            "merges": g.get("merges"), "value_b0": round(g["value_at_b0"], 3),
+            "exact_value": round(extraction.policy_value(g), 3),
+            "p_terminate": round(p_term, 6), "expected_steps": None if steps is None else round(steps, 2),
+            "landmarks": len(lms), "rhw": sum(k in found for k in lms),
+            "diagram_edges": len(reduction(nat)), "cross_variable": len(cross),
+            "resolution_order": _resolution_order(g), "truncated_groups": sorted(sg.truncated),
+            "exact_kept_s": round(seconds, 3), "rhw_ms": round(rhw["lm_time"] * 1000, 3),
+            "rhw_wall_s": round(rhw["wall"], 2)}
+    return rows
+
+
 EXPERIMENTS = {"main": exp_main, "exactness": exp_exactness, "ablation": exp_ablation,
                "induced": exp_induced, "mutation": exp_mutation, "scaling": exp_scaling,
                "extracted": exp_extracted, "exact": exp_exact, "bins": exp_bins,
-               "qmdp": exp_qmdp, "mutants": exp_mutants, "kept": exp_kept}
+               "qmdp": exp_qmdp, "pbvi": exp_pbvi, "mutants": exp_mutants, "kept": exp_kept,
+               "large": exp_large}
 
 
 def main(argv: list) -> int:

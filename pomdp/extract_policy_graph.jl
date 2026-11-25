@@ -14,7 +14,8 @@
 # so the graph contains exactly the policy's executions with positive probability.
 #
 # Environment:
-#   SOLVER=sarsop (default) | qmdp   recorded as "solver" in the JSON.
+#   SOLVER=sarsop (default) | qmdp | pbvi (PBVI_ITERS, default 10)   recorded as "solver" in the JSON.
+#   Run with `julia --project=.` (Project.toml pins the package versions).
 #     qmdp: value iteration on the fully observable MDP, one alpha vector per
 #     action (ignores the value of information).
 #   SARSOP_TIME=<seconds>            SARSOP time limit (default 120).
@@ -38,6 +39,7 @@ using NativeSARSOP
 using Random
 using RockSample
 using QuickPOMDPs
+using PointBasedValueIteration
 
 const MAX_NODES = 200_000
 
@@ -153,8 +155,15 @@ end
 function solve_policy(m; max_time = parse(Float64, get(ENV, "SARSOP_TIME", "120")))
     t0 = time()
     s = solver_name()
-    policy = s == "sarsop" ? solve(SARSOPSolver(precision = 1e-3, max_time = max_time), m) :
-             s == "qmdp" ? qmdp(m) : error("unknown SOLVER $s")
+    # NativeSARSOP gives its initial bounds 1 s by default, too little for large models
+    # (the upper bound then stays at 0); SARSOP_INIT_TIME raises it.
+    init = parse(Float64, get(ENV, "SARSOP_INIT_TIME", "1.0"))
+    policy = s == "sarsop" ? solve(SARSOPSolver(precision = 1e-3, max_time = max_time,
+                                    init_lower = NativeSARSOP.BlindLowerBound(bel_res = 1e-2, max_time = init),
+                                    init_upper = NativeSARSOP.FastInformedBound(bel_res = 1e-2, max_time = init)), m) :
+             s == "qmdp" ? qmdp(m) :
+             s == "pbvi" ? solve(PBVISolver(max_iterations = parse(Int, get(ENV, "PBVI_ITERS", "10"))), m) :
+             error("unknown SOLVER $s")
     policy, time() - t0
 end
 
