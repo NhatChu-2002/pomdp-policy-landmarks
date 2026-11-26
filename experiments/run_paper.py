@@ -499,6 +499,31 @@ def _compare_solvers(folder: str, order: bool = False) -> dict:
     return rows
 
 
+def _abstract_reach(g: dict) -> tuple:
+    """Two landmark-free references for the mutant study: the abstract states reached with
+    positive probability, and those visited on every run that ends (None if no run ends)."""
+    c = extraction.controller(g)
+    succ: dict = {}
+    for s, _, _, t, _ in c["edges"]:
+        succ.setdefault(s, set()).add(t)
+    ends = {c["node_state"][n["id"]] for n in g["nodes"] if n["kind"] != "inner"}
+
+    def reach(removed=None):
+        if c["init"] == removed:
+            return set()
+        seen, todo = {c["init"]}, [c["init"]]
+        while todo:
+            for t in succ.get(todo.pop(), ()):
+                if t != removed and t not in seen:
+                    seen.add(t)
+                    todo.append(t)
+        return seen
+
+    support = reach()
+    sure = frozenset(s for s in support if not reach(s) & ends) if support & ends else None
+    return frozenset(support), sure
+
+
 def exp_mutants() -> dict:
     """Single-action mutants: does the landmark graph change when behaviour changes?"""
     rows = {}
@@ -506,6 +531,7 @@ def exp_mutants() -> dict:
     for base_path in sorted(folder.glob("*-base.json")):
         name = base_path.stem[:-5]
         base = _graph_summary(extraction.load(base_path))
+        base_reach = _abstract_reach(extraction.load(base_path))
         per = []
         for path in sorted(folder.glob(f"{name}-m*.json")):
             m = extraction.load(path)
@@ -527,10 +553,14 @@ def exp_mutants() -> dict:
                         "landmarks_lost": sorted(set(base["landmarks"]) - set(x["landmarks"] or [])),
                         "landmarks_gained": sorted(set(x["landmarks"] or []) - set(base["landmarks"])),
                         "orderings_changed": x["orderings"] != base["orderings"],
-                        "p_end_within_100": x["p_end_within_100"]})
+                        "p_end_within_100": x["p_end_within_100"],
+                        "support_changed": _abstract_reach(m)[0] != base_reach[0],
+                        "sure_states_changed": _abstract_reach(m)[1] != base_reach[1]})
         cats = [m.get("category", "error") for m in per]
         rows[name] = {"base": base, "mutants": per,
                       "summary": {c: cats.count(c) for c in ("lm", "end", "cost", "same", "error")},
+                      "support_changed": sum(bool(m.get("support_changed")) for m in per),
+                      "sure_states_changed": sum(bool(m.get("sure_states_changed")) for m in per),
                       "lm_and_some_runs_never_end": sum(m.get("category") == "lm" and m["p_terminate"] < 1 - 1e-9
                                                         for m in per)}
     return rows

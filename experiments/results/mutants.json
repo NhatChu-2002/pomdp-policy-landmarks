@@ -61,7 +61,9 @@
           "chose(commit-v1) | chose(commit-v3)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "channel-3-0.85-m10",
@@ -83,7 +85,9 @@
           "chose(commit-v2) | chose(commit-v3)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "channel-3-0.85-m11",
@@ -99,7 +103,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": false,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "channel-3-0.85-m12",
@@ -118,7 +124,9 @@
         ],
         "landmarks_gained": [],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "channel-3-0.85-m2",
@@ -134,7 +142,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": false,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "channel-3-0.85-m3",
@@ -160,7 +170,9 @@
           "chose(commit-v2)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "channel-3-0.85-m4",
@@ -176,7 +188,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "channel-3-0.85-m5",
@@ -199,7 +213,9 @@
           "chose(commit-v1) | chose(commit-v3)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "channel-3-0.85-m6",
@@ -225,7 +241,9 @@
           "chose(commit-v3)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "channel-3-0.85-m7",
@@ -251,7 +269,9 @@
           "chose(commit-v1)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "channel-3-0.85-m8",
@@ -276,7 +296,9 @@
           "chose(commit-v1) | chose(commit-v2)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "channel-3-0.85-m9",
@@ -292,7 +314,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": false,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       }
     ],
     "summary": {
@@ -302,6 +326,8 @@
       "same": 0,
       "error": 0
     },
+    "support_changed": 12,
+    "sure_states_changed": 0,
     "lm_and_some_runs_never_end": 0
   },
   "mine-4-0.85": {
@@ -354,7 +380,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": false,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "mine-4-0.85-m10",
@@ -370,7 +398,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": false,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "mine-4-0.85-m11",
@@ -386,7 +416,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": false,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "mine-4-0.85-m12",
@@ -402,7 +434,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": false,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "mine-4-0.85-m2",
@@ -418,7 +452,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": false,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "mine-4-0.85-m3",
@@ -442,7 +478,9 @@
           "chose(commit-v1)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "mine-4-0.85-m4",
@@ -458,7 +496,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": false,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "mine-4-0.85-m5",
@@ -474,7 +514,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": false,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "mine-4-0.85-m6",
@@ -495,7 +537,9 @@
           "chose(commit-v1) | chose(commit-v2) | chose(commit-v3)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "mine-4-0.85-m7",
@@ -511,7 +555,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": false,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "mine-4-0.85-m8",
@@ -531,7 +577,9 @@
           "chose(commit-v1) | chose(commit-v3) | chose(commit-v4)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "mine-4-0.85-m9",
@@ -555,7 +603,9 @@
           "chose(commit-v4)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       }
     ],
     "summary": {
@@ -565,6 +615,8 @@
       "same": 3,
       "error": 0
     },
+    "support_changed": 12,
+    "sure_states_changed": 0,
     "lm_and_some_runs_never_end": 0
   },
   "rocksample-4-4-s1": {
@@ -620,7 +672,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": false,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "rocksample-4-4-s1-m10",
@@ -636,7 +690,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": false,
-        "p_end_within_100": 0.75
+        "p_end_within_100": 0.75,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "rocksample-4-4-s1-m11",
@@ -656,7 +712,9 @@
           "ev-rock1(neg2) | ev-rock1(neg3)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "rocksample-4-4-s1-m12",
@@ -672,7 +730,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": false,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "rocksample-4-4-s1-m2",
@@ -697,7 +757,9 @@
           "sampled(rock4)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 0.5
+        "p_end_within_100": 0.5,
+        "support_changed": true,
+        "sure_states_changed": true
       },
       {
         "mutant": "rocksample-4-4-s1-m3",
@@ -723,7 +785,9 @@
         ],
         "landmarks_gained": [],
         "orderings_changed": true,
-        "p_end_within_100": 0.0
+        "p_end_within_100": 0.0,
+        "support_changed": true,
+        "sure_states_changed": true
       },
       {
         "mutant": "rocksample-4-4-s1-m4",
@@ -739,7 +803,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": false,
-        "p_end_within_100": 0.75
+        "p_end_within_100": 0.75,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "rocksample-4-4-s1-m5",
@@ -762,7 +828,9 @@
           "ev-rock2(neg2) | ev-rock2(neg3)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "rocksample-4-4-s1-m6",
@@ -783,7 +851,9 @@
           "ev-rock4(neg2)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 0.5
+        "p_end_within_100": 0.5,
+        "support_changed": true,
+        "sure_states_changed": true
       },
       {
         "mutant": "rocksample-4-4-s1-m7",
@@ -808,7 +878,9 @@
           "ev-rock2(neg2) | ev-rock2(neg3)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": true
       },
       {
         "mutant": "rocksample-4-4-s1-m8",
@@ -829,7 +901,9 @@
           "ev-rock4(neg2)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 0.5
+        "p_end_within_100": 0.5,
+        "support_changed": true,
+        "sure_states_changed": true
       },
       {
         "mutant": "rocksample-4-4-s1-m9",
@@ -845,7 +919,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": false,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       }
     ],
     "summary": {
@@ -855,6 +931,8 @@
       "same": 0,
       "error": 0
     },
+    "support_changed": 12,
+    "sure_states_changed": 5,
     "lm_and_some_runs_never_end": 3
   },
   "rocksample-5-5-s1": {
@@ -926,7 +1004,9 @@
           "ev-rock1(neg2) | ev-rock1(neg3)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "rocksample-5-5-s1-m10",
@@ -942,7 +1022,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": false,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "rocksample-5-5-s1-m11",
@@ -958,7 +1040,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": false,
-        "p_end_within_100": 0.75
+        "p_end_within_100": 0.75,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "rocksample-5-5-s1-m12",
@@ -977,7 +1061,9 @@
           "ev-rock2(neg2) | ev-rock2(pos2)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 0.75
+        "p_end_within_100": 0.75,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "rocksample-5-5-s1-m2",
@@ -999,7 +1085,9 @@
           "ev-rock4(neg2)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 0.5
+        "p_end_within_100": 0.5,
+        "support_changed": true,
+        "sure_states_changed": true
       },
       {
         "mutant": "rocksample-5-5-s1-m3",
@@ -1015,7 +1103,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": false,
-        "p_end_within_100": 0.875
+        "p_end_within_100": 0.875,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "rocksample-5-5-s1-m4",
@@ -1034,7 +1124,9 @@
           "ev-rock2(neg2) | ev-rock2(pos2)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 0.75
+        "p_end_within_100": 0.75,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "rocksample-5-5-s1-m5",
@@ -1056,7 +1148,9 @@
           "ev-rock4(neg2)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 0.5
+        "p_end_within_100": 0.5,
+        "support_changed": true,
+        "sure_states_changed": true
       },
       {
         "mutant": "rocksample-5-5-s1-m6",
@@ -1078,7 +1172,9 @@
           "ev-rock1(neg2) | ev-rock1(neg3)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "rocksample-5-5-s1-m7",
@@ -1100,7 +1196,9 @@
           "ev-rock1(neg2) | ev-rock1(neg3)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "rocksample-5-5-s1-m8",
@@ -1122,7 +1220,9 @@
           "ev-rock1(neg2) | ev-rock1(neg3)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "rocksample-5-5-s1-m9",
@@ -1138,7 +1238,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": false,
-        "p_end_within_100": 0.875
+        "p_end_within_100": 0.875,
+        "support_changed": true,
+        "sure_states_changed": false
       }
     ],
     "summary": {
@@ -1148,6 +1250,8 @@
       "same": 0,
       "error": 0
     },
+    "support_changed": 12,
+    "sure_states_changed": 2,
     "lm_and_some_runs_never_end": 4
   },
   "sensor-0.85": {
@@ -1201,7 +1305,9 @@
         ],
         "landmarks_gained": [],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "sensor-0.85-m10",
@@ -1219,7 +1325,9 @@
         ],
         "landmarks_gained": [],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": false,
+        "sure_states_changed": false
       },
       {
         "mutant": "sensor-0.85-m11",
@@ -1237,7 +1345,9 @@
         ],
         "landmarks_gained": [],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": false,
+        "sure_states_changed": false
       },
       {
         "mutant": "sensor-0.85-m12",
@@ -1253,7 +1363,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": false,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "sensor-0.85-m2",
@@ -1271,7 +1383,9 @@
         ],
         "landmarks_gained": [],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": false,
+        "sure_states_changed": false
       },
       {
         "mutant": "sensor-0.85-m3",
@@ -1295,7 +1409,9 @@
           "chose(commit-a-faulty-b-ok)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "sensor-0.85-m4",
@@ -1311,7 +1427,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": false,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "sensor-0.85-m5",
@@ -1331,7 +1449,9 @@
         ],
         "landmarks_gained": [],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "sensor-0.85-m6",
@@ -1347,7 +1467,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": false,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "sensor-0.85-m7",
@@ -1371,7 +1493,9 @@
           "chose(commit-a-ok-b-faulty)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "sensor-0.85-m8",
@@ -1387,7 +1511,9 @@
         "landmarks_lost": [],
         "landmarks_gained": [],
         "orderings_changed": false,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "sensor-0.85-m9",
@@ -1407,7 +1533,9 @@
         ],
         "landmarks_gained": [],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       }
     ],
     "summary": {
@@ -1417,6 +1545,8 @@
       "same": 1,
       "error": 0
     },
+    "support_changed": 9,
+    "sure_states_changed": 0,
     "lm_and_some_runs_never_end": 0
   },
   "tiger-0.85": {
@@ -1462,7 +1592,9 @@
           "chose(right)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "tiger-0.85-m2",
@@ -1484,7 +1616,9 @@
           "chose(right)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "tiger-0.85-m3",
@@ -1502,7 +1636,9 @@
         ],
         "landmarks_gained": [],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "tiger-0.85-m4",
@@ -1524,7 +1660,9 @@
           "chose(left)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "tiger-0.85-m5",
@@ -1545,7 +1683,9 @@
           "chose(left)"
         ],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       },
       {
         "mutant": "tiger-0.85-m6",
@@ -1563,7 +1703,9 @@
         ],
         "landmarks_gained": [],
         "orderings_changed": true,
-        "p_end_within_100": 1.0
+        "p_end_within_100": 1.0,
+        "support_changed": true,
+        "sure_states_changed": false
       }
     ],
     "summary": {
@@ -1573,6 +1715,8 @@
       "same": 0,
       "error": 0
     },
+    "support_changed": 6,
+    "sure_states_changed": 0,
     "lm_and_some_runs_never_end": 0
   }
 }
