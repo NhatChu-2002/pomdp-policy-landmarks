@@ -249,6 +249,26 @@ def test_cegar_region_retries_a_witness_that_lands_on_a_cell_edge(tmp_path=None)
     assert not cegar.exact_landmark(*cegar.exact_graph(m, res["witness"]), 0, cand[0])
 
 
+def test_cegar_region_includes_its_upper_end_point(tmp_path=None):
+    """The region [-0.5, 1.0] is closed: the prior 1.0 starts in the cell [1, 3), and one
+    growl from there reaches 2.39, where the policy opens a door without entering
+    [-1, 1). A region open at its upper end would wrongly prove that cell a landmark."""
+    if not (FAST_DOWNWARD.parent / "builds" / "release64").exists():
+        import pytest
+        pytest.skip("Fast Downward build not found")
+    from policy_landmarks import cegar, symbolic as sy
+    g = {"problem": "tiger", "p_correct": 0.8, "states": ["left", "right"]}
+    m = sy.Model(g, {"states": ["left", "right"], "actions": ["listen", "right", "left"],
+                     "alphas": [[0.0, 0.0], [10.0, -100.0], [-100.0, 10.0]]})
+    work = Path(tmp_path or ROOT / "experiments" / "results" / "work" / "tests") / "cegar-closed"
+    grid, edges = sy.Grid([[-sy.INF, -3.0, -1.0, 1.0, 3.0, sy.INF]]), (-1.0, 1.0)
+    cand = {0: [(-1.0, 1.0)]}
+    res = cegar.verify(m, grid, cegar.initial_rules(m, grid, [None], edges, "any"), cand, work, edges,
+                       region={0: (-0.5, 1.0)})
+    assert res["landmark"] is False and res["certified"] and res["witness"] == [1.0], res
+    assert not cegar.exact_landmark(*cegar.exact_graph(m, [1.0]), 0, cand[0])
+
+
 def test_box_test_keeps_an_action_that_loses_only_within_float_error():
     """'right' beats 'listen' by 1e-14 at every belief, far below the float error of
     values of size 100; dropping 'listen' would rest on rounding, so it must stay. A

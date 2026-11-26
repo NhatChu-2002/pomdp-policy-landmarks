@@ -221,8 +221,9 @@ def compile_task(model, grid, rules, banned_cells: dict, edges, region: dict, na
 
 
 def _in_region(cell, lo, hi) -> bool:
-    """Does a half-open cell meet the region [lo, hi] (a point if lo == hi)?"""
-    return cell[0] <= lo < cell[1] if lo == hi else cell[0] < hi and lo < cell[1]
+    """Does a half-open cell meet the closed region [lo, hi] (a point if lo == hi)? A cell
+    that starts exactly at hi holds the prior hi, so it counts (corner priors found this)."""
+    return cell[0] <= lo < cell[1] if lo == hi else cell[0] <= hi and lo < cell[1]
 
 
 def _witness(cell, lo, hi, frac: float = 0.5) -> float:
