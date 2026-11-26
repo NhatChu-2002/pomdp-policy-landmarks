@@ -1,4 +1,422 @@
 {
+  "rocksample-4-4-s5": {
+    "candidates": 44,
+    "exact_landmarks": 12,
+    "proven": 12,
+    "unsound": 0,
+    "recall": "12/12",
+    "undecided": 0,
+    "refuted_certified": 32,
+    "refuted_uncertified": 0,
+    "context": "coarse",
+    "rules_initial": 6437,
+    "rules_final": 6734,
+    "cells_final": [
+      7,
+      7,
+      7,
+      7
+    ],
+    "seconds": 666.6,
+    "results": [
+      {
+        "candidate": "ev-rock1(neg3)",
+        "exact": true,
+        "proven": true,
+        "certified_counterexample": null,
+        "reason": null,
+        "iterations": 74,
+        "seconds": 393.8
+      },
+      {
+        "candidate": "ev-rock1(neg2)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 5.6
+      },
+      {
+        "candidate": "ev-rock1(neg1)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 5.5
+      },
+      {
+        "candidate": "ev-rock1(pos1)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 6.2
+      },
+      {
+        "candidate": "ev-rock1(pos2)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 6.4
+      },
+      {
+        "candidate": "ev-rock1(pos3)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 5.1
+      },
+      {
+        "candidate": "ev-rock1(neg2) | ev-rock1(neg3)",
+        "exact": true,
+        "proven": true,
+        "certified_counterexample": null,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 5.2
+      },
+      {
+        "candidate": "ev-rock1(pos2) | ev-rock1(pos3)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 6.0
+      },
+      {
+        "candidate": "ev-rock1(neg1) | ev-rock1(pos1)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 5.9
+      },
+      {
+        "candidate": "ev-rock1(neg2) | ev-rock1(pos2)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 5.5
+      },
+      {
+        "candidate": "ev-rock1(neg3) | ev-rock1(pos3)",
+        "exact": true,
+        "proven": true,
+        "certified_counterexample": null,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 5.2
+      },
+      {
+        "candidate": "ev-rock2(neg3)",
+        "exact": true,
+        "proven": true,
+        "certified_counterexample": null,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 5.0
+      },
+      {
+        "candidate": "ev-rock2(neg2)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 5.7
+      },
+      {
+        "candidate": "ev-rock2(neg1)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 6.1
+      },
+      {
+        "candidate": "ev-rock2(pos1)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 5.9
+      },
+      {
+        "candidate": "ev-rock2(pos2)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 6.1
+      },
+      {
+        "candidate": "ev-rock2(pos3)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 5.4
+      },
+      {
+        "candidate": "ev-rock2(neg2) | ev-rock2(neg3)",
+        "exact": true,
+        "proven": true,
+        "certified_counterexample": null,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 4.9
+      },
+      {
+        "candidate": "ev-rock2(pos2) | ev-rock2(pos3)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 5.5
+      },
+      {
+        "candidate": "ev-rock2(neg1) | ev-rock2(pos1)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 1,
+        "seconds": 11.2
+      },
+      {
+        "candidate": "ev-rock2(neg2) | ev-rock2(pos2)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 5.5
+      },
+      {
+        "candidate": "ev-rock2(neg3) | ev-rock2(pos3)",
+        "exact": true,
+        "proven": true,
+        "certified_counterexample": null,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 4.5
+      },
+      {
+        "candidate": "ev-rock3(neg3)",
+        "exact": true,
+        "proven": true,
+        "certified_counterexample": null,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 5.1
+      },
+      {
+        "candidate": "ev-rock3(neg2)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 6.0
+      },
+      {
+        "candidate": "ev-rock3(neg1)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 7.6
+      },
+      {
+        "candidate": "ev-rock3(pos1)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 8.4
+      },
+      {
+        "candidate": "ev-rock3(pos2)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 8.1
+      },
+      {
+        "candidate": "ev-rock3(pos3)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 7.4
+      },
+      {
+        "candidate": "ev-rock3(neg2) | ev-rock3(neg3)",
+        "exact": true,
+        "proven": true,
+        "certified_counterexample": null,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 6.4
+      },
+      {
+        "candidate": "ev-rock3(pos2) | ev-rock3(pos3)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 7.0
+      },
+      {
+        "candidate": "ev-rock3(neg1) | ev-rock3(pos1)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 7.4
+      },
+      {
+        "candidate": "ev-rock3(neg2) | ev-rock3(pos2)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 7.4
+      },
+      {
+        "candidate": "ev-rock3(neg3) | ev-rock3(pos3)",
+        "exact": true,
+        "proven": true,
+        "certified_counterexample": null,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 6.1
+      },
+      {
+        "candidate": "ev-rock4(neg3)",
+        "exact": true,
+        "proven": true,
+        "certified_counterexample": null,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 6.6
+      },
+      {
+        "candidate": "ev-rock4(neg2)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 7.9
+      },
+      {
+        "candidate": "ev-rock4(neg1)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 7.9
+      },
+      {
+        "candidate": "ev-rock4(pos1)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 6.5
+      },
+      {
+        "candidate": "ev-rock4(pos2)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 5.9
+      },
+      {
+        "candidate": "ev-rock4(pos3)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 5.3
+      },
+      {
+        "candidate": "ev-rock4(neg2) | ev-rock4(neg3)",
+        "exact": true,
+        "proven": true,
+        "certified_counterexample": null,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 5.1
+      },
+      {
+        "candidate": "ev-rock4(pos2) | ev-rock4(pos3)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 4.8
+      },
+      {
+        "candidate": "ev-rock4(neg1) | ev-rock4(pos1)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 1,
+        "seconds": 10.8
+      },
+      {
+        "candidate": "ev-rock4(neg2) | ev-rock4(pos2)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 5.5
+      },
+      {
+        "candidate": "ev-rock4(neg3) | ev-rock4(pos3)",
+        "exact": true,
+        "proven": true,
+        "certified_counterexample": null,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 3.4
+      }
+    ]
+  },
   "rocksample-4-4-s3": {
     "candidates": 44,
     "exact_landmarks": 7,
@@ -8,367 +426,412 @@
     "undecided": 0,
     "refuted_certified": 37,
     "refuted_uncertified": 0,
+    "context": "coarse",
     "rules_initial": 6521,
-    "rules_final": 7863,
+    "rules_final": 9611,
     "cells_final": [
-      9,
-      9,
+      10,
+      10,
       9,
       7
     ],
-    "seconds": 1954.9,
+    "seconds": 2174.0,
     "results": [
       {
         "candidate": "ev-rock1(neg3)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
-        "iterations": 100,
-        "seconds": 490.9
+        "reason": null,
+        "iterations": 77,
+        "seconds": 509.5
       },
       {
         "candidate": "ev-rock1(neg2)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
-        "iterations": 40,
-        "seconds": 294.9
+        "reason": null,
+        "iterations": 19,
+        "seconds": 174.8
       },
       {
         "candidate": "ev-rock1(neg1)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 6.9
+        "reason": null,
+        "iterations": 5,
+        "seconds": 55.7
       },
       {
         "candidate": "ev-rock1(pos1)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 6.0
+        "seconds": 9.6
       },
       {
         "candidate": "ev-rock1(pos2)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 8.1
+        "seconds": 9.5
       },
       {
         "candidate": "ev-rock1(pos3)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 7.3
+        "seconds": 9.2
       },
       {
         "candidate": "ev-rock1(neg2) | ev-rock1(neg3)",
         "exact": true,
         "proven": true,
         "certified_counterexample": null,
-        "iterations": 52,
-        "seconds": 304.1
+        "reason": null,
+        "iterations": 37,
+        "seconds": 336.7
       },
       {
         "candidate": "ev-rock1(pos2) | ev-rock1(pos3)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 5.3
+        "reason": null,
+        "iterations": 1,
+        "seconds": 19.6
       },
       {
         "candidate": "ev-rock1(neg1) | ev-rock1(pos1)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 5.3
+        "reason": null,
+        "iterations": 1,
+        "seconds": 19.7
       },
       {
         "candidate": "ev-rock1(neg2) | ev-rock1(pos2)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 5.1
+        "seconds": 9.5
       },
       {
         "candidate": "ev-rock1(neg3) | ev-rock1(pos3)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 4.7
+        "seconds": 8.4
       },
       {
         "candidate": "ev-rock2(neg3)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 4.8
+        "reason": null,
+        "iterations": 1,
+        "seconds": 17.9
       },
       {
         "candidate": "ev-rock2(neg2)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
-        "iterations": 2,
-        "seconds": 17.3
+        "reason": null,
+        "iterations": 0,
+        "seconds": 10.1
       },
       {
         "candidate": "ev-rock2(neg1)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 5.7
+        "seconds": 10.1
       },
       {
         "candidate": "ev-rock2(pos1)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 5.7
+        "seconds": 10.4
       },
       {
         "candidate": "ev-rock2(pos2)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 5.7
+        "seconds": 7.6
       },
       {
         "candidate": "ev-rock2(pos3)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 5.6
+        "seconds": 7.3
       },
       {
         "candidate": "ev-rock2(neg2) | ev-rock2(neg3)",
         "exact": true,
         "proven": true,
         "certified_counterexample": null,
+        "reason": null,
         "iterations": 0,
-        "seconds": 4.6
+        "seconds": 6.9
       },
       {
         "candidate": "ev-rock2(pos2) | ev-rock2(pos3)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 5.1
+        "seconds": 7.2
       },
       {
         "candidate": "ev-rock2(neg1) | ev-rock2(pos1)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 5.7
+        "reason": null,
+        "iterations": 1,
+        "seconds": 14.6
       },
       {
         "candidate": "ev-rock2(neg2) | ev-rock2(pos2)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 5.5
+        "seconds": 7.4
       },
       {
         "candidate": "ev-rock2(neg3) | ev-rock2(pos3)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
-        "iterations": 1,
-        "seconds": 8.9
+        "reason": null,
+        "iterations": 0,
+        "seconds": 6.3
       },
       {
         "candidate": "ev-rock3(neg3)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 4.8
+        "seconds": 9.8
       },
       {
         "candidate": "ev-rock3(neg2)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 5.8
+        "seconds": 10.1
       },
       {
         "candidate": "ev-rock3(neg1)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 5.7
+        "seconds": 10.5
       },
       {
         "candidate": "ev-rock3(pos1)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 5.8
+        "seconds": 10.7
       },
       {
         "candidate": "ev-rock3(pos2)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 6.2
+        "seconds": 10.0
       },
       {
         "candidate": "ev-rock3(pos3)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 5.6
+        "seconds": 10.0
       },
       {
         "candidate": "ev-rock3(neg2) | ev-rock3(neg3)",
         "exact": true,
         "proven": true,
         "certified_counterexample": null,
+        "reason": null,
         "iterations": 0,
-        "seconds": 4.7
+        "seconds": 8.4
       },
       {
         "candidate": "ev-rock3(pos2) | ev-rock3(pos3)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 5.2
+        "seconds": 9.8
       },
       {
         "candidate": "ev-rock3(neg1) | ev-rock3(pos1)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 5.3
+        "seconds": 10.2
       },
       {
         "candidate": "ev-rock3(neg2) | ev-rock3(pos2)",
         "exact": true,
         "proven": true,
         "certified_counterexample": null,
-        "iterations": 3,
-        "seconds": 20.1
+        "reason": null,
+        "iterations": 0,
+        "seconds": 4.8
       },
       {
         "candidate": "ev-rock3(neg3) | ev-rock3(pos3)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 5.0
+        "seconds": 6.3
       },
       {
         "candidate": "ev-rock4(neg3)",
         "exact": true,
         "proven": true,
         "certified_counterexample": null,
-        "iterations": 105,
-        "seconds": 593.4
+        "reason": null,
+        "iterations": 79,
+        "seconds": 680.4
       },
       {
         "candidate": "ev-rock4(neg2)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 6.3
+        "seconds": 12.8
       },
       {
         "candidate": "ev-rock4(neg1)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 6.3
+        "seconds": 12.9
       },
       {
         "candidate": "ev-rock4(pos1)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 6.3
+        "seconds": 12.6
       },
       {
         "candidate": "ev-rock4(pos2)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 6.5
+        "seconds": 12.7
       },
       {
         "candidate": "ev-rock4(pos3)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 6.0
+        "seconds": 11.4
       },
       {
         "candidate": "ev-rock4(neg2) | ev-rock4(neg3)",
         "exact": true,
         "proven": true,
         "certified_counterexample": null,
+        "reason": null,
         "iterations": 0,
-        "seconds": 5.8
+        "seconds": 10.7
       },
       {
         "candidate": "ev-rock4(pos2) | ev-rock4(pos3)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 6.0
+        "seconds": 11.3
       },
       {
         "candidate": "ev-rock4(neg1) | ev-rock4(pos1)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 6.0
+        "seconds": 12.1
       },
       {
         "candidate": "ev-rock4(neg2) | ev-rock4(pos2)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 6.3
+        "seconds": 11.7
       },
       {
         "candidate": "ev-rock4(neg3) | ev-rock4(pos3)",
         "exact": true,
         "proven": true,
         "certified_counterexample": null,
+        "reason": null,
         "iterations": 0,
-        "seconds": 5.3
+        "seconds": 10.2
       }
     ]
   },
@@ -381,740 +844,412 @@
     "undecided": 0,
     "refuted_certified": 32,
     "refuted_uncertified": 0,
+    "context": "coarse",
     "rules_initial": 6762,
-    "rules_final": 8396,
+    "rules_final": 9003,
     "cells_final": [
       7,
       11,
       7,
       10
     ],
-    "seconds": 1451.9,
+    "seconds": 1793.0,
     "results": [
       {
         "candidate": "ev-rock1(neg3)",
         "exact": true,
         "proven": true,
         "certified_counterexample": null,
-        "iterations": 158,
-        "seconds": 763.2
+        "reason": null,
+        "iterations": 108,
+        "seconds": 838.6
       },
       {
         "candidate": "ev-rock1(neg2)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
-        "iterations": 15,
-        "seconds": 93.2
+        "reason": null,
+        "iterations": 8,
+        "seconds": 87.0
       },
       {
         "candidate": "ev-rock1(neg1)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 6.2
+        "seconds": 10.3
       },
       {
         "candidate": "ev-rock1(pos1)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 6.2
+        "seconds": 10.3
       },
       {
         "candidate": "ev-rock1(pos2)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 6.1
+        "seconds": 9.8
       },
       {
         "candidate": "ev-rock1(pos3)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 6.0
+        "seconds": 9.6
       },
       {
         "candidate": "ev-rock1(neg2) | ev-rock1(neg3)",
         "exact": true,
         "proven": true,
         "certified_counterexample": null,
+        "reason": null,
         "iterations": 0,
-        "seconds": 5.3
+        "seconds": 8.5
       },
       {
         "candidate": "ev-rock1(pos2) | ev-rock1(pos3)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 9.7
+      },
+      {
+        "candidate": "ev-rock1(neg1) | ev-rock1(pos1)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 10.0
+      },
+      {
+        "candidate": "ev-rock1(neg2) | ev-rock1(pos2)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 10.1
+      },
+      {
+        "candidate": "ev-rock1(neg3) | ev-rock1(pos3)",
+        "exact": true,
+        "proven": true,
+        "certified_counterexample": null,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 8.2
+      },
+      {
+        "candidate": "ev-rock2(neg3)",
+        "exact": true,
+        "proven": true,
+        "certified_counterexample": null,
+        "reason": null,
+        "iterations": 40,
+        "seconds": 402.0
+      },
+      {
+        "candidate": "ev-rock2(neg2)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 11.3
+      },
+      {
+        "candidate": "ev-rock2(neg1)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 11.2
+      },
+      {
+        "candidate": "ev-rock2(pos1)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 11.2
+      },
+      {
+        "candidate": "ev-rock2(pos2)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 11.1
+      },
+      {
+        "candidate": "ev-rock2(pos3)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 11.2
+      },
+      {
+        "candidate": "ev-rock2(neg2) | ev-rock2(neg3)",
+        "exact": true,
+        "proven": true,
+        "certified_counterexample": null,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 9.4
+      },
+      {
+        "candidate": "ev-rock2(pos2) | ev-rock2(pos3)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 10.5
+      },
+      {
+        "candidate": "ev-rock2(neg1) | ev-rock2(pos1)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 10.7
+      },
+      {
+        "candidate": "ev-rock2(neg2) | ev-rock2(pos2)",
+        "exact": true,
+        "proven": true,
+        "certified_counterexample": null,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 9.6
+      },
+      {
+        "candidate": "ev-rock2(neg3) | ev-rock2(pos3)",
+        "exact": true,
+        "proven": true,
+        "certified_counterexample": null,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 9.2
+      },
+      {
+        "candidate": "ev-rock3(neg3)",
+        "exact": true,
+        "proven": true,
+        "certified_counterexample": null,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 9.1
+      },
+      {
+        "candidate": "ev-rock3(neg2)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 10.8
+      },
+      {
+        "candidate": "ev-rock3(neg1)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 11.5
+      },
+      {
+        "candidate": "ev-rock3(pos1)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 11.4
+      },
+      {
+        "candidate": "ev-rock3(pos2)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 11.1
+      },
+      {
+        "candidate": "ev-rock3(pos3)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 10.5
+      },
+      {
+        "candidate": "ev-rock3(neg2) | ev-rock3(neg3)",
+        "exact": true,
+        "proven": true,
+        "certified_counterexample": null,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 9.4
+      },
+      {
+        "candidate": "ev-rock3(pos2) | ev-rock3(pos3)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 10.0
+      },
+      {
+        "candidate": "ev-rock3(neg1) | ev-rock3(pos1)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 10.4
+      },
+      {
+        "candidate": "ev-rock3(neg2) | ev-rock3(pos2)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 10.2
+      },
+      {
+        "candidate": "ev-rock3(neg3) | ev-rock3(pos3)",
+        "exact": true,
+        "proven": true,
+        "certified_counterexample": null,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 8.6
+      },
+      {
+        "candidate": "ev-rock4(neg3)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 9.5
+      },
+      {
+        "candidate": "ev-rock4(neg2)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 1,
+        "seconds": 21.2
+      },
+      {
+        "candidate": "ev-rock4(neg1)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 10.7
+      },
+      {
+        "candidate": "ev-rock4(pos1)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 11.0
+      },
+      {
+        "candidate": "ev-rock4(pos2)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 2,
+        "seconds": 36.3
+      },
+      {
+        "candidate": "ev-rock4(pos3)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 11.7
+      },
+      {
+        "candidate": "ev-rock4(neg2) | ev-rock4(neg3)",
+        "exact": true,
+        "proven": true,
+        "certified_counterexample": null,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 8.8
+      },
+      {
+        "candidate": "ev-rock4(pos2) | ev-rock4(pos3)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 10.4
+      },
+      {
+        "candidate": "ev-rock4(neg1) | ev-rock4(pos1)",
+        "exact": false,
+        "proven": false,
+        "certified_counterexample": true,
+        "reason": null,
+        "iterations": 0,
+        "seconds": 11.2
+      },
+      {
+        "candidate": "ev-rock4(neg2) | ev-rock4(pos2)",
+        "exact": true,
+        "proven": true,
+        "certified_counterexample": null,
+        "reason": null,
         "iterations": 0,
         "seconds": 5.6
       },
       {
-        "candidate": "ev-rock1(neg1) | ev-rock1(pos1)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 5.9
-      },
-      {
-        "candidate": "ev-rock1(neg2) | ev-rock1(pos2)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 6.0
-      },
-      {
-        "candidate": "ev-rock1(neg3) | ev-rock1(pos3)",
-        "exact": true,
-        "proven": true,
-        "certified_counterexample": null,
-        "iterations": 0,
-        "seconds": 5.0
-      },
-      {
-        "candidate": "ev-rock2(neg3)",
-        "exact": true,
-        "proven": true,
-        "certified_counterexample": null,
-        "iterations": 50,
-        "seconds": 303.1
-      },
-      {
-        "candidate": "ev-rock2(neg2)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 6.1
-      },
-      {
-        "candidate": "ev-rock2(neg1)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 6.5
-      },
-      {
-        "candidate": "ev-rock2(pos1)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 6.7
-      },
-      {
-        "candidate": "ev-rock2(pos2)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 6.5
-      },
-      {
-        "candidate": "ev-rock2(pos3)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 6.5
-      },
-      {
-        "candidate": "ev-rock2(neg2) | ev-rock2(neg3)",
-        "exact": true,
-        "proven": true,
-        "certified_counterexample": null,
-        "iterations": 0,
-        "seconds": 5.4
-      },
-      {
-        "candidate": "ev-rock2(pos2) | ev-rock2(pos3)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 6.1
-      },
-      {
-        "candidate": "ev-rock2(neg1) | ev-rock2(pos1)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 6.2
-      },
-      {
-        "candidate": "ev-rock2(neg2) | ev-rock2(pos2)",
-        "exact": true,
-        "proven": true,
-        "certified_counterexample": null,
-        "iterations": 0,
-        "seconds": 6.0
-      },
-      {
-        "candidate": "ev-rock2(neg3) | ev-rock2(pos3)",
-        "exact": true,
-        "proven": true,
-        "certified_counterexample": null,
-        "iterations": 0,
-        "seconds": 5.5
-      },
-      {
-        "candidate": "ev-rock3(neg3)",
-        "exact": true,
-        "proven": true,
-        "certified_counterexample": null,
-        "iterations": 0,
-        "seconds": 5.7
-      },
-      {
-        "candidate": "ev-rock3(neg2)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 6.7
-      },
-      {
-        "candidate": "ev-rock3(neg1)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 6.6
-      },
-      {
-        "candidate": "ev-rock3(pos1)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 6.6
-      },
-      {
-        "candidate": "ev-rock3(pos2)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 6.7
-      },
-      {
-        "candidate": "ev-rock3(pos3)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 6.4
-      },
-      {
-        "candidate": "ev-rock3(neg2) | ev-rock3(neg3)",
-        "exact": true,
-        "proven": true,
-        "certified_counterexample": null,
-        "iterations": 0,
-        "seconds": 5.7
-      },
-      {
-        "candidate": "ev-rock3(pos2) | ev-rock3(pos3)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 6.3
-      },
-      {
-        "candidate": "ev-rock3(neg1) | ev-rock3(pos1)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 6.5
-      },
-      {
-        "candidate": "ev-rock3(neg2) | ev-rock3(pos2)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 6.5
-      },
-      {
-        "candidate": "ev-rock3(neg3) | ev-rock3(pos3)",
-        "exact": true,
-        "proven": true,
-        "certified_counterexample": null,
-        "iterations": 0,
-        "seconds": 5.3
-      },
-      {
-        "candidate": "ev-rock4(neg3)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 1,
-        "seconds": 11.6
-      },
-      {
-        "candidate": "ev-rock4(neg2)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 6.4
-      },
-      {
-        "candidate": "ev-rock4(neg1)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 6.6
-      },
-      {
-        "candidate": "ev-rock4(pos1)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 6.6
-      },
-      {
-        "candidate": "ev-rock4(pos2)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 6.6
-      },
-      {
-        "candidate": "ev-rock4(pos3)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 6.5
-      },
-      {
-        "candidate": "ev-rock4(neg2) | ev-rock4(neg3)",
-        "exact": true,
-        "proven": true,
-        "certified_counterexample": null,
-        "iterations": 0,
-        "seconds": 5.4
-      },
-      {
-        "candidate": "ev-rock4(pos2) | ev-rock4(pos3)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 6.1
-      },
-      {
-        "candidate": "ev-rock4(neg1) | ev-rock4(pos1)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 6.5
-      },
-      {
-        "candidate": "ev-rock4(neg2) | ev-rock4(pos2)",
-        "exact": true,
-        "proven": true,
-        "certified_counterexample": null,
-        "iterations": 4,
-        "seconds": 28.8
-      },
-      {
         "candidate": "ev-rock4(neg3) | ev-rock4(pos3)",
         "exact": false,
         "proven": false,
         "certified_counterexample": true,
+        "reason": null,
         "iterations": 0,
-        "seconds": 5.4
-      }
-    ]
-  },
-  "rocksample-4-4-s5": {
-    "candidates": 44,
-    "exact_landmarks": 12,
-    "proven": 12,
-    "unsound": 0,
-    "recall": "12/12",
-    "undecided": 0,
-    "refuted_certified": 32,
-    "refuted_uncertified": 0,
-    "rules_initial": 6437,
-    "rules_final": 6533,
-    "cells_final": [
-      7,
-      7,
-      7,
-      7
-    ],
-    "seconds": 625.4,
-    "results": [
-      {
-        "candidate": "ev-rock1(neg3)",
-        "exact": true,
-        "proven": true,
-        "certified_counterexample": null,
-        "iterations": 85,
-        "seconds": 401.2
-      },
-      {
-        "candidate": "ev-rock1(neg2)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 4.9
-      },
-      {
-        "candidate": "ev-rock1(neg1)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 5.1
-      },
-      {
-        "candidate": "ev-rock1(pos1)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 5.0
-      },
-      {
-        "candidate": "ev-rock1(pos2)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 5.3
-      },
-      {
-        "candidate": "ev-rock1(pos3)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 4.8
-      },
-      {
-        "candidate": "ev-rock1(neg2) | ev-rock1(neg3)",
-        "exact": true,
-        "proven": true,
-        "certified_counterexample": null,
-        "iterations": 0,
-        "seconds": 4.4
-      },
-      {
-        "candidate": "ev-rock1(pos2) | ev-rock1(pos3)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 4.7
-      },
-      {
-        "candidate": "ev-rock1(neg1) | ev-rock1(pos1)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 4.9
-      },
-      {
-        "candidate": "ev-rock1(neg2) | ev-rock1(pos2)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 4.9
-      },
-      {
-        "candidate": "ev-rock1(neg3) | ev-rock1(pos3)",
-        "exact": true,
-        "proven": true,
-        "certified_counterexample": null,
-        "iterations": 0,
-        "seconds": 4.4
-      },
-      {
-        "candidate": "ev-rock2(neg3)",
-        "exact": true,
-        "proven": true,
-        "certified_counterexample": null,
-        "iterations": 0,
-        "seconds": 4.4
-      },
-      {
-        "candidate": "ev-rock2(neg2)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 4.9
-      },
-      {
-        "candidate": "ev-rock2(neg1)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 5.0
-      },
-      {
-        "candidate": "ev-rock2(pos1)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 5.0
-      },
-      {
-        "candidate": "ev-rock2(pos2)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 5.1
-      },
-      {
-        "candidate": "ev-rock2(pos3)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 4.9
-      },
-      {
-        "candidate": "ev-rock2(neg2) | ev-rock2(neg3)",
-        "exact": true,
-        "proven": true,
-        "certified_counterexample": null,
-        "iterations": 0,
-        "seconds": 4.3
-      },
-      {
-        "candidate": "ev-rock2(pos2) | ev-rock2(pos3)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 4.6
-      },
-      {
-        "candidate": "ev-rock2(neg1) | ev-rock2(pos1)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 1,
-        "seconds": 9.7
-      },
-      {
-        "candidate": "ev-rock2(neg2) | ev-rock2(pos2)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 4.9
-      },
-      {
-        "candidate": "ev-rock2(neg3) | ev-rock2(pos3)",
-        "exact": true,
-        "proven": true,
-        "certified_counterexample": null,
-        "iterations": 0,
-        "seconds": 3.9
-      },
-      {
-        "candidate": "ev-rock3(neg3)",
-        "exact": true,
-        "proven": true,
-        "certified_counterexample": null,
-        "iterations": 0,
-        "seconds": 4.6
-      },
-      {
-        "candidate": "ev-rock3(neg2)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 5.2
-      },
-      {
-        "candidate": "ev-rock3(neg1)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 5.0
-      },
-      {
-        "candidate": "ev-rock3(pos1)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 5.3
-      },
-      {
-        "candidate": "ev-rock3(pos2)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 5.2
-      },
-      {
-        "candidate": "ev-rock3(pos3)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 4.9
-      },
-      {
-        "candidate": "ev-rock3(neg2) | ev-rock3(neg3)",
-        "exact": true,
-        "proven": true,
-        "certified_counterexample": null,
-        "iterations": 0,
-        "seconds": 4.5
-      },
-      {
-        "candidate": "ev-rock3(pos2) | ev-rock3(pos3)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 4.8
-      },
-      {
-        "candidate": "ev-rock3(neg1) | ev-rock3(pos1)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 4.8
-      },
-      {
-        "candidate": "ev-rock3(neg2) | ev-rock3(pos2)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 5.0
-      },
-      {
-        "candidate": "ev-rock3(neg3) | ev-rock3(pos3)",
-        "exact": true,
-        "proven": true,
-        "certified_counterexample": null,
-        "iterations": 0,
-        "seconds": 4.3
-      },
-      {
-        "candidate": "ev-rock4(neg3)",
-        "exact": true,
-        "proven": true,
-        "certified_counterexample": null,
-        "iterations": 0,
-        "seconds": 4.5
-      },
-      {
-        "candidate": "ev-rock4(neg2)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 5.0
-      },
-      {
-        "candidate": "ev-rock4(neg1)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 5.0
-      },
-      {
-        "candidate": "ev-rock4(pos1)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 5.0
-      },
-      {
-        "candidate": "ev-rock4(pos2)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 5.0
-      },
-      {
-        "candidate": "ev-rock4(pos3)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 4.7
-      },
-      {
-        "candidate": "ev-rock4(neg2) | ev-rock4(neg3)",
-        "exact": true,
-        "proven": true,
-        "certified_counterexample": null,
-        "iterations": 0,
-        "seconds": 4.4
-      },
-      {
-        "candidate": "ev-rock4(pos2) | ev-rock4(pos3)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 4.4
-      },
-      {
-        "candidate": "ev-rock4(neg1) | ev-rock4(pos1)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 1,
-        "seconds": 9.9
-      },
-      {
-        "candidate": "ev-rock4(neg2) | ev-rock4(pos2)",
-        "exact": false,
-        "proven": false,
-        "certified_counterexample": true,
-        "iterations": 0,
-        "seconds": 4.9
-      },
-      {
-        "candidate": "ev-rock4(neg3) | ev-rock4(pos3)",
-        "exact": true,
-        "proven": true,
-        "certified_counterexample": null,
-        "iterations": 0,
-        "seconds": 2.9
+        "seconds": 9.5
       }
     ]
   }

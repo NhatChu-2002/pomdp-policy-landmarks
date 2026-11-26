@@ -57,6 +57,7 @@ class Model:
             self.rock_cell = {int(r[4:]) - 1: tuple(map(int, xy.split("-"))) for xy, r in g["rock_at"].items()}
         # rows of the state list for each observable part, with each state's variable bits
         self.rows: dict = {}
+        self._rows_np: dict = {}                             # pos -> (alpha columns, bit matrix)
         for i, s in enumerate(self.states):
             if s in ("terminal", "done"):
                 continue
@@ -98,9 +99,18 @@ class Model:
         """Actions the alpha-vector policy can choose at some belief in the box
         (sound over-approximation: an action is dropped only if each of its vectors is
         beaten everywhere in the box by one vector of another action)."""
-        corners = [self.corner(pos, corner)
-                   for corner in itertools.product(*[(lo,) if lo == hi else (lo, hi) for lo, hi in box])]
-        M = self.A @ np.array(corners).T                     # vectors x corners
+        pts = list(itertools.product(*[(lo,) if lo == hi else (lo, hi) for lo, hi in box]))
+        if self.problem == "probe":
+            M = self.A @ np.array([self.corner(pos, c) for c in pts]).T
+        else:                                                # vectorized self.corner on pos's rows
+            if pos not in self._rows_np:
+                idx = [i for i, _ in self.rows[pos]]
+                self._rows_np[pos] = (self.A[:, idx], np.array([b for _, b in self.rows[pos]], dtype=bool))
+            A_pos, bits = self._rows_np[pos]
+            with np.errstate(over="ignore"):
+                P = 1.0 / (1.0 + np.exp(-np.array(pts, dtype=float)))     # sigmoid, +-inf -> 1, 0
+            B = np.where(bits[None], P[:, None, :], 1.0 - P[:, None, :]).prod(axis=2)
+            M = A_pos @ B.T                                  # vectors x corners
         acts = np.array(self.actions)
         winners = np.unique(M.argmax(axis=0))                # best vector at each corner
         out = set(acts[winners])                             # chosen at a corner: possible

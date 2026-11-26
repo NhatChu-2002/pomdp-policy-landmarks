@@ -49,7 +49,9 @@ def run_fd(workdir: Path, domain: str, problem: str, search: str = LM_SEARCH) ->
     plan = re.search(r"Plan length: (\d+) step", log)
     return {"parsed": parse_landmark_text(log), "sas": workdir / "output.sas",
             "wall": wall, "lm_time": float(lm_time.group(1)) if lm_time else None,
-            "plan_length": int(plan.group(1)) if plan else None}
+            "plan_length": int(plan.group(1)) if plan else None,
+            # FD exits 12 for both "exhausted" and "gave up"; only this line is a proof
+            "exhausted": "Completely explored state space -- no solution!" in log}
 
 
 def run_spec(workdir: Path, spec: BSCSpec, search: str = LM_SEARCH) -> dict:

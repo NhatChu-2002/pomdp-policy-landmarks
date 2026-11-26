@@ -26,9 +26,13 @@ import bisect
 import itertools
 from pathlib import Path
 
+import numpy as np
+
 from .planner import run_fd
 from .rules import COARSE
 from .symbolic import INF, Grid, Model
+
+TOL = 1e-9          # relative float margin below which replay calls a step undecided
 
 
 def _class(lo: float, hi: float, edges) -> int:
@@ -39,8 +43,15 @@ def _box(model, assign, edges):
     box = []
     for v in range(len(model.vars)):
         kind, x = assign[v]
-        box.append(x if kind == "f" else ((-INF, edges[0]), (edges[0], edges[1]), (edges[1], INF))[x])
+        box.append(x if kind == "f" else (-INF, INF) if kind == "a"
+                   else ((-INF, edges[0]), (edges[0], edges[1]), (edges[1], INF))[x])
     return box
+
+
+def _covers(entry, cell, edges) -> bool:
+    """Does a rule's entry for one variable (any / coarse class / fine cell) contain the cell?"""
+    kind, x = entry
+    return kind == "a" or (x == cell if kind == "f" else _class(*cell, edges) == x)
 
 
 def _acted(model, pos, a):
@@ -52,18 +63,24 @@ def _cells(grid: Grid, v: int) -> list:
     return [(e[i], e[i + 1]) for i in range(len(e) - 1)]
 
 
-def initial_rules(model: Model, grid: Grid, positions: list, edges) -> list:
-    """[(pos, a, assign)]: assign[v] = ("f", (lo, hi)) for the acted variable and
-    ("k", class) for the others; covers every belief where the policy can act."""
+def initial_rules(model: Model, grid: Grid, positions: list, edges, context: str = "coarse") -> list:
+    """[(pos, a, assign)]: assign[v] = ("f", (lo, hi)) for the acted variable; the others
+    get every coarse class ("k", class), or with context="any" a single unconstrained
+    entry ("a", None), so the rule count is linear in the number of variables and
+    refinement adds classes only where plans need them. Covers every belief where the
+    policy can act."""
     k = len(model.vars)
     out = []
     for pos in positions:
         for a in sorted(model.possible_actions(pos, [(-INF, INF)] * k)):
             acted = _acted(model, pos, a)
             others = [v for v in range(k) if v != acted]
-            for classes in itertools.product(range(3), repeat=len(others)):
+            contexts = ([{v: ("a", None) for v in others}] if context == "any" else
+                        [{v: ("k", cl) for v, cl in zip(others, classes)}
+                         for classes in itertools.product(range(3), repeat=len(others))])
+            for ctx in contexts:
                 for cell in (_cells(grid, acted) if acted is not None else [None]):
-                    assign = {v: ("k", cl) for v, cl in zip(others, classes)}
+                    assign = dict(ctx)
                     if acted is not None:
                         assign[acted] = ("f", cell)
                     if a in model.possible_actions(pos, _box(model, assign, edges)):
@@ -72,10 +89,17 @@ def initial_rules(model: Model, grid: Grid, positions: list, edges) -> list:
 
 
 def split_class(model, grid, rule, var, edges) -> list:
-    """Replace a coarse class of `var` by the fine cells inside it (children re-checked)."""
+    """Replace an unconstrained entry of `var` by its three coarse classes, or a coarse
+    class by the fine cells inside it (children re-checked)."""
     pos, a, assign = rule
-    cl = assign[var][1]
+    kind, cl = assign[var]
     out = []
+    if kind == "a":
+        for k in range(3):
+            child = {**assign, var: ("k", k)}
+            if a in model.possible_actions(pos, _box(model, child, edges)):
+                out.append((pos, a, child))
+        return out
     for cell in _cells(grid, var):
         if _class(*cell, edges) == cl:
             child = {**assign, var: ("f", cell)}
@@ -119,8 +143,9 @@ def compile_task(model, grid, rules, banned_cells: dict, edges, name="cegar"):
     for i, (pos, a, assign) in enumerate(rules):
         pre = ["(live)"] + ([at(pos)] if pos is not None else [])
         for v, (kind, x) in assign.items():
-            pre.append(f"(cv-{model.vars[v]} c{index[v][x]})" if kind == "f"
-                       else f"(ck-{model.vars[v]} {COARSE[x]})")
+            if kind != "a":
+                pre.append(f"(cv-{model.vars[v]} c{index[v][x]})" if kind == "f"
+                           else f"(ck-{model.vars[v]} {COARSE[x]})")
         for j, (obs, v, shift, npos, term) in enumerate(model.step(pos, a)):
             if term:
                 actions.append((f"r{i}-o{j}-tend", pre, ["(done)", "(not (live))"]))
@@ -177,14 +202,20 @@ def _banned(grid, candidate) -> dict:
 
 def replay(model, grid, rules, steps):
     """Exact replay. Returns None if the plan is a real run of the policy, else
-    (kind, details) for the first divergence."""
+    (kind, details) for the first divergence. A near-tie between actions or a value
+    within float noise of a cell edge is a "tie": the float replay cannot decide it."""
     lam = [0.0] * len(model.vars)
+    acts = np.array(model.actions)
     for name in steps:
         i, j, t = name.split("-")[:3]
         pos, a, assign = rules[int(i[1:])]
-        b = model.corner(pos, lam)
-        if model.actions[int((model.A @ b).argmax())] != a:
+        vals = model.A @ model.corner(pos, lam)
+        best = vals.max()
+        if model.actions[int(vals.argmax())] != a:
             return ("action", int(i[1:]), list(lam))
+        others = vals[acts != a]
+        if others.size and best - others.max() <= TOL * (1 + abs(best)):
+            return ("tie", int(i[1:]), list(lam))
         obs, v, shift, npos, term = model.step(pos, a)[int(j[1:])]
         if term:
             return None
@@ -197,6 +228,8 @@ def replay(model, grid, rules, steps):
                 new = lam[v] + shift
             if t != "tNone" and grid.cell(v, new) != int(t[1:]):
                 return ("cell", int(i[1:]), (v, lam[v], shift, int(t[1:])))
+            if new not in (INF, -INF) and min(abs(new - e) for e in grid.edges[v][1:-1]) <= TOL * (1 + abs(new)):
+                return ("tie", int(i[1:]), list(lam))
             lam[v] = new
     return None
 
@@ -209,38 +242,42 @@ def verify(model: Model, grid: Grid, rules: list, candidate: dict, workdir: Path
         domain, problem, initially = compile_task(model, grid, rules, banned, edges)
         if initially:
             return {"landmark": True, "iterations": it, "reason": "holds initially"}
-        run_fd(workdir, domain, problem, search="lazy_greedy([ff()])")
+        run = run_fd(workdir, domain, problem, search="lazy_greedy([ff()])")
         plan_file = workdir / "sas_plan"
         if not plan_file.exists():
+            if not run["exhausted"]:                           # crash or out of memory: no proof
+                return {"landmark": None, "iterations": it, "reason": "planner gave up", "rules": len(rules)}
             return {"landmark": True, "iterations": it, "rules": len(rules)}
         steps = [l.strip("() \n").split()[0] for l in plan_file.read_text().splitlines() if l.startswith("(")]
         plan_file.unlink()
-        # 1. fine-cell check: the rule must be possible at the plan's fine cells
+        # 1. fine-cell check: each rule must be possible at the plan's fine cells. Every
+        # spurious step is refined at once (one planner call per batch, not per split).
         cells = [grid.cell(v, 0.0) for v in range(len(model.vars))]
-        spurious = None
+        spurious = {}
         for name in steps:
             i, j, t = name.split("-")[:3]
             pos, a, assign = rules[int(i[1:])]
             box = [_cells(grid, v)[cells[v]] for v in range(len(model.vars))]
             if a not in model.possible_actions(pos, box):
-                spurious = (int(i[1:]), list(cells))
-                break
+                spurious.setdefault(int(i[1:]), [box[v] for v in range(len(model.vars))])
             obs, v, shift, npos, term = model.step(pos, a)[int(j[1:])]
             if not term and t != "tNone" and v is not None and shift is not None:
                 cells[v] = int(t[1:])
-        if spurious is not None:
-            r, fine = spurious
-            pos, a, assign = rules[r]
-            coarse = [v for v, (kind, _) in assign.items() if kind == "k"]
-            # a fully fine rule has the plan's box, where its action was checked possible
-            assert coarse, "spurious step on a rule without coarse classes"
-            for v in coarse:
-                kids = split_class(model, grid, rules[r], v, edges)
-                if not any(ch[2][v][1] == _cells(grid, v)[fine[v]] for ch in kids):
-                    break
-            else:
-                v = coarse[0]
-            rules[r:r + 1] = split_class(model, grid, rules[r], v, edges)
+        if spurious:
+            for r in sorted(spurious, reverse=True):          # high indices first: low ones stay valid
+                fine = spurious[r]
+                pos, a, assign = rules[r]
+                coarse = [v for v, (kind, _) in assign.items() if kind in ("k", "a")]
+                # a fully fine rule has the plan's box, where its action was checked possible
+                assert coarse, "spurious step on a rule without coarse classes"
+                for v in coarse:
+                    kids = split_class(model, grid, rules[r], v, edges)
+                    if not any(_covers(ch[2][v], fine[v], edges) for ch in kids):
+                        break
+                else:
+                    v = coarse[0]
+                    kids = split_class(model, grid, rules[r], v, edges)
+                rules[r:r + 1] = kids
             continue
         # 2. exact replay
         div = replay(model, grid, rules, steps)
@@ -260,8 +297,8 @@ def verify(model: Model, grid: Grid, rules: list, candidate: dict, workdir: Path
             if pick is None:
                 return {"landmark": None, "iterations": it, "reason": "exact belief", "rules": len(rules)}
             split_cell(model, grid, rules, *pick, edges)
-        else:            # impossible observation from a certain belief: no finite split removes it
-            return {"landmark": None, "iterations": it, "reason": "observation", "rules": len(rules)}
+        else:   # "observation" (impossible from a certain belief) or "tie": no split decides it
+            return {"landmark": None, "iterations": it, "reason": kind, "rules": len(rules)}
     return {"landmark": None, "iterations": max_iter, "rules": len(rules)}
 
 

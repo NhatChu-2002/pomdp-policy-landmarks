@@ -852,22 +852,24 @@ def exp_symbolic_categorical() -> dict:
     return rows
 
 
-def exp_cegar(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksample-4-4-s1")) -> dict:
+def exp_cegar(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksample-4-4-s1"),
+              context: str = "coarse", folder: str = "alphas") -> dict:
     """R3c: verify every candidate belief landmark (single levels and kept-class pairs
-    per rock) with counterexample-guided refinement, and compare with the exact graph."""
+    per rock) with counterexample-guided refinement, and compare with the exact graph.
+    context="any" starts the other variables unconstrained (rule count linear in rocks)."""
     from policy_landmarks import cegar, symbolic as sy
     levels = ["neg3", "neg2", "neg1", "unk", "pos1", "pos2", "pos3"]     # bin grid cells 0..6
     pairs = [("neg2", "neg3"), ("pos2", "pos3"), ("neg1", "pos1"), ("neg2", "pos2"), ("neg3", "pos3")]
     rows = {}
     for name in names:
-        g = extraction.load(HERE / "policy_graphs" / "alphas" / f"{name}.json")
-        m = sy.Model(g, json.loads((HERE / "policy_graphs" / "alphas" / f"{name}.alphas.json").read_text()))
+        g = extraction.load(HERE / "policy_graphs" / folder / f"{name}.json")
+        m = sy.Model(g, json.loads((HERE / "policy_graphs" / folder / f"{name}.alphas.json").read_text()))
         grid, edges = sy.bin_grid(m, 0), (-4.5, 4.5)
         span = dict(zip(levels, zip(grid.edges[0], grid.edges[0][1:])))   # before any split
         positions = [(i, j) for i in range(1, m.n + 1) for j in range(1, m.n + 1)]
         exact = StateGraph(extraction.controller(g))
         t0 = time.perf_counter()
-        rules = cegar.initial_rules(m, grid, positions, edges)
+        rules = cegar.initial_rules(m, grid, positions, edges, context)
         n0 = len(rules)
         results = []
         for v, var in enumerate(m.vars):
@@ -876,10 +878,10 @@ def exp_cegar(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksample-4-4-s
                 facts = [f"ev-{var}({lv})" for lv in cand]
                 truth = exact.is_landmark(facts)
                 t = time.perf_counter()
-                res = cegar.verify(m, grid, rules, {v: [span[lv] for lv in cand]}, WORK / "cegar" / name,
+                res = cegar.verify(m, grid, rules, {v: [span[lv] for lv in cand]}, WORK / f"cegar-{context}" / name,
                                    edges, max_iter=400)
                 results.append({"candidate": " | ".join(facts), "exact": truth, "proven": res["landmark"],
-                                "certified_counterexample": res.get("certified"),
+                                "certified_counterexample": res.get("certified"), "reason": res.get("reason"),
                                 "iterations": res["iterations"], "seconds": round(time.perf_counter() - t, 1)})
         proven = [r for r in results if r["proven"]]
         rows[name] = {"candidates": len(results), "exact_landmarks": sum(r["exact"] for r in results),
@@ -889,7 +891,7 @@ def exp_cegar(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksample-4-4-s
                       "refuted_certified": sum(bool(r["certified_counterexample"]) for r in results),
                       "refuted_uncertified": sum(r["proven"] is False and not r["certified_counterexample"]
                                                  for r in results),
-                      "rules_initial": n0, "rules_final": len(rules),
+                      "context": context, "rules_initial": n0, "rules_final": len(rules),
                       "cells_final": [len(e) - 1 for e in grid.edges],
                       "seconds": round(time.perf_counter() - t0, 1), "results": results}
     return rows
