@@ -143,3 +143,23 @@ def test_symbolic_controller_is_sound_on_a_threshold_policy():
     sg = StateGraph(ctrl)
     assert sg.is_landmark(["ev-direction(pos1)", "ev-direction(neg1)"])
     assert ctrl["commits"]                                  # some cell opens a door
+
+
+def test_cegar_cell_split_keeps_every_policy_choice_covered():
+    """After fine-cell splits, every belief's policy action must still be allowed by some
+    rule whose box contains that belief (the rule task stays an over-approximation)."""
+    import numpy as np
+    from policy_landmarks import cegar, symbolic as sy
+    g = {"problem": "tiger", "p_correct": 0.8, "states": ["left", "right"]}
+    alphas = {"states": ["left", "right"], "actions": ["listen", "right", "left"],
+              "alphas": [[0.0, 0.0], [10.0, -100.0], [-100.0, 10.0]]}
+    m = sy.Model(g, alphas)
+    grid, edges = sy.Grid([[-sy.INF, -3.0, -1.0, 1.0, 3.0, sy.INF]]), (-1.0, 1.0)
+    rules = cegar.initial_rules(m, grid, [None], edges)
+    assert cegar.split_cell(m, grid, rules, 0, 0.0, edges)
+    assert cegar.split_cell(m, grid, rules, 0, 2.0, edges)
+    assert not cegar.split_cell(m, grid, rules, 0, 2.0, edges)          # already an edge
+    for x in np.linspace(-6, 6, 97):
+        a = m.actions[int((m.A @ m.corner(None, [x])).argmax())]
+        boxes = [cegar._box(m, assign, edges)[0] for _, ra, assign in rules if ra == a]
+        assert any(lo <= x <= hi for lo, hi in boxes), x

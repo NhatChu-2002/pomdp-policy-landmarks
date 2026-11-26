@@ -852,7 +852,7 @@ def exp_symbolic_categorical() -> dict:
     return rows
 
 
-def exp_cegar(names=("rocksample-4-4-s5",)) -> dict:
+def exp_cegar(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksample-4-4-s1")) -> dict:
     """R3c: verify every candidate belief landmark (single levels and kept-class pairs
     per rock) with counterexample-guided refinement, and compare with the exact graph."""
     from policy_landmarks import cegar, symbolic as sy
@@ -863,6 +863,7 @@ def exp_cegar(names=("rocksample-4-4-s5",)) -> dict:
         g = extraction.load(HERE / "policy_graphs" / "alphas" / f"{name}.json")
         m = sy.Model(g, json.loads((HERE / "policy_graphs" / "alphas" / f"{name}.alphas.json").read_text()))
         grid, edges = sy.bin_grid(m, 0), (-4.5, 4.5)
+        span = dict(zip(levels, zip(grid.edges[0], grid.edges[0][1:])))   # before any split
         positions = [(i, j) for i in range(1, m.n + 1) for j in range(1, m.n + 1)]
         exact = StateGraph(extraction.controller(g))
         t0 = time.perf_counter()
@@ -874,9 +875,9 @@ def exp_cegar(names=("rocksample-4-4-s5",)) -> dict:
             for cand in cands:
                 facts = [f"ev-{var}({lv})" for lv in cand]
                 truth = exact.is_landmark(facts)
-                banned = {f"(cv-{var} c{levels.index(lv)})" for lv in cand}
                 t = time.perf_counter()
-                res = cegar.verify(m, grid, rules, banned, WORK / "cegar" / name, edges, max_iter=300)
+                res = cegar.verify(m, grid, rules, {v: [span[lv] for lv in cand]}, WORK / "cegar" / name,
+                                   edges, max_iter=400)
                 results.append({"candidate": " | ".join(facts), "exact": truth, "proven": res["landmark"],
                                 "certified_counterexample": res.get("certified"),
                                 "iterations": res["iterations"], "seconds": round(time.perf_counter() - t, 1)})
@@ -889,6 +890,7 @@ def exp_cegar(names=("rocksample-4-4-s5",)) -> dict:
                       "refuted_uncertified": sum(r["proven"] is False and not r["certified_counterexample"]
                                                  for r in results),
                       "rules_initial": n0, "rules_final": len(rules),
+                      "cells_final": [len(e) - 1 for e in grid.edges],
                       "seconds": round(time.perf_counter() - t0, 1), "results": results}
     return rows
 
