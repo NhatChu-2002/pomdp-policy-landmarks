@@ -1017,6 +1017,52 @@ def exp_cegar_region(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksampl
     return rows
 
 
+def exp_mine_sim(episodes: int = 2000, max_steps: int = 1000, seed: int = 7) -> dict:
+    """Mine-3x3: simulate the exported alpha-vectors (whose belief graph equals the released
+    one: same nodes and edges) with exact Bayes updates, and list the commit actions the
+    alpha-vector set can choose at all."""
+    import random
+    import numpy as np
+    base = HERE / "policy_graphs" / "alphas"
+    g = json.loads((base / "mine-9-0.85.json").read_text())
+    al = json.loads((base / "mine-9-0.85.alphas.json").read_text())
+    released = json.loads((HERE / "policy_graphs" / "mine-9-0.85.json").read_text())
+    A, acts, states = np.array(al["alphas"]), al["actions"], al["states"]
+    cells = [s for s in states if s != "done"]
+    q, gamma = g["p_correct"], 0.95
+    rng = random.Random(seed)
+    rets, ended, commits, sure_probe = [], 0, {}, 0
+    for _ in range(episodes):
+        mine = rng.choice(cells)
+        b = np.array([1.0 / len(cells) if s != "done" else 0.0 for s in states])
+        ret, disc, done = 0.0, 1.0, False
+        for _ in range(max_steps):
+            a = acts[int((A @ b).argmax())]
+            kind, c = a.split("-")
+            if kind == "commit":
+                ret += disc * (20.0 if c == mine else -20.0)
+                commits[c] = commits.get(c, 0) + 1
+                done = True
+                break
+            ret -= disc
+            disc *= gamma
+            hit = rng.random() < (q if mine == c else 1 - q)
+            like = np.array([0.0 if s == "done" else (q if s == c else 1 - q) if hit else
+                             (1 - q if s == c else q) for s in states])
+            b = b * like
+            b /= b.sum()
+        else:
+            sure_probe += float(b.max()) > 0.9999
+        ended += done
+        rets.append(ret)
+    r = np.array(rets)
+    return {"same_graph_as_released": g["nodes"] == released["nodes"] and g["edges"] == released["edges"],
+            "alpha_vectors": len(A), "commit_actions_in_alpha_set": sorted({a for a in acts if a.startswith("commit")}),
+            "episodes": episodes, "mean_return": round(float(r.mean()), 3),
+            "se": round(float(r.std() / np.sqrt(episodes)), 3), "end_within_max_steps": ended / episodes,
+            "commits": commits, "unended_believing_above_0.9999": sure_probe / episodes}
+
+
 EXPERIMENTS = {"main": exp_main, "exactness": exp_exactness, "ablation": exp_ablation,
                "induced": exp_induced, "mutation": exp_mutation, "scaling": exp_scaling,
                "extracted": exp_extracted, "exact": exp_exact, "bins": exp_bins,
@@ -1024,7 +1070,8 @@ EXPERIMENTS = {"main": exp_main, "exactness": exp_exactness, "ablation": exp_abl
                "large": exp_large, "variants": exp_variants, "monitor": exp_monitor,
                "knowledge": exp_knowledge, "sampling": exp_sampling,
                "symbolic": exp_symbolic, "symbolic_categorical": exp_symbolic_categorical,
-               "cegar": exp_cegar, "cegar_region": exp_cegar_region}
+               "cegar": exp_cegar, "cegar_region": exp_cegar_region,
+               "mine_sim": exp_mine_sim}
 
 
 def main(argv: list) -> int:

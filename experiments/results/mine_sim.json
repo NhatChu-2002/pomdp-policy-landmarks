@@ -1,0 +1,17 @@
+{
+  "same_graph_as_released": true,
+  "alpha_vectors": 2852,
+  "commit_actions_in_alpha_set": [
+    "commit-v5",
+    "commit-v8"
+  ],
+  "episodes": 2000,
+  "mean_return": -13.314,
+  "se": 0.298,
+  "end_within_max_steps": 0.258,
+  "commits": {
+    "v8": 261,
+    "v5": 255
+  },
+  "unended_believing_above_0.9999": 0.604
+}
