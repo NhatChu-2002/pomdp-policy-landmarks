@@ -380,6 +380,20 @@ BIN_VARIANTS = {"default": (0.5, 2.5, 4.5), "coarse": (1.0, 4.0), "shifted": (1.
                 "fine": (0.25, 1.5, 3.0, 4.5)}
 
 
+def _p_sampled(g: dict, rocks: list) -> dict:
+    """Probability that a run samples each rock: hitting probability of the nodes whose
+    action is sample on the rock's cell (the node after sampling merges with 'checked bad',
+    so it cannot be the target)."""
+    ctrl = extraction.controller(g)
+    out = {}
+    for r in rocks:
+        at = "at(c" + next(xy for xy, rr in g["rock_at"].items() if rr == r).replace(",", "-") + ")"
+        src = {n["id"]: 1.0 for n in g["nodes"] if n["kind"] == "inner" and n["action"] == extraction.RS_SAMPLE
+               and at in ctrl["node_state"][n["id"]]}
+        out[r] = round(extraction.first_hit(g, src)[0], 4)
+    return out
+
+
 def exp_bins() -> dict:
     """RockSample: do landmark counts and the rock resolution order survive other bin edges?"""
     rows = {}
@@ -404,8 +418,10 @@ def exp_bins() -> dict:
                          "cross_variable_orderings": row["cross_variable_orderings"],
                          "resolution_order": [r[3:] for r, _ in sorted(last.items(), key=lambda kv: kv[1][0])]}
         ref = per["default"]["resolution_order"]
-        for v in per.values():
-            v["same_order_as_default"] = v["resolution_order"] == ref
+        per["p_sampled"] = _p_sampled(g, ref)               # settled rocks: by sampling vs by checks
+        for k, v in per.items():
+            if k != "p_sampled":
+                v["same_order_as_default"] = v["resolution_order"] == ref
         rows[path.stem] = per
     return rows
 

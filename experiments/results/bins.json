@@ -51,6 +51,12 @@
         "rock2"
       ],
       "same_order_as_default": true
+    },
+    "p_sampled": {
+      "rock4": 0.5,
+      "rock3": 0.5,
+      "rock1": 0.5,
+      "rock2": 0.5246
     }
   },
   "rocksample-4-4-s2": {
@@ -105,6 +111,12 @@
         "rock4"
       ],
       "same_order_as_default": true
+    },
+    "p_sampled": {
+      "rock3": 0.5,
+      "rock1": 0.5,
+      "rock2": 0.5,
+      "rock4": 0.5
     }
   },
   "rocksample-4-4-s3": {
@@ -159,6 +171,12 @@
         "rock4"
       ],
       "same_order_as_default": true
+    },
+    "p_sampled": {
+      "rock3": 0.5,
+      "rock2": 0.5,
+      "rock1": 0.5,
+      "rock4": 0.5
     }
   },
   "rocksample-4-4-s4": {
@@ -213,6 +231,12 @@
         "rock2"
       ],
       "same_order_as_default": true
+    },
+    "p_sampled": {
+      "rock1": 0.5,
+      "rock4": 0.5,
+      "rock3": 0.5,
+      "rock2": 0.5
     }
   },
   "rocksample-4-4-s5": {
@@ -267,6 +291,12 @@
         "rock1"
       ],
       "same_order_as_default": true
+    },
+    "p_sampled": {
+      "rock4": 0.5,
+      "rock2": 0.5,
+      "rock3": 0.5,
+      "rock1": 0.5
     }
   },
   "rocksample-5-5-s1": {
@@ -325,6 +355,13 @@
         "rock3"
       ],
       "same_order_as_default": true
+    },
+    "p_sampled": {
+      "rock4": 0.5,
+      "rock5": 0.5,
+      "rock2": 0.5,
+      "rock1": 0.5,
+      "rock3": 0.5
     }
   },
   "rocksample-5-5-s2": {
@@ -383,6 +420,13 @@
         "rock5"
       ],
       "same_order_as_default": true
+    },
+    "p_sampled": {
+      "rock1": 0.5,
+      "rock2": 0.5,
+      "rock4": 0.5,
+      "rock3": 0.5,
+      "rock5": 0.5
     }
   },
   "rocksample-5-5-s3": {
@@ -441,6 +485,13 @@
         "rock3"
       ],
       "same_order_as_default": true
+    },
+    "p_sampled": {
+      "rock2": 0.5,
+      "rock5": 0.5,
+      "rock4": 0.5,
+      "rock1": 0.5,
+      "rock3": 0.5
     }
   },
   "rocksample-7-8-s1": {
@@ -511,6 +562,16 @@
         "rock6"
       ],
       "same_order_as_default": true
+    },
+    "p_sampled": {
+      "rock1": 0.5,
+      "rock7": 0.5,
+      "rock5": 0.5,
+      "rock3": 0.5,
+      "rock2": 0.5,
+      "rock4": 0.5,
+      "rock8": 0.5,
+      "rock6": 0.9531
     }
   }
 }
