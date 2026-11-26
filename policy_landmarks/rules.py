@@ -97,8 +97,7 @@ def to_pddl(model: Model, grid: Grid, rules: list, name: str, points: bool = Fal
                     lo, hi = grid.interval(v, c)
                     if points and lo != -INF and hi != INF:
                         lo = hi = (lo + hi) / 2
-                    targets = ([grid.cell(v, shift)] if shift in (INF, -INF)
-                               else list(grid.cells_overlapping(v, lo + shift, hi + shift)))
+                    targets = list(grid.successors(v, lo, hi, shift))
                 for t in targets:
                     eff = []
                     if v is not None and shift is not None and t != c:
@@ -214,8 +213,7 @@ def to_pddl_context(model: Model, grid: Grid, rules: list, name: str, points: bo
                 lo, hi = grid.interval(v, c)
                 if points and lo != -INF and hi != INF:
                     lo = hi = (lo + hi) / 2
-                targets = ([grid.cell(v, shift)] if shift in (INF, -INF)
-                           else list(grid.cells_overlapping(v, lo + shift, hi + shift)))
+                targets = list(grid.successors(v, lo, hi, shift))
             for t in targets:
                 eff = []
                 if v is not None and shift is not None and t != c:

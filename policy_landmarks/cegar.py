@@ -10,7 +10,8 @@ search again:
 * the rule used covers beliefs where the action is impossible -> split one of its
   coarse context classes into fine cells (each child re-checked by the box test);
 * an evidence shift lands in two cells and the plan picked the one the true belief
-  never reaches -> split the source cell at the crossing point;
+  never reaches -> split the source cell at the crossing point (the smallest double
+  whose shifted value reaches the edge, so the halves map apart exactly);
 * the action is possible somewhere in the fine cells but is not the policy's choice
   at the exact belief -> halve a fine cell.
 
@@ -31,10 +32,7 @@ import numpy as np
 
 from .planner import run_fd
 from .rules import COARSE
-from .symbolic import INF, Grid, Model
-
-EPS = float(np.finfo(float).eps)
-SAFETY = 8.0        # factor on the float error bounds below which replay calls a step undecided
+from .symbolic import EPS, INF, SAFETY, Grid, Model, threshold
 
 
 def _class(lo: float, hi: float, edges) -> int:
@@ -184,8 +182,7 @@ def compile_task(model, grid, rules, banned_cells: dict, edges, region: dict, na
             targets = [None]
             if src is not None:
                 lo, hi = src
-                targets = ([grid.cell(v, shift)] if shift in (INF, -INF)
-                           else list(grid.cells_overlapping(v, lo + shift, hi + shift)))
+                targets = list(grid.successors(v, lo, hi, shift))
             for t in targets:
                 eff = []
                 if t is not None and t != index[v][src]:
@@ -419,7 +416,7 @@ def verify(model: Model, grid: Grid, rules: list, candidate: dict, workdir: Path
             src = _cells(grid, v)[grid.cell(v, lam)]
             tcell = _cells(grid, v)[t]
             edge = tcell[0] if tcell[0] > lam + shift else tcell[1]
-            if not split_cell(model, grid, rules, v, edge - shift, edges):
+            if not split_cell(model, grid, rules, v, threshold(edge, shift), edges):
                 split_cell(model, grid, rules, v, _mid(src), edges)
         elif kind == "action":                                 # policy's choice differs: halve
             pos, a, _ = rules[r]

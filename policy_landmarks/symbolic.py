@@ -22,6 +22,8 @@ import math
 import numpy as np
 
 INF = math.inf
+EPS = float(np.finfo(float).eps)
+SAFETY = 8.0        # factor on the float error bounds (box test here, replay in cegar.py)
 
 
 def sigmoid(x: float) -> float:
@@ -98,10 +100,12 @@ class Model:
     def possible_actions(self, pos, box) -> set:
         """Actions the alpha-vector policy can choose at some belief in the box
         (sound over-approximation: an action is dropped only if each of its vectors is
-        beaten everywhere in the box by one vector of another action)."""
+        beaten everywhere in the box by one vector of another action, by more than the
+        float error of the values, so float evaluation at any belief in the box agrees)."""
         pts = list(itertools.product(*[(lo,) if lo == hi else (lo, hi) for lo, hi in box]))
         if self.problem == "probe":
-            M = self.A @ np.array([self.corner(pos, c) for c in pts]).T
+            B = np.array([self.corner(pos, c) for c in pts])
+            M, S = self.A @ B.T, np.abs(self.A) @ np.abs(B).T
         else:                                                # vectorized self.corner on pos's rows
             if pos not in self._rows_np:
                 idx = [i for i, _ in self.rows[pos]]
@@ -110,7 +114,11 @@ class Model:
             with np.errstate(over="ignore"):
                 P = 1.0 / (1.0 + np.exp(-np.array(pts, dtype=float)))     # sigmoid, +-inf -> 1, 0
             B = np.where(bits[None], P[:, None, :], 1.0 - P[:, None, :]).prod(axis=2)
-            M = A_pos @ B.T                                  # vectors x corners
+            M, S = A_pos @ B.T, np.abs(A_pos) @ B.T          # vectors x corners
+        # Each value carries float error <= (n + 5k + 2) eps |A| b (dot product, sigmoids,
+        # products), at a corner and at any belief inside; |A| b is multilinear, so its
+        # maximum over the box is at a corner. Two such errors fit within the margin.
+        margin = SAFETY * 2 * (B.shape[1] + 5 * len(box) + 2) * EPS * float(S.max())
         acts = np.array(self.actions)
         winners = np.unique(M.argmax(axis=0))                # best vector at each corner
         out = set(acts[winners])                             # chosen at a corner: possible
@@ -119,7 +127,7 @@ class Model:
             # a is dropped only if each of its vectors is beaten at every corner by one
             # corner winner (testing only winners keeps the check sound and fast)
             mine = M[acts == a]
-            dominated = (W[None, :, :] > mine[:, None, :]).all(axis=2).any(axis=1)
+            dominated = (W[None, :, :] - mine[:, None, :] > margin).all(axis=2).any(axis=1)
             if not dominated.all():
                 out.add(a)
         return out
@@ -172,16 +180,32 @@ class Grid:
     def interval(self, v: int, c: int):
         return self.edges[v][c], self.edges[v][c + 1]
 
-    def cells_overlapping(self, v: int, lo: float, hi: float) -> range:
-        if lo == hi:                                         # a single point (e.g. +-inf)
-            return range(self.cell(v, lo), self.cell(v, lo) + 1)
-        tol = 1e-9 * (1 + max(abs(b) for b in (lo, hi) if b not in (INF, -INF)))
-        lo, hi = lo + tol if lo != -INF else lo, hi - tol if hi != INF else hi  # float noise at edges
-        first = self.cell(v, lo)
-        last = self.cell(v, hi) if hi != INF else len(self.edges[v]) - 2
-        if hi != INF and hi == self.edges[v][last]:          # half-open cells
-            last -= 1
-        return range(first, max(first, last) + 1)
+    def successors(self, v: int, lo: float, hi: float, shift: float) -> range:
+        """Cells that the double-precision update fl(x + shift) reaches from a double x in
+        the cell [lo, hi). Rounding is monotone, so they are exactly the cells between
+        fl(lo + shift) and fl(top + shift), where top is the largest double below hi."""
+        if shift in (INF, -INF) or lo == hi:                 # a set value, or a point (lattice mode)
+            c = self.cell(v, shift if shift in (INF, -INF) else lo + shift)
+            return range(c, c + 1)
+        top = math.nextafter(hi, -INF) + shift if hi != INF else INF
+        return range(self.cell(v, lo + shift), self.cell(v, top) + 1)
+
+
+def threshold(edge: float, shift: float) -> float:
+    """The smallest double x with fl(x + shift) >= edge: splitting a cell here separates
+    the doubles that an observation moves below the edge from those it moves past it."""
+    x = edge - shift
+    d = 4 * (math.ulp(edge) + math.ulp(shift) + math.ulp(x))
+    lo, hi = x - d, x + d
+    while lo + shift >= edge:
+        lo, d = lo - d, 2 * d
+    while hi + shift < edge:
+        hi, d = hi + d, 2 * d
+    while True:              # bisection keeps fl(lo + shift) < edge <= fl(hi + shift); stepping
+        mid = lo + (hi - lo) / 2     # one ulp at a time never ends when |x| << |shift|
+        if mid in (lo, hi):
+            return hi
+        lo, hi = (lo, mid) if mid + shift >= edge else (mid, hi)
 
 
 def level_name(model: Model, v: int, lo: float, hi: float) -> str:
@@ -251,7 +275,7 @@ def abstract_controller(model: Model, grid: Grid, max_states: int = 200_000,
                 else:
                     lo, hi = box[v]
                     targets = [cells[:v] + (c,) + cells[v + 1:]
-                               for c in grid.cells_overlapping(v, lo + shift, hi + shift)]
+                               for c in grid.successors(v, lo, hi, shift)]
                 effect = frozenset()
                 if model.problem == "rocksample" and a == "1" and v is not None:
                     effect = frozenset({f"sampled(rock{v + 1})"})

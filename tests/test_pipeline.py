@@ -249,6 +249,37 @@ def test_cegar_region_retries_a_witness_that_lands_on_a_cell_edge(tmp_path=None)
     assert not cegar.exact_landmark(*cegar.exact_graph(m, res["witness"]), 0, cand[0])
 
 
+def test_box_test_keeps_an_action_that_loses_only_within_float_error():
+    """'right' beats 'listen' by 1e-14 at every belief, far below the float error of
+    values of size 100; dropping 'listen' would rest on rounding, so it must stay. A
+    clear loss (by 1) is still dropped."""
+    from policy_landmarks import symbolic as sy
+    g = {"problem": "tiger", "p_correct": 0.8, "states": ["left", "right"]}
+    for gap, kept in ((1e-14, True), (1.0, False)):
+        m = sy.Model(g, {"states": ["left", "right"], "actions": ["listen", "right", "left"],
+                         "alphas": [[0.0, 0.0], [gap, gap], [-100.0, 10.0]]})
+        assert ("listen" in m.possible_actions(None, [(-1.0, 1.0)])) is kept, gap
+
+
+def test_successor_cells_follow_the_double_precision_update_exactly():
+    """A cell [lo, hi) moves to the cells between fl(lo + s) and fl(top + s), top the
+    largest double below hi; nothing is trimmed near an edge (the old 1e-9 trim dropped
+    a reachable cell), and a split at threshold() separates the two sides exactly."""
+    import math
+    from policy_landmarks import symbolic as sy
+    s, e = math.log(0.8 / 0.2), 0.5
+    grid = sy.Grid([[-sy.INF, e, sy.INF]])
+    lo = e - s - 1e-12                                       # lo + s lies just below the edge
+    assert lo + s < e and list(grid.successors(0, lo, 1.0, s)) == [0, 1]
+    t = sy.threshold(e, s)
+    assert t + s >= e > math.nextafter(t, -sy.INF) + s
+    assert list(grid.successors(0, -1.0, t, s)) == [0] and list(grid.successors(0, t, 1.0, s)) == [1]
+    assert list(grid.successors(0, -sy.INF, t, s)) == [0] and list(grid.successors(0, t, sy.INF, s)) == [1]
+    assert list(grid.successors(0, 0.0, 1.0, -sy.INF)) == [0]   # sampling sets -inf
+    t0 = sy.threshold(s, s)                                  # edge = shift: the split is near 0
+    assert t0 + s >= s > math.nextafter(t0, -sy.INF) + s
+
+
 def test_exact_graph_from_alphas_matches_the_julia_policy_graph():
     """The Python belief graph built from alpha vectors at the uniform prior must give the
     same landmark verdicts as the SARSOP policy graph exported from Julia."""
