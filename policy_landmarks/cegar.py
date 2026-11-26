@@ -48,7 +48,7 @@ def _box(model, assign, edges):
     return box
 
 
-def _covers(entry, cell, edges) -> bool:
+def _matches(entry, cell, edges) -> bool:
     """Does a rule's entry for one variable (any / coarse class / fine cell) contain the cell?"""
     kind, x = entry
     return kind == "a" or (x == cell if kind == "f" else _class(*cell, edges) == x)
@@ -88,24 +88,49 @@ def initial_rules(model: Model, grid: Grid, positions: list, edges, context: str
     return out
 
 
-def split_class(model, grid, rule, var, edges) -> list:
-    """Replace an unconstrained entry of `var` by its three coarse classes, or a coarse
-    class by the fine cells inside it (children re-checked)."""
-    pos, a, assign = rule
-    kind, cl = assign[var]
-    out = []
-    if kind == "a":
-        for k in range(3):
-            child = {**assign, var: ("k", k)}
-            if a in model.possible_actions(pos, _box(model, child, edges)):
-                out.append((pos, a, child))
-        return out
-    for cell in _cells(grid, var):
-        if _class(*cell, edges) == cl:
-            child = {**assign, var: ("f", cell)}
-            if a in model.possible_actions(pos, _box(model, child, edges)):
-                out.append((pos, a, child))
+def _rest(grid, v, entry, pin, edges) -> list:
+    """Entries covering `entry`'s range minus `pin` (pin is a class or a fine cell inside it)."""
+    kind, x = entry
+    pk, px = pin
+    cls = px if pk == "k" else _class(*px, edges)
+    out = [("k", k) for k in range(3) if k != cls] if kind == "a" else []
+    if pk == "f":
+        out += [("f", c) for c in _cells(grid, v) if _class(*c, edges) == cls and c != px]
     return out
+
+
+def split_away(model, grid, rule, fine: list, edges) -> list:
+    """Cut out of a rule the region around a spurious step's fine box, where its action is
+    impossible. A minimal set S of variables is pinned (to coarse classes if that already
+    excludes the action, else to the plan's fine cells); the rest of the rule is covered
+    by a decision list over S (v1 elsewhere | v1 pinned, v2 elsewhere | ...), each child
+    re-checked. One round removes the step, however many variables it needs."""
+    pos, a, assign = rule
+    free = [v for v, (kind, _) in assign.items() if kind != "f"]
+
+    def pinned(level, v):
+        kind = assign[v][0]
+        if level == "k":
+            return ("k", _class(*fine[v], edges)) if kind == "a" else assign[v]
+        return ("f", fine[v])
+
+    def possible(asg):
+        return a in model.possible_actions(pos, _box(model, asg, edges))
+
+    level = next(lv for lv in ("k", "f") if not possible({**assign, **{v: pinned(lv, v) for v in free}}))
+    S = [v for v in free if pinned(level, v) != assign[v]]
+    for v in list(S):                                  # drop variables not needed to exclude a
+        T = [u for u in S if u != v]
+        if not possible({**assign, **{u: pinned(level, u) for u in T}}):
+            S = T
+    kids, prefix = [], dict(assign)
+    for v in S:
+        for entry in _rest(grid, v, assign[v], pinned(level, v), edges):
+            child = {**prefix, v: entry}
+            if possible(child):
+                kids.append((pos, a, child))
+        prefix[v] = pinned(level, v)
+    return kids
 
 
 def split_cell(model, grid, rules, var, at, edges) -> bool:
@@ -235,8 +260,9 @@ def replay(model, grid, rules, steps):
 
 
 def verify(model: Model, grid: Grid, rules: list, candidate: dict, workdir: Path, edges,
-           max_iter: int = 400) -> dict:
-    """candidate: {var: [(lo, hi), ...]} log-odds ranges (e.g. a level or two levels)."""
+           max_iter: int = 400, trace: list | None = None) -> dict:
+    """candidate: {var: [(lo, hi), ...]} log-odds ranges (e.g. a level or two levels).
+    trace, if given, gets one (refinement kind, plan length, rules, planner seconds) per round."""
     for it in range(max_iter):
         banned = _banned(grid, candidate)
         domain, problem, initially = compile_task(model, grid, rules, banned, edges)
@@ -252,31 +278,32 @@ def verify(model: Model, grid: Grid, rules: list, candidate: dict, workdir: Path
         plan_file.unlink()
         # 1. fine-cell check: each rule must be possible at the plan's fine cells. Every
         # spurious step is refined at once (one planner call per batch, not per split).
+        # Every rule that applies at a visited abstract state is checked, not only the one
+        # the plan used: one box test per state catches the alternatives the planner
+        # would otherwise find one round at a time.
+        at_pos: dict = {}
+        for idx, rule in enumerate(rules):
+            at_pos.setdefault(rule[0], []).append(idx)
         cells = [grid.cell(v, 0.0) for v in range(len(model.vars))]
         spurious = {}
         for name in steps:
             i, j, t = name.split("-")[:3]
             pos, a, assign = rules[int(i[1:])]
             box = [_cells(grid, v)[cells[v]] for v in range(len(model.vars))]
-            if a not in model.possible_actions(pos, box):
-                spurious.setdefault(int(i[1:]), [box[v] for v in range(len(model.vars))])
+            here = model.possible_actions(pos, box)
+            for r2 in at_pos[pos]:
+                _, a2, asg2 = rules[r2]
+                if a2 not in here and r2 not in spurious and all(
+                        _matches(asg2[v], box[v], edges) for v in range(len(model.vars))):
+                    spurious[r2] = list(box)
             obs, v, shift, npos, term = model.step(pos, a)[int(j[1:])]
             if not term and t != "tNone" and v is not None and shift is not None:
                 cells[v] = int(t[1:])
+        if trace is not None:
+            trace.append(("spurious" if spurious else "replay", len(steps), len(rules), round(run["wall"], 2)))
         if spurious:
             for r in sorted(spurious, reverse=True):          # high indices first: low ones stay valid
-                fine = spurious[r]
-                pos, a, assign = rules[r]
-                coarse = [v for v, (kind, _) in assign.items() if kind in ("k", "a")]
-                # a fully fine rule has the plan's box, where its action was checked possible
-                assert coarse, "spurious step on a rule without coarse classes"
-                for v in coarse:
-                    kids = split_class(model, grid, rules[r], v, edges)
-                    if not any(_covers(ch[2][v], fine[v], edges) for ch in kids):
-                        break
-                else:
-                    v = coarse[0]
-                    kids = split_class(model, grid, rules[r], v, edges)
+                kids = split_away(model, grid, rules[r], spurious[r], edges)
                 rules[r:r + 1] = kids
             continue
         # 2. exact replay
@@ -284,6 +311,8 @@ def verify(model: Model, grid: Grid, rules: list, candidate: dict, workdir: Path
         if div is None:
             return {"landmark": False, "certified": True, "iterations": it, "rules": len(rules)}
         kind, r, info = div
+        if trace is not None:
+            trace[-1] = (kind,) + trace[-1][1:]
         if kind == "cell":                                     # split the source at the crossing
             v, lam, shift, t = info
             src = _cells(grid, v)[grid.cell(v, lam)]

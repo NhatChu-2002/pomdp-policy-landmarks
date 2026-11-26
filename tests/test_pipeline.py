@@ -163,3 +163,39 @@ def test_cegar_cell_split_keeps_every_policy_choice_covered():
         a = m.actions[int((m.A @ m.corner(None, [x])).argmax())]
         boxes = [cegar._box(m, assign, edges)[0] for _, ra, assign in rules if ra == a]
         assert any(lo <= x <= hi for lo, hi in boxes), x
+
+
+def test_cegar_split_away_removes_the_spurious_box_and_keeps_policy_choices():
+    """split_away must drop the spurious step's fine box from a rule and keep every
+    belief of the rule's box where the policy picks the rule's action."""
+    import json
+    import random
+    from policy_landmarks import cegar, extraction, symbolic as sy
+    base = ROOT / "experiments/policy_graphs/alphas"
+    g = extraction.load(base / "rocksample-4-4-s5.json")
+    m = sy.Model(g, json.loads((base / "rocksample-4-4-s5.alphas.json").read_text()))
+    grid, edges = sy.bin_grid(m, 0), (-4.5, 4.5)
+    rng = random.Random(1)
+    cells = [cegar._cells(grid, v) for v in range(len(m.vars))]
+    rules = cegar.initial_rules(m, grid, [(1, 1), (2, 3)], edges, "any")
+    checked = 0
+    for pos, a, assign in rules:
+        box = cegar._box(m, assign, edges)
+        for _ in range(20):                                  # a fine box inside the rule's box
+            fine = [rng.choice([c for c in cells[v] if box[v][0] <= c[0] and c[1] <= box[v][1]])
+                    for v in range(len(m.vars))]
+            if a not in m.possible_actions(pos, fine):
+                break
+        else:
+            continue
+        kids = cegar.split_away(m, grid, (pos, a, assign), fine, edges)
+        mid = [(lo + hi) / 2 if abs(lo) < 1e9 and abs(hi) < 1e9 else (lo + 1 if abs(lo) < 1e9 else hi - 1)
+               for lo, hi in fine]                       # an interior point of the fine box
+        assert not any(all(lo <= x <= hi for x, (lo, hi) in zip(mid, cegar._box(m, k[2], edges))) for k in kids)
+        for _ in range(200):
+            x = [rng.uniform(max(lo, -8), min(hi, 8)) for lo, hi in box]
+            if m.actions[int((m.A @ m.corner(pos, x)).argmax())] == a:
+                assert any(all(lo <= xi <= hi for xi, (lo, hi) in zip(x, cegar._box(m, k[2], edges)))
+                           for k in kids), (pos, a, x)
+        checked += 1
+    assert checked >= 5
