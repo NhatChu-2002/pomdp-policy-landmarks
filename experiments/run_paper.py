@@ -897,6 +897,64 @@ def exp_cegar(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksample-4-4-s
     return rows
 
 
+def exp_cegar_region(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksample-4-4-s1"),
+                     regions=((0.0, 0.0), (-0.5, 0.5), (-2.5, 2.5)), samples: int = 50,
+                     folder: str = "alphas", time_limit: float | None = None) -> dict:
+    """Prior-robust landmarks: CEGAR proves a candidate for every product prior whose
+    per-rock log-odds lie in the region (a point = one prior). Ground truth: exact belief
+    graphs built from the alpha vectors for `samples` random priors in the region (plus
+    its centre); a proof refuted by any of them would be unsound. Certified refutations
+    carry a witness prior, checked on its own exact graph."""
+    import random
+    from policy_landmarks import cegar, symbolic as sy
+    levels = ["neg3", "neg2", "neg1", "unk", "pos1", "pos2", "pos3"]     # bin grid cells 0..6
+    pairs = [("neg2", "neg3"), ("pos2", "pos3"), ("neg1", "pos1"), ("neg2", "pos2"), ("neg3", "pos3")]
+    rows = {}
+    for name in names:
+        g = extraction.load(HERE / "policy_graphs" / folder / f"{name}.json")
+        m = sy.Model(g, json.loads((HERE / "policy_graphs" / folder / f"{name}.alphas.json").read_text()))
+        k = len(m.vars)
+        for lo, hi in regions:
+            grid, edges = sy.bin_grid(m, 0), (-4.5, 4.5)
+            span = dict(zip(levels, zip(grid.edges[0], grid.edges[0][1:])))   # before any split
+            positions = ([(i, j) for i in range(1, m.n + 1) for j in range(1, m.n + 1)]
+                         if m.start() is not None else [None])
+            rng = random.Random(0)
+            priors = [[(lo + hi) / 2] * k] + ([[rng.uniform(lo, hi) for _ in range(k)] for _ in range(samples)]
+                                              if lo < hi else [])
+            graphs = [cegar.exact_graph(m, pr) for pr in priors]
+            t0 = time.perf_counter()
+            rules = cegar.initial_rules(m, grid, positions, edges, "any")
+            region = {v: (lo, hi) for v in range(k)}
+            results = []
+            for v, var in enumerate(m.vars):
+                for cand in [(lv,) for lv in levels if lv != "unk"] + pairs:
+                    ranges = [span[lv] for lv in cand]
+                    holds = [cegar.exact_landmark(st, su, v, ranges) for st, su in graphs]
+                    res = cegar.verify(m, grid, rules, {v: ranges}, WORK / "cegar-region" / name, edges,
+                                       max_iter=400, region=region, time_limit=time_limit)
+                    w = res.get("witness")
+                    results.append({"candidate": " | ".join(f"ev-{var}({lv})" for lv in cand),
+                                    "proven": res["landmark"], "certified": res.get("certified"),
+                                    "witness": w, "reason": res.get("reason"), "iterations": res["iterations"],
+                                    "holds_at_centre": holds[0], "holds_at_all_samples": all(holds),
+                                    "witness_confirmed": (None if w is None else
+                                                          not cegar.exact_landmark(*cegar.exact_graph(m, w), v, ranges))})
+            rows[f"{name} [{lo}, {hi}]"] = {
+                "candidates": len(results), "priors_sampled": len(priors),
+                "proven": sum(r["proven"] is True for r in results),
+                "unsound": sum(r["proven"] is True and not r["holds_at_all_samples"] for r in results),
+                "refuted_certified": sum(bool(r["certified"]) for r in results),
+                "witness_confirmed": sum(bool(r["witness_confirmed"]) for r in results),
+                "undecided": sum(r["proven"] is None for r in results),
+                "hold_at_all_samples": sum(r["holds_at_all_samples"] for r in results),
+                "hold_at_centre": sum(r["holds_at_centre"] for r in results),
+                "rules_initial": len(cegar.initial_rules(m, sy.bin_grid(m, 0), positions, edges, "any")),
+                "rules_final": len(rules), "cells_final": [len(e) - 1 for e in grid.edges],
+                "seconds": round(time.perf_counter() - t0, 1), "results": results}
+    return rows
+
+
 EXPERIMENTS = {"main": exp_main, "exactness": exp_exactness, "ablation": exp_ablation,
                "induced": exp_induced, "mutation": exp_mutation, "scaling": exp_scaling,
                "extracted": exp_extracted, "exact": exp_exact, "bins": exp_bins,
@@ -904,7 +962,7 @@ EXPERIMENTS = {"main": exp_main, "exactness": exp_exactness, "ablation": exp_abl
                "large": exp_large, "variants": exp_variants, "monitor": exp_monitor,
                "knowledge": exp_knowledge, "sampling": exp_sampling,
                "symbolic": exp_symbolic, "symbolic_categorical": exp_symbolic_categorical,
-               "cegar": exp_cegar}
+               "cegar": exp_cegar, "cegar_region": exp_cegar_region}
 
 
 def main(argv: list) -> int:

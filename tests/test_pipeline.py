@@ -199,3 +199,73 @@ def test_cegar_split_away_removes_the_spurious_box_and_keeps_policy_choices():
                            for k in kids), (pos, a, x)
         checked += 1
     assert checked >= 5
+
+
+def test_cegar_region_proves_for_every_prior_and_refutes_with_a_witness_in_the_region(tmp_path=None):
+    """Toy Tiger: the policy listens while |log-odds| < 2.3 and opens a door beyond it.
+    Every prior in [-0.5, 0.5] starts in the cell [-1, 1), so the cell is a landmark for
+    the whole region; from priors in [2.0, 2.2] one growl reaches 3.5 and the policy
+    opens, so CEGAR must refute it with a witness prior inside the region that is a real
+    counterexample on its exact belief graph."""
+    if not (FAST_DOWNWARD.parent / "builds" / "release64").exists():
+        import pytest
+        pytest.skip("Fast Downward build not found")
+    from policy_landmarks import cegar, symbolic as sy
+    g = {"problem": "tiger", "p_correct": 0.8, "states": ["left", "right"]}
+    alphas = {"states": ["left", "right"], "actions": ["listen", "right", "left"],
+              "alphas": [[0.0, 0.0], [10.0, -100.0], [-100.0, 10.0]]}
+    work = Path(tmp_path or ROOT / "experiments" / "results" / "work" / "tests") / "cegar-region"
+    cand = {0: [(-1.0, 1.0)]}
+    for region, expect in (((0.0, 0.0), True), ((-0.5, 0.5), True), ((2.0, 2.2), False)):
+        m = sy.Model(g, alphas)
+        grid, edges = sy.Grid([[-sy.INF, -3.0, -1.0, 1.0, 3.0, sy.INF]]), (-1.0, 1.0)
+        rules = cegar.initial_rules(m, grid, [None], edges, "any")
+        res = cegar.verify(m, grid, rules, cand, work, edges, region={0: region})
+        assert res["landmark"] is expect, (region, res)
+        if not expect:
+            assert res["certified"] and region[0] <= res["witness"][0] <= region[1]
+            assert not cegar.exact_landmark(*cegar.exact_graph(m, res["witness"]), 0, cand[0])
+
+
+def test_cegar_region_retries_a_witness_that_lands_on_a_cell_edge(tmp_path=None):
+    """Toy Tiger with a cell edge at exactly one growl (u): from the midpoint prior 0 the
+    first replay lands on that edge (a float tie). Another prior in the same start cell
+    has no tie, so the refutation must still be certified."""
+    if not (FAST_DOWNWARD.parent / "builds" / "release64").exists():
+        import pytest
+        pytest.skip("Fast Downward build not found")
+    from policy_landmarks import cegar, symbolic as sy
+    g = {"problem": "tiger", "p_correct": 0.8, "states": ["left", "right"]}
+    alphas = {"states": ["left", "right"], "actions": ["listen", "right", "left"],
+              "alphas": [[0.0, 0.0], [10.0, -100.0], [-100.0, 10.0]]}
+    m = sy.Model(g, alphas)
+    work = Path(tmp_path or ROOT / "experiments" / "results" / "work" / "tests") / "cegar-tie"
+    grid, edges = sy.Grid([[-sy.INF, -3.0, -1.0, m.u, 3.0, sy.INF]]), (-1.0, 1.0)
+    rules = cegar.initial_rules(m, grid, [None], edges, "any")
+    cand = {0: [(-3.0, -1.0)]}                               # runs that growl right twice avoid it
+    res = cegar.verify(m, grid, rules, cand, work, edges, region={0: (-0.5, 0.5)})
+    assert res["landmark"] is False and res["certified"], res
+    assert -0.5 <= res["witness"][0] <= 0.5
+    assert not cegar.exact_landmark(*cegar.exact_graph(m, res["witness"]), 0, cand[0])
+
+
+def test_exact_graph_from_alphas_matches_the_julia_policy_graph():
+    """The Python belief graph built from alpha vectors at the uniform prior must give the
+    same landmark verdicts as the SARSOP policy graph exported from Julia."""
+    import json
+    from policy_landmarks import cegar, extraction, symbolic as sy
+    from policy_landmarks.exact import StateGraph
+    levels = ["neg3", "neg2", "neg1", "unk", "pos1", "pos2", "pos3"]
+    pairs = [("neg2", "neg3"), ("pos2", "pos3"), ("neg1", "pos1"), ("neg2", "pos2"), ("neg3", "pos3")]
+    base = ROOT / "experiments/policy_graphs/alphas"
+    for seed in (1, 3, 5):
+        g = extraction.load(base / f"rocksample-4-4-s{seed}.json")
+        m = sy.Model(g, json.loads((base / f"rocksample-4-4-s{seed}.alphas.json").read_text()))
+        e = sy.bin_grid(m, 0).edges[0]
+        span = dict(zip(levels, zip(e, e[1:])))
+        start, succ = cegar.exact_graph(m, [0.0] * len(m.vars))
+        julia = StateGraph(extraction.controller(g))
+        for v, var in enumerate(m.vars):
+            for cand in [(lv,) for lv in levels if lv != "unk"] + pairs:
+                assert cegar.exact_landmark(start, succ, v, [span[lv] for lv in cand]) == \
+                    julia.is_landmark([f"ev-{var}({lv})" for lv in cand]), (seed, var, cand)

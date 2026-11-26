@@ -24,6 +24,7 @@ from __future__ import annotations
 
 import bisect
 import itertools
+import time
 from pathlib import Path
 
 import numpy as np
@@ -32,7 +33,8 @@ from .planner import run_fd
 from .rules import COARSE
 from .symbolic import INF, Grid, Model
 
-TOL = 1e-9          # relative float margin below which replay calls a step undecided
+EPS = float(np.finfo(float).eps)
+SAFETY = 8.0        # factor on the float error bounds below which replay calls a step undecided
 
 
 def _class(lo: float, hi: float, edges) -> int:
@@ -155,10 +157,13 @@ def split_cell(model, grid, rules, var, at, edges) -> bool:
     return True
 
 
-def compile_task(model, grid, rules, banned_cells: dict, edges, name="cegar"):
+def compile_task(model, grid, rules, banned_cells: dict, edges, region: dict, name="cegar"):
     """STRIPS with fine (cv-) and coarse (ck-) facts. `banned_cells` maps a variable to
     the set of fine-cell intervals inside the candidate; actions entering one are
-    dropped. Action names r{rule}-o{outcome}-t{target cell index}."""
+    dropped. Action names r{rule}-o{outcome}-t{target cell index}.
+    The initial belief is any product prior in `region` ({var: (lo, hi)} log-odds; lo ==
+    hi is a point): actions p{var}-c{cell} pick a start cell per variable, then `start`.
+    A start cell inside the candidate is not offered (those priors satisfy it at once)."""
     actions = []
     index = [{cell: c for c, cell in enumerate(_cells(grid, v))} for v in range(len(model.vars))]
 
@@ -194,8 +199,17 @@ def compile_task(model, grid, rules, banned_cells: dict, edges, name="cegar"):
                 if pos is not None and npos != pos:
                     eff += [at(npos), f"(not {at(pos)})"]
                 actions.append((f"r{i}-o{j}-t{t}", pre, eff or ["(live)"]))
+    for v, var in enumerate(model.vars):
+        for c, cell in enumerate(_cells(grid, v)):
+            if _in_region(cell, *region[v]) and cell not in banned_cells.get(v, ()):
+                actions.append((f"p{v}-c{c}", [f"(pick-{var})"],
+                                [f"(cv-{var} c{c})", f"(ck-{var} {COARSE[_class(*cell, edges)]})",
+                                 f"(picked-{var})", f"(not (pick-{var}))"]))
+    actions.append(("start", [f"(picked-{var})" for var in model.vars], ["(live)"]))
     n_cells = max(len(e) - 1 for e in grid.edges)
-    preds = ["(live)", "(done)", "(at ?p)"] + [f"(cv-{v} ?c)" for v in model.vars] + [f"(ck-{v} ?k)" for v in model.vars]
+    preds = (["(live)", "(done)", "(at ?p)"] + [f"(cv-{v} ?c)" for v in model.vars]
+             + [f"(ck-{v} ?k)" for v in model.vars] + [f"(pick-{v})" for v in model.vars]
+             + [f"(picked-{v})" for v in model.vars])
     objs = {f"c{c}" for c in range(n_cells)} | set(COARSE)
     if model.problem == "rocksample":
         objs |= {f"c{x}-{y}" for x in range(1, model.n + 1) for y in range(1, model.n + 1)}
@@ -203,18 +217,22 @@ def compile_task(model, grid, rules, banned_cells: dict, edges, name="cegar"):
                         "  (:predicates " + " ".join(preds) + ")"]
                        + [f"  (:action {n} :parameters ()\n    :precondition (and {' '.join(p)})\n"
                           f"    :effect (and {' '.join(e)}))" for n, p, e in actions] + [")"])
-    init, init_cells = [], []
-    for v in range(len(model.vars)):
-        c0 = grid.cell(v, 0.0)
-        cell0 = _cells(grid, v)[c0]
-        init_cells.append((v, cell0))
-        init += [f"(cv-{model.vars[v]} c{c0})", f"(ck-{model.vars[v]} {COARSE[_class(*cell0, edges)]})"]
-    if model.start() is not None:
-        init.append(at(model.start()))
+    init = [f"(pick-{var})" for var in model.vars] + ([at(model.start())] if model.start() is not None else [])
     problem = "\n".join([f"(define (problem p-{name}) (:domain {name})", f"  (:objects {' '.join(sorted(objs))})",
-                         "  (:init (live) " + " ".join(init) + ")", "  (:goal (done)))"])
-    holds_initially = any(cell in banned_cells.get(v, ()) for v, cell in init_cells)
-    return domain, problem, holds_initially
+                         "  (:init " + " ".join(init) + ")", "  (:goal (done)))"])
+    return domain, problem
+
+
+def _in_region(cell, lo, hi) -> bool:
+    """Does a half-open cell meet the region [lo, hi] (a point if lo == hi)?"""
+    return cell[0] <= lo < cell[1] if lo == hi else cell[0] < hi and lo < cell[1]
+
+
+def _witness(cell, lo, hi, frac: float = 0.5) -> float:
+    """A concrete prior log-odds inside both the start cell and the region, at `frac`
+    of the way through their intersection."""
+    a, b = max(cell[0], lo), min(cell[1], hi)
+    return lo if lo == hi else a + frac * (b - a)
 
 
 def _banned(grid, candidate) -> dict:
@@ -225,49 +243,119 @@ def _banned(grid, candidate) -> dict:
     return out
 
 
-def replay(model, grid, rules, steps):
+def _next(lam_v: float, shift: float, a: str):
+    """Log-odds after an observation, or None if it is impossible. An infinite shift
+    sets the value (sample: the rock becomes bad; a perfect check at distance 0)."""
+    if shift in (INF, -INF):
+        return None if a != "1" and lam_v == -shift else shift
+    return lam_v + shift
+
+
+def exact_graph(model, lam0, max_nodes: int = 200_000):
+    """The policy's reachable belief graph from the product prior lam0 (log-odds per
+    variable), following the alpha-vector argmax exactly as replay does. Returns
+    (start, succ) with succ[node] = successor nodes or "end"; nodes are (pos, lam) with
+    lam rounded to 1e-12 so equal beliefs merge (as the Julia policy graphs do)."""
+    start = (model.start(), tuple(lam0))
+    succ, todo = {}, [start]
+    while todo:
+        node = todo.pop()
+        if node in succ:
+            continue
+        if len(succ) >= max_nodes:
+            raise RuntimeError("belief graph too large")
+        pos, lam = node
+        a = model.actions[int((model.A @ model.corner(pos, list(lam))).argmax())]
+        out = []
+        for obs, v, shift, npos, term in model.step(pos, a):
+            if term:
+                out.append("end")
+                continue
+            new = list(lam)
+            if v is not None and shift is not None:
+                x = _next(lam[v], shift, a)
+                if x is None:
+                    continue
+                new[v] = x if x in (INF, -INF) else round(x, 12)
+            out.append((npos, tuple(new)))
+            todo.append(out[-1])
+        succ[node] = out
+    return start, succ
+
+
+def exact_landmark(start, succ, v: int, ranges) -> bool:
+    """Does every terminating run of the graph reach variable v's log-odds in a range
+    (half-open [lo, hi), as grid cells are)?"""
+    def hit(node):
+        x = node[1][v]
+        return any(lo <= x < hi or x == hi == INF for lo, hi in ranges)
+    if hit(start):
+        return True
+    seen, todo = {start}, [start]
+    while todo:
+        for nxt in succ[todo.pop()]:
+            if nxt == "end":
+                return False
+            if nxt not in seen and not hit(nxt):
+                seen.add(nxt)
+                todo.append(nxt)
+    return True
+
+
+def replay(model, grid, rules, steps, lam0):
     """Exact replay. Returns None if the plan is a real run of the policy, else
-    (kind, details) for the first divergence. A near-tie between actions or a value
-    within float noise of a cell edge is a "tie": the float replay cannot decide it."""
-    lam = [0.0] * len(model.vars)
+    (kind, details) for the first divergence. A step is a "tie", which the float replay
+    cannot decide, if an action margin or a distance to a cell edge is within a bound on
+    the float error: err[v] bounds the error of the log-odds sum lam[v] (lam0 is exact,
+    each update adds one rounding of the sum and of the shift), and the action values
+    carry the dot-product error (n + 5k + 2) eps |A| b (Higham's gamma_n, plus the
+    sigmoids) and the belief's relative error from err."""
+    lam, err = list(lam0), [0.0] * len(lam0)
     acts = np.array(model.actions)
     for name in steps:
         i, j, t = name.split("-")[:3]
         pos, a, assign = rules[int(i[1:])]
-        vals = model.A @ model.corner(pos, lam)
+        b = model.corner(pos, lam)
+        vals = model.A @ b
         best = vals.max()
         if model.actions[int(vals.argmax())] != a:
             return ("action", int(i[1:]), list(lam))
         others = vals[acts != a]
-        if others.size and best - others.max() <= TOL * (1 + abs(best)):
+        bound = ((b.size + 5 * len(lam) + 2) * EPS + sum(err)) * float((np.abs(model.A) @ np.abs(b)).max())
+        if others.size and best - others.max() <= SAFETY * 2 * bound:
             return ("tie", int(i[1:]), list(lam))
         obs, v, shift, npos, term = model.step(pos, a)[int(j[1:])]
         if term:
             return None
         if v is not None and shift is not None:
-            if shift in (INF, -INF):                         # sample, or a perfect check: set
-                if a != "1" and lam[v] == -shift:            # perfect check contradicting certainty
-                    return ("observation", int(i[1:]), list(lam))
-                new = shift
-            else:
-                new = lam[v] + shift
+            new = _next(lam[v], shift, a)
+            if new is None:                                  # perfect check contradicting certainty
+                return ("observation", int(i[1:]), list(lam))
             if t != "tNone" and grid.cell(v, new) != int(t[1:]):
                 return ("cell", int(i[1:]), (v, lam[v], shift, int(t[1:])))
-            if new not in (INF, -INF) and min(abs(new - e) for e in grid.edges[v][1:-1]) <= TOL * (1 + abs(new)):
+            err[v] = 0.0 if new in (INF, -INF) else err[v] + EPS * (abs(new) + abs(shift))
+            if new not in (INF, -INF) and min(abs(new - e) for e in grid.edges[v][1:-1]) <= SAFETY * err[v]:
                 return ("tie", int(i[1:]), list(lam))
             lam[v] = new
     return None
 
 
 def verify(model: Model, grid: Grid, rules: list, candidate: dict, workdir: Path, edges,
-           max_iter: int = 400, trace: list | None = None) -> dict:
+           max_iter: int = 400, trace: list | None = None, region: dict | None = None,
+           time_limit: float | None = None) -> dict:
     """candidate: {var: [(lo, hi), ...]} log-odds ranges (e.g. a level or two levels).
-    trace, if given, gets one (refinement kind, plan length, rules, planner seconds) per round."""
+    region: {var: (lo, hi)} set of product priors (default: the point 0, a uniform prior).
+    "landmark": True means every run from every prior in the region reaches the
+    candidate; a certified False comes with a witness prior in the region.
+    trace, if given, gets one (refinement kind, plan length, rules, planner seconds) per round.
+    time_limit (seconds), if given, stops refining and returns undecided."""
+    region = region or {v: (0.0, 0.0) for v in range(len(model.vars))}
+    t0 = time.perf_counter()
     for it in range(max_iter):
+        if time_limit is not None and time.perf_counter() - t0 > time_limit:
+            return {"landmark": None, "iterations": it, "reason": "time limit", "rules": len(rules)}
         banned = _banned(grid, candidate)
-        domain, problem, initially = compile_task(model, grid, rules, banned, edges)
-        if initially:
-            return {"landmark": True, "iterations": it, "reason": "holds initially"}
+        domain, problem = compile_task(model, grid, rules, banned, edges, region)
         run = run_fd(workdir, domain, problem, search="lazy_greedy([ff()])")
         plan_file = workdir / "sas_plan"
         if not plan_file.exists():
@@ -276,6 +364,9 @@ def verify(model: Model, grid: Grid, rules: list, candidate: dict, workdir: Path
             return {"landmark": True, "iterations": it, "rules": len(rules)}
         steps = [l.strip("() \n").split()[0] for l in plan_file.read_text().splitlines() if l.startswith("(")]
         plan_file.unlink()
+        picks = {int(x.split("-")[0][1:]): int(x.split("-")[1][1:]) for x in steps if x.startswith("p")}
+        steps = [x for x in steps if x.startswith("r")]
+        lam0 = [_witness(_cells(grid, v)[picks[v]], *region[v]) for v in range(len(model.vars))]
         # 1. fine-cell check: each rule must be possible at the plan's fine cells. Every
         # spurious step is refined at once (one planner call per batch, not per split).
         # Every rule that applies at a visited abstract state is checked, not only the one
@@ -284,7 +375,7 @@ def verify(model: Model, grid: Grid, rules: list, candidate: dict, workdir: Path
         at_pos: dict = {}
         for idx, rule in enumerate(rules):
             at_pos.setdefault(rule[0], []).append(idx)
-        cells = [grid.cell(v, 0.0) for v in range(len(model.vars))]
+        cells = [picks[v] for v in range(len(model.vars))]
         spurious = {}
         for name in steps:
             i, j, t = name.split("-")[:3]
@@ -307,9 +398,19 @@ def verify(model: Model, grid: Grid, rules: list, candidate: dict, workdir: Path
                 rules[r:r + 1] = kids
             continue
         # 2. exact replay
-        div = replay(model, grid, rules, steps)
+        div = replay(model, grid, rules, steps, lam0)
+        # A tie is usually an artifact of the witness (the midpoint plus some shifts lands
+        # on a split point, or symmetric variables get equal priors), so try other priors in
+        # the same start cells, offset per variable to break symmetry, before giving up.
+        for frac in (0.382, 0.618, 0.25, 0.75):
+            if div is None or div[0] != "tie":
+                break
+            alt = [_witness(_cells(grid, v)[picks[v]], *region[v], (frac + 0.236 * v) % 1)
+                   for v in range(len(model.vars))]
+            if alt != lam0:
+                lam0, div = alt, replay(model, grid, rules, steps, alt)
         if div is None:
-            return {"landmark": False, "certified": True, "iterations": it, "rules": len(rules)}
+            return {"landmark": False, "certified": True, "witness": lam0, "iterations": it, "rules": len(rules)}
         kind, r, info = div
         if trace is not None:
             trace[-1] = (kind,) + trace[-1][1:]
