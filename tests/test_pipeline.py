@@ -220,8 +220,12 @@ def test_cegar_region_proves_for_every_prior_and_refutes_with_a_witness_in_the_r
         m = sy.Model(g, alphas)
         grid, edges = sy.Grid([[-sy.INF, -3.0, -1.0, 1.0, 3.0, sy.INF]]), (-1.0, 1.0)
         rules = cegar.initial_rules(m, grid, [None], edges, "any")
-        res = cegar.verify(m, grid, rules, cand, work, edges, region={0: region})
+        res = cegar.verify(m, grid, rules, cand, work, edges, region={0: region}, recheck=True)
         assert res["landmark"] is expect, (region, res)
+        assert res.get("rechecked") is (True if expect else None), res     # blind search agrees
+        blind = cegar.verify(m, grid, cegar.initial_rules(m, grid, [None], edges, "any"), cand, work,
+                             edges, region={0: region}, search="astar(blind())")
+        assert blind["landmark"] is expect, (region, blind)
         if not expect:
             assert res["certified"] and region[0] <= res["witness"][0] <= region[1]
             assert not cegar.exact_landmark(*cegar.exact_graph(m, res["witness"]), 0, cand[0])
@@ -385,6 +389,44 @@ def test_box_test_keeps_an_action_that_loses_only_within_float_error():
         m = sy.Model(g, {"states": ["left", "right"], "actions": ["listen", "right", "left"],
                          "alphas": [[0.0, 0.0], [gap, gap], [-100.0, 10.0]]})
         assert ("listen" in m.possible_actions(None, [(-1.0, 1.0)])) is kept, gap
+
+
+def test_value_error_bound_covers_the_float_error_of_every_value():
+    """The bound used by the box test and the replay must bound |fl(alpha . b) - alpha . b|
+    for the beliefs the code computes. 1 - sigmoid(lam) is accurate only in absolute terms,
+    so a bound relative to |alpha| b fails near p = 1 (485x at lam = 10 for alpha = (0, 1));
+    checked here against 50-digit arithmetic for one and for two variables."""
+    from decimal import Decimal, getcontext
+    from policy_landmarks import symbolic as sy
+    getcontext().prec = 50
+
+    def exact_sigmoid(x):
+        return Decimal(1) / (1 + Decimal(-x).exp())
+
+    tiger = {"problem": "tiger", "p_correct": 0.8, "states": ["left", "right"]}
+    sensor_states = ["a-ok,b-ok", "a-ok,b-bad", "a-bad,b-ok", "a-bad,b-bad"]
+    sensor = {"problem": "sensor", "p_correct": 0.8, "states": sensor_states}
+    cases = [(tiger, ["left", "right"], [[0.0, 1.0], [1.0, 0.0], [10.0, -100.0], [-1.0, 1.0]]),
+             (sensor, sensor_states, [[0.0, 0.0, 0.0, 1.0], [5.0, -3.0, 0.0, 7.0], [0.0, 1.0, 1.0, 0.0]])]
+    for g, states, alphas in cases:
+        m = sy.Model(g, {"states": states, "actions": [f"a{i}" for i in range(len(alphas))], "alphas": alphas})
+        bound = m.value_error(None)
+        k = len(m.vars)
+        for lam in (0.0, 3.0, 10.0, -10.0, 20.0, -20.0, 30.0, 36.5):
+            for lams in ([lam] * k, [lam, -lam / 2][:k]):
+                vals = m.A @ m.corner(None, lams)
+                p = [exact_sigmoid(x) for x in lams]
+                for row, val in zip(alphas, vals):
+                    exact = sum(Decimal(row[i]) * _prod(p[v] if bits[v] else 1 - p[v] for v in range(k))
+                                for i, bits in m.rows[None])
+                    assert abs(Decimal(val) - exact) <= Decimal(bound), (g["problem"], lams, row)
+
+
+def _prod(xs):
+    out = 1
+    for x in xs:
+        out *= x
+    return out
 
 
 def test_successor_cells_follow_the_double_precision_update_exactly():

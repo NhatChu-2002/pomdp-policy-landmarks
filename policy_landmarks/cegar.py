@@ -32,7 +32,7 @@ import numpy as np
 
 from .planner import run_fd_sas
 from .rules import COARSE
-from .symbolic import EPS, INF, SAFETY, Grid, Model, threshold
+from .symbolic import INF, SAFETY, Grid, Model, threshold
 
 
 def _class(lo: float, hi: float, edges) -> int:
@@ -243,6 +243,9 @@ class RelativeModel:
     def corner(self, pos, coords):
         return self.base.corner(pos, [coords[v] + coords[self.k + v] for v in range(self.k)])
 
+    def value_error(self, pos):
+        return self.base.value_error(pos)
+
     def possible_actions(self, pos, box):
         return self.base.possible_actions(
             pos, [(box[v][0] + box[self.k + v][0], box[v][1] + box[self.k + v][1]) for v in range(self.k)])
@@ -401,9 +404,9 @@ def replay(model, grid, rules, steps, lam0):
     """Exact replay. Returns None if the plan is a real run of the policy, else
     (kind, details) for the first divergence. The log-odds follow the double-precision
     update lam[v] + shift, the semantics the successor cells are exact for, so cells are
-    decided exactly. A step is a "tie", which the float replay cannot decide, if an action
-    margin is within the dot-product error (n + 5k + 2) eps |A| b (Higham's gamma_n, plus
-    the sigmoids)."""
+    decided exactly. A step is a "tie", which the float replay cannot decide, if the best
+    action's lead is within SAFETY times the error bound of a difference of two values,
+    2 * model.value_error(pos)."""
     lam = list(lam0)
     acts = np.array(model.actions)
     for name in steps:
@@ -415,8 +418,7 @@ def replay(model, grid, rules, steps, lam0):
         if model.actions[int(vals.argmax())] != a:
             return ("action", int(i[1:]), list(lam))
         others = vals[acts != a]
-        bound = (b.size + 5 * len(lam) + 2) * EPS * float((np.abs(model.A) @ np.abs(b)).max())
-        if others.size and best - others.max() <= SAFETY * 2 * bound:
+        if others.size and best - others.max() <= SAFETY * 2 * model.value_error(pos):
             return ("tie", int(i[1:]), list(lam))
         obs, v, shift, npos, term = model.step(pos, a)[int(j[1:])]
         if term:
@@ -433,25 +435,34 @@ def replay(model, grid, rules, steps, lam0):
 
 def verify(model: Model, grid: Grid, rules: list, candidate: dict, workdir: Path, edges,
            max_iter: int = 400, trace: list | None = None, region: dict | None = None,
-           time_limit: float | None = None) -> dict:
+           time_limit: float | None = None, search: str = "lazy_greedy([ff()])",
+           recheck: bool = False) -> dict:
     """candidate: {var: [(lo, hi), ...]} log-odds ranges (e.g. a level or two levels).
     region: {var: (lo, hi)} set of product priors (default: the point 0, a uniform prior).
     "landmark": True means every run from every prior in the region reaches the
     candidate; a certified False comes with a witness prior in the region.
     trace, if given, gets one (refinement kind, plan length, rules, planner seconds) per round.
-    time_limit (seconds), if given, stops refining and returns undecided."""
+    time_limit (seconds), if given, stops refining and returns undecided.
+    search is the Fast Downward search; any search that reports an exhausted state space
+    proves. recheck: confirm each proof by a blind search of the same task ("rechecked")."""
     region = region or {v: (0.0, 0.0) for v in range(len(model.vars))}
     t0 = time.perf_counter()
     for it in range(max_iter):
         if time_limit is not None and time.perf_counter() - t0 > time_limit:
             return {"landmark": None, "iterations": it, "reason": "time limit", "rules": len(rules)}
         banned = _banned(grid, candidate)
-        run = run_fd_sas(workdir, compile_sas(model, grid, rules, banned, edges, region), "lazy_greedy([ff()])")
+        sas = compile_sas(model, grid, rules, banned, edges, region)
+        run = run_fd_sas(workdir, sas, search)
         plan_file = workdir / "sas_plan"
         if not plan_file.exists():
             if not run["exhausted"]:                           # crash or out of memory: no proof
                 return {"landmark": None, "iterations": it, "reason": "planner gave up", "rules": len(rules)}
-            return {"landmark": True, "iterations": it, "rules": len(rules)}
+            out = {"landmark": True, "iterations": it, "rules": len(rules)}
+            if recheck:
+                blind = run_fd_sas(workdir / "recheck", sas, "astar(blind())")
+                out["rechecked"] = blind["exhausted"] and not (workdir / "recheck" / "sas_plan").exists()
+                out["recheck_seconds"] = round(blind["wall"], 2)
+            return out
         steps = [l.strip("() \n").split()[0] for l in plan_file.read_text().splitlines() if l.startswith("(")]
         plan_file.unlink()
         picks = {int(x.split("-")[0][1:]): int(x.split("-")[1][1:]) for x in steps if x.startswith("p")}

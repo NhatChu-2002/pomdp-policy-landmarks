@@ -946,8 +946,11 @@ def exp_cegar(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksample-4-4-s
 
 def exp_cegar_region(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksample-4-4-s1"),
                      regions=((0.0, 0.0), (-0.5, 0.5), (-2.5, 2.5)), samples: int = 50,
-                     folder: str = "alphas", time_limit: float | None = None, relative: bool = False) -> dict:
-    """With relative=True, levels are taken relative to the prior (cegar.RelativeModel:
+                     folder: str = "alphas", time_limit: float | None = None, relative: bool = False,
+                     search: str = "lazy_greedy([ff()])", recheck: bool = False) -> dict:
+    """search: the planner's search (blind search measures what the FF heuristic adds);
+    recheck: confirm each proof by a blind search of the same final task ("rechecked").
+    With relative=True, levels are taken relative to the prior (cegar.RelativeModel:
     evidence starts at 0 for every prior, the prior is a fixed coordinate picked from the
     region); ground truth and witnesses are then checked with prior-shifted ranges.
     Prior-robust landmarks: CEGAR proves a candidate for every product prior whose
@@ -993,7 +996,8 @@ def exp_cegar_region(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksampl
                     ranges = [span[lv] for lv in cand]
                     holds = [cegar.exact_landmark(st, su, v, shift(pr, v, ranges)) for (st, su), pr in zip(graphs, priors)]
                     res = cegar.verify(pm, grid, rules, {v: ranges}, WORK / "cegar-region" / name, edges,
-                                       max_iter=400, region=region, time_limit=time_limit)
+                                       max_iter=400, region=region, time_limit=time_limit,
+                                       search=search, recheck=recheck)
                     w = res.get("witness")
                     if w is not None and relative:
                         w = w[k:]                                 # the prior; evidence starts at 0
@@ -1002,6 +1006,7 @@ def exp_cegar_region(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksampl
                                     "var": v, "levels": list(cand),
                                     "proven": res["landmark"], "certified": res.get("certified"),
                                     "witness": w, "reason": res.get("reason"), "iterations": res["iterations"],
+                                    "rechecked": res.get("rechecked"),
                                     "holds_at_centre": holds[0], "holds_at_all_samples": all(holds),
                                     "holds_at_corners": all(holds[1:1 + len(corners)]),
                                     "witness_confirmed": None if w is None else not cegar.exact_landmark(
@@ -1023,7 +1028,8 @@ def exp_cegar_region(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksampl
                 "hold_at_centre": sum(r["holds_at_centre"] for r in results),
                 "proven_minimal": sum(r["minimal"] for r in results),
                 "refuted_bin_skipping": sum(bool(r["certified"]) and bool(r["relative_holds_at_witness"]) for r in results),
-                "corners": len(corners),
+                "corners": len(corners), "search": search,
+                "proofs_rechecked": sum(r["rechecked"] is True for r in results),
                 "rules_initial": n_rules0,
                 "rules_final": len(rules), "cells_final": [len(e) - 1 for e in grid.edges],
                 "seconds": round(time.perf_counter() - t0, 1), "results": results}

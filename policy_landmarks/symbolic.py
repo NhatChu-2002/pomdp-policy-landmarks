@@ -23,11 +23,22 @@ import numpy as np
 
 INF = math.inf
 EPS = float(np.finfo(float).eps)
-SAFETY = 8.0        # factor on the float error bounds (box test here, replay in cegar.py)
+SAFETY = 8.0        # slack on the derived float error bounds (box test here, replay in cegar.py)
 
 
 def sigmoid(x: float) -> float:
     return 1.0 if x == INF else 0.0 if x == -INF else 1 / (1 + math.exp(-x))
+
+
+def value_error(A: np.ndarray, k: int) -> float:
+    """Bound on |fl(alpha . b) - alpha . b| for every row alpha of A (columns: the n states
+    of one observable part) and every belief b of k independent variables computed as a
+    product of sigmoids p or 1 - p. With exp within 4 ulp, each factor lies in [0, 1] with
+    absolute error <= 5.5 eps (relative error of p, then 1 - p, which is accurate only in
+    absolute terms near p = 1), so each b_i has absolute error <= 6k eps up to O(eps^2), and
+    the dot product adds gamma_n sum |alpha_i| b_i <= n eps ||alpha||_1. Hence
+    (n + 7k) eps max ||alpha||_1, the 7k absorbing the O(eps^2) terms."""
+    return (A.shape[1] + 7 * k) * EPS * float(np.abs(A).sum(axis=1).max()) if A.size else 0.0
 
 
 class Model:
@@ -97,6 +108,18 @@ class Model:
             b[i] = 0.0 if c == -INF else math.exp(c - top)
         return b
 
+    def _pos_rows(self, pos):
+        """(alpha columns, bit matrix) of the states of observable part pos."""
+        if pos not in self._rows_np:
+            idx = [i for i, _ in self.rows[pos]]
+            self._rows_np[pos] = (self.A[:, idx], np.array([b for _, b in self.rows[pos]], dtype=bool))
+        return self._rows_np[pos]
+
+    def value_error(self, pos) -> float:
+        """Float error bound of every alpha-vector value at a belief of observable part pos
+        (module value_error; not for the categorical "probe" problem)."""
+        return value_error(self._pos_rows(pos)[0], len(self.vars))
+
     def possible_actions(self, pos, box) -> set:
         """Actions the alpha-vector policy can choose at some belief in the box
         (sound over-approximation: an action is dropped only if each of its vectors is
@@ -105,20 +128,21 @@ class Model:
         pts = list(itertools.product(*[(lo,) if lo == hi else (lo, hi) for lo, hi in box]))
         if self.problem == "probe":
             B = np.array([self.corner(pos, c) for c in pts])
-            M, S = self.A @ B.T, np.abs(self.A) @ np.abs(B).T
+            M = self.A @ B.T
+            # exp weights are relatively accurate, so the error is relative to |A| b, whose
+            # maximum over the box (multilinear) is at a corner
+            err = (B.shape[1] + 5 * len(box) + 2) * EPS * float((np.abs(self.A) @ np.abs(B).T).max())
         else:                                                # vectorized self.corner on pos's rows
-            if pos not in self._rows_np:
-                idx = [i for i, _ in self.rows[pos]]
-                self._rows_np[pos] = (self.A[:, idx], np.array([b for _, b in self.rows[pos]], dtype=bool))
-            A_pos, bits = self._rows_np[pos]
+            A_pos, bits = self._pos_rows(pos)
             with np.errstate(over="ignore"):
                 P = 1.0 / (1.0 + np.exp(-np.array(pts, dtype=float)))     # sigmoid, +-inf -> 1, 0
             B = np.where(bits[None], P[:, None, :], 1.0 - P[:, None, :]).prod(axis=2)
-            M, S = A_pos @ B.T, np.abs(A_pos) @ B.T          # vectors x corners
-        # Each value carries float error <= (n + 5k + 2) eps |A| b (dot product, sigmoids,
-        # products), at a corner and at any belief inside; |A| b is multilinear, so its
-        # maximum over the box is at a corner. Two such errors fit within the margin.
-        margin = SAFETY * 2 * (B.shape[1] + 5 * len(box) + 2) * EPS * float(S.max())
+            M = A_pos @ B.T                                  # vectors x corners
+            err = self.value_error(pos)
+        # Each value, at a corner and at any belief inside, is within err of its exact value
+        # (value_error), so a loss by more than 2 err at every corner is a loss at every
+        # belief in the box (the exact values are multilinear) and in float evaluation there.
+        margin = SAFETY * 2 * err
         acts = np.array(self.actions)
         winners = np.unique(M.argmax(axis=0))                # best vector at each corner
         out = set(acts[winners])                             # chosen at a corner: possible
