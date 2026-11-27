@@ -13,14 +13,14 @@
     "refuted_bin_skipping": 0,
     "corners": 0,
     "rules_initial": 435,
-    "rules_final": 796,
+    "rules_final": 768,
     "cells_final": [
       7,
       7,
       7,
       7
     ],
-    "seconds": 38.0,
+    "seconds": 11.4,
     "results": [
       {
         "candidate": "ev-rock1(neg3)",
@@ -1011,14 +1011,14 @@
     "refuted_bin_skipping": 0,
     "corners": 16,
     "rules_initial": 435,
-    "rules_final": 1707,
+    "rules_final": 1676,
     "cells_final": [
-      8,
+      7,
       8,
       8,
       7
     ],
-    "seconds": 102.9,
+    "seconds": 21.5,
     "results": [
       {
         "candidate": "ev-rock1(neg3)",
@@ -1030,7 +1030,7 @@
         "certified": null,
         "witness": null,
         "reason": null,
-        "iterations": 40,
+        "iterations": 32,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
@@ -1053,7 +1053,7 @@
           0.0
         ],
         "reason": null,
-        "iterations": 4,
+        "iterations": 1,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -1070,13 +1070,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.5,
+          0.0,
           0.0,
           0.0,
           0.0
         ],
         "reason": null,
-        "iterations": 1,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -1116,7 +1116,7 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.5,
+          0.0,
           0.0,
           0.0,
           0.0
@@ -1139,7 +1139,7 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.5,
+          0.0,
           0.0,
           0.0,
           0.0
@@ -1182,7 +1182,7 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.5,
+          0.0,
           0.0,
           0.0,
           0.0
@@ -1230,7 +1230,7 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.5,
+          0.0,
           0.0,
           0.0,
           0.0
@@ -1585,7 +1585,7 @@
           0.0
         ],
         "reason": null,
-        "iterations": 0,
+        "iterations": 3,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -2009,14 +2009,14 @@
     "refuted_bin_skipping": 0,
     "corners": 0,
     "rules_initial": 467,
-    "rules_final": 2864,
+    "rules_final": 3314,
     "cells_final": [
+      10,
+      10,
       9,
-      9,
-      9,
-      7
+      8
     ],
-    "seconds": 124.6,
+    "seconds": 27.8,
     "results": [
       {
         "candidate": "ev-rock1(neg3)",
@@ -2033,7 +2033,7 @@
           0.0
         ],
         "reason": null,
-        "iterations": 15,
+        "iterations": 20,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": true,
@@ -2148,7 +2148,7 @@
           0.0
         ],
         "reason": null,
-        "iterations": 0,
+        "iterations": 4,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": true,
@@ -2167,7 +2167,7 @@
         "certified": null,
         "witness": null,
         "reason": null,
-        "iterations": 6,
+        "iterations": 2,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
@@ -2239,7 +2239,7 @@
           0.0
         ],
         "reason": null,
-        "iterations": 0,
+        "iterations": 4,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": true,
@@ -2420,7 +2420,7 @@
         "certified": null,
         "witness": null,
         "reason": null,
-        "iterations": 1,
+        "iterations": 0,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
@@ -2608,7 +2608,7 @@
           0.0
         ],
         "reason": null,
-        "iterations": 2,
+        "iterations": 1,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": true,
@@ -2782,7 +2782,7 @@
         "certified": null,
         "witness": null,
         "reason": null,
-        "iterations": 9,
+        "iterations": 1,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
@@ -3032,14 +3032,14 @@
     "refuted_bin_skipping": 1,
     "corners": 16,
     "rules_initial": 467,
-    "rules_final": 8457,
+    "rules_final": 7912,
     "cells_final": [
       12,
-      13,
-      11,
-      10
+      12,
+      9,
+      9
     ],
-    "seconds": 473.4,
+    "seconds": 70.5,
     "results": [
       {
         "candidate": "ev-rock1(neg3)",
@@ -3052,11 +3052,11 @@
         "witness": [
           0.0,
           -0.4722537689695614,
-          -0.02774623103043905,
+          0.0,
           0.5
         ],
         "reason": null,
-        "iterations": 56,
+        "iterations": 38,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -3073,13 +3073,13 @@
         "proven": false,
         "certified": true,
         "witness": [
+          0.027746231030438606,
           -0.4722537689695614,
-          -0.4722537689695614,
-          -0.02774623103043905,
+          0.0,
           0.5
         ],
         "reason": null,
-        "iterations": 3,
+        "iterations": 7,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -3096,9 +3096,9 @@
         "proven": false,
         "certified": true,
         "witness": [
+          0.027746231030438606,
           -0.4722537689695614,
-          -0.4722537689695614,
-          -0.02774623103043905,
+          0.0,
           0.5
         ],
         "reason": null,
@@ -3121,11 +3121,11 @@
         "witness": [
           -0.4722537689695614,
           -0.4722537689695614,
-          -0.02774623103043905,
+          0.0,
           0.5
         ],
         "reason": null,
-        "iterations": 2,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -3142,13 +3142,13 @@
         "proven": false,
         "certified": true,
         "witness": [
+          0.027746231030438606,
           -0.4722537689695614,
-          -0.4722537689695614,
-          -0.02774623103043905,
+          0.0,
           0.5
         ],
         "reason": null,
-        "iterations": 0,
+        "iterations": 3,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -3165,9 +3165,9 @@
         "proven": false,
         "certified": true,
         "witness": [
+          0.027746231030438606,
           -0.4722537689695614,
-          -0.4722537689695614,
-          -0.02774623103043905,
+          0.0,
           0.5
         ],
         "reason": null,
@@ -3190,7 +3190,7 @@
         "certified": null,
         "witness": null,
         "reason": null,
-        "iterations": 16,
+        "iterations": 49,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
@@ -3210,11 +3210,11 @@
         "witness": [
           -0.4722537689695614,
           -0.4722537689695614,
-          -0.02774623103043905,
-          0.5
+          0.0,
+          0.0
         ],
         "reason": null,
-        "iterations": 0,
+        "iterations": 2,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -3234,11 +3234,11 @@
         "witness": [
           -0.4722537689695614,
           -0.4722537689695614,
-          -0.02774623103043905,
-          0.5
+          0.0,
+          0.0
         ],
         "reason": null,
-        "iterations": 0,
+        "iterations": 2,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -3258,8 +3258,8 @@
         "witness": [
           -0.4722537689695614,
           -0.4722537689695614,
-          -0.02774623103043905,
-          0.5
+          0.0,
+          0.0
         ],
         "reason": null,
         "iterations": 0,
@@ -3282,11 +3282,11 @@
         "witness": [
           0.027746231030438606,
           -0.4722537689695614,
-          -0.02774623103043905,
-          0.5
+          0.0,
+          0.0
         ],
         "reason": null,
-        "iterations": 0,
+        "iterations": 1,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -3305,7 +3305,7 @@
         "witness": [
           -0.4722537689695614,
           0.027746231030438606,
-          -0.02774623103043905,
+          0.0,
           0.0
         ],
         "reason": null,
@@ -3328,8 +3328,8 @@
         "witness": [
           -0.4722537689695614,
           -0.4722537689695614,
-          -0.02774623103043905,
-          0.5
+          0.0,
+          0.0
         ],
         "reason": null,
         "iterations": 0,
@@ -3351,8 +3351,8 @@
         "witness": [
           -0.4722537689695614,
           -0.4722537689695614,
-          -0.02774623103043905,
-          0.5
+          0.0,
+          0.0
         ],
         "reason": null,
         "iterations": 0,
@@ -3374,8 +3374,8 @@
         "witness": [
           -0.4722537689695614,
           -0.4722537689695614,
-          -0.02774623103043905,
-          0.5
+          0.0,
+          0.0
         ],
         "reason": null,
         "iterations": 0,
@@ -3397,8 +3397,8 @@
         "witness": [
           -0.4722537689695614,
           -0.4722537689695614,
-          -0.02774623103043905,
-          0.5
+          0.0,
+          0.0
         ],
         "reason": null,
         "iterations": 0,
@@ -3420,8 +3420,8 @@
         "witness": [
           -0.4722537689695614,
           -0.4722537689695614,
-          -0.02774623103043905,
-          0.5
+          0.0,
+          0.0
         ],
         "reason": null,
         "iterations": 0,
@@ -3463,11 +3463,11 @@
         "witness": [
           -0.4722537689695614,
           -0.4722537689695614,
-          -0.02774623103043905,
-          0.5
+          -0.4722537689695614,
+          0.0
         ],
         "reason": null,
-        "iterations": 0,
+        "iterations": 1,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -3487,8 +3487,8 @@
         "witness": [
           -0.4722537689695614,
           -0.4722537689695614,
-          -0.02774623103043905,
-          0.5
+          -0.4722537689695614,
+          0.0
         ],
         "reason": null,
         "iterations": 0,
@@ -3511,8 +3511,8 @@
         "witness": [
           -0.4722537689695614,
           -0.4722537689695614,
-          -0.02774623103043905,
-          0.5
+          -0.4722537689695614,
+          0.0
         ],
         "reason": null,
         "iterations": 0,
@@ -3535,7 +3535,7 @@
         "witness": [
           -0.4722537689695614,
           0.027746231030438606,
-          -0.02774623103043905,
+          -0.4722537689695614,
           0.0
         ],
         "reason": null,
@@ -3558,11 +3558,11 @@
         "witness": [
           -0.4722537689695614,
           -0.4722537689695614,
-          -0.02774623103043905,
+          0.027746231030438606,
           0.0
         ],
         "reason": null,
-        "iterations": 1,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -3581,8 +3581,8 @@
         "witness": [
           -0.4722537689695614,
           -0.4722537689695614,
-          -0.02774623103043905,
-          0.0
+          -0.4722537689695614,
+          0.5
         ],
         "reason": null,
         "iterations": 0,
@@ -3604,8 +3604,8 @@
         "witness": [
           -0.4722537689695614,
           -0.4722537689695614,
-          -0.02774623103043905,
-          0.5
+          -0.4722537689695614,
+          0.0
         ],
         "reason": null,
         "iterations": 0,
@@ -3627,8 +3627,8 @@
         "witness": [
           -0.4722537689695614,
           -0.4722537689695614,
-          -0.02774623103043905,
-          0.5
+          -0.4722537689695614,
+          0.0
         ],
         "reason": null,
         "iterations": 0,
@@ -3654,7 +3654,7 @@
           0.0
         ],
         "reason": null,
-        "iterations": 2,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -3788,7 +3788,7 @@
         "witness": [
           -0.4722537689695614,
           -0.4722537689695614,
-          -4.440892098500626e-16,
+          0.027746231030438606,
           0.0
         ],
         "reason": null,
@@ -3810,7 +3810,7 @@
         "certified": null,
         "witness": null,
         "reason": null,
-        "iterations": 28,
+        "iterations": 17,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
@@ -3830,7 +3830,7 @@
           -0.4722537689695614,
           -0.4722537689695614,
           -0.4722537689695614,
-          -0.375
+          -0.25
         ],
         "reason": null,
         "iterations": 0,
@@ -3853,7 +3853,7 @@
           -0.4722537689695614,
           -0.4722537689695614,
           -0.4722537689695614,
-          -0.375
+          -0.25
         ],
         "reason": null,
         "iterations": 0,
@@ -3876,7 +3876,7 @@
           -0.4722537689695614,
           -0.4722537689695614,
           -0.4722537689695614,
-          -0.375
+          -0.25
         ],
         "reason": null,
         "iterations": 0,
@@ -3899,7 +3899,7 @@
           -0.4722537689695614,
           -0.4722537689695614,
           -0.4722537689695614,
-          -0.375
+          -0.25
         ],
         "reason": null,
         "iterations": 0,
@@ -3922,7 +3922,7 @@
           -0.4722537689695614,
           -0.4722537689695614,
           -0.4722537689695614,
-          -0.375
+          -0.25
         ],
         "reason": null,
         "iterations": 0,
@@ -3965,7 +3965,7 @@
           -0.4722537689695614,
           -0.4722537689695614,
           -0.4722537689695614,
-          -0.375
+          -0.25
         ],
         "reason": null,
         "iterations": 0,
@@ -3989,7 +3989,7 @@
           -0.4722537689695614,
           -0.4722537689695614,
           -0.4722537689695614,
-          -0.375
+          -0.25
         ],
         "reason": null,
         "iterations": 0,
@@ -4011,9 +4011,9 @@
         "certified": true,
         "witness": [
           -0.4722537689695614,
-          0.5,
           -0.4722537689695614,
-          0.25
+          -0.4722537689695614,
+          -0.25
         ],
         "reason": null,
         "iterations": 0,
@@ -4060,14 +4060,14 @@
     "refuted_bin_skipping": 0,
     "corners": 0,
     "rules_initial": 476,
-    "rules_final": 2741,
+    "rules_final": 2709,
     "cells_final": [
       7,
       11,
       7,
       10
     ],
-    "seconds": 122.8,
+    "seconds": 25.6,
     "results": [
       {
         "candidate": "ev-rock1(neg3)",
@@ -4102,7 +4102,7 @@
           0.0
         ],
         "reason": null,
-        "iterations": 7,
+        "iterations": 8,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": true,
@@ -4322,7 +4322,7 @@
         "certified": null,
         "witness": null,
         "reason": null,
-        "iterations": 11,
+        "iterations": 14,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
@@ -4345,7 +4345,7 @@
           0.0
         ],
         "reason": null,
-        "iterations": 3,
+        "iterations": 1,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": true,
@@ -5058,14 +5058,14 @@
     "refuted_bin_skipping": 2,
     "corners": 16,
     "rules_initial": 476,
-    "rules_final": 7805,
+    "rules_final": 6680,
     "cells_final": [
       7,
-      12,
+      11,
       9,
-      11
+      10
     ],
-    "seconds": 579.4,
+    "seconds": 55.6,
     "results": [
       {
         "candidate": "ev-rock1(neg3)",
@@ -5077,7 +5077,7 @@
         "certified": null,
         "witness": null,
         "reason": null,
-        "iterations": 76,
+        "iterations": 77,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
@@ -5097,10 +5097,10 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
-        "iterations": 8,
+        "iterations": 7,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -5120,7 +5120,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5143,7 +5143,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5166,7 +5166,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5189,7 +5189,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5232,7 +5232,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5256,7 +5256,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5280,7 +5280,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5322,7 +5322,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5343,12 +5343,12 @@
         "certified": true,
         "witness": [
           0.0,
-          0.20768036778915522,
+          0.5,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
-        "iterations": 5,
+        "iterations": 2,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -5368,7 +5368,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5391,7 +5391,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5414,7 +5414,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5437,7 +5437,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5480,7 +5480,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5504,7 +5504,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5526,12 +5526,12 @@
         "certified": true,
         "witness": [
           0.0,
-          0.4788401838945776,
+          0.5,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
-        "iterations": 1,
+        "iterations": 0,
         "holds_at_centre": true,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -5552,7 +5552,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5593,7 +5593,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5616,7 +5616,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5639,7 +5639,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5662,7 +5662,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5685,7 +5685,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5728,7 +5728,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5752,7 +5752,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5776,7 +5776,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5821,7 +5821,7 @@
           0.027746231030438606
         ],
         "reason": null,
-        "iterations": 1,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -5864,7 +5864,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5887,7 +5887,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -5933,7 +5933,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -6000,7 +6000,7 @@
           0.0,
           -0.2711598161054224,
           0.0,
-          -0.4722537689695614
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -6076,14 +6076,14 @@
     "refuted_bin_skipping": 0,
     "corners": 16,
     "rules_initial": 435,
-    "rules_final": 2733,
+    "rules_final": 5133,
     "cells_final": [
-      8,
+      11,
       9,
-      9,
-      8
+      11,
+      9
     ],
-    "seconds": 227.9,
+    "seconds": 69.7,
     "results": [
       {
         "candidate": "ev-rock1(neg3)",
@@ -6095,7 +6095,7 @@
         "certified": null,
         "witness": null,
         "reason": null,
-        "iterations": 57,
+        "iterations": 71,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
@@ -6113,12 +6113,12 @@
         "certified": true,
         "witness": [
           0.0,
-          1.0,
+          -1.0,
           -1.0,
           -1.0
         ],
         "reason": null,
-        "iterations": 7,
+        "iterations": 2,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -6136,12 +6136,12 @@
         "certified": true,
         "witness": [
           0.0,
-          0.0,
+          -1.0,
           -1.0,
           -1.0
         ],
         "reason": null,
-        "iterations": 3,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -6158,13 +6158,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.0,
           0.0,
-          -1.0,
+          0.0,
+          0.0,
           -1.0
         ],
         "reason": null,
-        "iterations": 5,
+        "iterations": 1,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -6181,8 +6181,8 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.0,
           -1.0,
+          0.0,
           -1.0,
           -1.0
         ],
@@ -6204,13 +6204,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.0,
+          -1.0,
           0.0,
           -1.0,
           -1.0
         ],
         "reason": null,
-        "iterations": 1,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -6247,7 +6247,7 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.0,
+          -1.0,
           0.0,
           -1.0,
           -1.0
@@ -6272,7 +6272,7 @@
         "certified": true,
         "witness": [
           0.0,
-          0.0,
+          -1.0,
           -1.0,
           -1.0
         ],
@@ -6296,12 +6296,12 @@
         "certified": true,
         "witness": [
           0.0,
-          1.0,
+          -1.0,
           -1.0,
           -1.0
         ],
         "reason": null,
-        "iterations": 8,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -6338,7 +6338,7 @@
         "certified": null,
         "witness": null,
         "reason": null,
-        "iterations": 22,
+        "iterations": 31,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
@@ -6355,13 +6355,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.0,
+          -1.25,
           -1.0,
           -1.0,
-          -1.0
+          1.0
         ],
         "reason": null,
-        "iterations": 0,
+        "iterations": 3,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -6378,13 +6378,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.0,
+          -1.25,
           0.0,
           -1.0,
           -1.0
         ],
         "reason": null,
-        "iterations": 0,
+        "iterations": 3,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -6401,10 +6401,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.0,
+          -1.25,
           -1.0,
           -1.0,
-          -1.0
+          1.0
         ],
         "reason": null,
         "iterations": 0,
@@ -6424,10 +6424,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.0,
+          -1.25,
           -1.0,
           -1.0,
-          -1.0
+          1.0
         ],
         "reason": null,
         "iterations": 0,
@@ -6447,7 +6447,7 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.0,
+          -1.25,
           -1.0,
           -1.0,
           -1.0
@@ -6490,7 +6490,7 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.0,
+          -1.25,
           -1.0,
           -1.0,
           -1.0
@@ -6514,7 +6514,7 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.0,
+          -1.25,
           0.0,
           -1.0,
           -1.0
@@ -6538,10 +6538,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.0,
+          -1.25,
           -1.0,
           -1.0,
-          -1.0
+          1.0
         ],
         "reason": null,
         "iterations": 0,
@@ -6598,10 +6598,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.0,
+          -1.25,
           -1.0,
           -1.0,
-          -1.0
+          1.0
         ],
         "reason": null,
         "iterations": 0,
@@ -6621,13 +6621,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.0,
+          -0.25,
           -1.0,
           0.0,
           -1.0
         ],
         "reason": null,
-        "iterations": 0,
+        "iterations": 5,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -6644,8 +6644,8 @@
         "proven": false,
         "certified": true,
         "witness": [
+          -0.25,
           0.0,
-          -1.0,
           -1.0,
           -1.0
         ],
@@ -6667,10 +6667,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.0,
+          -1.25,
           -1.0,
           -1.0,
-          -1.0
+          1.0
         ],
         "reason": null,
         "iterations": 0,
@@ -6690,10 +6690,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.0,
+          -1.25,
           -1.0,
           -1.0,
-          -1.0
+          1.0
         ],
         "reason": null,
         "iterations": 0,
@@ -6733,10 +6733,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.0,
+          -1.25,
           -1.0,
           -1.0,
-          -1.0
+          1.0
         ],
         "reason": null,
         "iterations": 0,
@@ -6757,7 +6757,7 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.0,
+          -0.25,
           -1.0,
           0.0,
           -1.0
@@ -6781,10 +6781,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.0,
+          -1.25,
           -1.0,
           -1.0,
-          -1.0
+          1.0
         ],
         "reason": null,
         "iterations": 0,
@@ -6824,7 +6824,7 @@
         "certified": null,
         "witness": null,
         "reason": null,
-        "iterations": 10,
+        "iterations": 44,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
@@ -6841,7 +6841,7 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.0,
+          -1.25,
           -1.0,
           -1.0,
           -1.0
@@ -6864,7 +6864,7 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.0,
+          -1.25,
           -1.0,
           -1.0,
           0.0
@@ -6887,13 +6887,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.0,
+          -0.25,
           -1.0,
           -1.0,
           -1.0
         ],
         "reason": null,
-        "iterations": 0,
+        "iterations": 2,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -6910,7 +6910,7 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.0,
+          -0.25,
           -1.0,
           -1.0,
           -1.0
@@ -6933,7 +6933,7 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.0,
+          -0.25,
           -1.0,
           -1.0,
           -1.0
@@ -6976,7 +6976,7 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.0,
+          -0.25,
           -1.0,
           -1.0,
           -1.0
@@ -7000,7 +7000,7 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.0,
+          -0.25,
           -1.0,
           -1.0,
           0.0
@@ -7024,7 +7024,7 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.0,
+          -0.25,
           -1.0,
           -1.0,
           -1.0
@@ -7065,23 +7065,23 @@
     "priors_sampled": 67,
     "proven": 1,
     "unsound": 0,
-    "refuted_certified": 33,
-    "witness_confirmed": 33,
-    "undecided": 10,
+    "refuted_certified": 40,
+    "witness_confirmed": 40,
+    "undecided": 3,
     "hold_at_all_samples": 6,
     "hold_at_centre": 7,
     "proven_minimal": 1,
     "refuted_bin_skipping": 1,
     "corners": 16,
     "rules_initial": 467,
-    "rules_final": 34268,
+    "rules_final": 42673,
     "cells_final": [
-      20,
       18,
-      15,
-      14
+      24,
+      17,
+      24
     ],
-    "seconds": 2330.4,
+    "seconds": 686.0,
     "results": [
       {
         "candidate": "ev-rock1(neg3)",
@@ -7089,16 +7089,21 @@
         "levels": [
           "neg3"
         ],
-        "proven": null,
-        "certified": null,
-        "witness": null,
-        "reason": "time limit",
-        "iterations": 74,
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -0.6454905274383584,
+          -1.3611268844847806,
+          -1.0,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 142,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
         "minimal": false
       },
       {
@@ -7110,13 +7115,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.1454905274383584,
-          -0.4722537689695614,
-          -0.4722537689695614,
-          -1.0
+          -1.354509472561642,
+          -1.3611268844847806,
+          -1.0,
+          -1.25
         ],
         "reason": null,
-        "iterations": 6,
+        "iterations": 2,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -7133,13 +7138,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.4722537689695614,
-          -0.4722537689695614,
+          0.0,
+          -1.3611268844847806,
           -1.0,
           -1.25
         ],
         "reason": null,
-        "iterations": 10,
+        "iterations": 5,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -7156,9 +7161,9 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.1454905274383584,
+          -1.354509472561642,
+          -1.3611268844847806,
           -1.0,
-          -0.4722537689695614,
           -1.25
         ],
         "reason": null,
@@ -7179,9 +7184,9 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.1454905274383584,
-          -0.4722537689695614,
-          -0.4722537689695614,
+          -1.354509472561642,
+          -1.3611268844847806,
+          -1.0,
           -1.25
         ],
         "reason": null,
@@ -7202,9 +7207,9 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.1454905274383584,
-          -0.4722537689695614,
-          -0.4722537689695614,
+          -1.354509472561642,
+          -1.3611268844847806,
+          -1.0,
           -1.25
         ],
         "reason": null,
@@ -7227,7 +7232,7 @@
         "certified": null,
         "witness": null,
         "reason": "time limit",
-        "iterations": 29,
+        "iterations": 67,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
@@ -7245,13 +7250,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.1454905274383584,
-          1.0,
-          -0.4722537689695614,
-          0.0
+          -1.354509472561642,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.25
         ],
         "reason": null,
-        "iterations": 14,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -7269,13 +7274,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.4722537689695614,
-          0.75,
-          -1.0,
+          -0.375,
+          -1.3611268844847806,
+          -1.4947620915910365,
           -1.25
         ],
         "reason": null,
-        "iterations": 9,
+        "iterations": 5,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": true,
@@ -7293,13 +7298,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.6454905274383584,
-          0.75,
-          -4.440892098500626e-16,
+          -1.354509472561642,
+          -1.3611268844847806,
+          -1.4947620915910365,
           -1.25
         ],
         "reason": null,
-        "iterations": 5,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -7314,16 +7319,21 @@
           "neg3",
           "pos3"
         ],
-        "proven": null,
-        "certified": null,
-        "witness": null,
-        "reason": "time limit",
-        "iterations": 14,
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -0.375,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
         "minimal": false
       },
       {
@@ -7332,16 +7342,21 @@
         "levels": [
           "neg3"
         ],
-        "proven": null,
-        "certified": null,
-        "witness": null,
-        "reason": "time limit",
-        "iterations": 11,
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.354509472561642,
+          -0.25,
+          -1.4947620915910365,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 3,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
         "minimal": false
       },
       {
@@ -7353,13 +7368,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.027746231030438606,
-          0.53125,
-          -1.0,
-          -1.375
+          -1.354509472561642,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.25
         ],
         "reason": null,
-        "iterations": 3,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -7376,13 +7391,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.027746231030438606,
-          0.53125,
-          -1.0,
-          -1.375
+          -1.427254736280821,
+          0.515625,
+          -1.4947620915910365,
+          -1.4375
         ],
         "reason": null,
-        "iterations": 0,
+        "iterations": 13,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -7399,10 +7414,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.027746231030438606,
-          -1.4861268844847806,
-          -1.0,
-          -1.375
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.4375
         ],
         "reason": null,
         "iterations": 0,
@@ -7422,10 +7437,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.027746231030438606,
-          0.53125,
-          -1.0,
-          -1.375
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.4375
         ],
         "reason": null,
         "iterations": 0,
@@ -7445,10 +7460,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.027746231030438606,
-          0.53125,
-          -1.0,
-          -1.375
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.4375
         ],
         "reason": null,
         "iterations": 0,
@@ -7470,7 +7485,7 @@
         "certified": null,
         "witness": null,
         "reason": "time limit",
-        "iterations": 11,
+        "iterations": 13,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
@@ -7488,10 +7503,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.027746231030438606,
-          0.53125,
-          -1.0,
-          -1.375
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.4375
         ],
         "reason": null,
         "iterations": 0,
@@ -7512,10 +7527,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.027746231030438606,
-          0.027746231030438606,
-          -0.4861268844847807,
-          -1.375
+          -1.427254736280821,
+          -0.4722537689695614,
+          -1.4947620915910365,
+          -1.4375
         ],
         "reason": null,
         "iterations": 2,
@@ -7536,10 +7551,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          0.027746231030438606,
-          0.53125,
-          -1.0,
-          -1.375
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.4375
         ],
         "reason": null,
         "iterations": 0,
@@ -7557,16 +7572,21 @@
           "neg3",
           "pos3"
         ],
-        "proven": null,
-        "certified": null,
-        "witness": null,
-        "reason": "time limit",
-        "iterations": 9,
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.427254736280821,
+          -0.2222537689695614,
+          -1.4947620915910365,
+          -1.4375
+        ],
+        "reason": null,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
         "minimal": false
       },
       {
@@ -7578,13 +7598,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.32644409569673244,
-          0.53125,
-          0.5277462310304387,
-          -1.375
+          -1.427254736280821,
+          -1.3611268844847806,
+          0.0,
+          -1.4375
         ],
         "reason": null,
-        "iterations": 6,
+        "iterations": 1,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": true,
@@ -7598,16 +7618,21 @@
         "levels": [
           "neg2"
         ],
-        "proven": null,
-        "certified": null,
-        "witness": null,
-        "reason": "time limit",
-        "iterations": 7,
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.4375
+        ],
+        "reason": null,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
         "minimal": false
       },
       {
@@ -7619,13 +7644,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.32644409569673244,
-          0.53125,
-          0.5277462310304387,
-          -1.375
+          -1.427254736280821,
+          -0.4722537689695614,
+          0.0,
+          -1.4375
         ],
         "reason": null,
-        "iterations": 1,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -7642,10 +7667,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.32644409569673244,
-          0.53125,
-          -1.2638731155152194,
-          -1.375
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.4375
         ],
         "reason": null,
         "iterations": 0,
@@ -7665,10 +7690,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.32644409569673244,
-          0.53125,
-          0.5277462310304387,
-          -1.375
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.4375
         ],
         "reason": null,
         "iterations": 0,
@@ -7688,13 +7713,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.32644409569673244,
-          0.53125,
-          1.0277462310304388,
-          -1.375
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.4375
         ],
         "reason": null,
-        "iterations": 3,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -7713,7 +7738,7 @@
         "certified": null,
         "witness": null,
         "reason": "time limit",
-        "iterations": 8,
+        "iterations": 45,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
@@ -7731,10 +7756,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.32644409569673244,
-          0.59375,
-          -1.2638731155152194,
-          -1.375
+          -1.4636273681404104,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.4375
         ],
         "reason": null,
         "iterations": 0,
@@ -7755,10 +7780,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.32644409569673244,
-          0.53125,
-          -0.4861268844847807,
-          -1.375
+          -1.4636273681404104,
+          -1.3611268844847806,
+          0.0,
+          -1.4375
         ],
         "reason": null,
         "iterations": 0,
@@ -7779,13 +7804,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.32644409569673244,
-          0.6875,
-          0.5277462310304387,
-          -1.375
+          -1.4636273681404104,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.4375
         ],
         "reason": null,
-        "iterations": 3,
+        "iterations": 0,
         "holds_at_centre": true,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -7803,10 +7828,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.32644409569673244,
-          0.53125,
-          0.5277462310304387,
-          -1.375
+          -1.4636273681404104,
+          -1.3611268844847806,
+          0.0,
+          -1.4375
         ],
         "reason": null,
         "iterations": 0,
@@ -7823,16 +7848,21 @@
         "levels": [
           "neg3"
         ],
-        "proven": null,
-        "certified": null,
-        "witness": null,
-        "reason": "time limit",
-        "iterations": 7,
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.4636273681404104,
+          -1.3611268844847806,
+          1.2777462310304388,
+          -1.125
+        ],
+        "reason": null,
+        "iterations": 35,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
         "minimal": false
       },
       {
@@ -7844,13 +7874,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.4149916773785252,
-          0.59375,
-          0.5277462310304387,
-          1.0
+          -1.4636273681404104,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.3125
         ],
         "reason": null,
-        "iterations": 2,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -7867,10 +7897,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.4149916773785252,
-          0.53125,
-          0.5277462310304387,
-          -0.375
+          -1.4636273681404104,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          0.0
         ],
         "reason": null,
         "iterations": 1,
@@ -7890,10 +7920,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.4149916773785252,
-          0.53125,
-          0.5277462310304387,
-          -1.375
+          -1.4636273681404104,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.4938227297368156
         ],
         "reason": null,
         "iterations": 0,
@@ -7913,10 +7943,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.4149916773785252,
-          0.53125,
-          0.5277462310304387,
-          1.0
+          -1.4636273681404104,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.4938227297368156
         ],
         "reason": null,
         "iterations": 0,
@@ -7936,10 +7966,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.4149916773785252,
-          0.53125,
-          0.5277462310304387,
-          1.0
+          -1.4636273681404104,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.4938227297368156
         ],
         "reason": null,
         "iterations": 0,
@@ -7979,10 +8009,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.4149916773785252,
-          0.53125,
-          0.5277462310304387,
-          1.0
+          -1.4636273681404104,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.4938227297368156
         ],
         "reason": null,
         "iterations": 0,
@@ -8003,10 +8033,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.4149916773785252,
-          0.53125,
-          0.5277462310304387,
-          -0.375
+          -1.4636273681404104,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          0.0
         ],
         "reason": null,
         "iterations": 0,
@@ -8027,10 +8057,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.4149916773785252,
-          0.53125,
-          0.5277462310304387,
-          1.0
+          -1.4636273681404104,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.3125
         ],
         "reason": null,
         "iterations": 0,
@@ -8048,16 +8078,21 @@
           "neg3",
           "pos3"
         ],
-        "proven": null,
-        "certified": null,
-        "witness": null,
-        "reason": "time limit",
-        "iterations": 6,
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.4636273681404104,
+          -1.3611268844847806,
+          1.2777462310304388,
+          -1.125
+        ],
+        "reason": null,
+        "iterations": 0,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
         "minimal": false
       }
     ],
@@ -8068,23 +8103,23 @@
     "priors_sampled": 67,
     "proven": 1,
     "unsound": 0,
-    "refuted_certified": 33,
-    "witness_confirmed": 33,
-    "undecided": 10,
+    "refuted_certified": 35,
+    "witness_confirmed": 35,
+    "undecided": 8,
     "hold_at_all_samples": 6,
     "hold_at_centre": 12,
     "proven_minimal": 1,
     "refuted_bin_skipping": 1,
     "corners": 16,
     "rules_initial": 476,
-    "rules_final": 32608,
+    "rules_final": 159829,
     "cells_final": [
-      11,
-      20,
-      9,
-      15
+      18,
+      27,
+      13,
+      31
     ],
-    "seconds": 2483.0,
+    "seconds": 1504.6,
     "results": [
       {
         "candidate": "ev-rock1(neg3)",
@@ -8096,7 +8131,7 @@
         "certified": null,
         "witness": null,
         "reason": "time limit",
-        "iterations": 62,
+        "iterations": 187,
         "holds_at_centre": true,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8113,13 +8148,13 @@
         "proven": false,
         "certified": true,
         "witness": [
+          -1.25,
+          -1.25,
           -1.0,
-          -1.0,
-          -1.0,
-          -1.0
+          0.027746231030438606
         ],
         "reason": null,
-        "iterations": 7,
+        "iterations": 9,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8137,12 +8172,12 @@
         "certified": true,
         "witness": [
           0.0,
-          -1.0,
-          -1.0,
-          1.0277462310304388
+          -1.25,
+          0.0,
+          -1.3611268844847806
         ],
         "reason": null,
-        "iterations": 10,
+        "iterations": 14,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8159,13 +8194,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.25,
-          -1.2605799080527111,
+          -1.25,
+          -1.25,
           -1.0,
-          1.0277462310304388
+          0.027746231030438606
         ],
         "reason": null,
-        "iterations": 6,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8182,13 +8217,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.25,
-          -1.2605799080527111,
-          0.0,
+          -1.25,
+          -1.25,
+          -1.0,
           0.027746231030438606
         ],
         "reason": null,
-        "iterations": 5,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8205,9 +8240,9 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.25,
-          -1.2605799080527111,
-          0.0,
+          -1.25,
+          -1.25,
+          -1.0,
           0.027746231030438606
         ],
         "reason": null,
@@ -8230,7 +8265,7 @@
         "certified": null,
         "witness": null,
         "reason": "time limit",
-        "iterations": 20,
+        "iterations": 39,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
@@ -8249,12 +8284,12 @@
         "certified": true,
         "witness": [
           -1.25,
-          -1.2605799080527111,
+          -1.25,
           -1.0,
-          0.8054924620608774
+          -1.3611268844847806
         ],
         "reason": null,
-        "iterations": 8,
+        "iterations": 1,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8272,10 +8307,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.25,
-          -1.2605799080527111,
+          0.0,
+          -1.25,
           -1.0,
-          0.8054924620608774
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 1,
@@ -8297,9 +8332,9 @@
         "certified": true,
         "witness": [
           -1.25,
-          -1.2605799080527111,
+          -1.25,
           -1.0,
-          0.8054924620608774
+          -1.3611268844847806
         ],
         "reason": null,
         "iterations": 0,
@@ -8321,7 +8356,7 @@
         "certified": null,
         "witness": null,
         "reason": "time limit",
-        "iterations": 13,
+        "iterations": 19,
         "holds_at_centre": true,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8338,13 +8373,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.25,
-          -1.4560148390922447,
-          -1.25,
-          0.8054924620608774
+          1.0,
+          -1.46875,
+          -1.0,
+          -1.3611268844847806
         ],
         "reason": null,
-        "iterations": 0,
+        "iterations": 1,
         "holds_at_centre": true,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8358,16 +8393,21 @@
         "levels": [
           "neg2"
         ],
-        "proven": null,
-        "certified": null,
-        "witness": null,
-        "reason": "time limit",
-        "iterations": 9,
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.25,
+          -1.4788401838945777,
+          -1.0,
+          -1.3611268844847806
+        ],
+        "reason": null,
+        "iterations": 7,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
         "minimal": false
       },
       {
@@ -8376,16 +8416,21 @@
         "levels": [
           "neg1"
         ],
-        "proven": null,
-        "certified": null,
-        "witness": null,
-        "reason": "time limit",
-        "iterations": 9,
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.25,
+          -0.2711598161054224,
+          0.0,
+          -1.3611268844847806
+        ],
+        "reason": null,
+        "iterations": 5,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
         "minimal": false
       },
       {
@@ -8398,12 +8443,12 @@
         "certified": true,
         "witness": [
           -1.25,
-          -0.2711598161054224,
-          -1.25,
-          0.8054924620608774
+          -1.4788401838945777,
+          -1.0,
+          -1.3611268844847806
         ],
         "reason": null,
-        "iterations": 4,
+        "iterations": 1,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8420,13 +8465,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.25,
-          -0.2711598161054224,
-          -1.25,
-          0.8054924620608774
+          -0.453125,
+          -1.4788401838945777,
+          -1.0,
+          -0.2083806534543421
         ],
         "reason": null,
-        "iterations": 0,
+        "iterations": 1,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8443,10 +8488,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.25,
-          -0.2711598161054224,
-          -1.25,
-          0.8054924620608774
+          -0.453125,
+          -1.4788401838945777,
+          -1.0,
+          -0.2083806534543421
         ],
         "reason": null,
         "iterations": 0,
@@ -8486,10 +8531,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.25,
-          -0.2711598161054224,
-          -1.25,
-          0.8054924620608774
+          -0.453125,
+          -1.4788401838945777,
+          -1.0,
+          -0.2083806534543421
         ],
         "reason": null,
         "iterations": 0,
@@ -8511,9 +8556,9 @@
         "certified": true,
         "witness": [
           -1.25,
-          -0.2711598161054224,
-          -1.25,
-          0.8054924620608774
+          0.2288401838945776,
+          -1.0,
+          -1.3611268844847806
         ],
         "reason": null,
         "iterations": 0,
@@ -8535,7 +8580,7 @@
         "certified": null,
         "witness": null,
         "reason": "time limit",
-        "iterations": 8,
+        "iterations": 27,
         "holds_at_centre": true,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8550,21 +8595,16 @@
           "neg3",
           "pos3"
         ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.25,
-          -0.2711598161054224,
-          -1.25,
-          0.8054924620608774
-        ],
-        "reason": null,
-        "iterations": 0,
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 20,
         "holds_at_centre": true,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
         "minimal": false
       },
       {
@@ -8573,16 +8613,21 @@
         "levels": [
           "neg3"
         ],
-        "proven": null,
-        "certified": null,
-        "witness": null,
-        "reason": "time limit",
-        "iterations": 8,
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.375,
+          -0.2711598161054224,
+          -0.375,
+          -1.3611268844847806
+        ],
+        "reason": null,
+        "iterations": 5,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
         "minimal": false
       },
       {
@@ -8594,10 +8639,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.25,
-          -0.2711598161054224,
-          -0.75,
-          0.8054924620608774
+          -1.375,
+          -1.4973550229868222,
+          -1.0,
+          -1.3611268844847806
         ],
         "reason": null,
         "iterations": 0,
@@ -8617,13 +8662,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.75,
-          -0.2711598161054224,
-          0.0,
-          0.8054924620608774
+          -1.375,
+          -1.4973550229868222,
+          0.25,
+          -1.3611268844847806
         ],
         "reason": null,
-        "iterations": 4,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8640,10 +8685,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.25,
-          0.2288401838945776,
-          -1.25,
-          0.8054924620608774
+          -1.375,
+          -1.4973550229868222,
+          -1.0,
+          -1.3611268844847806
         ],
         "reason": null,
         "iterations": 0,
@@ -8663,10 +8708,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.25,
-          0.2288401838945776,
-          -1.25,
-          0.8054924620608774
+          -1.375,
+          -1.4973550229868222,
+          -1.0,
+          -1.3611268844847806
         ],
         "reason": null,
         "iterations": 0,
@@ -8686,10 +8731,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.25,
-          0.2288401838945776,
-          -1.25,
-          0.8054924620608774
+          -1.375,
+          -1.4973550229868222,
+          -1.0,
+          -1.3611268844847806
         ],
         "reason": null,
         "iterations": 0,
@@ -8711,7 +8756,7 @@
         "certified": null,
         "witness": null,
         "reason": "time limit",
-        "iterations": 8,
+        "iterations": 4,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
@@ -8729,10 +8774,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.25,
-          0.2288401838945776,
-          -1.25,
-          0.8054924620608774
+          -1.375,
+          -1.4973550229868222,
+          -1.0,
+          -1.3611268844847806
         ],
         "reason": null,
         "iterations": 0,
@@ -8753,10 +8798,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.75,
-          -0.2711598161054224,
-          0.0,
-          0.8054924620608774
+          -0.40625,
+          0.2288401838945776,
+          -0.375,
+          -1.3611268844847806
         ],
         "reason": null,
         "iterations": 0,
@@ -8777,10 +8822,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.25,
-          0.2288401838945776,
-          -1.25,
-          0.8054924620608774
+          -1.375,
+          -1.4973550229868222,
+          -1.0,
+          -1.3611268844847806
         ],
         "reason": null,
         "iterations": 0,
@@ -8802,7 +8847,7 @@
         "certified": null,
         "witness": null,
         "reason": "time limit",
-        "iterations": 7,
+        "iterations": 3,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
@@ -8819,13 +8864,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.25,
-          -0.7605799080527113,
-          -1.25,
+          1.0,
+          1.1865205516837327,
+          -1.0,
           1.1804924620608774
         ],
         "reason": null,
-        "iterations": 4,
+        "iterations": 2,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8842,10 +8887,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.75,
-          -0.7605799080527113,
-          -1.25,
-          1.1804924620608774
+          -1.375,
+          -1.4973550229868222,
+          -1.0,
+          -1.3611268844847806
         ],
         "reason": null,
         "iterations": 0,
@@ -8865,13 +8910,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.25,
-          -0.7605799080527113,
-          -1.25,
-          0.8054924620608774
+          1.0,
+          -1.4973550229868222,
+          -1.0,
+          -0.4722537689695614
         ],
         "reason": null,
-        "iterations": 2,
+        "iterations": 4,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8888,10 +8933,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.75,
-          -0.7605799080527113,
-          -1.25,
-          -1.0
+          -0.453125,
+          -1.4973550229868222,
+          -1.0,
+          -1.3611268844847806
         ],
         "reason": null,
         "iterations": 0,
@@ -8911,10 +8956,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.25,
-          -0.7605799080527113,
-          -1.25,
-          0.8054924620608774
+          1.0,
+          -1.4973550229868222,
+          -1.0,
+          -1.3611268844847806
         ],
         "reason": null,
         "iterations": 0,
@@ -8934,13 +8979,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.25,
-          -1.3468847011713116,
-          -1.25,
-          1.4027462310304388
+          1.0,
+          -1.4973550229868222,
+          -1.0,
+          -1.3611268844847806
         ],
         "reason": null,
-        "iterations": 3,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8959,7 +9004,7 @@
         "certified": null,
         "witness": null,
         "reason": "time limit",
-        "iterations": 5,
+        "iterations": 12,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
@@ -8977,10 +9022,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.25,
-          -1.3468847011713116,
-          -1.25,
-          1.4027462310304388
+          1.0,
+          -1.4973550229868222,
+          -1.0,
+          -1.3611268844847806
         ],
         "reason": null,
         "iterations": 0,
@@ -9001,13 +9046,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.25,
-          -1.3468847011713116,
-          -1.25,
+          -0.453125,
+          -1.4682602758418666,
+          -1.0,
           -0.4722537689695614
         ],
         "reason": null,
-        "iterations": 3,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": true,
@@ -9025,10 +9070,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.25,
-          -1.3468847011713116,
-          -1.25,
-          1.1804924620608774
+          -1.375,
+          -1.4973550229868222,
+          -1.0,
+          -1.3611268844847806
         ],
         "reason": null,
         "iterations": 0,
@@ -9049,10 +9094,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.25,
-          -1.3468847011713116,
-          -1.25,
-          1.1804924620608774
+          1.0,
+          -1.4973550229868222,
+          -1.0,
+          -0.2083806534543421
         ],
         "reason": null,
         "iterations": 1,
