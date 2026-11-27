@@ -18,6 +18,7 @@ files in experiments/results/work/<experiment>/<run>/ for debugging.
 from __future__ import annotations
 
 import json
+import math
 import re
 import sys
 import time
@@ -945,8 +946,11 @@ def exp_cegar(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksample-4-4-s
 
 def exp_cegar_region(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksample-4-4-s1"),
                      regions=((0.0, 0.0), (-0.5, 0.5), (-2.5, 2.5)), samples: int = 50,
-                     folder: str = "alphas", time_limit: float | None = None) -> dict:
-    """Prior-robust landmarks: CEGAR proves a candidate for every product prior whose
+                     folder: str = "alphas", time_limit: float | None = None, relative: bool = False) -> dict:
+    """With relative=True, levels are taken relative to the prior (cegar.RelativeModel:
+    evidence starts at 0 for every prior, the prior is a fixed coordinate picked from the
+    region); ground truth and witnesses are then checked with prior-shifted ranges.
+    Prior-robust landmarks: CEGAR proves a candidate for every product prior whose
     per-rock log-odds lie in the region (a point = one prior). Ground truth: exact belief
     graphs built from the alpha vectors at the centre, the corners of the region (where
     random samples rarely land) and `samples` random priors; a proof refuted by any of them
@@ -966,6 +970,10 @@ def exp_cegar_region(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksampl
         k = len(m.vars)
         for lo, hi in regions:
             grid, edges = sy.bin_grid(m, 0), (-4.5, 4.5)
+            pm = cegar.RelativeModel(m) if relative else m      # the model the prover sees
+            if relative:                                          # prior cell [lo, hi] holds hi
+                grid = sy.Grid(grid.edges + [[-sy.INF, lo, math.nextafter(hi, sy.INF), sy.INF] for _ in range(k)])
+            shift = (lambda pr, v, rr: [(a + pr[v], b + pr[v]) for a, b in rr]) if relative else (lambda pr, v, rr: rr)
             span = dict(zip(levels, zip(grid.edges[0], grid.edges[0][1:])))   # before any split
             positions = ([(i, j) for i in range(1, m.n + 1) for j in range(1, m.n + 1)]
                          if m.start() is not None else [None])
@@ -975,16 +983,20 @@ def exp_cegar_region(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksampl
                 [[rng.uniform(lo, hi) for _ in range(k)] for _ in range(samples)] if lo < hi else [])
             graphs = [cegar.exact_graph(m, pr) for pr in priors]
             t0 = time.perf_counter()
-            rules = cegar.initial_rules(m, grid, positions, edges, "any")
-            region = {v: (lo, hi) for v in range(k)}
+            rules = cegar.initial_rules(pm, grid, positions, edges, "any")
+            n_rules0 = len(rules)
+            region = ({**{v: (0.0, 0.0) for v in range(k)}, **{k + v: (lo, hi) for v in range(k)}}
+                      if relative else {v: (lo, hi) for v in range(k)})
             results = []
             for v, var in enumerate(m.vars):
                 for cand in [(lv,) for lv in levels if lv != "unk"] + pairs:
                     ranges = [span[lv] for lv in cand]
-                    holds = [cegar.exact_landmark(st, su, v, ranges) for st, su in graphs]
-                    res = cegar.verify(m, grid, rules, {v: ranges}, WORK / "cegar-region" / name, edges,
+                    holds = [cegar.exact_landmark(st, su, v, shift(pr, v, ranges)) for (st, su), pr in zip(graphs, priors)]
+                    res = cegar.verify(pm, grid, rules, {v: ranges}, WORK / "cegar-region" / name, edges,
                                        max_iter=400, region=region, time_limit=time_limit)
                     w = res.get("witness")
+                    if w is not None and relative:
+                        w = w[k:]                                 # the prior; evidence starts at 0
                     wg = cegar.exact_graph(m, w) if w is not None else None
                     results.append({"candidate": " | ".join(f"ev-{var}({lv})" for lv in cand),
                                     "var": v, "levels": list(cand),
@@ -992,14 +1004,15 @@ def exp_cegar_region(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksampl
                                     "witness": w, "reason": res.get("reason"), "iterations": res["iterations"],
                                     "holds_at_centre": holds[0], "holds_at_all_samples": all(holds),
                                     "holds_at_corners": all(holds[1:1 + len(corners)]),
-                                    "witness_confirmed": None if w is None else not cegar.exact_landmark(*wg, v, ranges),
-                                    "relative_holds_at_witness": None if w is None else cegar.exact_landmark(
+                                    "witness_confirmed": None if w is None else not cegar.exact_landmark(
+                                        *wg, v, shift(w, v, ranges)),
+                                    "relative_holds_at_witness": None if w is None or relative else cegar.exact_landmark(
                                         *wg, v, [(a + w[v], b + w[v]) for a, b in ranges])})
             proven_single = {(r["var"], r["levels"][0]) for r in results if r["proven"] is True and len(r["levels"]) == 1}
             for r in results:
                 r["minimal"] = r["proven"] is True and (
                     len(r["levels"]) == 1 or not any((r["var"], lv) in proven_single for lv in r["levels"]))
-            rows[f"{name} [{lo}, {hi}]"] = {
+            rows[f"{name} [{lo}, {hi}]" + (" rel" if relative else "")] = {
                 "candidates": len(results), "priors_sampled": len(priors),
                 "proven": sum(r["proven"] is True for r in results),
                 "unsound": sum(r["proven"] is True and not r["holds_at_all_samples"] for r in results),
@@ -1011,7 +1024,7 @@ def exp_cegar_region(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksampl
                 "proven_minimal": sum(r["minimal"] for r in results),
                 "refuted_bin_skipping": sum(bool(r["certified"]) and bool(r["relative_holds_at_witness"]) for r in results),
                 "corners": len(corners),
-                "rules_initial": len(cegar.initial_rules(m, sy.bin_grid(m, 0), positions, edges, "any")),
+                "rules_initial": n_rules0,
                 "rules_final": len(rules), "cells_final": [len(e) - 1 for e in grid.edges],
                 "seconds": round(time.perf_counter() - t0, 1), "results": results}
     return rows

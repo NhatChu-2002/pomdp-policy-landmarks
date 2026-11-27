@@ -20,7 +20,7 @@
       7,
       7
     ],
-    "seconds": 11.4,
+    "seconds": 14.3,
     "results": [
       {
         "candidate": "ev-rock1(neg3)",
@@ -995,7 +995,8 @@
         "minimal": false
       }
     ],
-    "time_limit": null
+    "time_limit": null,
+    "parallel_jobs": 6
   },
   "rocksample-4-4-s5 [-0.5, 0.5]": {
     "candidates": 44,
@@ -1018,7 +1019,7 @@
       8,
       7
     ],
-    "seconds": 21.5,
+    "seconds": 28.4,
     "results": [
       {
         "candidate": "ev-rock1(neg3)",
@@ -1993,7 +1994,2006 @@
         "minimal": false
       }
     ],
-    "time_limit": null
+    "time_limit": null,
+    "parallel_jobs": 6
+  },
+  "rocksample-4-4-s5 [-1.5, 1.5]": {
+    "candidates": 44,
+    "priors_sampled": 67,
+    "proven": 12,
+    "unsound": 0,
+    "refuted_certified": 32,
+    "witness_confirmed": 32,
+    "undecided": 0,
+    "hold_at_all_samples": 12,
+    "hold_at_centre": 12,
+    "proven_minimal": 4,
+    "refuted_bin_skipping": 0,
+    "corners": 16,
+    "rules_initial": 435,
+    "rules_final": 5133,
+    "cells_final": [
+      11,
+      9,
+      11,
+      9
+    ],
+    "seconds": 73.0,
+    "results": [
+      {
+        "candidate": "ev-rock1(neg3)",
+        "var": 0,
+        "levels": [
+          "neg3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 71,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": true
+      },
+      {
+        "candidate": "ev-rock1(neg2)",
+        "var": 0,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        "reason": null,
+        "iterations": 2,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg1)",
+        "var": 0,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(pos1)",
+        "var": 0,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "reason": null,
+        "iterations": 1,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(pos2)",
+        "var": 0,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.0,
+          0.0,
+          -1.0,
+          -1.0
+        ],
+        "reason": null,
+        "iterations": 1,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(pos3)",
+        "var": 0,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.0,
+          0.0,
+          -1.0,
+          -1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg2) | ev-rock1(neg3)",
+        "var": 0,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(pos2) | ev-rock1(pos3)",
+        "var": 0,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.0,
+          0.0,
+          -1.0,
+          -1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg1) | ev-rock1(pos1)",
+        "var": 0,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg2) | ev-rock1(pos2)",
+        "var": 0,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg3) | ev-rock1(pos3)",
+        "var": 0,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg3)",
+        "var": 1,
+        "levels": [
+          "neg3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 31,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": true
+      },
+      {
+        "candidate": "ev-rock2(neg2)",
+        "var": 1,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.25,
+          -1.0,
+          -1.0,
+          1.0
+        ],
+        "reason": null,
+        "iterations": 3,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg1)",
+        "var": 1,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.25,
+          0.0,
+          -1.0,
+          -1.0
+        ],
+        "reason": null,
+        "iterations": 3,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(pos1)",
+        "var": 1,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.25,
+          -1.0,
+          -1.0,
+          1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(pos2)",
+        "var": 1,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.25,
+          -1.0,
+          -1.0,
+          1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(pos3)",
+        "var": 1,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.25,
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg2) | ev-rock2(neg3)",
+        "var": 1,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(pos2) | ev-rock2(pos3)",
+        "var": 1,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.25,
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg1) | ev-rock2(pos1)",
+        "var": 1,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.25,
+          0.0,
+          -1.0,
+          -1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg2) | ev-rock2(pos2)",
+        "var": 1,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.25,
+          -1.0,
+          -1.0,
+          1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg3) | ev-rock2(pos3)",
+        "var": 1,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg3)",
+        "var": 2,
+        "levels": [
+          "neg3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": true
+      },
+      {
+        "candidate": "ev-rock3(neg2)",
+        "var": 2,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.25,
+          -1.0,
+          -1.0,
+          1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg1)",
+        "var": 2,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -0.25,
+          -1.0,
+          0.0,
+          -1.0
+        ],
+        "reason": null,
+        "iterations": 5,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(pos1)",
+        "var": 2,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -0.25,
+          0.0,
+          -1.0,
+          -1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(pos2)",
+        "var": 2,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.25,
+          -1.0,
+          -1.0,
+          1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(pos3)",
+        "var": 2,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.25,
+          -1.0,
+          -1.0,
+          1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg2) | ev-rock3(neg3)",
+        "var": 2,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(pos2) | ev-rock3(pos3)",
+        "var": 2,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.25,
+          -1.0,
+          -1.0,
+          1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg1) | ev-rock3(pos1)",
+        "var": 2,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -0.25,
+          -1.0,
+          0.0,
+          -1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg2) | ev-rock3(pos2)",
+        "var": 2,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.25,
+          -1.0,
+          -1.0,
+          1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg3) | ev-rock3(pos3)",
+        "var": 2,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg3)",
+        "var": 3,
+        "levels": [
+          "neg3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 44,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": true
+      },
+      {
+        "candidate": "ev-rock4(neg2)",
+        "var": 3,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.25,
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg1)",
+        "var": 3,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.25,
+          -1.0,
+          -1.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(pos1)",
+        "var": 3,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -0.25,
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        "reason": null,
+        "iterations": 2,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(pos2)",
+        "var": 3,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -0.25,
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(pos3)",
+        "var": 3,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -0.25,
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg2) | ev-rock4(neg3)",
+        "var": 3,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(pos2) | ev-rock4(pos3)",
+        "var": 3,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -0.25,
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg1) | ev-rock4(pos1)",
+        "var": 3,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -0.25,
+          -1.0,
+          -1.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg2) | ev-rock4(pos2)",
+        "var": 3,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -0.25,
+          -1.0,
+          -1.0,
+          -1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg3) | ev-rock4(pos3)",
+        "var": 3,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      }
+    ],
+    "time_limit": 120.0,
+    "parallel_jobs": 1
+  },
+  "rocksample-4-4-s5 [-2.5, 2.5]": {
+    "candidates": 44,
+    "priors_sampled": 67,
+    "proven": 1,
+    "unsound": 0,
+    "refuted_certified": 32,
+    "witness_confirmed": 32,
+    "undecided": 11,
+    "hold_at_all_samples": 6,
+    "hold_at_centre": 12,
+    "proven_minimal": 1,
+    "refuted_bin_skipping": 1,
+    "corners": 16,
+    "rules_initial": 435,
+    "rules_final": 127653,
+    "cells_final": [
+      29,
+      27,
+      31,
+      21
+    ],
+    "seconds": 1602.4,
+    "results": [
+      {
+        "candidate": "ev-rock1(neg3)",
+        "var": 0,
+        "levels": [
+          "neg3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 138,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg2)",
+        "var": 0,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.346498011825653,
+          -1.5,
+          -2.284338635131592,
+          -2.4375
+        ],
+        "reason": null,
+        "iterations": 2,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg1)",
+        "var": 0,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -0.4375,
+          -2.4375,
+          2.5,
+          -2.40625
+        ],
+        "reason": null,
+        "iterations": 24,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(pos1)",
+        "var": 0,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.346498011825653,
+          -2.4375,
+          -2.284338635131592,
+          -2.484375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(pos2)",
+        "var": 0,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.346498011825653,
+          -2.4375,
+          -2.284338635131592,
+          -2.484375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(pos3)",
+        "var": 0,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.346498011825653,
+          -2.4375,
+          -2.284338635131592,
+          -2.484375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg2) | ev-rock1(neg3)",
+        "var": 0,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": true
+      },
+      {
+        "candidate": "ev-rock1(pos2) | ev-rock1(pos3)",
+        "var": 0,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.346498011825653,
+          -2.4375,
+          -2.284338635131592,
+          -2.484375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg1) | ev-rock1(pos1)",
+        "var": 0,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -0.4375,
+          -2.4375,
+          2.5,
+          -2.40625
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg2) | ev-rock1(pos2)",
+        "var": 0,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.346498011825653,
+          -2.4375,
+          -2.284338635131592,
+          -2.484375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg3) | ev-rock1(pos3)",
+        "var": 0,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 5,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg3)",
+        "var": 1,
+        "levels": [
+          "neg3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 81,
+        "holds_at_centre": true,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg2)",
+        "var": 1,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.0394940354769586,
+          -2.3125,
+          -2.284338635131592,
+          2.5
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg1)",
+        "var": 1,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.6929960236513057,
+          -0.375,
+          -2.284338635131592,
+          -2.484375
+        ],
+        "reason": null,
+        "iterations": 1,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(pos1)",
+        "var": 1,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.0394940354769586,
+          -2.3125,
+          -2.284338635131592,
+          2.5
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(pos2)",
+        "var": 1,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.0394940354769586,
+          -2.3125,
+          -2.284338635131592,
+          2.5
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(pos3)",
+        "var": 1,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.0394940354769586,
+          -2.3125,
+          -2.284338635131592,
+          -2.484375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg2) | ev-rock2(neg3)",
+        "var": 1,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 24,
+        "holds_at_centre": true,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(pos2) | ev-rock2(pos3)",
+        "var": 1,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.0394940354769586,
+          -2.3125,
+          -2.284338635131592,
+          -2.484375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg1) | ev-rock2(pos1)",
+        "var": 1,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.0394940354769586,
+          -0.375,
+          -2.284338635131592,
+          -2.484375
+        ],
+        "reason": null,
+        "iterations": 1,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg2) | ev-rock2(pos2)",
+        "var": 1,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.0394940354769586,
+          -2.3125,
+          -2.284338635131592,
+          -2.484375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg3) | ev-rock2(pos3)",
+        "var": 1,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 22,
+        "holds_at_centre": true,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg3)",
+        "var": 2,
+        "levels": [
+          "neg3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 7,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg2)",
+        "var": 2,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.346498011825653,
+          -2.3125,
+          -2.284338635131592,
+          -2.484375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg1)",
+        "var": 2,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.6929960236513057,
+          -2.3125,
+          0.0,
+          -2.484375
+        ],
+        "reason": null,
+        "iterations": 1,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(pos1)",
+        "var": 2,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.346498011825653,
+          -2.4921875,
+          -2.284338635131592,
+          -2.484375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(pos2)",
+        "var": 2,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.346498011825653,
+          -2.3125,
+          -2.284338635131592,
+          -2.484375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(pos3)",
+        "var": 2,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.346498011825653,
+          -2.3125,
+          -2.284338635131592,
+          -2.484375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg2) | ev-rock3(neg3)",
+        "var": 2,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 2,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(pos2) | ev-rock3(pos3)",
+        "var": 2,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.346498011825653,
+          -2.3125,
+          -2.284338635131592,
+          -2.484375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg1) | ev-rock3(pos1)",
+        "var": 2,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.346498011825653,
+          -2.4921875,
+          0.0,
+          -1.75
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg2) | ev-rock3(pos2)",
+        "var": 2,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.346498011825653,
+          -2.3125,
+          -2.284338635131592,
+          -2.484375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": true,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg3) | ev-rock3(pos3)",
+        "var": 2,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 4,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg3)",
+        "var": 3,
+        "levels": [
+          "neg3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 17,
+        "holds_at_centre": true,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg2)",
+        "var": 3,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.461624502956413,
+          -1.0,
+          -2.284338635131592,
+          -2.49609375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg1)",
+        "var": 3,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.461624502956413,
+          -1.0,
+          -2.284338635131592,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(pos1)",
+        "var": 3,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.461624502956413,
+          -1.0,
+          -2.284338635131592,
+          -2.3125
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(pos2)",
+        "var": 3,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.461624502956413,
+          -1.0,
+          -2.284338635131592,
+          -2.3125
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(pos3)",
+        "var": 3,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.461624502956413,
+          -1.0,
+          -2.284338635131592,
+          -2.3125
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg2) | ev-rock4(neg3)",
+        "var": 3,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 11,
+        "holds_at_centre": true,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(pos2) | ev-rock4(pos3)",
+        "var": 3,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4904061257391032,
+          -1.0,
+          -2.284338635131592,
+          -2.3125
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg1) | ev-rock4(pos1)",
+        "var": 3,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4904061257391032,
+          -1.0,
+          -2.284338635131592,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg2) | ev-rock4(pos2)",
+        "var": 3,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4904061257391032,
+          -1.0,
+          -2.284338635131592,
+          -2.3125
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg3) | ev-rock4(pos3)",
+        "var": 3,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 12,
+        "holds_at_centre": true,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      }
+    ],
+    "time_limit": 120.0,
+    "parallel_jobs": 6
   },
   "rocksample-4-4-s3 [0.0, 0.0]": {
     "candidates": 44,
@@ -2016,7 +4016,7 @@
       9,
       8
     ],
-    "seconds": 27.8,
+    "seconds": 36.8,
     "results": [
       {
         "candidate": "ev-rock1(neg3)",
@@ -3016,7 +5016,8 @@
         "minimal": false
       }
     ],
-    "time_limit": null
+    "time_limit": null,
+    "parallel_jobs": 6
   },
   "rocksample-4-4-s3 [-0.5, 0.5]": {
     "candidates": 44,
@@ -3039,7 +5040,7 @@
       9,
       9
     ],
-    "seconds": 70.5,
+    "seconds": 89.8,
     "results": [
       {
         "candidate": "ev-rock1(neg3)",
@@ -4044,7 +6045,2036 @@
         "minimal": false
       }
     ],
-    "time_limit": null
+    "time_limit": null,
+    "parallel_jobs": 6
+  },
+  "rocksample-4-4-s3 [-1.5, 1.5]": {
+    "candidates": 44,
+    "priors_sampled": 67,
+    "proven": 1,
+    "unsound": 0,
+    "refuted_certified": 39,
+    "witness_confirmed": 39,
+    "undecided": 4,
+    "hold_at_all_samples": 6,
+    "hold_at_centre": 7,
+    "proven_minimal": 1,
+    "refuted_bin_skipping": 1,
+    "corners": 16,
+    "rules_initial": 467,
+    "rules_final": 55650,
+    "cells_final": [
+      20,
+      22,
+      22,
+      20
+    ],
+    "seconds": 813.3,
+    "results": [
+      {
+        "candidate": "ev-rock1(neg3)",
+        "var": 0,
+        "levels": [
+          "neg3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -0.6454905274383584,
+          -1.3611268844847806,
+          -1.0,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 142,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg2)",
+        "var": 0,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.354509472561642,
+          -1.3611268844847806,
+          -1.0,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 2,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg1)",
+        "var": 0,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          -1.3611268844847806,
+          -1.0,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 5,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(pos1)",
+        "var": 0,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.354509472561642,
+          -1.3611268844847806,
+          -1.0,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(pos2)",
+        "var": 0,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.354509472561642,
+          -1.3611268844847806,
+          -1.0,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(pos3)",
+        "var": 0,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.354509472561642,
+          -1.3611268844847806,
+          -1.0,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg2) | ev-rock1(neg3)",
+        "var": 0,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 72,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(pos2) | ev-rock1(pos3)",
+        "var": 0,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.354509472561642,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg1) | ev-rock1(pos1)",
+        "var": 0,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -0.375,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -0.75
+        ],
+        "reason": null,
+        "iterations": 6,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg2) | ev-rock1(pos2)",
+        "var": 0,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.354509472561642,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg3) | ev-rock1(pos3)",
+        "var": 0,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -0.7182357911575377,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 10,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg3)",
+        "var": 1,
+        "levels": [
+          "neg3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.354509472561642,
+          -0.25,
+          -1.4947620915910365,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 3,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg2)",
+        "var": 1,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.354509472561642,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg1)",
+        "var": 1,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.354509472561642,
+          0.125,
+          -1.3575876254244632,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 3,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(pos1)",
+        "var": 1,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.354509472561642,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(pos2)",
+        "var": 1,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.354509472561642,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(pos3)",
+        "var": 1,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.354509472561642,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg2) | ev-rock2(neg3)",
+        "var": 1,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 24,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(pos2) | ev-rock2(pos3)",
+        "var": 1,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg1) | ev-rock2(pos1)",
+        "var": 1,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.427254736280821,
+          -0.25,
+          -1.4947620915910365,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg2) | ev-rock2(pos2)",
+        "var": 1,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg3) | ev-rock2(pos3)",
+        "var": 1,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.427254736280821,
+          -0.25,
+          -1.4947620915910365,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg3)",
+        "var": 2,
+        "levels": [
+          "neg3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.427254736280821,
+          -1.3611268844847806,
+          0.0,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 1,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg2)",
+        "var": 2,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg1)",
+        "var": 2,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.427254736280821,
+          0.375,
+          0.0,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(pos1)",
+        "var": 2,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(pos2)",
+        "var": 2,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(pos3)",
+        "var": 2,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg2) | ev-rock3(neg3)",
+        "var": 2,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 24,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(pos2) | ev-rock3(pos3)",
+        "var": 2,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg1) | ev-rock3(pos1)",
+        "var": 2,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.427254736280821,
+          -1.3611268844847806,
+          0.0,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg2) | ev-rock3(pos2)",
+        "var": 2,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": true,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": true,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg3) | ev-rock3(pos3)",
+        "var": 2,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.427254736280821,
+          -1.3611268844847806,
+          0.0,
+          -1.25
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg3)",
+        "var": 3,
+        "levels": [
+          "neg3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 33,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg2)",
+        "var": 3,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.2500000000000002
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg1)",
+        "var": 3,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 1,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(pos1)",
+        "var": 3,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.4938227297368156
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(pos2)",
+        "var": 3,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.4938227297368156
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(pos3)",
+        "var": 3,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.4938227297368156
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg2) | ev-rock4(neg3)",
+        "var": 3,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": true
+      },
+      {
+        "candidate": "ev-rock4(pos2) | ev-rock4(pos3)",
+        "var": 3,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.4938227297368156
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg1) | ev-rock4(pos1)",
+        "var": 3,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg2) | ev-rock4(pos2)",
+        "var": 3,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.427254736280821,
+          -1.3611268844847806,
+          -1.4947620915910365,
+          -1.2500000000000002
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg3) | ev-rock4(pos3)",
+        "var": 3,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.4636273681404104,
+          -1.3611268844847806,
+          1.2742424620608774,
+          -1.103015905394777
+        ],
+        "reason": null,
+        "iterations": 5,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      }
+    ],
+    "time_limit": 120.0,
+    "parallel_jobs": 1
+  },
+  "rocksample-4-4-s3 [-2.5, 2.5]": {
+    "candidates": 44,
+    "priors_sampled": 67,
+    "proven": 1,
+    "unsound": 0,
+    "refuted_certified": 31,
+    "witness_confirmed": 31,
+    "undecided": 12,
+    "hold_at_all_samples": 3,
+    "hold_at_centre": 7,
+    "proven_minimal": 1,
+    "refuted_bin_skipping": 2,
+    "corners": 16,
+    "rules_initial": 467,
+    "rules_final": 208986,
+    "cells_final": [
+      38,
+      28,
+      20,
+      31
+    ],
+    "seconds": 2201.1,
+    "results": [
+      {
+        "candidate": "ev-rock1(neg3)",
+        "var": 0,
+        "levels": [
+          "neg3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 115,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg2)",
+        "var": 0,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4986382415312027,
+          -2.4375,
+          -2.465246231030439,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 20,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg1)",
+        "var": 0,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -0.25,
+          -2.125,
+          -2.465246231030439,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 17,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(pos1)",
+        "var": 0,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4986382415312027,
+          -2.4375,
+          -2.465246231030439,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(pos2)",
+        "var": 0,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4986382415312027,
+          -2.4375,
+          -2.465246231030439,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(pos3)",
+        "var": 0,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4986382415312027,
+          -2.4375,
+          -2.465246231030439,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg2) | ev-rock1(neg3)",
+        "var": 0,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 17,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(pos2) | ev-rock1(pos3)",
+        "var": 0,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4999148900957002,
+          -2.484375,
+          -2.4826231155152194,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg1) | ev-rock1(pos1)",
+        "var": 0,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -0.25,
+          -2.125,
+          -2.4826231155152194,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg2) | ev-rock1(pos2)",
+        "var": 0,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4999148900957002,
+          -2.484375,
+          -2.4826231155152194,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": true,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg3) | ev-rock1(pos3)",
+        "var": 0,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 7,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg3)",
+        "var": 1,
+        "levels": [
+          "neg3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 6,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg2)",
+        "var": 1,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.499978722523925,
+          -2.499755859375,
+          -2.4826231155152194,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg1)",
+        "var": 1,
+        "levels": [
+          "neg1"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 12,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(pos1)",
+        "var": 1,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.499978722523925,
+          -2.499755859375,
+          -2.4826231155152194,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(pos2)",
+        "var": 1,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.499978722523925,
+          -2.499755859375,
+          -2.4826231155152194,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(pos3)",
+        "var": 1,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.499978722523925,
+          -2.499755859375,
+          -2.4826231155152194,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg2) | ev-rock2(neg3)",
+        "var": 1,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 8,
+        "holds_at_centre": true,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(pos2) | ev-rock2(pos3)",
+        "var": 1,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.499997340315491,
+          -2.49993896484375,
+          -2.4826231155152194,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg1) | ev-rock2(pos1)",
+        "var": 1,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 12,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg2) | ev-rock2(pos2)",
+        "var": 1,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.499997340315491,
+          -2.49993896484375,
+          -2.4826231155152194,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg3) | ev-rock2(pos3)",
+        "var": 1,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 5,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg3)",
+        "var": 2,
+        "levels": [
+          "neg3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4999986701577455,
+          -2.4999847412109375,
+          0.0,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 2,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg2)",
+        "var": 2,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4999986701577455,
+          -2.4999847412109375,
+          -2.4826231155152194,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg1)",
+        "var": 2,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4999986701577455,
+          -2.4999847412109375,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 1,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(pos1)",
+        "var": 2,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4999986701577455,
+          -2.4999847412109375,
+          -2.4826231155152194,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(pos2)",
+        "var": 2,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4999986701577455,
+          -2.4999847412109375,
+          -2.4826231155152194,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(pos3)",
+        "var": 2,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4999986701577455,
+          -2.4999847412109375,
+          -2.4826231155152194,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg2) | ev-rock3(neg3)",
+        "var": 2,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 8,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(pos2) | ev-rock3(pos3)",
+        "var": 2,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4999986701577455,
+          -2.4999847412109375,
+          -2.4826231155152194,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg1) | ev-rock3(pos1)",
+        "var": 2,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4999986701577455,
+          -2.4999847412109375,
+          -0.4722537689695614,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 1,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg2) | ev-rock3(pos2)",
+        "var": 2,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4999986701577455,
+          -2.4999847412109375,
+          -2.4826231155152194,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": true,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": true,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg3) | ev-rock3(pos3)",
+        "var": 2,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 4,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg3)",
+        "var": 3,
+        "levels": [
+          "neg3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 6,
+        "holds_at_centre": true,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg2)",
+        "var": 3,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4999986701577455,
+          -2.4999542236328125,
+          -2.4913115577576095,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg1)",
+        "var": 3,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4999986701577455,
+          -2.4999847412109375,
+          -2.4913115577576095,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(pos1)",
+        "var": 3,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4999986701577455,
+          -2.4999847412109375,
+          -2.4913115577576095,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(pos2)",
+        "var": 3,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4999986701577455,
+          -2.4999847412109375,
+          -2.4913115577576095,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(pos3)",
+        "var": 3,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4999986701577455,
+          -2.4999847412109375,
+          -2.4913115577576095,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg2) | ev-rock4(neg3)",
+        "var": 3,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": true
+      },
+      {
+        "candidate": "ev-rock4(pos2) | ev-rock4(pos3)",
+        "var": 3,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4999986701577455,
+          -2.4999847412109375,
+          -2.4913115577576095,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg1) | ev-rock4(pos1)",
+        "var": 3,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4999986701577455,
+          -2.4999847412109375,
+          -2.4913115577576095,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg2) | ev-rock4(pos2)",
+        "var": 3,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4999986701577455,
+          -2.4999542236328125,
+          -2.4913115577576095,
+          -2.375
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg3) | ev-rock4(pos3)",
+        "var": 3,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 6,
+        "holds_at_centre": true,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      }
+    ],
+    "time_limit": 120.0,
+    "parallel_jobs": 6
   },
   "rocksample-4-4-s1 [0.0, 0.0]": {
     "candidates": 44,
@@ -4067,7 +8097,7 @@
       7,
       10
     ],
-    "seconds": 25.6,
+    "seconds": 31.7,
     "results": [
       {
         "candidate": "ev-rock1(neg3)",
@@ -5042,7 +9072,8 @@
         "minimal": false
       }
     ],
-    "time_limit": null
+    "time_limit": null,
+    "parallel_jobs": 6
   },
   "rocksample-4-4-s1 [-0.5, 0.5]": {
     "candidates": 44,
@@ -5065,7 +9096,7 @@
       9,
       10
     ],
-    "seconds": 55.6,
+    "seconds": 70.0,
     "results": [
       {
         "candidate": "ev-rock1(neg3)",
@@ -6060,2066 +10091,31 @@
         "minimal": false
       }
     ],
-    "time_limit": null
-  },
-  "rocksample-4-4-s5 [-1.5, 1.5]": {
-    "candidates": 44,
-    "priors_sampled": 67,
-    "proven": 12,
-    "unsound": 0,
-    "refuted_certified": 32,
-    "witness_confirmed": 32,
-    "undecided": 0,
-    "hold_at_all_samples": 12,
-    "hold_at_centre": 12,
-    "proven_minimal": 4,
-    "refuted_bin_skipping": 0,
-    "corners": 16,
-    "rules_initial": 435,
-    "rules_final": 5133,
-    "cells_final": [
-      11,
-      9,
-      11,
-      9
-    ],
-    "seconds": 69.7,
-    "results": [
-      {
-        "candidate": "ev-rock1(neg3)",
-        "var": 0,
-        "levels": [
-          "neg3"
-        ],
-        "proven": true,
-        "certified": null,
-        "witness": null,
-        "reason": null,
-        "iterations": 71,
-        "holds_at_centre": true,
-        "holds_at_all_samples": true,
-        "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
-        "minimal": true
-      },
-      {
-        "candidate": "ev-rock1(neg2)",
-        "var": 0,
-        "levels": [
-          "neg2"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          0.0,
-          -1.0,
-          -1.0,
-          -1.0
-        ],
-        "reason": null,
-        "iterations": 2,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock1(neg1)",
-        "var": 0,
-        "levels": [
-          "neg1"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          0.0,
-          -1.0,
-          -1.0,
-          -1.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock1(pos1)",
-        "var": 0,
-        "levels": [
-          "pos1"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          0.0,
-          0.0,
-          0.0,
-          -1.0
-        ],
-        "reason": null,
-        "iterations": 1,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock1(pos2)",
-        "var": 0,
-        "levels": [
-          "pos2"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.0,
-          0.0,
-          -1.0,
-          -1.0
-        ],
-        "reason": null,
-        "iterations": 1,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock1(pos3)",
-        "var": 0,
-        "levels": [
-          "pos3"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.0,
-          0.0,
-          -1.0,
-          -1.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock1(neg2) | ev-rock1(neg3)",
-        "var": 0,
-        "levels": [
-          "neg2",
-          "neg3"
-        ],
-        "proven": true,
-        "certified": null,
-        "witness": null,
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": true,
-        "holds_at_all_samples": true,
-        "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock1(pos2) | ev-rock1(pos3)",
-        "var": 0,
-        "levels": [
-          "pos2",
-          "pos3"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.0,
-          0.0,
-          -1.0,
-          -1.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock1(neg1) | ev-rock1(pos1)",
-        "var": 0,
-        "levels": [
-          "neg1",
-          "pos1"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          0.0,
-          -1.0,
-          -1.0,
-          -1.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": true,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock1(neg2) | ev-rock1(pos2)",
-        "var": 0,
-        "levels": [
-          "neg2",
-          "pos2"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          0.0,
-          -1.0,
-          -1.0,
-          -1.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock1(neg3) | ev-rock1(pos3)",
-        "var": 0,
-        "levels": [
-          "neg3",
-          "pos3"
-        ],
-        "proven": true,
-        "certified": null,
-        "witness": null,
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": true,
-        "holds_at_all_samples": true,
-        "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock2(neg3)",
-        "var": 1,
-        "levels": [
-          "neg3"
-        ],
-        "proven": true,
-        "certified": null,
-        "witness": null,
-        "reason": null,
-        "iterations": 31,
-        "holds_at_centre": true,
-        "holds_at_all_samples": true,
-        "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
-        "minimal": true
-      },
-      {
-        "candidate": "ev-rock2(neg2)",
-        "var": 1,
-        "levels": [
-          "neg2"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.25,
-          -1.0,
-          -1.0,
-          1.0
-        ],
-        "reason": null,
-        "iterations": 3,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock2(neg1)",
-        "var": 1,
-        "levels": [
-          "neg1"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.25,
-          0.0,
-          -1.0,
-          -1.0
-        ],
-        "reason": null,
-        "iterations": 3,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock2(pos1)",
-        "var": 1,
-        "levels": [
-          "pos1"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.25,
-          -1.0,
-          -1.0,
-          1.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock2(pos2)",
-        "var": 1,
-        "levels": [
-          "pos2"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.25,
-          -1.0,
-          -1.0,
-          1.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock2(pos3)",
-        "var": 1,
-        "levels": [
-          "pos3"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.25,
-          -1.0,
-          -1.0,
-          -1.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock2(neg2) | ev-rock2(neg3)",
-        "var": 1,
-        "levels": [
-          "neg2",
-          "neg3"
-        ],
-        "proven": true,
-        "certified": null,
-        "witness": null,
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": true,
-        "holds_at_all_samples": true,
-        "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock2(pos2) | ev-rock2(pos3)",
-        "var": 1,
-        "levels": [
-          "pos2",
-          "pos3"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.25,
-          -1.0,
-          -1.0,
-          -1.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock2(neg1) | ev-rock2(pos1)",
-        "var": 1,
-        "levels": [
-          "neg1",
-          "pos1"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.25,
-          0.0,
-          -1.0,
-          -1.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": true,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock2(neg2) | ev-rock2(pos2)",
-        "var": 1,
-        "levels": [
-          "neg2",
-          "pos2"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.25,
-          -1.0,
-          -1.0,
-          1.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock2(neg3) | ev-rock2(pos3)",
-        "var": 1,
-        "levels": [
-          "neg3",
-          "pos3"
-        ],
-        "proven": true,
-        "certified": null,
-        "witness": null,
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": true,
-        "holds_at_all_samples": true,
-        "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock3(neg3)",
-        "var": 2,
-        "levels": [
-          "neg3"
-        ],
-        "proven": true,
-        "certified": null,
-        "witness": null,
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": true,
-        "holds_at_all_samples": true,
-        "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
-        "minimal": true
-      },
-      {
-        "candidate": "ev-rock3(neg2)",
-        "var": 2,
-        "levels": [
-          "neg2"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.25,
-          -1.0,
-          -1.0,
-          1.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock3(neg1)",
-        "var": 2,
-        "levels": [
-          "neg1"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -0.25,
-          -1.0,
-          0.0,
-          -1.0
-        ],
-        "reason": null,
-        "iterations": 5,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock3(pos1)",
-        "var": 2,
-        "levels": [
-          "pos1"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -0.25,
-          0.0,
-          -1.0,
-          -1.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock3(pos2)",
-        "var": 2,
-        "levels": [
-          "pos2"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.25,
-          -1.0,
-          -1.0,
-          1.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock3(pos3)",
-        "var": 2,
-        "levels": [
-          "pos3"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.25,
-          -1.0,
-          -1.0,
-          1.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock3(neg2) | ev-rock3(neg3)",
-        "var": 2,
-        "levels": [
-          "neg2",
-          "neg3"
-        ],
-        "proven": true,
-        "certified": null,
-        "witness": null,
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": true,
-        "holds_at_all_samples": true,
-        "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock3(pos2) | ev-rock3(pos3)",
-        "var": 2,
-        "levels": [
-          "pos2",
-          "pos3"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.25,
-          -1.0,
-          -1.0,
-          1.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock3(neg1) | ev-rock3(pos1)",
-        "var": 2,
-        "levels": [
-          "neg1",
-          "pos1"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -0.25,
-          -1.0,
-          0.0,
-          -1.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": true,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock3(neg2) | ev-rock3(pos2)",
-        "var": 2,
-        "levels": [
-          "neg2",
-          "pos2"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.25,
-          -1.0,
-          -1.0,
-          1.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock3(neg3) | ev-rock3(pos3)",
-        "var": 2,
-        "levels": [
-          "neg3",
-          "pos3"
-        ],
-        "proven": true,
-        "certified": null,
-        "witness": null,
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": true,
-        "holds_at_all_samples": true,
-        "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock4(neg3)",
-        "var": 3,
-        "levels": [
-          "neg3"
-        ],
-        "proven": true,
-        "certified": null,
-        "witness": null,
-        "reason": null,
-        "iterations": 44,
-        "holds_at_centre": true,
-        "holds_at_all_samples": true,
-        "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
-        "minimal": true
-      },
-      {
-        "candidate": "ev-rock4(neg2)",
-        "var": 3,
-        "levels": [
-          "neg2"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.25,
-          -1.0,
-          -1.0,
-          -1.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock4(neg1)",
-        "var": 3,
-        "levels": [
-          "neg1"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.25,
-          -1.0,
-          -1.0,
-          0.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock4(pos1)",
-        "var": 3,
-        "levels": [
-          "pos1"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -0.25,
-          -1.0,
-          -1.0,
-          -1.0
-        ],
-        "reason": null,
-        "iterations": 2,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock4(pos2)",
-        "var": 3,
-        "levels": [
-          "pos2"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -0.25,
-          -1.0,
-          -1.0,
-          -1.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock4(pos3)",
-        "var": 3,
-        "levels": [
-          "pos3"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -0.25,
-          -1.0,
-          -1.0,
-          -1.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock4(neg2) | ev-rock4(neg3)",
-        "var": 3,
-        "levels": [
-          "neg2",
-          "neg3"
-        ],
-        "proven": true,
-        "certified": null,
-        "witness": null,
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": true,
-        "holds_at_all_samples": true,
-        "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock4(pos2) | ev-rock4(pos3)",
-        "var": 3,
-        "levels": [
-          "pos2",
-          "pos3"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -0.25,
-          -1.0,
-          -1.0,
-          -1.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock4(neg1) | ev-rock4(pos1)",
-        "var": 3,
-        "levels": [
-          "neg1",
-          "pos1"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -0.25,
-          -1.0,
-          -1.0,
-          0.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": true,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock4(neg2) | ev-rock4(pos2)",
-        "var": 3,
-        "levels": [
-          "neg2",
-          "pos2"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -0.25,
-          -1.0,
-          -1.0,
-          -1.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock4(neg3) | ev-rock4(pos3)",
-        "var": 3,
-        "levels": [
-          "neg3",
-          "pos3"
-        ],
-        "proven": true,
-        "certified": null,
-        "witness": null,
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": true,
-        "holds_at_all_samples": true,
-        "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
-        "minimal": false
-      }
-    ],
-    "time_limit": 120.0
-  },
-  "rocksample-4-4-s3 [-1.5, 1.5]": {
-    "candidates": 44,
-    "priors_sampled": 67,
-    "proven": 1,
-    "unsound": 0,
-    "refuted_certified": 40,
-    "witness_confirmed": 40,
-    "undecided": 3,
-    "hold_at_all_samples": 6,
-    "hold_at_centre": 7,
-    "proven_minimal": 1,
-    "refuted_bin_skipping": 1,
-    "corners": 16,
-    "rules_initial": 467,
-    "rules_final": 42673,
-    "cells_final": [
-      18,
-      24,
-      17,
-      24
-    ],
-    "seconds": 686.0,
-    "results": [
-      {
-        "candidate": "ev-rock1(neg3)",
-        "var": 0,
-        "levels": [
-          "neg3"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -0.6454905274383584,
-          -1.3611268844847806,
-          -1.0,
-          -1.25
-        ],
-        "reason": null,
-        "iterations": 142,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock1(neg2)",
-        "var": 0,
-        "levels": [
-          "neg2"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.354509472561642,
-          -1.3611268844847806,
-          -1.0,
-          -1.25
-        ],
-        "reason": null,
-        "iterations": 2,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock1(neg1)",
-        "var": 0,
-        "levels": [
-          "neg1"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          0.0,
-          -1.3611268844847806,
-          -1.0,
-          -1.25
-        ],
-        "reason": null,
-        "iterations": 5,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock1(pos1)",
-        "var": 0,
-        "levels": [
-          "pos1"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.354509472561642,
-          -1.3611268844847806,
-          -1.0,
-          -1.25
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock1(pos2)",
-        "var": 0,
-        "levels": [
-          "pos2"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.354509472561642,
-          -1.3611268844847806,
-          -1.0,
-          -1.25
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock1(pos3)",
-        "var": 0,
-        "levels": [
-          "pos3"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.354509472561642,
-          -1.3611268844847806,
-          -1.0,
-          -1.25
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock1(neg2) | ev-rock1(neg3)",
-        "var": 0,
-        "levels": [
-          "neg2",
-          "neg3"
-        ],
-        "proven": null,
-        "certified": null,
-        "witness": null,
-        "reason": "time limit",
-        "iterations": 67,
-        "holds_at_centre": true,
-        "holds_at_all_samples": true,
-        "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock1(pos2) | ev-rock1(pos3)",
-        "var": 0,
-        "levels": [
-          "pos2",
-          "pos3"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.354509472561642,
-          -1.3611268844847806,
-          -1.4947620915910365,
-          -1.25
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock1(neg1) | ev-rock1(pos1)",
-        "var": 0,
-        "levels": [
-          "neg1",
-          "pos1"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -0.375,
-          -1.3611268844847806,
-          -1.4947620915910365,
-          -1.25
-        ],
-        "reason": null,
-        "iterations": 5,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": true,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock1(neg2) | ev-rock1(pos2)",
-        "var": 0,
-        "levels": [
-          "neg2",
-          "pos2"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.354509472561642,
-          -1.3611268844847806,
-          -1.4947620915910365,
-          -1.25
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock1(neg3) | ev-rock1(pos3)",
-        "var": 0,
-        "levels": [
-          "neg3",
-          "pos3"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -0.375,
-          -1.3611268844847806,
-          -1.4947620915910365,
-          -1.25
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock2(neg3)",
-        "var": 1,
-        "levels": [
-          "neg3"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.354509472561642,
-          -0.25,
-          -1.4947620915910365,
-          -1.25
-        ],
-        "reason": null,
-        "iterations": 3,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": true,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock2(neg2)",
-        "var": 1,
-        "levels": [
-          "neg2"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.354509472561642,
-          -1.3611268844847806,
-          -1.4947620915910365,
-          -1.25
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock2(neg1)",
-        "var": 1,
-        "levels": [
-          "neg1"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.427254736280821,
-          0.515625,
-          -1.4947620915910365,
-          -1.4375
-        ],
-        "reason": null,
-        "iterations": 13,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock2(pos1)",
-        "var": 1,
-        "levels": [
-          "pos1"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.427254736280821,
-          -1.3611268844847806,
-          -1.4947620915910365,
-          -1.4375
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock2(pos2)",
-        "var": 1,
-        "levels": [
-          "pos2"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.427254736280821,
-          -1.3611268844847806,
-          -1.4947620915910365,
-          -1.4375
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock2(pos3)",
-        "var": 1,
-        "levels": [
-          "pos3"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.427254736280821,
-          -1.3611268844847806,
-          -1.4947620915910365,
-          -1.4375
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock2(neg2) | ev-rock2(neg3)",
-        "var": 1,
-        "levels": [
-          "neg2",
-          "neg3"
-        ],
-        "proven": null,
-        "certified": null,
-        "witness": null,
-        "reason": "time limit",
-        "iterations": 13,
-        "holds_at_centre": true,
-        "holds_at_all_samples": true,
-        "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock2(pos2) | ev-rock2(pos3)",
-        "var": 1,
-        "levels": [
-          "pos2",
-          "pos3"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.427254736280821,
-          -1.3611268844847806,
-          -1.4947620915910365,
-          -1.4375
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock2(neg1) | ev-rock2(pos1)",
-        "var": 1,
-        "levels": [
-          "neg1",
-          "pos1"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.427254736280821,
-          -0.4722537689695614,
-          -1.4947620915910365,
-          -1.4375
-        ],
-        "reason": null,
-        "iterations": 2,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": true,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock2(neg2) | ev-rock2(pos2)",
-        "var": 1,
-        "levels": [
-          "neg2",
-          "pos2"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.427254736280821,
-          -1.3611268844847806,
-          -1.4947620915910365,
-          -1.4375
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock2(neg3) | ev-rock2(pos3)",
-        "var": 1,
-        "levels": [
-          "neg3",
-          "pos3"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.427254736280821,
-          -0.2222537689695614,
-          -1.4947620915910365,
-          -1.4375
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": true,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock3(neg3)",
-        "var": 2,
-        "levels": [
-          "neg3"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.427254736280821,
-          -1.3611268844847806,
-          0.0,
-          -1.4375
-        ],
-        "reason": null,
-        "iterations": 1,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": true,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock3(neg2)",
-        "var": 2,
-        "levels": [
-          "neg2"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.427254736280821,
-          -1.3611268844847806,
-          -1.4947620915910365,
-          -1.4375
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock3(neg1)",
-        "var": 2,
-        "levels": [
-          "neg1"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.427254736280821,
-          -0.4722537689695614,
-          0.0,
-          -1.4375
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock3(pos1)",
-        "var": 2,
-        "levels": [
-          "pos1"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.427254736280821,
-          -1.3611268844847806,
-          -1.4947620915910365,
-          -1.4375
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock3(pos2)",
-        "var": 2,
-        "levels": [
-          "pos2"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.427254736280821,
-          -1.3611268844847806,
-          -1.4947620915910365,
-          -1.4375
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock3(pos3)",
-        "var": 2,
-        "levels": [
-          "pos3"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.427254736280821,
-          -1.3611268844847806,
-          -1.4947620915910365,
-          -1.4375
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock3(neg2) | ev-rock3(neg3)",
-        "var": 2,
-        "levels": [
-          "neg2",
-          "neg3"
-        ],
-        "proven": null,
-        "certified": null,
-        "witness": null,
-        "reason": "time limit",
-        "iterations": 45,
-        "holds_at_centre": true,
-        "holds_at_all_samples": true,
-        "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock3(pos2) | ev-rock3(pos3)",
-        "var": 2,
-        "levels": [
-          "pos2",
-          "pos3"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.4636273681404104,
-          -1.3611268844847806,
-          -1.4947620915910365,
-          -1.4375
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock3(neg1) | ev-rock3(pos1)",
-        "var": 2,
-        "levels": [
-          "neg1",
-          "pos1"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.4636273681404104,
-          -1.3611268844847806,
-          0.0,
-          -1.4375
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": true,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock3(neg2) | ev-rock3(pos2)",
-        "var": 2,
-        "levels": [
-          "neg2",
-          "pos2"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.4636273681404104,
-          -1.3611268844847806,
-          -1.4947620915910365,
-          -1.4375
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": true,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": true,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock3(neg3) | ev-rock3(pos3)",
-        "var": 2,
-        "levels": [
-          "neg3",
-          "pos3"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.4636273681404104,
-          -1.3611268844847806,
-          0.0,
-          -1.4375
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": true,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock4(neg3)",
-        "var": 3,
-        "levels": [
-          "neg3"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.4636273681404104,
-          -1.3611268844847806,
-          1.2777462310304388,
-          -1.125
-        ],
-        "reason": null,
-        "iterations": 35,
-        "holds_at_centre": true,
-        "holds_at_all_samples": true,
-        "holds_at_corners": true,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock4(neg2)",
-        "var": 3,
-        "levels": [
-          "neg2"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.4636273681404104,
-          -1.3611268844847806,
-          -1.4947620915910365,
-          -1.3125
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock4(neg1)",
-        "var": 3,
-        "levels": [
-          "neg1"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.4636273681404104,
-          -1.3611268844847806,
-          -1.4947620915910365,
-          0.0
-        ],
-        "reason": null,
-        "iterations": 1,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock4(pos1)",
-        "var": 3,
-        "levels": [
-          "pos1"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.4636273681404104,
-          -1.3611268844847806,
-          -1.4947620915910365,
-          -1.4938227297368156
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock4(pos2)",
-        "var": 3,
-        "levels": [
-          "pos2"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.4636273681404104,
-          -1.3611268844847806,
-          -1.4947620915910365,
-          -1.4938227297368156
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock4(pos3)",
-        "var": 3,
-        "levels": [
-          "pos3"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.4636273681404104,
-          -1.3611268844847806,
-          -1.4947620915910365,
-          -1.4938227297368156
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock4(neg2) | ev-rock4(neg3)",
-        "var": 3,
-        "levels": [
-          "neg2",
-          "neg3"
-        ],
-        "proven": true,
-        "certified": null,
-        "witness": null,
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": true,
-        "holds_at_all_samples": true,
-        "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
-        "minimal": true
-      },
-      {
-        "candidate": "ev-rock4(pos2) | ev-rock4(pos3)",
-        "var": 3,
-        "levels": [
-          "pos2",
-          "pos3"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.4636273681404104,
-          -1.3611268844847806,
-          -1.4947620915910365,
-          -1.4938227297368156
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock4(neg1) | ev-rock4(pos1)",
-        "var": 3,
-        "levels": [
-          "neg1",
-          "pos1"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.4636273681404104,
-          -1.3611268844847806,
-          -1.4947620915910365,
-          0.0
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": true,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock4(neg2) | ev-rock4(pos2)",
-        "var": 3,
-        "levels": [
-          "neg2",
-          "pos2"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.4636273681404104,
-          -1.3611268844847806,
-          -1.4947620915910365,
-          -1.3125
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": false,
-        "holds_at_all_samples": false,
-        "holds_at_corners": false,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      },
-      {
-        "candidate": "ev-rock4(neg3) | ev-rock4(pos3)",
-        "var": 3,
-        "levels": [
-          "neg3",
-          "pos3"
-        ],
-        "proven": false,
-        "certified": true,
-        "witness": [
-          -1.4636273681404104,
-          -1.3611268844847806,
-          1.2777462310304388,
-          -1.125
-        ],
-        "reason": null,
-        "iterations": 0,
-        "holds_at_centre": true,
-        "holds_at_all_samples": true,
-        "holds_at_corners": true,
-        "witness_confirmed": true,
-        "relative_holds_at_witness": false,
-        "minimal": false
-      }
-    ],
-    "time_limit": 120.0
+    "time_limit": null,
+    "parallel_jobs": 6
   },
   "rocksample-4-4-s1 [-1.5, 1.5]": {
     "candidates": 44,
     "priors_sampled": 67,
     "proven": 1,
     "unsound": 0,
-    "refuted_certified": 35,
-    "witness_confirmed": 35,
-    "undecided": 8,
+    "refuted_certified": 37,
+    "witness_confirmed": 37,
+    "undecided": 6,
     "hold_at_all_samples": 6,
     "hold_at_centre": 12,
     "proven_minimal": 1,
     "refuted_bin_skipping": 1,
     "corners": 16,
     "rules_initial": 476,
-    "rules_final": 159829,
+    "rules_final": 187979,
     "cells_final": [
-      18,
-      27,
-      13,
+      22,
+      23,
+      15,
       31
     ],
-    "seconds": 1504.6,
+    "seconds": 1106.3,
     "results": [
       {
         "candidate": "ev-rock1(neg3)",
@@ -8131,7 +10127,7 @@
         "certified": null,
         "witness": null,
         "reason": "time limit",
-        "iterations": 187,
+        "iterations": 185,
         "holds_at_centre": true,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8173,11 +10169,11 @@
         "witness": [
           0.0,
           -1.25,
-          0.0,
+          -1.0,
           -1.3611268844847806
         ],
         "reason": null,
-        "iterations": 14,
+        "iterations": 13,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8286,10 +10282,10 @@
           -1.25,
           -1.25,
           -1.0,
-          -1.3611268844847806
+          0.027746231030438606
         ],
         "reason": null,
-        "iterations": 1,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8313,7 +10309,7 @@
           0.027746231030438606
         ],
         "reason": null,
-        "iterations": 1,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": true,
@@ -8334,7 +10330,7 @@
           -1.25,
           -1.25,
           -1.0,
-          -1.3611268844847806
+          0.027746231030438606
         ],
         "reason": null,
         "iterations": 0,
@@ -8356,7 +10352,7 @@
         "certified": null,
         "witness": null,
         "reason": "time limit",
-        "iterations": 19,
+        "iterations": 20,
         "holds_at_centre": true,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8373,13 +10369,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          1.0,
+          -0.453125,
           -1.46875,
           -1.0,
           -1.3611268844847806
         ],
         "reason": null,
-        "iterations": 1,
+        "iterations": 0,
         "holds_at_centre": true,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8396,7 +10392,7 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.25,
+          -0.484375,
           -1.4788401838945777,
           -1.0,
           -1.3611268844847806
@@ -8419,13 +10415,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.25,
-          -0.2711598161054224,
-          0.0,
-          -1.3611268844847806
+          1.0,
+          0.9788401838945777,
+          -1.0,
+          -0.32644409569673244
         ],
         "reason": null,
-        "iterations": 5,
+        "iterations": 9,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8448,7 +10444,7 @@
           -1.3611268844847806
         ],
         "reason": null,
-        "iterations": 1,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8465,13 +10461,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.453125,
+          -1.25,
           -1.4788401838945777,
           -1.0,
-          -0.2083806534543421
+          -1.3611268844847806
         ],
         "reason": null,
-        "iterations": 1,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8488,10 +10484,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.453125,
+          -1.25,
           -1.4788401838945777,
           -1.0,
-          -0.2083806534543421
+          -1.3611268844847806
         ],
         "reason": null,
         "iterations": 0,
@@ -8531,10 +10527,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.453125,
+          -1.25,
           -1.4788401838945777,
           -1.0,
-          -0.2083806534543421
+          -1.3611268844847806
         ],
         "reason": null,
         "iterations": 0,
@@ -8556,12 +10552,12 @@
         "certified": true,
         "witness": [
           -1.25,
-          0.2288401838945776,
-          -1.0,
+          0.0,
+          -0.4722537689695614,
           -1.3611268844847806
         ],
         "reason": null,
-        "iterations": 0,
+        "iterations": 4,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": true,
@@ -8580,7 +10576,7 @@
         "certified": null,
         "witness": null,
         "reason": "time limit",
-        "iterations": 27,
+        "iterations": 22,
         "holds_at_centre": true,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8595,16 +10591,21 @@
           "neg3",
           "pos3"
         ],
-        "proven": null,
-        "certified": null,
-        "witness": null,
-        "reason": "time limit",
-        "iterations": 20,
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.4921875,
+          -1.4947100459736444,
+          -0.4722537689695614,
+          -1.3611268844847806
+        ],
+        "reason": null,
+        "iterations": 0,
         "holds_at_centre": true,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
         "minimal": false
       },
       {
@@ -8616,13 +10617,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.375,
-          -0.2711598161054224,
-          -0.375,
+          -1.4921875,
+          0.0,
+          -0.2222537689695614,
           -1.3611268844847806
         ],
         "reason": null,
-        "iterations": 5,
+        "iterations": 0,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
@@ -8639,8 +10640,8 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.375,
-          -1.4973550229868222,
+          -1.4921875,
+          -1.4947100459736444,
           -1.0,
           -1.3611268844847806
         ],
@@ -8662,8 +10663,8 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.375,
-          -1.4973550229868222,
+          -1.4921875,
+          -1.4947100459736444,
           0.25,
           -1.3611268844847806
         ],
@@ -8685,13 +10686,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.375,
-          -1.4973550229868222,
+          1.0,
+          -1.125,
           -1.0,
           -1.3611268844847806
         ],
         "reason": null,
-        "iterations": 0,
+        "iterations": 1,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8708,8 +10709,8 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.375,
-          -1.4973550229868222,
+          -1.4921875,
+          -1.4947100459736444,
           -1.0,
           -1.3611268844847806
         ],
@@ -8731,8 +10732,8 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.375,
-          -1.4973550229868222,
+          -1.4921875,
+          -1.4947100459736444,
           -1.0,
           -1.3611268844847806
         ],
@@ -8756,7 +10757,7 @@
         "certified": null,
         "witness": null,
         "reason": "time limit",
-        "iterations": 4,
+        "iterations": 7,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
@@ -8774,8 +10775,8 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.375,
-          -1.4973550229868222,
+          -1.40625,
+          -1.4947100459736444,
           -1.0,
           -1.3611268844847806
         ],
@@ -8798,9 +10799,9 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.40625,
-          0.2288401838945776,
-          -0.375,
+          -1.4921875,
+          0.0,
+          -0.4722537689695614,
           -1.3611268844847806
         ],
         "reason": null,
@@ -8822,8 +10823,8 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.375,
-          -1.4973550229868222,
+          -1.40625,
+          -1.4947100459736444,
           -1.0,
           -1.3611268844847806
         ],
@@ -8843,16 +10844,21 @@
           "neg3",
           "pos3"
         ],
-        "proven": null,
-        "certified": null,
-        "witness": null,
-        "reason": "time limit",
-        "iterations": 3,
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.40625,
+          0.0,
+          -0.2222537689695614,
+          -1.3611268844847806
+        ],
+        "reason": null,
+        "iterations": 0,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
         "minimal": false
       },
       {
@@ -8864,13 +10870,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          1.0,
-          1.1865205516837327,
+          -1.40625,
+          -1.4947100459736444,
           -1.0,
-          1.1804924620608774
+          -0.32644409569673244
         ],
         "reason": null,
-        "iterations": 2,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8887,8 +10893,8 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.375,
-          -1.4973550229868222,
+          -1.4921875,
+          -1.4947100459736444,
           -1.0,
           -1.3611268844847806
         ],
@@ -8910,13 +10916,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          1.0,
-          -1.4973550229868222,
+          -1.4921875,
+          -1.4947100459736444,
           -1.0,
           -0.4722537689695614
         ],
         "reason": null,
-        "iterations": 4,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -8933,8 +10939,8 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.453125,
-          -1.4973550229868222,
+          -1.4921875,
+          -1.4947100459736444,
           -1.0,
           -1.3611268844847806
         ],
@@ -8956,8 +10962,8 @@
         "proven": false,
         "certified": true,
         "witness": [
-          1.0,
-          -1.4973550229868222,
+          -1.4921875,
+          -1.4947100459736444,
           -1.0,
           -1.3611268844847806
         ],
@@ -8979,8 +10985,8 @@
         "proven": false,
         "certified": true,
         "witness": [
-          1.0,
-          -1.4973550229868222,
+          -1.4921875,
+          -1.4947100459736444,
           -1.0,
           -1.3611268844847806
         ],
@@ -9004,7 +11010,7 @@
         "certified": null,
         "witness": null,
         "reason": "time limit",
-        "iterations": 12,
+        "iterations": 16,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
@@ -9022,10 +11028,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          1.0,
-          -1.4973550229868222,
+          -1.4921875,
+          -1.4947100459736444,
           -1.0,
-          -1.3611268844847806
+          -1.4860913943940244
         ],
         "reason": null,
         "iterations": 0,
@@ -9046,8 +11052,8 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.453125,
-          -1.4682602758418666,
+          -1.4921875,
+          -1.4947100459736444,
           -1.0,
           -0.4722537689695614
         ],
@@ -9070,10 +11076,1004 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -1.375,
-          -1.4973550229868222,
+          -1.3125,
+          -1.4947100459736444,
           -1.0,
-          -1.3611268844847806
+          -1.4860913943940244
+        ],
+        "reason": null,
+        "iterations": 2,
+        "holds_at_centre": true,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": true,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg3) | ev-rock4(pos3)",
+        "var": 3,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -1.4921875,
+          -1.4947100459736444,
+          -1.0,
+          -0.32644409569673244
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      }
+    ],
+    "time_limit": 120.0,
+    "parallel_jobs": 1
+  },
+  "rocksample-4-4-s1 [-2.5, 2.5]": {
+    "candidates": 44,
+    "priors_sampled": 67,
+    "proven": 1,
+    "unsound": 0,
+    "refuted_certified": 31,
+    "witness_confirmed": 31,
+    "undecided": 12,
+    "hold_at_all_samples": 1,
+    "hold_at_centre": 12,
+    "proven_minimal": 1,
+    "refuted_bin_skipping": 2,
+    "corners": 16,
+    "rules_initial": 476,
+    "rules_final": 205732,
+    "cells_final": [
+      17,
+      32,
+      20,
+      36
+    ],
+    "seconds": 2200.7,
+    "results": [
+      {
+        "candidate": "ev-rock1(neg3)",
+        "var": 0,
+        "levels": [
+          "neg3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.375,
+          -1.0,
+          -2.46875,
+          -2.027746231030439
+        ],
+        "reason": null,
+        "iterations": 67,
+        "holds_at_centre": true,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg2)",
+        "var": 0,
+        "levels": [
+          "neg2"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 29,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg1)",
+        "var": 0,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          -2.375,
+          -2.4921875,
+          -2.402746231030439
+        ],
+        "reason": null,
+        "iterations": 5,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(pos1)",
+        "var": 0,
+        "levels": [
+          "pos1"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 9,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(pos2)",
+        "var": 0,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.52734375,
+          -2.498046875,
+          -2.391349304979318
+        ],
+        "reason": null,
+        "iterations": 6,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(pos3)",
+        "var": 0,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.52734375,
+          -2.498046875,
+          -2.391349304979318
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg2) | ev-rock1(neg3)",
+        "var": 0,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.52734375,
+          -2.498046875,
+          -2.391349304979318
+        ],
+        "reason": null,
+        "iterations": 2,
+        "holds_at_centre": true,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(pos2) | ev-rock1(pos3)",
+        "var": 0,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.52734375,
+          -2.498046875,
+          -2.391349304979318
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg1) | ev-rock1(pos1)",
+        "var": 0,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          -2.375,
+          -2.498046875,
+          -2.4483339352349205
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg2) | ev-rock1(pos2)",
+        "var": 0,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.52734375,
+          -2.498046875,
+          -2.391349304979318
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg3) | ev-rock1(pos3)",
+        "var": 0,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.52734375,
+          -2.498046875,
+          -2.391349304979318
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": true,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg3)",
+        "var": 1,
+        "levels": [
+          "neg3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.52734375,
+          -2.498046875,
+          -2.391349304979318
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": true,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg2)",
+        "var": 1,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -2.375,
+          -2.498046875,
+          -2.348040985985061
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg1)",
+        "var": 1,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.25,
+          -2.498046875,
+          1.0
+        ],
+        "reason": null,
+        "iterations": 4,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(pos1)",
+        "var": 1,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.25,
+          -2.498046875,
+          1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(pos2)",
+        "var": 1,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.25,
+          -2.498046875,
+          1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(pos3)",
+        "var": 1,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.25,
+          -2.498046875,
+          1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg2) | ev-rock2(neg3)",
+        "var": 1,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": true
+      },
+      {
+        "candidate": "ev-rock2(pos2) | ev-rock2(pos3)",
+        "var": 1,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.25,
+          -2.498046875,
+          1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg1) | ev-rock2(pos1)",
+        "var": 1,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.25,
+          -2.498046875,
+          1.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg2) | ev-rock2(pos2)",
+        "var": 1,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 9,
+        "holds_at_centre": true,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg3) | ev-rock2(pos3)",
+        "var": 1,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 10,
+        "holds_at_centre": true,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg3)",
+        "var": 2,
+        "levels": [
+          "neg3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 9,
+        "holds_at_centre": true,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg2)",
+        "var": 2,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.484375,
+          -2.498046875,
+          1.6626235669414098
+        ],
+        "reason": null,
+        "iterations": 2,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg1)",
+        "var": 2,
+        "levels": [
+          "neg1"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 8,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(pos1)",
+        "var": 2,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.484375,
+          -2.498046875,
+          1.6626235669414098
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(pos2)",
+        "var": 2,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.484375,
+          -2.498046875,
+          1.6626235669414098
+        ],
+        "reason": null,
+        "iterations": 3,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(pos3)",
+        "var": 2,
+        "levels": [
+          "pos3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 6,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg2) | ev-rock3(neg3)",
+        "var": 2,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 11,
+        "holds_at_centre": true,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(pos2) | ev-rock3(pos3)",
+        "var": 2,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.498046875,
+          -2.498046875,
+          -2.3928688951194674
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg1) | ev-rock3(pos1)",
+        "var": 2,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 10,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg2) | ev-rock3(pos2)",
+        "var": 2,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.498046875,
+          -2.498046875,
+          1.6626235669414098
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": true,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg3) | ev-rock3(pos3)",
+        "var": 2,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 7,
+        "holds_at_centre": true,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg3)",
+        "var": 3,
+        "levels": [
+          "neg3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.498046875,
+          -2.48828125,
+          1.0277462310304388
+        ],
+        "reason": null,
+        "iterations": 3,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg2)",
+        "var": 3,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.52734375,
+          -2.498046875,
+          -2.391349304979318
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg1)",
+        "var": 3,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.52734375,
+          -2.498046875,
+          1.0277462310304388
+        ],
+        "reason": null,
+        "iterations": 1,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(pos1)",
+        "var": 3,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.498046875,
+          -2.498046875,
+          -2.493541741904365
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(pos2)",
+        "var": 3,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.498046875,
+          -2.498046875,
+          1.6626235669414098
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(pos3)",
+        "var": 3,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.498046875,
+          -2.498046875,
+          1.6626235669414098
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg2) | ev-rock4(neg3)",
+        "var": 3,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 8,
+        "holds_at_centre": true,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(pos2) | ev-rock4(pos3)",
+        "var": 3,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.498046875,
+          -2.498046875,
+          1.6626235669414098
+        ],
+        "reason": null,
+        "iterations": 0,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg1) | ev-rock4(pos1)",
+        "var": 3,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": null,
+        "certified": null,
+        "witness": null,
+        "reason": "time limit",
+        "iterations": 12,
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": false,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg2) | ev-rock4(pos2)",
+        "var": 3,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          -2.4990234375,
+          -0.498046875,
+          -2.498046875,
+          -2.3928688951194674
         ],
         "reason": null,
         "iterations": 0,
@@ -9094,13 +12094,13 @@
         "proven": false,
         "certified": true,
         "witness": [
-          1.0,
-          -1.4973550229868222,
-          -1.0,
-          -0.2083806534543421
+          -2.4990234375,
+          -0.498046875,
+          -2.48828125,
+          1.0277462310304388
         ],
         "reason": null,
-        "iterations": 1,
+        "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -9109,6 +12109,7 @@
         "minimal": false
       }
     ],
-    "time_limit": 120.0
+    "time_limit": 120.0,
+    "parallel_jobs": 6
   }
 }

@@ -227,10 +227,10 @@ def test_cegar_region_proves_for_every_prior_and_refutes_with_a_witness_in_the_r
             assert not cegar.exact_landmark(*cegar.exact_graph(m, res["witness"]), 0, cand[0])
 
 
-def test_cegar_region_retries_a_witness_that_lands_on_a_cell_edge(tmp_path=None):
+def test_cegar_region_certifies_a_witness_that_lands_on_a_cell_edge(tmp_path=None):
     """Toy Tiger with a cell edge at exactly one growl (u): from the midpoint prior 0 the
-    first replay lands on that edge (a float tie). Another prior in the same start cell
-    has no tie, so the refutation must still be certified."""
+    first replay lands exactly on that edge, whose cell the double-precision update
+    decides, so the refutation must be certified."""
     if not (FAST_DOWNWARD.parent / "builds" / "release64").exists():
         import pytest
         pytest.skip("Fast Downward build not found")
@@ -314,6 +314,65 @@ def test_sas_task_has_the_same_plans_as_the_translated_pddl_task(tmp_path=None):
             (w / "sas_plan").unlink(missing_ok=True)
             r = run_fd(w, *cegar.compile_task(m, grid, rules, banned, edges, region), search="lazy_greedy([ff()])")
             assert r["exhausted"] and not (w / "sas_plan").exists()
+
+
+def test_relative_levels_prove_evidence_for_every_prior_and_refute_with_a_prior(tmp_path=None):
+    """Toy Tiger with prior-relative levels: one growl (1.386) moves the evidence into
+    [1, 3) or [-3, -1) and the policy, which opens only beyond |log-odds| 2.3, is still
+    listening for every prior in [-0.5, 0.5], so that level is a landmark for the region.
+    Evidence 3 or more is never reached (the policy opens first), so it is refuted, and
+    the witness is a prior whose own graph confirms it."""
+    if not (FAST_DOWNWARD.parent / "builds" / "release64").exists():
+        import pytest
+        pytest.skip("Fast Downward build not found")
+    import math
+    from policy_landmarks import cegar, symbolic as sy
+    g = {"problem": "tiger", "p_correct": 0.8, "states": ["left", "right"]}
+    m = sy.Model(g, {"states": ["left", "right"], "actions": ["listen", "right", "left"],
+                     "alphas": [[0.0, 0.0], [10.0, -100.0], [-100.0, 10.0]]})
+    rm = cegar.RelativeModel(m)
+    work = Path(tmp_path or ROOT / "experiments" / "results" / "work" / "tests") / "cegar-relative"
+    lo, hi = -0.5, 0.5
+    shifted = lambda pr, rr: [(a + pr, b + pr) for a, b in rr]       # noqa: E731
+    for cand, expect in (([(-3.0, -1.0), (1.0, 3.0)], True), ([(3.0, sy.INF)], False)):
+        grid = sy.Grid([[-sy.INF, -3.0, -1.0, 1.0, 3.0, sy.INF], [-sy.INF, lo, math.nextafter(hi, sy.INF), sy.INF]])
+        edges = (-1.0, 1.0)
+        rules = cegar.initial_rules(rm, grid, [None], edges, "any")
+        res = cegar.verify(rm, grid, rules, {0: cand}, work, edges, region={0: (0.0, 0.0), 1: (lo, hi)})
+        assert res["landmark"] is expect, (cand, res)
+        if expect:
+            assert all(cegar.exact_landmark(*cegar.exact_graph(m, [pr]), 0, shifted(pr, cand)) for pr in (lo, 0.0, hi))
+        else:
+            w = res["witness"]
+            assert res["certified"] and w[0] == 0.0 and lo <= w[1] <= hi
+            assert not cegar.exact_landmark(*cegar.exact_graph(m, [w[1]]), 0, shifted(w[1], cand))
+
+
+def test_relative_levels_decide_evidence_that_lands_exactly_on_a_cell_edge(tmp_path=None):
+    """With prior-relative levels the evidence starts at exactly 0 for every prior, so one
+    growl lands exactly on the cell edge u for every witness. The replay follows the
+    double-precision update the cells are exact for, so this is no tie: runs that growl
+    right twice avoid [-3, -1), and the refutation is certified."""
+    if not (FAST_DOWNWARD.parent / "builds" / "release64").exists():
+        import pytest
+        pytest.skip("Fast Downward build not found")
+    import math
+    from policy_landmarks import cegar, symbolic as sy
+    g = {"problem": "tiger", "p_correct": 0.8, "states": ["left", "right"]}
+    m = sy.Model(g, {"states": ["left", "right"], "actions": ["listen", "right", "left"],
+                     "alphas": [[0.0, 0.0], [10.0, -100.0], [-100.0, 10.0]]})
+    rm = cegar.RelativeModel(m)
+    work = Path(tmp_path or ROOT / "experiments" / "results" / "work" / "tests") / "cegar-relative-edge"
+    lo, hi = -0.5, 0.5
+    grid = sy.Grid([[-sy.INF, -3.0, -1.0, m.u, 3.0, sy.INF], [-sy.INF, lo, math.nextafter(hi, sy.INF), sy.INF]])
+    edges = (-1.0, 1.0)
+    rules = cegar.initial_rules(rm, grid, [None], edges, "any")
+    cand = [(-3.0, -1.0)]
+    res = cegar.verify(rm, grid, rules, {0: cand}, work, edges, region={0: (0.0, 0.0), 1: (lo, hi)})
+    assert res["landmark"] is False and res["certified"], res
+    w = res["witness"]
+    assert w[0] == 0.0 and lo <= w[1] <= hi
+    assert not cegar.exact_landmark(*cegar.exact_graph(m, [w[1]]), 0, [(a + w[1], b + w[1]) for a, b in cand])
 
 
 def test_box_test_keeps_an_action_that_loses_only_within_float_error():

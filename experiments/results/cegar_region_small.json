@@ -17,7 +17,7 @@
     "cells_final": [
       49
     ],
-    "seconds": 10.2,
+    "seconds": 10.9,
     "results": [
       {
         "candidate": "ev-direction(neg3)",
@@ -257,11 +257,11 @@
     "refuted_bin_skipping": 0,
     "corners": 2,
     "rules_initial": 7,
-    "rules_final": 108,
+    "rules_final": 130,
     "cells_final": [
-      106
+      128
     ],
-    "seconds": 21.3,
+    "seconds": 25.3,
     "results": [
       {
         "candidate": "ev-direction(neg3)",
@@ -292,10 +292,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.24567398986531377
+          -0.24607071838093877
         ],
         "reason": null,
-        "iterations": 60,
+        "iterations": 82,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -312,7 +312,7 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.24567398986531377
+          -0.24607071838093877
         ],
         "reason": null,
         "iterations": 0,
@@ -393,7 +393,7 @@
         "proven": false,
         "certified": true,
         "witness": [
-          -0.24567398986531377
+          -0.24607071838093877
         ],
         "reason": null,
         "iterations": 0,
@@ -501,11 +501,11 @@
     "refuted_bin_skipping": 1,
     "corners": 2,
     "rules_initial": 7,
-    "rules_final": 47,
+    "rules_final": 59,
     "cells_final": [
-      45
+      57
     ],
-    "seconds": 9.2,
+    "seconds": 12.2,
     "results": [
       {
         "candidate": "ev-direction(neg3)",
@@ -536,10 +536,10 @@
         "proven": false,
         "certified": true,
         "witness": [
-          1.7816515506755073
+          1.7812548221598823
         ],
         "reason": null,
-        "iterations": 26,
+        "iterations": 38,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": false,
@@ -556,7 +556,7 @@
         "proven": false,
         "certified": true,
         "witness": [
-          1.7816515506755073
+          1.7812548221598823
         ],
         "reason": null,
         "iterations": 0,
@@ -637,7 +637,7 @@
         "proven": false,
         "certified": true,
         "witness": [
-          1.7816515506755073
+          1.7812548221598823
         ],
         "reason": null,
         "iterations": 0,
@@ -751,7 +751,7 @@
     "cells_final": [
       27
     ],
-    "seconds": 5.8,
+    "seconds": 5.9,
     "results": [
       {
         "candidate": "ev-direction(neg3)",
@@ -995,7 +995,7 @@
     "cells_final": [
       37
     ],
-    "seconds": 7.7,
+    "seconds": 7.8,
     "results": [
       {
         "candidate": "ev-direction(neg3)",
@@ -1239,7 +1239,7 @@
     "cells_final": [
       24
     ],
-    "seconds": 5.2,
+    "seconds": 5.4,
     "results": [
       {
         "candidate": "ev-direction(neg3)",
@@ -1485,7 +1485,7 @@
     "cells_final": [
       25
     ],
-    "seconds": 5.4,
+    "seconds": 5.6,
     "results": [
       {
         "candidate": "ev-direction(neg3)",
@@ -1729,7 +1729,7 @@
     "cells_final": [
       33
     ],
-    "seconds": 6.9,
+    "seconds": 7.1,
     "results": [
       {
         "candidate": "ev-direction(neg3)",
@@ -1973,7 +1973,7 @@
     "cells_final": [
       30
     ],
-    "seconds": 6.3,
+    "seconds": 6.4,
     "results": [
       {
         "candidate": "ev-direction(neg3)",
@@ -2219,7 +2219,7 @@
     "cells_final": [
       11
     ],
-    "seconds": 2.9,
+    "seconds": 3.0,
     "results": [
       {
         "candidate": "ev-direction(neg3)",
@@ -2463,7 +2463,7 @@
     "cells_final": [
       19
     ],
-    "seconds": 4.4,
+    "seconds": 4.6,
     "results": [
       {
         "candidate": "ev-direction(neg3)",
@@ -2707,7 +2707,7 @@
     "cells_final": [
       13
     ],
-    "seconds": 3.3,
+    "seconds": 4.0,
     "results": [
       {
         "candidate": "ev-direction(neg3)",
@@ -2953,7 +2953,7 @@
     "cells_final": [
       17
     ],
-    "seconds": 4.0,
+    "seconds": 4.2,
     "results": [
       {
         "candidate": "ev-direction(neg3)",
@@ -3197,7 +3197,7 @@
     "cells_final": [
       21
     ],
-    "seconds": 4.7,
+    "seconds": 4.9,
     "results": [
       {
         "candidate": "ev-direction(neg3)",
@@ -3441,7 +3441,7 @@
     "cells_final": [
       19
     ],
-    "seconds": 4.4,
+    "seconds": 4.5,
     "results": [
       {
         "candidate": "ev-direction(neg3)",
@@ -3687,7 +3687,7 @@
     "cells_final": [
       7
     ],
-    "seconds": 2.2,
+    "seconds": 2.3,
     "results": [
       {
         "candidate": "ev-direction(neg3)",
@@ -3931,7 +3931,7 @@
     "cells_final": [
       7
     ],
-    "seconds": 2.1,
+    "seconds": 2.2,
     "results": [
       {
         "candidate": "ev-direction(neg3)",
@@ -4665,7 +4665,7 @@
     "cells_final": [
       16
     ],
-    "seconds": 3.8,
+    "seconds": 3.9,
     "results": [
       {
         "candidate": "ev-direction(neg3)",
@@ -4913,7 +4913,7 @@
     "cells_final": [
       17
     ],
-    "seconds": 4.0,
+    "seconds": 4.1,
     "results": [
       {
         "candidate": "ev-direction(neg3)",
@@ -5405,7 +5405,7 @@
     "cells_final": [
       17
     ],
-    "seconds": 4.0,
+    "seconds": 4.2,
     "results": [
       {
         "candidate": "ev-direction(neg3)",
@@ -5653,7 +5653,7 @@
     "cells_final": [
       16
     ],
-    "seconds": 3.8,
+    "seconds": 3.9,
     "results": [
       {
         "candidate": "ev-direction(neg3)",
@@ -6392,7 +6392,7 @@
       27,
       21
     ],
-    "seconds": 14.8,
+    "seconds": 15.5,
     "results": [
       {
         "candidate": "ev-sensor-a(neg3)",
@@ -6882,7 +6882,7 @@
       16,
       15
     ],
-    "seconds": 8.4,
+    "seconds": 8.5,
     "results": [
       {
         "candidate": "ev-sensor-a(neg3)",
@@ -7378,7 +7378,7 @@
       15,
       15
     ],
-    "seconds": 9.2,
+    "seconds": 9.3,
     "results": [
       {
         "candidate": "ev-sensor-a(neg3)",
@@ -7862,7 +7862,7 @@
       27,
       23
     ],
-    "seconds": 13.7,
+    "seconds": 13.8,
     "results": [
       {
         "candidate": "ev-sensor-a(neg3)",
@@ -8352,7 +8352,7 @@
       20,
       19
     ],
-    "seconds": 11.6,
+    "seconds": 12.1,
     "results": [
       {
         "candidate": "ev-sensor-a(neg3)",
@@ -8848,7 +8848,7 @@
       18,
       16
     ],
-    "seconds": 10.2,
+    "seconds": 11.8,
     "results": [
       {
         "candidate": "ev-sensor-a(neg3)",
@@ -9332,7 +9332,7 @@
       26,
       27
     ],
-    "seconds": 14.2,
+    "seconds": 14.9,
     "results": [
       {
         "candidate": "ev-sensor-a(neg3)",
@@ -9816,7 +9816,7 @@
       15,
       15
     ],
-    "seconds": 8.3,
+    "seconds": 8.5,
     "results": [
       {
         "candidate": "ev-sensor-a(neg3)",
@@ -10296,21 +10296,21 @@
   "sensor-0.9 [0.0, 0.0]": {
     "candidates": 22,
     "priors_sampled": 1,
-    "proven": 3,
+    "proven": 4,
     "unsound": 0,
-    "refuted_certified": 15,
-    "witness_confirmed": 15,
-    "undecided": 4,
+    "refuted_certified": 18,
+    "witness_confirmed": 18,
+    "undecided": 0,
     "hold_at_all_samples": 4,
     "hold_at_centre": 4,
-    "proven_minimal": 3,
+    "proven_minimal": 4,
     "refuted_bin_skipping": 0,
     "corners": 0,
     "rules_initial": 18,
-    "rules_final": 263,
+    "rules_final": 280,
     "cells_final": [
       20,
-      18
+      19
     ],
     "seconds": 11.5,
     "results": [
@@ -10655,16 +10655,19 @@
         "levels": [
           "pos3"
         ],
-        "proven": null,
-        "certified": null,
-        "witness": null,
-        "reason": "tie",
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0
+        ],
+        "reason": null,
         "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
         "minimal": false
       },
       {
@@ -10674,16 +10677,19 @@
           "neg2",
           "neg3"
         ],
-        "proven": null,
-        "certified": null,
-        "witness": null,
-        "reason": "tie",
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0
+        ],
+        "reason": null,
         "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
         "minimal": false
       },
       {
@@ -10734,17 +10740,17 @@
           "neg2",
           "pos2"
         ],
-        "proven": null,
+        "proven": true,
         "certified": null,
         "witness": null,
-        "reason": "tie",
-        "iterations": 1,
+        "reason": null,
+        "iterations": 2,
         "holds_at_centre": true,
         "holds_at_all_samples": true,
         "holds_at_corners": true,
         "witness_confirmed": null,
         "relative_holds_at_witness": null,
-        "minimal": false
+        "minimal": true
       },
       {
         "candidate": "ev-sensor-b(neg3) | ev-sensor-b(pos3)",
@@ -10753,16 +10759,19 @@
           "neg3",
           "pos3"
         ],
-        "proven": null,
-        "certified": null,
-        "witness": null,
-        "reason": "tie",
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0
+        ],
+        "reason": null,
         "iterations": 0,
         "holds_at_centre": false,
         "holds_at_all_samples": false,
         "holds_at_corners": true,
-        "witness_confirmed": null,
-        "relative_holds_at_witness": null,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
         "minimal": false
       }
     ],
@@ -10787,7 +10796,7 @@
       28,
       27
     ],
-    "seconds": 14.8,
+    "seconds": 15.1,
     "results": [
       {
         "candidate": "ev-sensor-a(neg3)",
@@ -11283,7 +11292,7 @@
       19,
       19
     ],
-    "seconds": 9.9,
+    "seconds": 12.0,
     "results": [
       {
         "candidate": "ev-sensor-a(neg3)",
@@ -11779,7 +11788,7 @@
       9,
       9
     ],
-    "seconds": 6.4,
+    "seconds": 7.2,
     "results": [
       {
         "candidate": "ev-sensor-a(neg3)",
@@ -12269,7 +12278,7 @@
       8,
       8
     ],
-    "seconds": 5.9,
+    "seconds": 6.1,
     "results": [
       {
         "candidate": "ev-sensor-a(neg3)",
@@ -12765,7 +12774,7 @@
       10,
       10
     ],
-    "seconds": 6.7,
+    "seconds": 6.8,
     "results": [
       {
         "candidate": "ev-sensor-a(neg3)",

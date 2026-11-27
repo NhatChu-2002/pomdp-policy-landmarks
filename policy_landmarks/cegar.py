@@ -220,6 +220,34 @@ def compile_task(model, grid, rules, banned_cells: dict, edges, region: dict, na
     return domain, problem
 
 
+class RelativeModel:
+    """The region problem with prior-relative levels. Per hidden variable V there are two
+    coordinates: the evidence d_V (sum of the observation shifts so far, 0 for every prior,
+    and binned for the levels) and the prior p_V (fixed during a run, picked from the
+    region); the policy sees lambda_V = p_V + d_V. Variables 0..k-1 are evidence, k..2k-1
+    priors, so the CEGAR code runs unchanged: shifts act on evidence variables, the box
+    test runs on the interval sum, and refinement may split prior cells too."""
+
+    def __init__(self, base):
+        self.base, self.k = base, len(base.vars)
+        self.vars = list(base.vars) + [f"prior-{v}" for v in base.vars]
+        self.A, self.actions, self.problem = base.A, base.actions, base.problem
+        self.n = getattr(base, "n", None)
+
+    def start(self):
+        return self.base.start()
+
+    def step(self, pos, a):
+        return self.base.step(pos, a)
+
+    def corner(self, pos, coords):
+        return self.base.corner(pos, [coords[v] + coords[self.k + v] for v in range(self.k)])
+
+    def possible_actions(self, pos, box):
+        return self.base.possible_actions(
+            pos, [(box[v][0] + box[self.k + v][0], box[v][1] + box[self.k + v][1]) for v in range(self.k)])
+
+
 def compile_sas(model, grid, rules, banned_cells: dict, edges, region: dict) -> str:
     """The task of compile_task written directly in Fast Downward's SAS+ format, so no
     translator run is needed (it took ~6 s of each ~7 s planner call on RockSample).
@@ -371,13 +399,12 @@ def exact_landmark(start, succ, v: int, ranges) -> bool:
 
 def replay(model, grid, rules, steps, lam0):
     """Exact replay. Returns None if the plan is a real run of the policy, else
-    (kind, details) for the first divergence. A step is a "tie", which the float replay
-    cannot decide, if an action margin or a distance to a cell edge is within a bound on
-    the float error: err[v] bounds the error of the log-odds sum lam[v] (lam0 is exact,
-    each update adds one rounding of the sum and of the shift), and the action values
-    carry the dot-product error (n + 5k + 2) eps |A| b (Higham's gamma_n, plus the
-    sigmoids) and the belief's relative error from err."""
-    lam, err = list(lam0), [0.0] * len(lam0)
+    (kind, details) for the first divergence. The log-odds follow the double-precision
+    update lam[v] + shift, the semantics the successor cells are exact for, so cells are
+    decided exactly. A step is a "tie", which the float replay cannot decide, if an action
+    margin is within the dot-product error (n + 5k + 2) eps |A| b (Higham's gamma_n, plus
+    the sigmoids)."""
+    lam = list(lam0)
     acts = np.array(model.actions)
     for name in steps:
         i, j, t = name.split("-")[:3]
@@ -388,7 +415,7 @@ def replay(model, grid, rules, steps, lam0):
         if model.actions[int(vals.argmax())] != a:
             return ("action", int(i[1:]), list(lam))
         others = vals[acts != a]
-        bound = ((b.size + 5 * len(lam) + 2) * EPS + sum(err)) * float((np.abs(model.A) @ np.abs(b)).max())
+        bound = (b.size + 5 * len(lam) + 2) * EPS * float((np.abs(model.A) @ np.abs(b)).max())
         if others.size and best - others.max() <= SAFETY * 2 * bound:
             return ("tie", int(i[1:]), list(lam))
         obs, v, shift, npos, term = model.step(pos, a)[int(j[1:])]
@@ -400,9 +427,6 @@ def replay(model, grid, rules, steps, lam0):
                 return ("observation", int(i[1:]), list(lam))
             if t != "tNone" and grid.cell(v, new) != int(t[1:]):
                 return ("cell", int(i[1:]), (v, lam[v], shift, int(t[1:])))
-            err[v] = 0.0 if new in (INF, -INF) else err[v] + EPS * (abs(new) + abs(shift))
-            if new not in (INF, -INF) and min(abs(new - e) for e in grid.edges[v][1:-1]) <= SAFETY * err[v]:
-                return ("tie", int(i[1:]), list(lam))
             lam[v] = new
     return None
 
@@ -465,9 +489,9 @@ def verify(model: Model, grid: Grid, rules: list, candidate: dict, workdir: Path
             continue
         # 2. exact replay
         div = replay(model, grid, rules, steps, lam0)
-        # A tie is usually an artifact of the witness (the midpoint plus some shifts lands
-        # on a split point, or symmetric variables get equal priors), so try other priors in
-        # the same start cells, offset per variable to break symmetry, before giving up.
+        # A tie is usually an artifact of the witness (symmetric variables get equal priors,
+        # so two actions' values agree), so try other priors in the same start cells, offset
+        # per variable to break symmetry, before giving up.
         for frac in (0.382, 0.618, 0.25, 0.75):
             if div is None or div[0] != "tie":
                 break
