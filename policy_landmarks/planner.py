@@ -23,6 +23,27 @@ SOUND_ORDERS = {"nec", "gn", "nat"}   # reasonable orders are advice, not necess
 BELIEF_PREFIXES = ("k-", "uncertain-")
 
 
+def run_fd_sas(workdir: Path, sas: str, search: str) -> dict:
+    """Search a SAS+ task written directly, skipping the translator (which takes most of
+    each call on the CEGAR rule tasks). Same result keys as run_fd's search use."""
+    workdir.mkdir(parents=True, exist_ok=True)
+    (workdir / "output.sas").write_text(sas, encoding="utf-8")
+    t0 = time.perf_counter()
+    proc = subprocess.run(
+        [sys.executable, str(FAST_DOWNWARD), "--build", "release64", "output.sas", "--search", search],
+        cwd=workdir, capture_output=True, text=True)
+    wall = time.perf_counter() - t0
+    log = proc.stdout + proc.stderr
+    (workdir / "fd.log").write_text(log, encoding="utf-8")
+    code = re.search(r"search exit code: (-?\d+)", log)
+    # 0 plan, 11/12 no plan (only the "explored" line below makes that a proof); anything
+    # else (a malformed task, a crash) must not be read as "no plan"
+    if code is None or int(code.group(1)) not in (0, 11, 12):
+        raise RuntimeError(f"search failed, see {workdir / 'fd.log'}")
+    return {"wall": wall, "sas": workdir / "output.sas",
+            "exhausted": "Completely explored state space -- no solution!" in log}
+
+
 def run_fd(workdir: Path, domain: str, problem: str, search: str = LM_SEARCH) -> dict:
     """Translate and run Fast Downward; return the parsed landmark graph and run info.
 

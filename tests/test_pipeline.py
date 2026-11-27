@@ -269,6 +269,53 @@ def test_cegar_region_includes_its_upper_end_point(tmp_path=None):
     assert not cegar.exact_landmark(*cegar.exact_graph(m, [1.0]), 0, cand[0])
 
 
+def test_sas_task_has_the_same_plans_as_the_translated_pddl_task(tmp_path=None):
+    """compile_sas skips the translator. With each candidate cell banned, it must agree
+    with compile_task + translator on whether a plan exists and whether the search space
+    is exhausted: Sensor (two variables, a region) and RockSample (robot cell)."""
+    if not (FAST_DOWNWARD.parent / "builds" / "release64").exists():
+        import pytest
+        pytest.skip("Fast Downward build not found")
+    import json
+    from policy_landmarks import cegar, extraction, symbolic as sy
+    from policy_landmarks.planner import run_fd, run_fd_sas
+    base = ROOT / "experiments/policy_graphs/alphas"
+    work = Path(tmp_path or ROOT / "experiments" / "results" / "work" / "tests") / "sas-equivalence"
+    cases = [("sensor-0.85", (-0.5, 0.5), None), ("rocksample-4-4-s5", (0.0, 0.0), [(1, 2)])]
+    for name, (lo, hi), only in cases:
+        m = sy.Model(extraction.load(base / f"{name}.json"), json.loads((base / f"{name}.alphas.json").read_text()))
+        grid, edges = sy.bin_grid(m, 0), (-4.5, 4.5)
+        positions = [(i, j) for i in range(1, m.n + 1) for j in range(1, m.n + 1)] if m.start() else [None]
+        rules = cegar.initial_rules(m, grid, positions, edges, "any")
+        region = {v: (lo, hi) for v in range(len(m.vars))}
+        checks = only or [(v, c) for v in range(len(m.vars)) for c in range(1, len(grid.edges[v]) - 2)]
+        for v, c in checks:
+            banned = {v: {cegar._cells(grid, v)[c]}}
+            seen = []
+            for sub, run in (("pddl", lambda w: run_fd(w, *cegar.compile_task(m, grid, rules, banned, edges, region),
+                                                         search="lazy_greedy([ff()])")),
+                             ("sas", lambda w: run_fd_sas(w, cegar.compile_sas(m, grid, rules, banned, edges, region),
+                                                          "lazy_greedy([ff()])"))):
+                w = work / sub
+                (w / "sas_plan").unlink(missing_ok=True)
+                r = run(w)
+                seen.append(((w / "sas_plan").exists(), r["exhausted"]))
+            assert seen[0] == seen[1], (name, v, c, seen)
+        if name == "sensor-0.85":
+            # A real proof: refine on the SAS path until sensor a's +-2 level is a proven
+            # landmark (a known result), then the translated task with the same rules must
+            # be exhausted too, not only the trivial "start cell banned" cases above.
+            e = grid.edges[0]
+            cand = {0: [(e[1], e[2]), (e[5], e[6])]}                   # neg2 | pos2
+            res = cegar.verify(m, grid, rules, cand, work / "verify", edges, region=region)
+            assert res["landmark"] is True, res
+            banned = cegar._banned(grid, cand)
+            w = work / "pddl"
+            (w / "sas_plan").unlink(missing_ok=True)
+            r = run_fd(w, *cegar.compile_task(m, grid, rules, banned, edges, region), search="lazy_greedy([ff()])")
+            assert r["exhausted"] and not (w / "sas_plan").exists()
+
+
 def test_box_test_keeps_an_action_that_loses_only_within_float_error():
     """'right' beats 'listen' by 1e-14 at every belief, far below the float error of
     values of size 100; dropping 'listen' would rest on rounding, so it must stay. A

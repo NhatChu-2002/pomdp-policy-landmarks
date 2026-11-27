@@ -30,7 +30,7 @@ from pathlib import Path
 
 import numpy as np
 
-from .planner import run_fd
+from .planner import run_fd_sas
 from .rules import COARSE
 from .symbolic import EPS, INF, SAFETY, Grid, Model, threshold
 
@@ -220,6 +220,75 @@ def compile_task(model, grid, rules, banned_cells: dict, edges, region: dict, na
     return domain, problem
 
 
+def compile_sas(model, grid, rules, banned_cells: dict, edges, region: dict) -> str:
+    """The task of compile_task written directly in Fast Downward's SAS+ format, so no
+    translator run is needed (it took ~6 s of each ~7 s planner call on RockSample).
+    Variables: phase (setup, live, done); per hidden variable its fine cell, its coarse
+    class, and a picked flag (cell and class 'none' until picked); the robot cell.
+    Same actions, names and goal; actions that change nothing are left out."""
+    k = len(model.vars)
+    cells = [_cells(grid, v) for v in range(k)]
+    index = [{cell: c for c, cell in enumerate(cs)} for cs in cells]
+    names: list = [("phase", ["setup", "live", "done"])]
+    CV = [len(names) + 3 * v for v in range(k)]                  # var ids: cell, class, picked
+    for v, var in enumerate(model.vars):
+        names += [(f"cv-{var}", [f"c{c}" for c in range(len(cells[v]))] + ["none"]),
+                  (f"ck-{var}", list(COARSE) + ["none"]), (f"picked-{var}", ["no", "yes"])]
+    positions = ([(x, y) for x in range(1, model.n + 1) for y in range(1, model.n + 1)]
+                 if model.start() is not None else [])
+    AT = len(names) if positions else None
+    if positions:
+        names.append(("at", [f"c{x}-{y}" for x, y in positions]))
+    pos_ix = {p: i for i, p in enumerate(positions)}
+    ops = []
+
+    def op(name, prevail, effects):
+        changed = {var for var, _, _ in effects}
+        ops.append((name, [(var, val) for var, val in prevail if var not in changed], effects))
+
+    for i, (pos, a, assign) in enumerate(rules):
+        pre = [(0, 1)] + ([(AT, pos_ix[pos])] if pos is not None else [])
+        for v, (kind, x) in assign.items():
+            if kind != "a":
+                pre.append((CV[v], index[v][x]) if kind == "f" else (CV[v] + 1, x))
+        for j, (obs, v, shift, npos, term) in enumerate(model.step(pos, a)):
+            if term:
+                op(f"r{i}-o{j}-tend", pre, [(0, 1, 2)])
+                continue
+            src = assign[v][1] if v is not None and shift is not None else None
+            targets = list(grid.successors(v, *src, shift)) if src is not None else [None]
+            for t in targets:
+                eff = []
+                if t is not None and t != index[v][src]:
+                    if cells[v][t] in banned_cells.get(v, ()):
+                        continue
+                    eff.append((CV[v], index[v][src], t))
+                    k0, k1 = _class(*src, edges), _class(*cells[v][t], edges)
+                    if k0 != k1:
+                        eff.append((CV[v] + 1, -1, k1))
+                if pos is not None and npos != pos:
+                    eff.append((AT, pos_ix[pos], pos_ix[npos]))
+                if eff:
+                    op(f"r{i}-o{j}-t{t}", pre, eff)
+    for v in range(k):
+        for c, cell in enumerate(cells[v]):
+            if _in_region(cell, *region[v]) and cell not in banned_cells.get(v, ()):
+                op(f"p{v}-c{c}", [], [(CV[v] + 2, 0, 1), (CV[v], len(cells[v]), c),
+                                      (CV[v] + 1, len(COARSE), _class(*cell, edges))])
+    op("start", [(CV[v] + 2, 1) for v in range(k)], [(0, 0, 1)])
+    init = [0] + [x for v in range(k) for x in (len(cells[v]), len(COARSE), 0)] + (
+        [pos_ix[model.start()]] if positions else [])
+    out = ["begin_version", "3", "end_version", "begin_metric", "0", "end_metric", str(len(names))]
+    for n, (var, values) in enumerate(names):
+        out += ["begin_variable", f"var{n}", "-1", str(len(values))] + [f"Atom {var}({x})" for x in values] + ["end_variable"]
+    out += ["0", "begin_state"] + [str(x) for x in init] + ["end_state", "begin_goal", "1", "0 2", "end_goal", str(len(ops))]
+    for name, prevail, effects in ops:
+        out += ["begin_operator", name, str(len(prevail))] + [f"{a} {b}" for a, b in prevail]
+        out += [str(len(effects))] + [f"0 {a} {b} {c}" for a, b, c in effects] + ["1", "end_operator"]
+    out.append("0")
+    return "\n".join(out) + "\n"
+
+
 def _in_region(cell, lo, hi) -> bool:
     """Does a half-open cell meet the closed region [lo, hi] (a point if lo == hi)? A cell
     that starts exactly at hi holds the prior hi, so it counts (corner priors found this)."""
@@ -353,8 +422,7 @@ def verify(model: Model, grid: Grid, rules: list, candidate: dict, workdir: Path
         if time_limit is not None and time.perf_counter() - t0 > time_limit:
             return {"landmark": None, "iterations": it, "reason": "time limit", "rules": len(rules)}
         banned = _banned(grid, candidate)
-        domain, problem = compile_task(model, grid, rules, banned, edges, region)
-        run = run_fd(workdir, domain, problem, search="lazy_greedy([ff()])")
+        run = run_fd_sas(workdir, compile_sas(model, grid, rules, banned, edges, region), "lazy_greedy([ff()])")
         plan_file = workdir / "sas_plan"
         if not plan_file.exists():
             if not run["exhausted"]:                           # crash or out of memory: no proof
