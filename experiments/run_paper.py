@@ -947,9 +947,13 @@ def exp_cegar(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksample-4-4-s
 def exp_cegar_region(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksample-4-4-s1"),
                      regions=((0.0, 0.0), (-0.5, 0.5), (-2.5, 2.5)), samples: int = 50,
                      folder: str = "alphas", time_limit: float | None = None, relative: bool = False,
-                     search: str = "lazy_greedy([ff()])", recheck: bool = False) -> dict:
+                     search: str = "lazy_greedy([ff()])", recheck: bool = False, prover: str = "rules",
+                     test_first: bool = True) -> dict:
     """search: the planner's search (blind search measures what the FF heuristic adds);
     recheck: confirm each proof by a blind search of the same final task ("rechecked").
+    prover: "rules" (cegar.verify, a rule table shared by the candidates) or "lazy"
+    (cegar.lazy_verify: box tests per visited state, cached per model, a grid per test);
+    test_first=False skips the lazy prover's test of the region's centre and corners.
     With relative=True, levels are taken relative to the prior (cegar.RelativeModel:
     evidence starts at 0 for every prior, the prior is a fixed coordinate picked from the
     region); ground truth and witnesses are then checked with prior-shifted ranges.
@@ -971,9 +975,10 @@ def exp_cegar_region(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksampl
         g = extraction.load(HERE / "policy_graphs" / folder / f"{name}.json")
         m = sy.Model(g, json.loads((HERE / "policy_graphs" / folder / f"{name}.alphas.json").read_text()))
         k = len(m.vars)
+        pm = cegar.RelativeModel(m) if relative else m          # the model the prover sees
+        cache = cegar.BoxCache(pm) if prover == "lazy" else None
         for lo, hi in regions:
             grid, edges = sy.bin_grid(m, 0), (-4.5, 4.5)
-            pm = cegar.RelativeModel(m) if relative else m      # the model the prover sees
             if relative:                                          # prior cell [lo, hi] holds hi
                 grid = sy.Grid(grid.edges + [[-sy.INF, lo, math.nextafter(hi, sy.INF), sy.INF] for _ in range(k)])
             shift = (lambda pr, v, rr: [(a + pr[v], b + pr[v]) for a, b in rr]) if relative else (lambda pr, v, rr: rr)
@@ -986,7 +991,8 @@ def exp_cegar_region(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksampl
                 [[rng.uniform(lo, hi) for _ in range(k)] for _ in range(samples)] if lo < hi else [])
             graphs = [cegar.exact_graph(m, pr) for pr in priors]
             t0 = time.perf_counter()
-            rules = cegar.initial_rules(pm, grid, positions, edges, "any")
+            rules = cegar.initial_rules(pm, grid, positions, edges, "any") if prover == "rules" else []
+            tests0 = cache.tests if cache else 0
             n_rules0 = len(rules)
             region = ({**{v: (0.0, 0.0) for v in range(k)}, **{k + v: (lo, hi) for v in range(k)}}
                       if relative else {v: (lo, hi) for v in range(k)})
@@ -995,9 +1001,15 @@ def exp_cegar_region(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksampl
                 for cand in [(lv,) for lv in levels if lv != "unk"] + pairs:
                     ranges = [span[lv] for lv in cand]
                     holds = [cegar.exact_landmark(st, su, v, shift(pr, v, ranges)) for (st, su), pr in zip(graphs, priors)]
-                    res = cegar.verify(pm, grid, rules, {v: ranges}, WORK / "cegar-region" / name, edges,
-                                       max_iter=400, region=region, time_limit=time_limit,
-                                       search=search, recheck=recheck)
+                    if prover == "rules":
+                        res = cegar.verify(pm, grid, rules, {v: ranges}, WORK / "cegar-region" / name, edges,
+                                           max_iter=400, region=region, time_limit=time_limit,
+                                           search=search, recheck=recheck)
+                    else:
+                        res = cegar.lazy_verify(pm, grid, {v: ranges}, WORK / "cegar-region" / name, edges,
+                                                region=region, max_iter=400, time_limit=time_limit,
+                                                search=search, recheck=recheck, cache=cache,
+                                                test_priors=None if test_first else ())
                     w = res.get("witness")
                     if w is not None and relative:
                         w = w[k:]                                 # the prior; evidence starts at 0
@@ -1006,7 +1018,9 @@ def exp_cegar_region(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksampl
                                     "var": v, "levels": list(cand),
                                     "proven": res["landmark"], "certified": res.get("certified"),
                                     "witness": w, "reason": res.get("reason"), "iterations": res["iterations"],
-                                    "rechecked": res.get("rechecked"),
+                                    "rechecked": res.get("rechecked"), "tested": res.get("tested"),
+                                    "box_tests": res.get("box_tests"), "visited": res.get("visited"),
+                                    "cells_final": res.get("cells_final"),
                                     "holds_at_centre": holds[0], "holds_at_all_samples": all(holds),
                                     "holds_at_corners": all(holds[1:1 + len(corners)]),
                                     "witness_confirmed": None if w is None else not cegar.exact_landmark(
@@ -1028,10 +1042,13 @@ def exp_cegar_region(names=("rocksample-4-4-s5", "rocksample-4-4-s3", "rocksampl
                 "hold_at_centre": sum(r["holds_at_centre"] for r in results),
                 "proven_minimal": sum(r["minimal"] for r in results),
                 "refuted_bin_skipping": sum(bool(r["certified"]) and bool(r["relative_holds_at_witness"]) for r in results),
-                "corners": len(corners), "search": search,
+                "corners": len(corners), "search": search, "prover": prover, "test_first": test_first,
+                "box_tests": cache.tests - tests0 if cache else None,
                 "proofs_rechecked": sum(r["rechecked"] is True for r in results),
-                "rules_initial": n_rules0,
-                "rules_final": len(rules), "cells_final": [len(e) - 1 for e in grid.edges],
+                "rules_initial": n_rules0 if prover == "rules" else None,
+                "rules_final": len(rules) if prover == "rules" else None,
+                "cells_final": [len(e) - 1 for e in grid.edges] if prover == "rules" else
+                [max(r["cells_final"][u] for r in results) for u in range(len(grid.edges))],
                 "seconds": round(time.perf_counter() - t0, 1), "results": results}
     return rows
 

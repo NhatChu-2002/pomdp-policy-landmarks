@@ -1,0 +1,2978 @@
+{
+  "rocksample-5-7-s1 [0.0, 0.0]": {
+    "candidates": 77,
+    "priors_sampled": 1,
+    "proven": 12,
+    "unsound": 0,
+    "refuted_certified": 65,
+    "witness_confirmed": 65,
+    "undecided": 0,
+    "hold_at_all_samples": 12,
+    "hold_at_centre": 12,
+    "proven_minimal": 10,
+    "refuted_bin_skipping": 0,
+    "corners": 0,
+    "search": "lazy_greedy([ff()])",
+    "prover": "lazy",
+    "box_tests": 11199,
+    "proofs_rechecked": 12,
+    "rules_initial": null,
+    "rules_final": null,
+    "cells_final": [
+      9,
+      9,
+      9,
+      11,
+      9,
+      10,
+      9
+    ],
+    "seconds": 318.4,
+    "results": [
+      {
+        "candidate": "ev-rock1(neg3)",
+        "var": 0,
+        "levels": [
+          "neg3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 4,
+        "rechecked": true,
+        "tested": null,
+        "box_tests": 1455,
+        "visited": 759,
+        "cells_final": [
+          8,
+          8,
+          7,
+          8,
+          8,
+          7,
+          7
+        ],
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": true
+      },
+      {
+        "candidate": "ev-rock1(neg2)",
+        "var": 0,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg1)",
+        "var": 0,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(pos1)",
+        "var": 0,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(pos2)",
+        "var": 0,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(pos3)",
+        "var": 0,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg2) | ev-rock1(neg3)",
+        "var": 0,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 2,
+        "rechecked": true,
+        "tested": null,
+        "box_tests": 1761,
+        "visited": 1531,
+        "cells_final": [
+          7,
+          8,
+          7,
+          8,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(pos2) | ev-rock1(pos3)",
+        "var": 0,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg1) | ev-rock1(pos1)",
+        "var": 0,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg2) | ev-rock1(pos2)",
+        "var": 0,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock1(neg3) | ev-rock1(pos3)",
+        "var": 0,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 4,
+        "rechecked": true,
+        "tested": null,
+        "box_tests": 0,
+        "visited": 683,
+        "cells_final": [
+          8,
+          8,
+          7,
+          8,
+          8,
+          7,
+          7
+        ],
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg3)",
+        "var": 1,
+        "levels": [
+          "neg3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg2)",
+        "var": 1,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg1)",
+        "var": 1,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(pos1)",
+        "var": 1,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(pos2)",
+        "var": 1,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(pos3)",
+        "var": 1,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg2) | ev-rock2(neg3)",
+        "var": 1,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 1,
+        "rechecked": true,
+        "tested": null,
+        "box_tests": 1980,
+        "visited": 1514,
+        "cells_final": [
+          7,
+          7,
+          7,
+          8,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": true
+      },
+      {
+        "candidate": "ev-rock2(pos2) | ev-rock2(pos3)",
+        "var": 1,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg1) | ev-rock2(pos1)",
+        "var": 1,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg2) | ev-rock2(pos2)",
+        "var": 1,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock2(neg3) | ev-rock2(pos3)",
+        "var": 1,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg3)",
+        "var": 2,
+        "levels": [
+          "neg3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg2)",
+        "var": 2,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg1)",
+        "var": 2,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(pos1)",
+        "var": 2,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(pos2)",
+        "var": 2,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(pos3)",
+        "var": 2,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg2) | ev-rock3(neg3)",
+        "var": 2,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 3,
+        "rechecked": true,
+        "tested": null,
+        "box_tests": 1039,
+        "visited": 997,
+        "cells_final": [
+          7,
+          7,
+          7,
+          8,
+          8,
+          8,
+          7
+        ],
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": true
+      },
+      {
+        "candidate": "ev-rock3(pos2) | ev-rock3(pos3)",
+        "var": 2,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg1) | ev-rock3(pos1)",
+        "var": 2,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock3(neg2) | ev-rock3(pos2)",
+        "var": 2,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 6,
+        "rechecked": true,
+        "tested": null,
+        "box_tests": 860,
+        "visited": 654,
+        "cells_final": [
+          7,
+          7,
+          9,
+          9,
+          8,
+          8,
+          7
+        ],
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": true
+      },
+      {
+        "candidate": "ev-rock3(neg3) | ev-rock3(pos3)",
+        "var": 2,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg3)",
+        "var": 3,
+        "levels": [
+          "neg3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg2)",
+        "var": 3,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg1)",
+        "var": 3,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(pos1)",
+        "var": 3,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(pos2)",
+        "var": 3,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(pos3)",
+        "var": 3,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg2) | ev-rock4(neg3)",
+        "var": 3,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 0,
+        "rechecked": true,
+        "tested": null,
+        "box_tests": 0,
+        "visited": 100,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": true
+      },
+      {
+        "candidate": "ev-rock4(pos2) | ev-rock4(pos3)",
+        "var": 3,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg1) | ev-rock4(pos1)",
+        "var": 3,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock4(neg2) | ev-rock4(pos2)",
+        "var": 3,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 16,
+        "rechecked": true,
+        "tested": null,
+        "box_tests": 86,
+        "visited": 26,
+        "cells_final": [
+          8,
+          9,
+          9,
+          11,
+          9,
+          10,
+          9
+        ],
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": true
+      },
+      {
+        "candidate": "ev-rock4(neg3) | ev-rock4(pos3)",
+        "var": 3,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock5(neg3)",
+        "var": 4,
+        "levels": [
+          "neg3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock5(neg2)",
+        "var": 4,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock5(neg1)",
+        "var": 4,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock5(pos1)",
+        "var": 4,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock5(pos2)",
+        "var": 4,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock5(pos3)",
+        "var": 4,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock5(neg2) | ev-rock5(neg3)",
+        "var": 4,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 14,
+        "rechecked": true,
+        "tested": null,
+        "box_tests": 3065,
+        "visited": 3044,
+        "cells_final": [
+          9,
+          9,
+          9,
+          8,
+          9,
+          10,
+          9
+        ],
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": true
+      },
+      {
+        "candidate": "ev-rock5(pos2) | ev-rock5(pos3)",
+        "var": 4,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock5(neg1) | ev-rock5(pos1)",
+        "var": 4,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock5(neg2) | ev-rock5(pos2)",
+        "var": 4,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock5(neg3) | ev-rock5(pos3)",
+        "var": 4,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock6(neg3)",
+        "var": 5,
+        "levels": [
+          "neg3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock6(neg2)",
+        "var": 5,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock6(neg1)",
+        "var": 5,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock6(pos1)",
+        "var": 5,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock6(pos2)",
+        "var": 5,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock6(pos3)",
+        "var": 5,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock6(neg2) | ev-rock6(neg3)",
+        "var": 5,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 3,
+        "rechecked": true,
+        "tested": null,
+        "box_tests": 29,
+        "visited": 5,
+        "cells_final": [
+          8,
+          8,
+          7,
+          7,
+          8,
+          7,
+          7
+        ],
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": true
+      },
+      {
+        "candidate": "ev-rock6(pos2) | ev-rock6(pos3)",
+        "var": 5,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock6(neg1) | ev-rock6(pos1)",
+        "var": 5,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock6(neg2) | ev-rock6(pos2)",
+        "var": 5,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 4,
+        "rechecked": true,
+        "tested": null,
+        "box_tests": 58,
+        "visited": 1,
+        "cells_final": [
+          7,
+          8,
+          7,
+          7,
+          8,
+          9,
+          7
+        ],
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": true
+      },
+      {
+        "candidate": "ev-rock6(neg3) | ev-rock6(pos3)",
+        "var": 5,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock7(neg3)",
+        "var": 6,
+        "levels": [
+          "neg3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock7(neg2)",
+        "var": 6,
+        "levels": [
+          "neg2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock7(neg1)",
+        "var": 6,
+        "levels": [
+          "neg1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock7(pos1)",
+        "var": 6,
+        "levels": [
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock7(pos2)",
+        "var": 6,
+        "levels": [
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock7(pos3)",
+        "var": 6,
+        "levels": [
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock7(neg2) | ev-rock7(neg3)",
+        "var": 6,
+        "levels": [
+          "neg2",
+          "neg3"
+        ],
+        "proven": true,
+        "certified": null,
+        "witness": null,
+        "reason": null,
+        "iterations": 0,
+        "rechecked": true,
+        "tested": null,
+        "box_tests": 866,
+        "visited": 2262,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": true,
+        "holds_at_all_samples": true,
+        "holds_at_corners": true,
+        "witness_confirmed": null,
+        "relative_holds_at_witness": null,
+        "minimal": true
+      },
+      {
+        "candidate": "ev-rock7(pos2) | ev-rock7(pos3)",
+        "var": 6,
+        "levels": [
+          "pos2",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock7(neg1) | ev-rock7(pos1)",
+        "var": 6,
+        "levels": [
+          "neg1",
+          "pos1"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock7(neg2) | ev-rock7(pos2)",
+        "var": 6,
+        "levels": [
+          "neg2",
+          "pos2"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      },
+      {
+        "candidate": "ev-rock7(neg3) | ev-rock7(pos3)",
+        "var": 6,
+        "levels": [
+          "neg3",
+          "pos3"
+        ],
+        "proven": false,
+        "certified": true,
+        "witness": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "reason": null,
+        "iterations": 0,
+        "rechecked": null,
+        "tested": true,
+        "box_tests": 0,
+        "visited": null,
+        "cells_final": [
+          7,
+          7,
+          7,
+          7,
+          7,
+          7,
+          7
+        ],
+        "holds_at_centre": false,
+        "holds_at_all_samples": false,
+        "holds_at_corners": true,
+        "witness_confirmed": true,
+        "relative_holds_at_witness": false,
+        "minimal": false
+      }
+    ],
+    "time_limit": 120.0,
+    "parallel_jobs": 3
+  }
+}

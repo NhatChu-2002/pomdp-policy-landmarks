@@ -24,8 +24,10 @@ unknown (iteration budget exhausted).
 from __future__ import annotations
 
 import bisect
+import heapq
 import itertools
 import time
+from collections import deque
 from pathlib import Path
 
 import numpy as np
@@ -563,3 +565,265 @@ def _mid(cell, near=None):
     if hi == INF:
         return lo + 2.0 if near is None else max(near, lo) + 1.0
     return (lo + hi) / 2
+
+
+# ---------------------------------------------------------------------------------------
+# The lazy prover: no rule table. The abstract states are (robot cell, fine box); their
+# actions come from the box test when the search first meets them. A search in this
+# process looks for a run that avoids the candidate; plans are replayed and refined as in
+# verify(). An exhausted search is re-proved by Fast Downward on the task with one rule per
+# visited state and possible action, so a proof is still a planner's exhausted search.
+
+
+class BoxCache:
+    """Box-test results per (robot cell, fine box), shared by the candidates, grids and
+    regions of one model. A box whose parent (the box before one variable's cell was split)
+    allows a single action gets that action without a test: the policy's choices in a
+    sub-box are a subset of those in the box."""
+
+    def __init__(self, model):
+        self.model, self.acts, self.parent, self.tests = model, {}, {}, 0
+
+    def __call__(self, pos, box: tuple) -> tuple:
+        acts = self.acts.get((pos, box))
+        if acts is None:
+            for v, cell in enumerate(box):
+                up = self.parent.get((v, cell))
+                pa = None if up is None else self.acts.get((pos, box[:v] + (up,) + box[v + 1:]))
+                if pa is not None and len(pa) == 1:
+                    acts = pa
+                    break
+            else:
+                self.tests += 1
+                acts = tuple(sorted(self.model.possible_actions(pos, list(box))))
+            self.acts[(pos, box)] = acts
+        return acts
+
+    def split(self, grid, v, at, edges) -> bool:
+        """split_cell on a grid without rules, remembering both halves' parent cell."""
+        e = grid.edges[v]
+        i = bisect.bisect_left(e, at)
+        if not split_cell(self.model, grid, [], v, at, edges):
+            return False
+        old = (e[i - 1], e[i + 1])
+        self.parent[(v, (old[0], at))] = self.parent[(v, (at, old[1]))] = old
+        return True
+
+
+def _lazy_search(model, grid, banned, region, cache, deadline, cap: int = 2_000_000):
+    """Greedy best-first search (RockSample: on the moves left to the east exit) from every
+    start box of the region. Returns ("plan", (steps, start box)) with steps (pos, action,
+    outcome, target cell or None), ("none", visited states) when the space is exhausted,
+    or ("time" | "cap", None)."""
+    k = len(model.vars)
+    cells = [_cells(grid, v) for v in range(k)]
+    starts = [[c for c in cells[v] if _in_region(c, *region[v]) and c not in banned.get(v, ())] for v in range(k)]
+    left = (lambda pos: model.n + 1 - pos[0]) if model.problem == "rocksample" else (lambda pos: 0)
+    parent, todo = {}, []
+    for box in itertools.product(*starts):
+        s = (model.start(), box)
+        parent[s] = None
+        heapq.heappush(todo, (left(s[0]), len(parent), s))
+    n = 0
+    while todo:
+        n += 1
+        if n % 2000 == 0 and deadline is not None and time.perf_counter() > deadline:
+            return "time", None
+        if len(parent) > cap:
+            return "cap", None
+        state = heapq.heappop(todo)[2]
+        pos, box = state
+        for a in cache(pos, box):
+            for j, (obs, v, shift, npos, term) in enumerate(model.step(pos, a)):
+                if term:
+                    steps, s = [(pos, a, j, None)], state
+                    while parent[s] is not None:
+                        s, step = parent[s]
+                        steps.append(step)
+                    return "plan", (steps[::-1], s[1])
+                if v is None or shift is None:
+                    succ = [(None, box)]
+                else:
+                    succ = [(cells[v][t], box[:v] + (cells[v][t],) + box[v + 1:])
+                            for t in grid.successors(v, *box[v], shift) if cells[v][t] not in banned.get(v, ())]
+                for tc, nb in succ:
+                    nxt = (npos, nb)
+                    if nxt not in parent:
+                        parent[nxt] = (state, (pos, a, j, tc))
+                        heapq.heappush(todo, (left(npos), len(parent), nxt))
+    return "none", list(parent)
+
+
+def _hits(candidate):
+    """Does a log-odds vector lie in the candidate (half-open ranges, as cells are)?"""
+    (v, ranges), = candidate.items()
+    return lambda lam: any(lo <= lam[v] < hi or lam[v] == hi == INF for lo, hi in ranges)   # noqa: E731
+
+
+def _replay_steps(model, grid, steps, lam0, candidate):
+    """replay() for steps (pos, action, outcome, target cell or None): None if they are a
+    real run of the policy from lam0 that never reaches the candidate, else (kind, (pos,
+    action), details). The candidate is checked on the exact values, so a certificate does
+    not depend on the candidate being a union of cells."""
+    hit = _hits(candidate)
+    if hit(lam0):
+        return ("candidate", (None, None), list(lam0))
+    lam = list(lam0)
+    acts = np.array(model.actions)
+    for pos, a, j, tc in steps:
+        vals = model.A @ model.corner(pos, lam)
+        if model.actions[int(vals.argmax())] != a:
+            return ("action", (pos, a), list(lam))
+        others = vals[acts != a]
+        if others.size and vals.max() - others.max() <= SAFETY * 2 * model.value_error(pos):
+            return ("tie", (pos, a), list(lam))
+        obs, v, shift, npos, term = model.step(pos, a)[j]
+        if term:
+            return None
+        if v is not None and shift is not None:
+            new = _next(lam[v], shift, a)
+            if new is None:
+                return ("observation", (pos, a), list(lam))
+            if _cells(grid, v)[grid.cell(v, new)] != tc:
+                return ("cell", (pos, a), (v, lam[v], shift, tc))
+            lam[v] = new
+            if hit(lam):
+                return ("candidate", (pos, a), list(lam))
+    return None
+
+
+def _test_run(model, grid, candidate, lam0, max_nodes: int = 200_000, deadline: float | None = None):
+    """A terminating run of the policy from prior lam0 that never reaches the candidate, as
+    steps for _replay_steps, or None. Breadth-first on the exact belief graph (states merge
+    at log-odds rounded to 1e-12 as in exact_graph; a step whose value hits the candidate
+    before or after rounding is not taken); _replay_steps from lam0 certifies the run."""
+    hit = _hits(candidate)
+    start = (model.start(), tuple(lam0))
+    if hit(lam0):
+        return None
+    parent, todo, n = {start: None}, deque([start]), 0
+    while todo and len(parent) < max_nodes:
+        n += 1
+        if deadline is not None and n % 1000 == 0 and time.perf_counter() > deadline:
+            return None
+        node = todo.popleft()
+        pos, lam = node
+        a = model.actions[int((model.A @ model.corner(pos, list(lam))).argmax())]
+        for j, (obs, u, shift, npos, term) in enumerate(model.step(pos, a)):
+            if term:
+                steps, s = [(pos, a, j, None)], node
+                while parent[s] is not None:
+                    s, step = parent[s]
+                    steps.append(step)
+                return steps[::-1]
+            new, tc = list(lam), None
+            if u is not None and shift is not None:
+                x = _next(lam[u], shift, a)
+                if x is None:
+                    continue
+                tc = _cells(grid, u)[grid.cell(u, x)]
+                new[u] = x
+                if hit(new):
+                    continue
+                new[u] = x if x in (INF, -INF) else round(x, 12)
+            nxt = (npos, tuple(new))
+            if not hit(new) and nxt not in parent:
+                parent[nxt] = (node, (pos, a, j, tc))
+                todo.append(nxt)
+    return None
+
+
+def _test_priors(region: dict) -> list:
+    """The region's centre, then its corners."""
+    keys = sorted(region)
+    centre = [(region[v][0] + region[v][1]) / 2 for v in keys]
+    corners = [list(c) for c in itertools.product(*[sorted({region[v][0], region[v][1]}) for v in keys])]
+    return [centre] + [c for c in corners if c != centre]
+
+
+def lazy_verify(model, grid: Grid, candidate: dict, workdir: Path, edges, region: dict | None = None,
+                max_iter: int = 400, time_limit: float | None = None, search: str = "lazy_greedy([ff()])",
+                recheck: bool = False, cache: BoxCache | None = None, test_priors: list | None = None,
+                trace: list | None = None) -> dict:
+    """verify() without a rule table (keyword arguments as in verify(); no rules); the same
+    verdicts and certified witnesses.
+    1. Test priors (default: the region's centre and corners): a real run from one of them
+       that avoids the candidate refutes it before any abstraction is built ("tested").
+    2. Search the abstraction of (robot cell, fine box) states; each candidate refines its
+       own copy of the grid. A plan is replayed from a witness prior in its start box; if
+       it diverges, the witness itself is tested as in 1, else the grid is refined at the
+       divergence as in verify().
+    3. No plan: Fast Downward must exhaust the task with one rule per visited state and
+       possible action (`search`; recheck adds a blind search of the same task).
+    cache: box-test results to share across calls on the same model."""
+    region = region or {v: (0.0, 0.0) for v in range(len(model.vars))}
+    cache = cache if cache is not None else BoxCache(model)
+    grid = Grid([list(e) for e in grid.edges])
+    k = len(model.vars)
+    t0, tests0 = time.perf_counter(), cache.tests
+    deadline = None if time_limit is None else t0 + time_limit
+
+    def done(**out):
+        return {**out, "box_tests": cache.tests - tests0, "cells_final": [len(e) - 1 for e in grid.edges]}
+
+    def refutes(lam0):
+        run = _test_run(model, grid, candidate, lam0, deadline=deadline)
+        return run is not None and _replay_steps(model, grid, run, lam0, candidate) is None
+
+    for lam0 in (_test_priors(region) if test_priors is None else test_priors):
+        if refutes(lam0):
+            return done(landmark=False, certified=True, witness=list(lam0), iterations=0, tested=True)
+    for it in range(max_iter):
+        if deadline is not None and time.perf_counter() > deadline:
+            return done(landmark=None, iterations=it, reason="time limit")
+        banned = _banned(grid, candidate)
+        kind, found = _lazy_search(model, grid, banned, region, cache, deadline)
+        if kind == "time":
+            return done(landmark=None, iterations=it, reason="time limit")
+        if kind == "cap":
+            return done(landmark=None, iterations=it, reason="state cap")
+        if kind == "none":
+            rules = [(pos, a, {v: ("f", box[v]) for v in range(k)}) for pos, box in found for a in cache(pos, box)]
+            sas = compile_sas(model, grid, rules, banned, edges, region)
+            run = run_fd_sas(workdir, sas, search)
+            plan = workdir / "sas_plan"
+            if plan.exists() or not run["exhausted"]:         # the planner must agree, or no proof
+                reason = "planner found a plan" if plan.exists() else "planner gave up"
+                plan.unlink(missing_ok=True)
+                return done(landmark=None, iterations=it, reason=reason)
+            if trace is not None:
+                trace.append(("proof", None, len(found), round(time.perf_counter() - t0, 2)))
+            out = done(landmark=True, iterations=it, rules=len(rules), visited=len(found))
+            if recheck:
+                blind = run_fd_sas(workdir / "recheck", sas, "astar(blind())")
+                out["rechecked"] = blind["exhausted"] and not (workdir / "recheck" / "sas_plan").exists()
+                out["recheck_seconds"] = round(blind["wall"], 2)
+            return out
+        steps, start_box = found
+        lam0 = [_witness(start_box[v], *region[v]) for v in range(k)]
+        div = _replay_steps(model, grid, steps, lam0, candidate)
+        for frac in (0.382, 0.618, 0.25, 0.75):              # as in verify(): break witness symmetry
+            if div is None or div[0] != "tie":
+                break
+            alt = [_witness(start_box[v], *region[v], (frac + 0.236 * v) % 1) for v in range(k)]
+            if alt != lam0:
+                lam0, div = alt, _replay_steps(model, grid, steps, alt, candidate)
+        if trace is not None:
+            trace.append(("replay" if div is None else div[0], len(steps), None, round(time.perf_counter() - t0, 2)))
+        if div is None or refutes(lam0):
+            return done(landmark=False, certified=True, witness=lam0, iterations=it)
+        kind, (pos, a), info = div
+        if kind == "cell":                                     # split the source at the crossing
+            v, lam_v, shift, tcell = info
+            src = _cells(grid, v)[grid.cell(v, lam_v)]
+            edge = tcell[0] if tcell[0] > lam_v + shift else tcell[1]
+            if not cache.split(grid, v, threshold(edge, shift), edges):
+                cache.split(grid, v, _mid(src), edges)
+        elif kind == "action":                                 # policy's choice differs: halve
+            pick = _shrink(model, grid, pos, a, info)
+            if pick is None:
+                return done(landmark=None, iterations=it, reason="exact belief")
+            cache.split(grid, *pick, edges)
+        else:   # "observation", "tie" or "candidate" (not a union of cells): no split decides it
+            return done(landmark=None, iterations=it, reason=kind)
+    return done(landmark=None, iterations=max_iter, reason="iterations")
