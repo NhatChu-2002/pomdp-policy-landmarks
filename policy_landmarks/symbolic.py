@@ -49,6 +49,8 @@ class Model:
         self.states = alphas["states"]
         self.actions = alphas["actions"]
         self.A = np.array(alphas["alphas"])
+        self._names = sorted(set(self.actions))                       # action index of each vector
+        self._aid = np.array([self._names.index(a) for a in self.actions])
         assert self.states == g["states"], "alpha-vectors and graph use one state order"
         if self.problem == "tiger":
             self.vars, self.u = ["direction"], math.log(g["p_correct"] / (1 - g["p_correct"]))
@@ -143,18 +145,19 @@ class Model:
         # (value_error), so a loss by more than 2 err at every corner is a loss at every
         # belief in the box (the exact values are multilinear) and in float evaluation there.
         margin = SAFETY * 2 * err
-        acts = np.array(self.actions)
         winners = np.unique(M.argmax(axis=0))                # best vector at each corner
-        out = set(acts[winners])                             # chosen at a corner: possible
-        W = M[winners]
-        for a in set(self.actions) - out:
-            # a is dropped only if each of its vectors is beaten at every corner by one
-            # corner winner (testing only winners keeps the check sound and fast)
-            mine = M[acts == a]
-            dominated = (W[None, :, :] - mine[:, None, :] > margin).all(axis=2).any(axis=1)
-            if not dominated.all():
-                out.add(a)
-        return out
+        # An action is dropped only if each of its vectors is beaten at every corner by one
+        # corner winner (testing only winners keeps the check sound and fast). A vector
+        # within the margin of the corner's best somewhere is beaten by no winner there
+        # (float subtraction is monotone), so only the others are tested, winner by winner.
+        alive = ~((M.max(axis=0) - M) > margin).all(axis=1)
+        rest = np.flatnonzero(~alive)
+        for w in winners[np.argsort(-M[winners].min(axis=1))]:   # most dominant winner first
+            if not rest.size:
+                break
+            rest = rest[~((M[w] - M[rest]) > margin).all(axis=1)]
+        alive[rest] = True
+        return {self._names[i] for i in np.unique(self._aid[alive])}
 
     def step(self, pos, a):
         """[(observation, variable index or None, shift or None, new pos, terminal)]"""

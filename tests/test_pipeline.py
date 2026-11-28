@@ -468,3 +468,155 @@ def test_exact_graph_from_alphas_matches_the_julia_policy_graph():
             for cand in [(lv,) for lv in levels if lv != "unk"] + pairs:
                 assert cegar.exact_landmark(start, succ, v, [span[lv] for lv in cand]) == \
                     julia.is_landmark([f"ev-{var}({lv})" for lv in cand]), (seed, var, cand)
+
+
+def test_box_test_agrees_with_the_per_action_dominance_check():
+    """possible_actions tests vectors winner by winner after a quick filter; it must keep
+    exactly the actions of the plain per-action check (each vector beaten at every corner
+    by one corner winner by more than the margin) on random boxes, points and end cells."""
+    import itertools
+    import json
+    import math
+    import random
+    import numpy as np
+    from policy_landmarks import extraction, symbolic as sy
+
+    def reference(m, pos, box):
+        pts = list(itertools.product(*[(lo,) if lo == hi else (lo, hi) for lo, hi in box]))
+        A_pos, bits = m._pos_rows(pos)                     # the old code's corner beliefs
+        with np.errstate(over="ignore"):
+            P = 1.0 / (1.0 + np.exp(-np.array(pts, dtype=float)))
+        M = A_pos @ np.where(bits[None], P[:, None, :], 1.0 - P[:, None, :]).prod(axis=2).T
+        margin = sy.SAFETY * 2 * m.value_error(pos)
+        acts = np.array(m.actions)
+        winners = np.unique(M.argmax(axis=0))
+        out = set(acts[winners])
+        for a in set(m.actions) - out:
+            mine = M[acts == a]
+            if not (M[winners][None] - mine[:, None] > margin).all(axis=2).any(axis=1).all():
+                out.add(a)
+        return out
+
+    rng = random.Random(0)
+    cuts = [-math.inf, -4.5, -3.0, -1.5, -0.5, 0.5, 1.5, 3.0, 4.5, math.inf]
+    base = ROOT / "experiments/policy_graphs/alphas"
+    for name in ("sensor-0.75", "rocksample-4-4-s1"):
+        m = sy.Model(extraction.load(base / f"{name}.json"), json.loads((base / f"{name}.alphas.json").read_text()))
+        for _ in range(300):
+            pos = rng.choice(list(m.rows))
+            box = []
+            for _v in m.vars:
+                i = rng.randrange(len(cuts) - 1)
+                lo, hi = cuts[i], cuts[i + 1]
+                if rng.random() < 0.3 and -math.inf < lo and hi < math.inf:
+                    lo = hi = rng.uniform(lo, hi)
+                box.append((lo, hi))
+            assert m.possible_actions(pos, box) == reference(m, pos, box), (name, pos, box)
+
+
+def test_lazy_prover_agrees_with_the_rule_prover_on_toy_tiger(tmp_path=None):
+    """The toy Tiger cases above through lazy_verify, with and without testing the
+    region's centre and corners first: same verdicts, a proof rechecked by blind search,
+    and every witness a prior in the region refuted on its own exact graph. Relative
+    levels too (prior coordinate 1)."""
+    if not (FAST_DOWNWARD.parent / "builds" / "release64").exists():
+        import pytest
+        pytest.skip("Fast Downward build not found")
+    import math
+    from policy_landmarks import cegar, symbolic as sy
+    g = {"problem": "tiger", "p_correct": 0.8, "states": ["left", "right"]}
+    m = sy.Model(g, {"states": ["left", "right"], "actions": ["listen", "right", "left"],
+                     "alphas": [[0.0, 0.0], [10.0, -100.0], [-100.0, 10.0]]})
+    work = Path(tmp_path or ROOT / "experiments" / "results" / "work" / "tests") / "cegar-lazy"
+    edges = (-1.0, 1.0)
+    grid = sy.Grid([[-sy.INF, -3.0, -1.0, 1.0, 3.0, sy.INF]])
+    cases = [({0: [(-1.0, 1.0)]}, (0.0, 0.0), True), ({0: [(-1.0, 1.0)]}, (-0.5, 0.5), True),
+             ({0: [(-1.0, 1.0)]}, (2.0, 2.2), False), ({0: [(-1.0, 1.0)]}, (-0.5, 1.0), False),
+             ({0: [(-3.0, -1.0)]}, (-0.5, 0.5), False)]
+    for cand, region, expect in cases:
+        for test_priors in (None, ()):
+            res = cegar.lazy_verify(m, grid, cand, work, edges, region={0: region}, recheck=True,
+                                    test_priors=test_priors)
+            assert res["landmark"] is expect, (cand, region, test_priors, res)
+            if expect:
+                assert res["rechecked"] is True, res
+            else:
+                w = res["witness"]
+                assert res["certified"] and region[0] <= w[0] <= region[1], res
+                assert not cegar.exact_landmark(*cegar.exact_graph(m, w), 0, cand[0])
+    assert grid.edges == [[-sy.INF, -3.0, -1.0, 1.0, 3.0, sy.INF]]         # the caller's grid is untouched
+    rm = cegar.RelativeModel(m)
+    rgrid = sy.Grid([[-sy.INF, -3.0, -1.0, 1.0, 3.0, sy.INF], [-sy.INF, -0.5, math.nextafter(0.5, sy.INF), sy.INF]])
+    for cand, expect in (([(-3.0, -1.0), (1.0, 3.0)], True), ([(3.0, sy.INF)], False)):
+        for test_priors in (None, ()):
+            res = cegar.lazy_verify(rm, rgrid, {0: cand}, work, edges, region={0: (0.0, 0.0), 1: (-0.5, 0.5)},
+                                    test_priors=test_priors)
+            assert res["landmark"] is expect, (cand, test_priors, res)
+            if not expect:
+                w = res["witness"]
+                assert w[0] == 0.0 and -0.5 <= w[1] <= 0.5
+                assert not cegar.exact_landmark(*cegar.exact_graph(m, [w[1]]), 0, [(a + w[1], b + w[1]) for a, b in cand])
+
+
+def test_lazy_prover_is_sound_on_sensor_and_rocksample_regions(tmp_path=None):
+    """Every Sensor-0.85 candidate at +-0.5 and the RockSample(4,4) seed-5 rock-1 levels at
+    +-0.5 through lazy_verify without the centre/corner tests (so plans, refinement and the
+    Fast Downward re-proof all run): a proof must hold at the centre, the corners and random
+    priors; a refutation's witness must be refuted on its own exact graph."""
+    if not (FAST_DOWNWARD.parent / "builds" / "release64").exists():
+        import pytest
+        pytest.skip("Fast Downward build not found")
+    import itertools
+    import json
+    import random
+    from policy_landmarks import cegar, extraction, symbolic as sy
+    base = ROOT / "experiments/policy_graphs/alphas"
+    work = Path(tmp_path or ROOT / "experiments" / "results" / "work" / "tests") / "cegar-lazy-sound"
+    rng = random.Random(0)
+    proven = refuted = 0
+    for name, variables in (("sensor-0.85", None), ("rocksample-4-4-s5", [0])):
+        m = sy.Model(extraction.load(base / f"{name}.json"), json.loads((base / f"{name}.alphas.json").read_text()))
+        k = len(m.vars)
+        grid, edges = sy.bin_grid(m, 0), (-4.5, 4.5)
+        region = {v: (-0.5, 0.5) for v in range(k)}
+        priors = [[0.0] * k] + [list(c) for c in itertools.product((-0.5, 0.5), repeat=k)] + \
+                 [[rng.uniform(-0.5, 0.5) for _ in range(k)] for _ in range(10)]
+        graphs = [cegar.exact_graph(m, p) for p in priors]
+        cache = cegar.BoxCache(m)
+        for v in (variables or range(k)):
+            for c in range(len(grid.edges[v]) - 1):
+                cell = (grid.edges[v][c], grid.edges[v][c + 1])
+                res = cegar.lazy_verify(m, grid, {v: [cell]}, work, edges, region=region, time_limit=120,
+                                        cache=cache, test_priors=())
+                if res["landmark"] is True:
+                    proven += 1
+                    assert all(cegar.exact_landmark(*gr, v, [cell]) for gr in graphs), (name, v, cell)
+                elif res["landmark"] is False:
+                    refuted += 1
+                    assert res["certified"] and all(-0.5 <= x <= 0.5 for x in res["witness"])
+                    assert not cegar.exact_landmark(*cegar.exact_graph(m, res["witness"]), v, [cell])
+    assert proven >= 1 and proven + refuted == 21, (proven, refuted)        # every test decided
+
+
+def test_lazy_certificate_checks_the_candidate_on_exact_values(tmp_path=None):
+    """Toy Tiger with a cell edge c = round(0.1 + u, 12) just above 0.1 + u: from the prior
+    0.1 one growl lands at 0.1 + u, inside the candidate [1, c), but the 1e-12 rounding of
+    the belief graph puts it at c, outside. Every run reaches the candidate, so it is a
+    landmark (verify() proves it); the lazy prover must not certify the rounded run."""
+    if not (FAST_DOWNWARD.parent / "builds" / "release64").exists():
+        import pytest
+        pytest.skip("Fast Downward build not found")
+    from policy_landmarks import cegar, symbolic as sy
+    g = {"problem": "tiger", "p_correct": 0.8, "states": ["left", "right"]}
+    m = sy.Model(g, {"states": ["left", "right"], "actions": ["listen", "right", "left"],
+                     "alphas": [[0.0, 0.0], [10.0, -100.0], [-100.0, 10.0]]})
+    c = round(0.1 + m.u, 12)
+    assert 0.1 + m.u < c
+    grid, edges = sy.Grid([[-sy.INF, -3.0, -1.0, 1.0, c, 3.0, sy.INF]]), (-1.0, 1.0)
+    cand = {0: [(-3.0, -1.0), (1.0, c)]}
+    work = Path(tmp_path or ROOT / "experiments" / "results" / "work" / "tests") / "cegar-lazy-round"
+    for test_priors in (None, ()):
+        res = cegar.lazy_verify(m, grid, cand, work, edges, region={0: (0.1, 0.1)}, test_priors=test_priors)
+        assert res["landmark"] is not False, res
+    assert cegar.verify(m, sy.Grid([list(e) for e in grid.edges]), cegar.initial_rules(m, grid, [None], edges, "any"),
+                        cand, work, edges, region={0: (0.1, 0.1)})["landmark"] is True
